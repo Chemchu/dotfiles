@@ -23,6 +23,9 @@ require('packer').startup(function(use)
         config = function()
             require("which-key").setup {} end }
 
+    -- go json autocomplete
+    use "fatih/gomodifytags"   
+
     -- Snippets
     use "rafamadriz/friendly-snippets"
 
@@ -35,23 +38,22 @@ require('packer').startup(function(use)
     use "RRethy/vim-illuminate"
 
     -- null-ls y prettier
-  use 'jose-elias-alvarez/null-ls.nvim'
-  use 'MunifTanjim/prettier.nvim'
+    use 'jose-elias-alvarez/null-ls.nvim'
 
-  use { -- LSP Configuration & Plugins
-    'neovim/nvim-lspconfig',
-    requires = {
-      -- Automatically install LSPs to stdpath for neovim
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
+    use { -- LSP Configuration & Plugins
+        'neovim/nvim-lspconfig',
+        requires = {
+            -- Automatically install LSPs to stdpath for neovim
+            'williamboman/mason.nvim',
+            'williamboman/mason-lspconfig.nvim',
 
-      -- Useful status updates for LSP
-      'j-hui/fidget.nvim',
-
-      -- Additional lua configuration, makes nvim stuff amazing
-      'folke/neodev.nvim',
-    },
-  }
+            -- Useful status updates for LSP
+            'j-hui/fidget.nvim',
+        
+            -- Additional lua configuration, makes nvim stuff amazing
+            'folke/neodev.nvim',
+        },
+    }
 
   use { -- Autocompletion
     'hrsh7th/nvim-cmp',
@@ -476,30 +478,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv") 
 vim.keymap.set("n", "N", "Nzzzv") 
 
--- Añadiendo y configurando prettier
-local prettier = require("prettier")
-
-prettier.setup({
-  bin = 'prettierd', -- or `'prettierd'` (v0.22+)
-  filetypes = {
-    "css",
-    "graphql",
-    "html",
-    "javascript",
-    "javascriptreact",
-    "json",
-    "less",
-    "markdown",
-    "scss",
-    "typescript",
-    "typescriptreact",
-    "yaml",
-    "go",
-    "lua"
-  },
-})
-
-
  local diagnostics = require("null-ls").builtins.diagnostics
  local formatting = require("null-ls").builtins.formatting
  local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -509,8 +487,12 @@ prettier.setup({
      formatting.black,
      formatting.rustfmt,
      formatting.phpcsfixer,
-     formatting.prettier,
+     formatting.prettier.with({
+            extra_filetypes = { "toml" },
+            indent_size = { 4 }
+        }),
      formatting.stylua,
+     formatting.gofmt,
    },
    on_attach = function(client, bufnr)
      if client.name == "tsserver" or client.name == "rust_analyzer" or client.name == "pyright" then
