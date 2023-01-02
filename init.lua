@@ -1,3 +1,21 @@
+-- disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- OR setup with some options
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  view = {
+    adaptive_size = true,
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
+
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 local is_bootstrap = false
@@ -10,6 +28,17 @@ end
 require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
+
+  use {
+  'nvim-tree/nvim-tree.lua',
+  requires = {
+    'nvim-tree/nvim-web-devicons', -- optional, for file icons
+  },
+    -- tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  }
+
+  -- Bufferlines
+  use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
 
   -- Autopairs (para añadir cerrar ciertos simbolos automáticamente)
     use {
@@ -172,6 +201,13 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Netrw remap
   vim.keymap.set('n', '<leader>pv', vim.cmd.Ex, {desc = 'Open explorer'})
 
+-- Nvim tree
+  vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>',{noremap = true, desc = 'Abre/cierra Nvim-tree'})
+  vim.keymap.set('n', '<C-l>', '<c-w>w',{noremap = true, desc = 'Cambia de Nvim-tree al buffer actual'})
+  vim.keymap.set('n', '<C-h>', '<c-w>w',{noremap = true, desc = 'Cambia del buffer actual al Nvim-tree'})
+  vim.keymap.set('n', '<C-j>', ':bnext<CR>',{desc = 'Cambia al siguiente buffer'})
+  vim.keymap.set('n', '<C-k>', ':bprevious<CR>',{desc = 'Cambia al buffer previo'})
+
 -- Illuminate keymap 
   vim.keymap.set('n', '<a-w>', require('illuminate').goto_next_reference, { desc = "Move to next reference" })
   vim.keymap.set('n', '<a-b>', require('illuminate').goto_prev_reference, { desc = "Move to previous reference" })
@@ -190,6 +226,45 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+-- Set Bufferline
+require("bufferline").setup{
+    options = {
+    diagnostics = "nvim_lsp",
+    offsets = {
+        {
+          filetype = "undotree",
+          text = "Undotree",
+          highlight = "PanelHeading",
+          padding = 1,
+        },
+        {
+          filetype = "NvimTree",
+          text = "Archivos",
+          highlight = "PanelHeading",
+          padding = 1,
+        },
+        {
+          filetype = "DiffviewFiles",
+          text = "Diff View",
+          highlight = "PanelHeading",
+          padding = 1,
+        },
+        {
+          filetype = "flutterToolsOutline",
+          text = "Flutter Outline",
+          highlight = "PanelHeading",
+        },
+        {
+          filetype = "packer",
+          text = "Packer",
+          highlight = "PanelHeading",
+          padding = 1,
+        },
+      },
+
+  }
+}
 
 -- Set lualine as statusline
 -- See `:help lualine.txt`
@@ -319,12 +394,6 @@ require('nvim-treesitter.configs').setup {
     },
   },
 }
-
--- Diagnostic keymaps
--- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
--- vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
--- vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, {desc = "Open flaot diagnostics"})
--- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, {desc = ""})
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
@@ -477,6 +546,12 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv") 
 vim.keymap.set("n", "N", "Nzzzv") 
+
+-- Desabilitar las flechas del teclado
+vim.keymap.set({"n", "v", "i"}, "<Up>", "<Nop>")
+vim.keymap.set({"n", "v", "i"}, "<Down>", "<Nop>")
+vim.keymap.set({"n", "v", "i"}, "<Left>", "<Nop>")
+vim.keymap.set({"n", "v", "i"}, "<Right>", "<Nop>")
 
  local diagnostics = require("null-ls").builtins.diagnostics
  local formatting = require("null-ls").builtins.formatting
