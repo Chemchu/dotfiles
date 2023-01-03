@@ -29,6 +29,46 @@ require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
 
+  -- Trouble (Diagnostics)
+ use {
+  "folke/trouble.nvim",
+  requires = "kyazdani42/nvim-web-devicons",
+  config = function()
+    require("trouble").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  end
+} 
+  -- Smooth Scrolldown
+use {
+  "karb94/neoscroll.nvim",
+  event = "WinScrolled",
+  config = function()
+  require('neoscroll').setup({
+        -- All these keys will be mapped to their corresponding default scrolling animation
+        mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
+        '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
+        hide_cursor = true,          -- Hide cursor while scrolling
+        stop_eof = true,             -- Stop at <EOF> when scrolling downwards
+        use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
+        respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+        cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+        easing_function = nil,        -- Default easing function
+        pre_hook = nil,              -- Function to run before the scrolling animation starts
+        post_hook = nil,              -- Function to run after the scrolling animation ends
+        })
+  end
+}
+  -- Symbol outline
+  use {
+  "simrat39/symbols-outline.nvim",
+  config = function()
+  require('symbols-outline').setup()
+  end
+  }
+
   use {
   'nvim-tree/nvim-tree.lua',
   requires = {
@@ -216,6 +256,26 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+-- Trouble (Diagnostics)
+  vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>",
+   {silent = true, noremap = true}
+  )
+  vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>",
+   {silent = true, noremap = true}
+  )
+  vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>",
+   {silent = true, noremap = true}
+  )
+  vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>",
+   {silent = true, noremap = true}
+  )
+  vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",
+   {silent = true, noremap = true}
+  )
+  vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>",
+   {silent = true, noremap = true}
+  )
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -332,6 +392,12 @@ vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { de
 vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = '[F]ind by [G]rep' })
 vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[F]ind [D]iagnostics' })
 
+-- Diagnostic keymaps
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<leader>df', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
@@ -415,9 +481,6 @@ local on_attach = function(_, bufnr)
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
-  -- Keymaps close buffer
-  -- vim.keymap.set('n', '<leader>cb', vim.cmd(":bd"), {expr = true, silent= true, desc = 'Close current buffer'} )
-
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
   nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
@@ -442,6 +505,9 @@ local on_attach = function(_, bufnr)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
 end
+
+  -- Cerrar buffer actual
+  vim.keymap.set("n", "<leader>cb",":bd<CR>", {desc = "[C]errar [b]uffer actual"})
 
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
