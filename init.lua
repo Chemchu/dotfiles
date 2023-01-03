@@ -30,37 +30,37 @@ require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- Trouble (Diagnostics)
- use {
-  "folke/trouble.nvim",
-  requires = "kyazdani42/nvim-web-devicons",
-  config = function()
-    require("trouble").setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
-  end
-} 
+   use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  } 
   -- Smooth Scrolldown
-use {
-  "karb94/neoscroll.nvim",
-  event = "WinScrolled",
-  config = function()
-  require('neoscroll').setup({
-        -- All these keys will be mapped to their corresponding default scrolling animation
-        mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
-        '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
-        hide_cursor = true,          -- Hide cursor while scrolling
-        stop_eof = true,             -- Stop at <EOF> when scrolling downwards
-        use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
-        respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-        cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-        easing_function = nil,        -- Default easing function
-        pre_hook = nil,              -- Function to run before the scrolling animation starts
-        post_hook = nil,              -- Function to run after the scrolling animation ends
-        })
-  end
-}
+  use {
+    "karb94/neoscroll.nvim",
+    event = "WinScrolled",
+    config = function()
+    require('neoscroll').setup({
+          -- All these keys will be mapped to their corresponding default scrolling animation
+          mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
+          '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
+          hide_cursor = true,          -- Hide cursor while scrolling
+          stop_eof = true,             -- Stop at <EOF> when scrolling downwards
+          use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
+          respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+          cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+          easing_function = nil,        -- Default easing function
+          pre_hook = nil,              -- Function to run before the scrolling animation starts
+          post_hook = nil,              -- Function to run after the scrolling animation ends
+          })
+    end
+  }
   -- Symbol outline
   use {
   "simrat39/symbols-outline.nvim",
@@ -77,9 +77,8 @@ use {
     -- tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
 
-  -- Bufferlines
-  use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
-
+  -- Barbar 
+  use {'romgrk/barbar.nvim', wants = 'nvim-web-devicons'}
   -- Autopairs (para añadir cerrar ciertos simbolos automáticamente)
     use {
 	"windwp/nvim-autopairs",
@@ -286,45 +285,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
-
--- Set Bufferline
-require("bufferline").setup{
-    options = {
-    diagnostics = "nvim_lsp",
-    offsets = {
-        {
-          filetype = "undotree",
-          text = "Undotree",
-          highlight = "PanelHeading",
-          padding = 1,
-        },
-        {
-          filetype = "NvimTree",
-          text = "Archivos",
-          highlight = "PanelHeading",
-          padding = 1,
-        },
-        {
-          filetype = "DiffviewFiles",
-          text = "Diff View",
-          highlight = "PanelHeading",
-          padding = 1,
-        },
-        {
-          filetype = "flutterToolsOutline",
-          text = "Flutter Outline",
-          highlight = "PanelHeading",
-        },
-        {
-          filetype = "packer",
-          text = "Packer",
-          highlight = "PanelHeading",
-          padding = 1,
-        },
-      },
-
-  }
-}
 
 -- Set lualine as statusline
 -- See `:help lualine.txt`
@@ -618,6 +578,25 @@ vim.keymap.set({"n", "v", "i"}, "<Up>", "<Nop>")
 vim.keymap.set({"n", "v", "i"}, "<Down>", "<Nop>")
 vim.keymap.set({"n", "v", "i"}, "<Left>", "<Nop>")
 vim.keymap.set({"n", "v", "i"}, "<Right>", "<Nop>")
+
+local nvim_tree_events = require('nvim-tree.events')
+local bufferline_api = require('bufferline.api')
+
+local function get_tree_size()
+  return require'nvim-tree.view'.View.width
+end
+
+nvim_tree_events.subscribe('TreeOpen', function()
+  bufferline_api.set_offset(get_tree_size())
+end)
+
+nvim_tree_events.subscribe('Resize', function()
+  bufferline_api.set_offset(get_tree_size())
+end)
+
+nvim_tree_events.subscribe('TreeClose', function()
+  bufferline_api.set_offset(0)
+end)
 
  local diagnostics = require("null-ls").builtins.diagnostics
  local formatting = require("null-ls").builtins.formatting
