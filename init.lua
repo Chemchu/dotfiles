@@ -29,6 +29,12 @@ require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
 
+  -- Colorscheme
+  use "EdenEast/nightfox.nvim"
+
+  -- Friendly snippets
+  use "rafamadriz/friendly-snippets"
+
   -- Trouble (Diagnostics)
    use {
     "folke/trouble.nvim",
@@ -94,9 +100,6 @@ require('packer').startup(function(use)
     -- go json autocomplete
     use "fatih/gomodifytags"   
 
-    -- Snippets
-    use "rafamadriz/friendly-snippets"
-
     use "b0o/schemastore.nvim"
 
     -- neodev (init.lua autocomplete)
@@ -145,7 +148,9 @@ require('packer').startup(function(use)
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
 
-  use 'navarasu/onedark.nvim' -- Theme inspired by Atom
+  use 'Mofiqul/dracula.nvim'
+  use 'olimorris/onedarkpro.nvim'
+  -- use 'navarasu/onedark.nvim' -- Theme inspired by Atom
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
@@ -157,10 +162,6 @@ require('packer').startup(function(use)
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
-  -- Rose-pine colorscheme
-  use({'rose-pine/neovim',
-    as = 'rose-pine'})
-  
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then
@@ -285,6 +286,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+-- Treesitter TSX
+-- require('tree-sitter-typescript').tsx;
 
 -- Set lualine as statusline
 -- See `:help lualine.txt`
