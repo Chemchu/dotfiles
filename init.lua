@@ -1,21 +1,3 @@
--- disable netrw at the very start of your init.lua (strongly advised)
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
--- OR setup with some options
-require("nvim-tree").setup({
-  sort_by = "case_sensitive",
-  view = {
-    adaptive_size = true,
-  },
-  renderer = {
-    group_empty = true,
-  },
-  filters = {
-    dotfiles = true,
-  },
-})
-
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 local is_bootstrap = false
@@ -173,6 +155,25 @@ require('packer').startup(function(use)
   end
 end)
 
+-- disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- OR setup with some options
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  view = {
+    adaptive_size = true,
+  },
+  renderer = {
+    group_empty = true,
+  },
+  -- filters = {
+  --   dotfiles = true,
+  -- },
+})
+
+
 -- When we are bootstrapping a configuration, it doesn't
 -- make sense to execute the rest of the init.lua.
 --
@@ -275,6 +276,13 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
   vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>",
    {silent = true, noremap = true}
   )
+
+-- Añadir ()""''{}[] al texto seleccionado visualmente
+vim.keymap.set("v", "<leader>s\"", "oc\"<C-r>\"\"", {desc = "Añade comillas al texto seleccionado"})
+vim.keymap.set("v", "<leader>s(", "oc(<C-r>\")", {desc = "Añade paréntesis al texto seleccionado"})
+vim.keymap.set("v", "<leader>s{", "oc{<C-r>\"}", {desc = "Añade llaves al texto seleccionado"})
+vim.keymap.set("v", "<leader>s[", "oc[<C-r>\"]", {desc = "Añade corchetes al texto seleccionado"})
+vim.keymap.set("v", "<leader>s'", "oc'<C-r>\"'", {desc = "Añade comillas simples al texto seleccionado"})
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -638,6 +646,9 @@ end)
 -- Ajustes de longitud del TAB
 vim.opt.tabstop = 4 
 vim.opt.shiftwidth = 4
+
+-- Lineas relativas
+vim.opt.relativenumber = true
 
 ---------------------------------
 -- Auto commands
