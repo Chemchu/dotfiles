@@ -259,35 +259,49 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Trouble (Diagnostics)
+  vim.keymap.set("n", "<leader>x", function() end,
+   {silent = true, noremap = true, desc = "Trouble Errors"}
+  )
   vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>",
-   {silent = true, noremap = true}
+   {silent = true, noremap = true, desc = "Muestra la lista de errores"}
   )
   vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>",
-   {silent = true, noremap = true}
+   {silent = true, noremap = true, desc = "Muestra errores del workspace"}
   )
   vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>",
-   {silent = true, noremap = true}
+   {silent = true, noremap = true, desc = "Muestra errores del documento"}
   )
-  vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>",
-   {silent = true, noremap = true}
-  )
+  -- vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>",
+  --  {silent = true, noremap = true, desc = "Abre/Cierra la lista de errores"}
+  -- )
   vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",
-   {silent = true, noremap = true}
+   {silent = true, noremap = true, desc = "Arreglos rápidos"}
   )
   vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>",
-   {silent = true, noremap = true}
+   {silent = true, noremap = true, desc = "La lista de errores del LSP"}
   )
 
 -- Añadir ()""''{}[] al texto seleccionado visualmente
-vim.keymap.set("v", "<leader>s\"", "oc\"<C-r>\"\"", {desc = "Añade comillas al texto seleccionado"})
-vim.keymap.set("v", "<leader>s(", "oc(<C-r>\")", {desc = "Añade paréntesis al texto seleccionado"})
-vim.keymap.set("v", "<leader>s{", "oc{<C-r>\"}", {desc = "Añade llaves al texto seleccionado"})
-vim.keymap.set("v", "<leader>s[", "oc[<C-r>\"]", {desc = "Añade corchetes al texto seleccionado"})
-vim.keymap.set("v", "<leader>s'", "oc'<C-r>\"'", {desc = "Añade comillas simples al texto seleccionado"})
+vim.keymap.set({"n","v"}, "<leader>s", function() end, {desc = "Funciones [S]urroundings"})
+
+vim.keymap.set({"n","v"}, "<leader>sa", function() end, {desc = "Añadir [S]urroundings (Visual mode only)"})
+vim.keymap.set("v", "<leader>sa\"", "oc\"<C-r>\"\"", {desc = "Añade comillas al texto seleccionado"})
+vim.keymap.set("v", "<leader>sa(", "oc(<C-r>\")", {desc = "Añade paréntesis al texto seleccionado"})
+vim.keymap.set("v", "<leader>sa{", "oc{<C-r>\"}", {desc = "Añade llaves al texto seleccionado"})
+vim.keymap.set("v", "<leader>sa[", "oc[<C-r>\"]", {desc = "Añade corchetes al texto seleccionado"})
+vim.keymap.set("v", "<leader>sa'", "oc'<C-r>\"'", {desc = "Añade comillas simples al texto seleccionado"})
+
+-- Elimina ()""''{}[] al texto seleccionado visualmente
+vim.keymap.set({"n","v"}, "<leader>sd", function() end, {desc = "Eliminar [S]urroundings (Normal mode only)"})
+vim.keymap.set("n", "<leader>sd\"", "yi\"va\"p", {desc = "Eliminar las comillas"})
+vim.keymap.set("n", "<leader>sd(", "yi(va(p", {desc = "Eliminar los paréntesis"})
+vim.keymap.set("n", "<leader>sd{", "yi{va{p", {desc = "Eliminar las llaves"})
+vim.keymap.set("n", "<leader>sd[", "yi[va[p", {desc = "Eliminar los corchetes"})
+vim.keymap.set("n", "<leader>sd'", "yi'va'p", {desc = "Eliminar las comillas"})
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+local highlight_group = vim.api.nvim_create_augroup('yankhighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
     vim.highlight.on_yank()
@@ -349,8 +363,8 @@ require('telescope').setup {
 pcall(require('telescope').load_extension, 'fzf')
 
 -- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Busca archivos recientes' })
+vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Busca buffers abiertos' })
 vim.keymap.set('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -366,9 +380,9 @@ vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc
 vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[F]ind [D]iagnostics' })
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<leader>df', vim.diagnostic.open_float)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, {desc = "Previo diagnostico"})
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, {desc = "Siguiente diagnostico"})
+-- vim.keymap.set('n', '<leader>df', vim.diagnostic.open_float)
 -- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist) -- No sé qué hace exactamente
 
 -- [[ Configure Treesitter ]]
@@ -451,7 +465,7 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+  nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ombrar')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
