@@ -7,6 +7,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.cmd [[packadd packer.nvim]]
 end
 
+
 require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
@@ -28,7 +29,7 @@ require('packer').startup(function(use)
         -- refer to the configuration section below
       }
     end
-  } 
+  }
   -- Smooth Scrolldown
   use {
     "karb94/neoscroll.nvim",
@@ -39,13 +40,13 @@ require('packer').startup(function(use)
           mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
           '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
           hide_cursor = true,          -- Hide cursor while scrolling
-          stop_eof = true,             -- Stop at <EOF> when scrolling downwards
+          stop_eof = false,             -- Stop at <EOF> when scrolling downwards
           use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
           respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
           cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
           easing_function = nil,        -- Default easing function
           pre_hook = nil,              -- Function to run before the scrolling animation starts
-          post_hook = nil,              -- Function to run after the scrolling animation ends
+          post_hook = function(info) vim.fn.feedkeys('zz') end,
           })
     end
   }
@@ -65,11 +66,11 @@ require('packer').startup(function(use)
     -- tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
 
-  -- Barbar 
+  -- Barbar
   use {'romgrk/barbar.nvim', wants = 'nvim-web-devicons'}
   -- Autopairs (para añadir cerrar ciertos simbolos automáticamente)
     use {
-	"windwp/nvim-autopairs",
+        "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
     }
 
@@ -80,7 +81,7 @@ require('packer').startup(function(use)
             require("which-key").setup {} end }
 
     -- go json autocomplete
-    use "fatih/gomodifytags"   
+    use "fatih/gomodifytags"
 
     use "b0o/schemastore.nvim"
 
@@ -102,7 +103,7 @@ require('packer').startup(function(use)
 
             -- Useful status updates for LSP
             'j-hui/fidget.nvim',
-        
+
             -- Additional lua configuration, makes nvim stuff amazing
             'folke/neodev.nvim',
         },
@@ -249,7 +250,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
   vim.keymap.set('n', '<C-j>', ':bnext<CR>',{desc = 'Cambia al siguiente buffer'})
   vim.keymap.set('n', '<C-k>', ':bprevious<CR>',{desc = 'Cambia al buffer previo'})
 
--- Illuminate keymap 
+-- Illuminate keymap
   vim.keymap.set('n', '<a-w>', require('illuminate').goto_next_reference, { desc = "Move to next reference" })
   vim.keymap.set('n', '<a-b>', require('illuminate').goto_prev_reference, { desc = "Move to previous reference" })
 
@@ -368,7 +369,7 @@ vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { de
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>df', vim.diagnostic.open_float)
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+-- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist) -- No sé qué hace exactamente
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -580,10 +581,13 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", {desc = "Move selection down"})
 vim.keymap.set("x", "<leader>p", "\"_dp")
 
 -- Mantener cursor en medio cuando se mueve
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "n", "nzzzv") 
-vim.keymap.set("n", "N", "Nzzzv") 
+-- vim.keymap.set("n", "<C-d>", "<C-d>zz")
+-- vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+-- Redo
+vim.keymap.set("n", "U", "<C-r>")
 
 -- Desabilitar las flechas del teclado
 vim.keymap.set({"n", "v", "i"}, "<Up>", "<Nop>")
@@ -644,7 +648,7 @@ end)
  })
 
 -- Ajustes de longitud del TAB
-vim.opt.tabstop = 4 
+vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
 -- Lineas relativas
