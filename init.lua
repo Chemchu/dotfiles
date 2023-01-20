@@ -29,7 +29,7 @@ require('packer').startup(function(use)
         -- refer to the configuration section below
       }
     end
-  }
+  } 
   -- Smooth Scrolldown
   use {
     "karb94/neoscroll.nvim",
@@ -66,11 +66,11 @@ require('packer').startup(function(use)
     -- tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
 
-  -- Barbar
+  -- Barbar 
   use {'romgrk/barbar.nvim', wants = 'nvim-web-devicons'}
   -- Autopairs (para añadir cerrar ciertos simbolos automáticamente)
     use {
-        "windwp/nvim-autopairs",
+	"windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
     }
 
@@ -81,7 +81,7 @@ require('packer').startup(function(use)
             require("which-key").setup {} end }
 
     -- go json autocomplete
-    use "fatih/gomodifytags"
+    use "fatih/gomodifytags"   
 
     use "b0o/schemastore.nvim"
 
@@ -103,7 +103,7 @@ require('packer').startup(function(use)
 
             -- Useful status updates for LSP
             'j-hui/fidget.nvim',
-
+        
             -- Additional lua configuration, makes nvim stuff amazing
             'folke/neodev.nvim',
         },
@@ -247,12 +247,12 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
   vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>',{noremap = true, desc = 'Abre/cierra Nvim-tree'})
   vim.keymap.set('n', '<C-l>', '<c-w>w',{noremap = true, desc = 'Cambia de Nvim-tree al buffer actual'})
   vim.keymap.set('n', '<C-h>', '<c-w>w',{noremap = true, desc = 'Cambia del buffer actual al Nvim-tree'})
-  vim.keymap.set('n', '<C-j>', ':bnext<CR>',{desc = 'Cambia al siguiente buffer'})
-  vim.keymap.set('n', '<C-k>', ':bprevious<CR>',{desc = 'Cambia al buffer previo'})
+  vim.keymap.set('n', '<C-j>', ':BufferPrevious<CR>',{desc = 'Cambia al buffer previo'})
+  vim.keymap.set('n', '<C-k>', ':BufferNext<CR>',{desc = 'Cambia al siguiente buffer'})
 
--- Illuminate keymap
-  vim.keymap.set('n', '<a-w>', require('illuminate').goto_next_reference, { desc = "Move to next reference" })
-  vim.keymap.set('n', '<a-b>', require('illuminate').goto_prev_reference, { desc = "Move to previous reference" })
+-- Illuminate keymap 
+  vim.keymap.set('n', '<a-w>', require('illuminate').goto_next_reference, { desc = "Mueve el cursor a la siguiente referencia" })
+  vim.keymap.set('n', '<a-b>', require('illuminate').goto_prev_reference, { desc = "Mueve el cursor a la referencia previa" })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -292,7 +292,7 @@ vim.keymap.set("v", "<leader>sa[", "oc[<C-r>\"]", {desc = "Añade corchetes al t
 vim.keymap.set("v", "<leader>sa'", "oc'<C-r>\"'", {desc = "Añade comillas simples al texto seleccionado"})
 
 -- Elimina ()""''{}[] al texto seleccionado visualmente
-vim.keymap.set({"n","v"}, "<leader>sd", function() end, {desc = "Eliminar [S]urroundings (Normal mode only)"})
+vim.keymap.set({"n","v"}, "<leader>sd", function() end, {desc = "Eliminar [S]urroundings"})
 vim.keymap.set("n", "<leader>sd\"", "yi\"va\"p", {desc = "Eliminar las comillas"})
 vim.keymap.set("n", "<leader>sd(", "yi(va(p", {desc = "Eliminar los paréntesis"})
 vim.keymap.set("n", "<leader>sd{", "yi{va{p", {desc = "Eliminar las llaves"})
@@ -477,7 +477,7 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  -- nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -597,11 +597,11 @@ vim.keymap.set("x", "<leader>p", "\"_dp")
 -- Mantener cursor en medio cuando se mueve
 -- vim.keymap.set("n", "<C-d>", "<C-d>zz")
 -- vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("n", "n", "nzzzv") 
+vim.keymap.set("n", "N", "Nzzzv") 
 
 -- Redo
-vim.keymap.set("n", "U", "<C-r>")
+vim.keymap.set("n", "U", "<C-r>") 
 
 -- Desabilitar las flechas del teclado
 vim.keymap.set({"n", "v", "i"}, "<Up>", "<Nop>")
@@ -662,7 +662,7 @@ end)
  })
 
 -- Ajustes de longitud del TAB
-vim.opt.tabstop = 4
+vim.opt.tabstop = 4 
 vim.opt.shiftwidth = 4
 
 -- Lineas relativas
