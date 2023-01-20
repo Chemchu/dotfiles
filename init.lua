@@ -247,8 +247,11 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
   vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>',{noremap = true, desc = 'Abre/cierra Nvim-tree'})
   vim.keymap.set('n', '<C-l>', '<c-w>w',{noremap = true, desc = 'Cambia de Nvim-tree al buffer actual'})
   vim.keymap.set('n', '<C-h>', '<c-w>w',{noremap = true, desc = 'Cambia del buffer actual al Nvim-tree'})
+
+-- Barbar buffers 
   vim.keymap.set('n', '<C-j>', ':BufferPrevious<CR>',{desc = 'Cambia al buffer previo'})
   vim.keymap.set('n', '<C-k>', ':BufferNext<CR>',{desc = 'Cambia al siguiente buffer'})
+  vim.keymap.set("n", "<leader>cb",":BufferClose<CR>", {desc = "[C]errar [b]uffer actual"})
 
 -- Illuminate keymap 
   vim.keymap.set('n', '<a-w>', require('illuminate').goto_next_reference, { desc = "Mueve el cursor a la siguiente referencia" })
@@ -492,9 +495,6 @@ local on_attach = function(_, bufnr)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
 end
-
-  -- Cerrar buffer actual
-  vim.keymap.set("n", "<leader>cb",":bd<CR>", {desc = "[C]errar [b]uffer actual"})
 
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
