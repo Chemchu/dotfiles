@@ -31,18 +31,36 @@ BSPWM_SRATIO='0.50'
 
 ## Configurations --------------------------------------------#
 
-## Manager Workspaces
-workspaces() {
-	name=1
-	for monitor in `bspc query -M`; do
-		#bspc monitor ${monitor} -n "$name" -d '1' '2' '3' '4' '5' '6' '7' '8'
-		#bspc monitor ${monitor} -n "$name" -d 'A' 'B' 'C' 'D' 'E' 'F' 'G' 'H'
-		#bspc monitor ${monitor} -n "$name" -d 'I' 'II' 'III' 'IV' 'V' 'VI' 'VII' 'VIII'
-		bspc monitor ${monitor} -n "$name" -d '' '' '' '' '' '' '' ''
-		let name++
-	done
-}
-workspaces
+# Buscar, preconfigurar y activar los monitores existentes en el sistema mediandte xrandr
+SECOND_MONITOR_SIDE="left"
+THIRD_MONITOR_SIDE="rigth"
+
+#Get Monitors
+PRINCIPAL=$(xrandr | grep -w connected | awk '{i++}i==1'| awk '{print $1}')
+SECOND_MONITOR=$(xrandr | grep -w connected | awk '{i++}i==2'| awk '{print $1}')
+THIRD_MONITOR=$(xrandr | grep -w connected | awk '{i++}i==3'| awk '{print $1}')
+
+# Poniendo el primer monitor encontrado como principal
+bspc --output $PRINCIPAL --primary
+
+if [ "$(xrandr | grep -sw 'connected' | wc -l)" = "3" ]; then
+  xrandr --output $SECOND_MONITOR --auto
+  xrandr --output $THIRD_MONITOR --auto
+  bspc monitor $(bspc query -M | sed -n 1p) -d '' 
+  bspc monitor $(bspc query -M | sed -n 2p) -d ''
+  bspc monitor $(bspc query -M | sed -n 3p) -d  '' '' '' '' '' ''
+  #Set Monitors Side and output 
+  xrandr --output $SECOND_MONITOR --$SECOND_MONITOR_SIDE-of $PRINCIPAL  
+  xrandr --output $THIRD_MONITOR --$THIRD_MONITOR_SIDE-of $PRINCIPAL  
+elif [ "$(xrandr | grep -sw 'connected' | wc -l)" = "2" ]; then
+  xrandr --output $SECOND_MONITOR --auto
+  bspc monitor $(bspc query -M | sed -n 1p) -d '' 
+  bspc monitor $(bspc query -M | sed -n 2p) -d '' '' '' '' '' '' ''
+  #Set Monitors Side and output 
+  xrandr --output $SECOND_MONITOR --$SECOND_MONITOR_SIDE-of $PRINCIPAL  
+else
+  bspc monitor -d '' '' '' '' '' '' '' ''
+fi
 
 ## Apply bspwm configurations
 bspc config border_width "$BSPWM_BORDER"
@@ -69,13 +87,13 @@ bspc wm --adopt-orphans
 # remove all rules first
 bspc rule -r *:*
 
-## 1 > terminal (always open terminal on workspace-1)
-bspc rule -a Alacritty desktop='^1' follow=on focus=on
-bspc rule -a Xfce4-terminal desktop='^1' follow=on focus=on
+## 1 > web (always open web browser on workspace-1)
+bspc rule -a firefox desktop='^1' follow=on focus=on
+bspc rule -a chromium desktop='^1' follow=on focus=on
 
-## 2 > web (always open web browser on workspace-2)
-bspc rule -a firefox desktop='^2' follow=on focus=on
-bspc rule -a chromium desktop='^2' follow=on focus=on
+## 2 > terminal (always open terminal on workspace-2)
+bspc rule -a Alacritty desktop='^2' follow=on focus=on
+bspc rule -a Xfce4-terminal desktop='^2' follow=on focus=on
 
 ## 3 > files (always open file manager on workspace-3)
 declare -a files=(Pcmanfm Thunar qBittorrent)
@@ -155,14 +173,6 @@ bash ~/.fehbg
 exec mpd &
 
 # Start bspwm scripts
-# Buscar, preconfigurar y activar los monitores existentes en el sistema mediandte xrandr
-MONITOR_LEFT="HDMI1"
-MONITOR_RIGHT="HDMI-0"
-
-xrandr --output "$MONITOR_RIGHT" --auto --primary
-xrandr --output "$MONITOR_LEFT" --auto
-xrandr --output "$MONITOR_LEFT" --left-of "$MONITOR_RIGHT"
-
 bspbar
 bspcomp
 bspdunst
