@@ -103,6 +103,12 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
+  # Hace que funcione Wayland para apps en Electron
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+  # Evitar tearing
+  #hardware.nvidia.forceFullCompositionPipeline = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -116,7 +122,6 @@
       spotify
       chromium
       google-chrome
-      vscode
       docker
       docker-compose
       kubectl
@@ -145,6 +150,8 @@
       wget
       zsh
       starship
+      vscode
+      jetbrains.idea-community
   ];
 
   programs.zsh = {
@@ -163,7 +170,6 @@
           ];
         };
   };
-
   users.defaultUserShell = pkgs.zsh;
 
   fonts.fonts = with pkgs; [
