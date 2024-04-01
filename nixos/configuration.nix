@@ -2,23 +2,17 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      inputs.home-manager.nixosModules.default
     ];
 
   # Bootloader.
-  # boot.loader.systemd-boot.enable = true; # systemd bootloader
-  boot.loader.grub = {
-    enable = true;
-    devices = ["nodev"];
-    efiSupport = true;
-    useOSProber = true;
-  };
-
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -49,134 +43,110 @@
     LC_TIME = "es_ES.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
   # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+  services.xserver.xkb = {
+    layout = "es";
+    variant = "";
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
-
-  services.xserver.videoDrivers = ["nvidia"];
-  hardware.nvidia = {
-    # Modesetting is needed for most Wayland compositors
-    modesetting.enable = true;
-
-    # Use the open source version of the kernel module
-    # Only available on driver 515.43.04+
-    open = false;
-
-    # Enable the nvidia settings menu
-    nvidiaSettings = true;
-
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
-
-  # Hace que funcione Wayland para apps en Electron
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
-  # Evitar tearing
-  #hardware.nvidia.forceFullCompositionPipeline = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  # Configure console keymap
+  console.keyMap = "es";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.gus = {
     isNormalUser = true;
     description = "gus";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-      spotify
-      chromium
-      google-chrome
-      docker
-      docker-compose
-      kubectl
-    ];
+    packages = with pkgs; [];
   };
 
   # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "gus";
-
-  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
+  services.getty.autologinUser = "gus";
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.nvidia.acceptLicense = true;
+
+  # Flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-      git
-      curl
-      unzip 
-      neovim
-      wget
-      zsh
-      starship
-      vscode
-      jetbrains.idea-community
+    git
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    kitty
+    firefox
   ];
 
-  programs.zsh = {
-        enable = true;
-	autosuggestions.enable = true;
-	syntaxHighlighting.enable = true;
-        enableCompletion = true;
-        ohMyZsh = {
-          enable = true;
-          plugins = [
-            "git"
-            "common-aliases"
-            "git-extras"
-            "docker"
-            "docker-compose"
-          ];
-        };
+  environment.sessionVariables = {
+    # If your cursor becomes invisible
+    WLR_NO_HARDWARE_CURSORS = "1";
+    # Hint electron apps to use wayland
+    NIXOS_OZONE_WL = "1";
   };
-  users.defaultUserShell = pkgs.zsh;
 
-  fonts.fonts = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
-  ];
+  services.xserver.videoDrivers = ["nvidia"];
 
-  fonts.enableDefaultFonts = true;
+  hardware = {
+    # OpenGl
+    opengl.enable = true;
+    opengl.driSupport = true;
+    opengl.driSupport32Bit = true;
+    opengl.extraPackages = with pkgs; [
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
+
+    nvidia = {
+      # Most wayland compositors need this
+      modesetting.enable = true;
+      
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
+
+      nvidiaSettings = true;
+
+      open = false;
+
+      #package = config.boot.kernelPackages.nvidiaPackages.stable;
+      # I had to use this specific driver because versions 550 just breaks everything
+      package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+         version = "535.129.03";
+         sha256_64bit = "sha256-5tylYmomCMa7KgRs/LfBrzOLnpYafdkKwJu4oSb/AC4=";
+         sha256_aarch64 = "sha256-i6jZYUV6JBvN+Rt21v4vNstHPIu9sC+2ZQpiLOLoWzM=";
+         openSha256 = "sha256-/Hxod/LQ4CGZN1B1GRpgE/xgoYlkPpMh+n8L7tmxwjs=";
+         settingsSha256 = "sha256-QKN/gLGlT+/hAdYKlkIjZTgvubzQTt4/ki5Y+2Zj3pk=";
+         persistencedSha256 = "sha256-FRMqY5uAJzq3o+YdM2Mdjj8Df6/cuUUAnh52Ne4koME=";
+      };
+
+    };
+  };
+
+  # Desktop stuff 
+  xdg.portal.config.common.default = "*";
+  #xdg.portal.enable = true;
+  #xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
+  # Enable sound with pipewire
+  sound.enable = true;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
+
+  # Home-Manager config
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      "gus" = import ../home/home.nix;
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -203,6 +173,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "23.11"; # Did you read the comment?
 
 }
