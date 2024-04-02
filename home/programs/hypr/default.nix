@@ -7,16 +7,10 @@
     swww
   ];
 
-  home.file.".config/hypr/start.sh".source = ./start.sh;
-
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
     systemd.enable = true;
-
-    #initExtra = ''
-    #  bash ~/.config/hypr/start.sh
-    #'';
 
     extraConfig = ''
     #
@@ -206,5 +200,4 @@
           ];
     };
   };
-
 }
