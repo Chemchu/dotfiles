@@ -56,8 +56,8 @@ programs.waybar = {
           };
           "memory" = {
             interval = 30;
-            format = " {}%";
-            format-alt = " {used:0.1f}GB";
+            format = " {}%";
+            format-alt = " {used:0.1f}GB";
             max-length = 10;
           };
           "temperature" = {
