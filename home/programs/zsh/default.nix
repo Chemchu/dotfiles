@@ -6,7 +6,7 @@
             enable = true;
             oh-my-zsh = {
                 enable = true;
-                theme = "refined";
+                theme = "gnzh";
                 plugins = [
                     "git"
                 ];

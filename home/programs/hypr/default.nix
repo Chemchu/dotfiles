@@ -13,6 +13,11 @@
     enable = true;
     xwayland.enable = true;
     systemd.enable = true;
+
+    #initExtra = ''
+    #  bash ~/.config/hypr/start.sh
+    #'';
+
     extraConfig = ''
     #
     # Please note not all available settings / options are set here.
@@ -24,18 +29,11 @@
     # See https://wiki.hyprland.org/Configuring/Monitors/
     monitor=,preferred,auto,auto
     
-    
     # See https://wiki.hyprland.org/Configuring/Keywords/ for more
     
     # Execute your favorite apps at launch
     # exec-once = waybar & hyprpaper & firefox
 
-    exec-once = echo $HOME
-    
-    # Start waybar and swww
-    exec-once = chmod +x ~/.config/hypr/start.sh
-    exec-once = cat ~/.config/hypr/start.sh | sh
-    
     # Source a file (multi-file configs)
     # source = ~/.config/hypr/myColors.conf
     
@@ -199,6 +197,14 @@
     bindm = $mainMod, mouse:273, resizewindow
     '';
 
+    settings = {
+          exec-once = [
+            "swww init" # Exec Swww to have wallpaper working
+            "swww img ~/.config/wallpaper/wallpaper" # Set wallpaper
+            "waybar" # Waybar top bar
+            "mako" # Notification daemon
+          ];
+    };
   };
 
 }

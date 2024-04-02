@@ -79,22 +79,15 @@
   #
   #  /etc/profiles/per-user/gus/etc/profile.d/hm-session-vars.sh
   #
+
   home.sessionVariables = {
     EDITOR = "vim";
   };
 
-  home.shellAliases = {
-    g = "git";
-  };
-  
-  #programs.bash = {
-  #  enable = true;
-  #  initExtra = ''
-  #    . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
-  #    zsh
-  #  '';
+  #home.shellAliases = {
+  #  g = "git";
   #};
-
+  
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
