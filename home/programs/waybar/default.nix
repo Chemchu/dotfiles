@@ -339,12 +339,6 @@
               "*": 5 // 5 workspaces by default on every monitor
             },
         },
-        "wlr/workspaces": {
-          "format": "{icon}",
-          "on-click": "activate",
-          "format-icons": {
-          }
-        },
         "hyprland/window": {
             "format": "{}"
         },
