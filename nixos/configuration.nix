@@ -140,6 +140,10 @@
     jack.enable = true;
   };
 
+  # Adding zsh also in configuration.nix to source it
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+
   # Home-Manager config
   home-manager = {
     extraSpecialArgs = { inherit inputs; };

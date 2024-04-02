@@ -7,25 +7,7 @@
     swww
   ];
 
-  #home.file."start.sh".source = ./start.sh
-  #home.file.".config/hypr/wallpaper1.jpg".source = {
-  #  type = "path";
-  #  path = ./wallpapers/sorolla.jpg;
-  #};
-  home.file.".config/hypr/wallpaper1.jpg".source = config.lib.file.mkOutOfStoreSymlink ./wallpapers/sorolla.jpg;
-  home.file.".config/hypr/start.sh".text = ''
-    #!/usr/bin/env bash
-    # Init wallpaper daemon 
-    swww init &
-    # Setting up wallpaper
-    swww img wallpaper1.jpg &
-    # Network applet
-    nm-applet --indicator &
-    # The top bar
-    waybar &
-    # Mako 
-    mako
-  '';
+  home.file.".config/hypr/start.sh".source = ./start.sh;
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -47,6 +29,12 @@
     
     # Execute your favorite apps at launch
     # exec-once = waybar & hyprpaper & firefox
+
+    exec-once = echo $HOME
+    
+    # Start waybar and swww
+    exec-once = chmod +x ~/.config/hypr/start.sh
+    exec-once = cat ~/.config/hypr/start.sh | sh
     
     # Source a file (multi-file configs)
     # source = ~/.config/hypr/myColors.conf
@@ -209,8 +197,6 @@
     # Move/resize windows with mainMod + LMB/RMB and dragging
     bindm = $mainMod, mouse:272, movewindow
     bindm = $mainMod, mouse:273, resizewindow
-    
-    exec-once = bash ~/.config/hypr/start.sh
     '';
 
   };

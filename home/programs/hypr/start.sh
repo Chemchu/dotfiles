@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 
 # Init wallpaper daemon 
-#swww init &
+swww init &
+sleep 1
 
 # Setting up wallpaper
-#swww img wallpapers/wallpaper1.jpg &
+swww img ~/.config/wallpapers/wallpaper &
 
 # Network applet
-nm-applet --indicator &
+#nm-applet --indicator &
 
 # The top bar
 waybar &
 
-# Mako guuuus
-mako
+# Mako 
+#mako

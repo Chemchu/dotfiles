@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, system, ... }:
 
 {
   imports = [
@@ -60,6 +60,8 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+
+    ".config/wallpapers/wallpaper".source = config.lib.file.mkOutOfStoreSymlink ./wallpapers/wallpaper.jpg;
   };
 
   # Home Manager can also manage your environment variables through
@@ -80,6 +82,18 @@
   home.sessionVariables = {
     EDITOR = "vim";
   };
+
+  home.shellAliases = {
+    g = "git";
+  };
+  
+  #programs.bash = {
+  #  enable = true;
+  #  initExtra = ''
+  #    . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+  #    zsh
+  #  '';
+  #};
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
