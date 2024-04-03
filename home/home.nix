@@ -84,9 +84,9 @@
     EDITOR = "vim";
   };
 
-  #home.shellAliases = {
-  #  g = "git";
-  #};
+  home.shellAliases = {
+    cd = "z";
+  };
   
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
