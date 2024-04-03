@@ -110,7 +110,7 @@
 
       open = false;
 
-      #package = config.boot.kernelPackages.nvidiaPackages.stable;
+      #package = config.boot.kernelPackages.nvidiaPackages.stable; # ---> This does not currently work for me
       # I had to use this specific driver because versions 550 just breaks everything
       package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
          version = "535.129.03";
