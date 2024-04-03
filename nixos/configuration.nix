@@ -51,8 +51,8 @@
     #xkb.variant = "";
     displayManager = {
       sddm = {
-        enable = false;
-        theme = import ./theme.nix { inherit pkgs; };
+        enable = true;
+        theme = "${import ./theme.nix { inherit pkgs; }}";
       };
     };
   };
