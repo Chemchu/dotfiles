@@ -8,7 +8,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      #./theme.nix
       inputs.home-manager.nixosModules.default
     ];
 
@@ -89,7 +88,6 @@
     firefox
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
-    libsForQt5.sddm-kcm
   ];
 
   environment.sessionVariables = {
