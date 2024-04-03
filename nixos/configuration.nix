@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      #./theme.nix
       inputs.home-manager.nixosModules.default
     ];
 
@@ -43,10 +44,18 @@
     LC_TIME = "es_ES.UTF-8";
   };
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "es";
-    variant = "";
+  # SDDM + Keyboard
+  services.xserver = {
+    enable = true;
+    # Configure keymap in X11
+    xkb.layout = "es";
+    #xkb.variant = "";
+    displayManager = {
+      sddm = {
+        enable = false;
+        theme = import ./theme.nix { inherit pkgs; };
+      };
+    };
   };
 
   # Configure console keymap
@@ -78,6 +87,9 @@
     wget
     kitty
     firefox
+    libsForQt5.qt5.qtquickcontrols2
+    libsForQt5.qt5.qtgraphicaleffects
+    libsForQt5.sddm-kcm
   ];
 
   environment.sessionVariables = {
