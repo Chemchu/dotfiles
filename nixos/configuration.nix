@@ -53,6 +53,11 @@
       sddm = {
         enable = true;
         theme = "${import ./theme.nix { inherit pkgs; }}";
+        settings = {
+          #General.DefaultSession = "wayland.desktop";
+          General.DisplayServer = "wayland";
+          General.InputMethod = "";
+        };
       };
     };
   };
