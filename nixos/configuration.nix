@@ -93,6 +93,7 @@
     firefox
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
+    pavucontrol # --> Interfaz grafica para controlar el sonido
   ];
 
   environment.sessionVariables = {
