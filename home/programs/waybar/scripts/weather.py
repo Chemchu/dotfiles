@@ -71,14 +71,14 @@ def format_temp(temp):
 
 def format_chances(hour):
     chances = {
-        "chanceoffog": "Fog",
-        "chanceoffrost": "Frost",
-        "chanceofovercast": "Overcast",
-        "chanceofrain": "Rain",
-        "chanceofsnow": "Snow",
-        "chanceofsunshine": "Sunshine",
-        "chanceofthunder": "Thunder",
-        "chanceofwindy": "Wind"
+        "chanceoffog": "Nublada/Empañado",
+        "chanceoffrost": "Escarchado",
+        "chanceofovercast": "Nublado",
+        "chanceofrain": "Lluvia",
+        "chanceofsnow": "Nieve",
+        "chanceofsunshine": "Soleado",
+        "chanceofthunder": "Tormenta",
+        "chanceofwindy": "Ventoso"
     }
 
     conditions = []
@@ -91,16 +91,16 @@ def format_chances(hour):
 data['text'] = WEATHER_CODES[weather['current_condition'][0]['weatherCode']] + \
     " "+weather['current_condition'][0]['FeelsLikeC']+"°"
 
-data['tooltip'] = f"<b>{weather['current_condition'][0]['weatherDesc'][0]['value']} {weather['current_condition'][0]['temp_C']}°C</b>\n"
-data['tooltip'] += f"Feels like: {weather['current_condition'][0]['FeelsLikeC']}°C\n"
-data['tooltip'] += f"Wind: {weather['current_condition'][0]['windspeedKmph']}Km/h\n"
-data['tooltip'] += f"Humidity: {weather['current_condition'][0]['humidity']}%\n"
+data['tooltip'] = f"<b>{weather['current_condition'][0]['lang_es'][0]['value']} {weather['current_condition'][0]['temp_C']}°C</b>\n"
+data['tooltip'] += f"Sensación: {weather['current_condition'][0]['FeelsLikeC']}°C\n"
+data['tooltip'] += f"Viento: {weather['current_condition'][0]['windspeedKmph']}Km/h\n"
+data['tooltip'] += f"Humedad: {weather['current_condition'][0]['humidity']}%\n"
 for i, day in enumerate(weather['weather']):
     data['tooltip'] += f"\n<b>"
     if i == 0:
-        data['tooltip'] += "Today, "
+        data['tooltip'] += "Hoy, "
     if i == 1:
-        data['tooltip'] += "Tomorrow, "
+        data['tooltip'] += "Mañana, "
     data['tooltip'] += f"{day['date']}</b>\n"
     data['tooltip'] += f"⬆️ {day['maxtempC']}° ⬇️ {day['mintempC']}° "
     data['tooltip'] += f" {day['astronomy'][0]['sunrise']}  {day['astronomy'][0]['sunset']}\n"
@@ -108,8 +108,7 @@ for i, day in enumerate(weather['weather']):
         if i == 0:
             if int(format_time(hour['time'])) < datetime.now().hour-2:
                 continue
-        data['tooltip'] += f"{format_time(hour['time'])} {WEATHER_CODES[hour['weatherCode']]} {format_temp(hour['FeelsLikeC'])} {hour['weatherDesc'][0]['value']}, {format_chances(hour)}\n"
-
+        data['tooltip'] += f"{format_time(hour['time'])} {WEATHER_CODES[hour['weatherCode']]} {format_temp(hour['FeelsLikeC'])} {hour['lang_es'][0]['value']}\n"
 
 print(json.dumps(data))
 
