@@ -9,7 +9,8 @@
   home.packages = with pkgs; [
     font-awesome # --> It's here because it's the closest to weather.py which was not able to render emojis
     playerctl
-    swaylock
+    #swaylock
+    swaylock-effects
     libappindicator
     xdg-desktop-portal # --> Remove in case this causes problems
     xdg-desktop-portal-gtk # --> Remove in case this causes problems

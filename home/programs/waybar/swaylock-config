@@ -1,11 +1,14 @@
 ignore-empty-password
 font=Work Sans
 
+clock
+timestr=%R
+
 image=~/.config/swaylock/wallpaper.jpg
 
 fade-in=0.2
 
-effect-blur=95x2
+effect-blur=20x2
 
 indicator
 indicator-radius=150
