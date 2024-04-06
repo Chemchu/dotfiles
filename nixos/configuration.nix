@@ -74,7 +74,7 @@
   };
 
   # Enable automatic login for the user.
-  #services.getty.autologinUser = "gus";
+  services.getty.autologinUser = "gus";
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
