@@ -160,6 +160,9 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
+  # Swaylock not getting password correctly fix
+  security.pam.services.swaylock = {};
+
   # Home-Manager config
   home-manager = {
     extraSpecialArgs = { inherit inputs; };

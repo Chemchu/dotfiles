@@ -20,4 +20,6 @@
   home.file.".config/waybar/scripts".source = ./scripts;
   home.file.".config/waybar/scripts".recursive = true;
   home.file.".config/swaylock/config".source = ./swaylock-config;
+  home.file.".config/swaylock/wallpaper.jpg".source = ../../wallpapers/swaylock.jpg;
+
 }

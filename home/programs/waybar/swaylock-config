@@ -1,10 +1,9 @@
 ignore-empty-password
 font=Work Sans
 
-clock
 timestr=%R
 
-image=~/.config/swaylock/wallpaper
+image=~/.config/swaylock/wallpaper.jpg
 
 fade-in=0.2
 
