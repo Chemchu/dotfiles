@@ -11,8 +11,8 @@
   ];
 
   # Here I import all my wallpapers
-  home.file.".config/hypr/wallpapers/wallpaper".source = ../../wallpapers/sorolla.jpg
-  #home.file.".config/hypr/wallpapers/wallpaper".source = ./wallpapers/sorolla.jpg
+  home.file.".config/hypr/wallpapers/wallpaper".source = ../../wallpapers/sorolla.jpg;
+  #home.file.".config/hypr/wallpapers/wallpaper".source = ./wallpapers/sorolla.jpg;
 
   wayland.windowManager.hyprland = {
     enable = true;
