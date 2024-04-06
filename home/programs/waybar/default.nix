@@ -11,6 +11,8 @@
     playerctl
     swaylock
     libappindicator
+    xdg-desktop-portal # --> Remove in case this causes problems
+    xdg-desktop-portal-gtk # --> Remove in case this causes problems
   ];
 
   home.file.".config/waybar/style.css".source = ./style.css;
