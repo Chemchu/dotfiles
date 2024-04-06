@@ -7,11 +7,14 @@
   };
 
   home.packages = with pkgs; [
-    font-awesome
+    font-awesome # --> It's here because it's the closest to weather.py which was not able to render emojis
+    playerctl
+    swaylock
   ];
 
   home.file.".config/waybar/style.css".source = ./style.css;
   home.file.".config/waybar/config".source = ./config;
   home.file.".config/waybar/scripts".source = ./scripts;
   home.file.".config/waybar/scripts".recursive = true;
+  home.file.".config/swaylock/config".source = ./swaylock-config;
 }

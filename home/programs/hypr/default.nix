@@ -2,10 +2,17 @@
 {
   home.packages = with pkgs; [ 
     waybar
-    mako
+    dunst
     libnotify
     swww
+    grim
+    slurp
+    wl-clipboard
   ];
+
+  # Here I import all my wallpapers
+  home.file.".config/hypr/wallpapers/wallpaper".source = ../../wallpapers/sorolla.jpg
+  #home.file.".config/hypr/wallpapers/wallpaper".source = ./wallpapers/sorolla.jpg
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -29,7 +36,7 @@
       exec-once = swww init
       exec-once = swww img ~/.config/wallpaper/wallpaper
       exec-once = waybar
-      exec-once = mako
+      exec-once = dunst
       
       # Source a file (multi-file configs)
       # source = ~/.config/hypr/myColors.conf
@@ -190,14 +197,17 @@
       bind = $mainMod, mouse_up, workspace, e-1
       
       # Manage pipewire volume
-      bind = , XF86AudioRaiseVolume, execr, wpctl set-volume @DEFAULT_SOURCE@ 0.15%+ --limit 1
-      bind = , XF86AudioLowerVolume, execr, wpctl set-volume @DEFAULT_SOURCE@ 0.15%- 
+      bind = , XF86AudioRaiseVolume, execr, wpctl set-volume @DEFAULT_SOURCE@ 0.15+ --limit 1
+      bind = , XF86AudioLowerVolume, execr, wpctl set-volume @DEFAULT_SOURCE@ 0.15- 
       bind = , XF86AudioMute, execr, wpctl set-mut @DEFAULT_SOURCE@ toggle
+
+      # Screenshot
+      bind = $mainMod, F5, exec, grim -g "$(slurp -d)" - | wl-copy
 
       # Move/resize windows with mainMod + LMB/RMB and dragging
       bindm = $mainMod, mouse:272, movewindow
       bindm = $mainMod, mouse:273, resizewindow
-    
+
     '';
   };
 }

@@ -2,7 +2,7 @@
         "height": 50, // Waybar height (to be removed for auto height)
         "layer": "top", // Waybar at top layer
         "modules-left": ["custom/launcher", "cpu", "memory", "hyprland/workspaces", "custom/weather"],
-        "modules-right": ["tray", "network", "custom/lock", "clock", "custom/power-menu"],
+        "modules-right": ["tray", "network", "pulseaudio", "custom/lock", "clock", "custom/power-menu"],
         "hyprland/workspaces" : {
             "format" : "{icon}",
             "on-click" : "activate",
@@ -90,7 +90,7 @@
         },   
        "custom/lock": {
            "tooltip" : false,
-           "on-click": "swaylock",
+           "on-click": "swaylock --config ~/.config/swaylock/config",
            "format" : "",
         },
        "custom/spotify": {

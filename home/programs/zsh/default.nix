@@ -18,6 +18,7 @@
 
         initExtra = ''
 	  neofetch
+	  fortune
         '';
         };
     };
