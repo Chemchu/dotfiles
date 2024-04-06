@@ -62,7 +62,7 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
 
-    #".config/wallpapers/wallpaper".source = config.lib.file.mkOutOfStoreSymlink ./wallpapers/wallpaper.jpg;
+    ##".config/wallpapers/wallpaper".source = config.lib.file.mkOutOfStoreSymlink ./wallpapers/wallpaper.jpg;
   };
 
   # Home Manager can also manage your environment variables through
