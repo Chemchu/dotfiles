@@ -155,7 +155,7 @@
       bind = $mainMod, R, exec, wofi --show drun
       bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
-      bind = $mainMod, S, exec, rofi -show drun -show-icons
+      bind = $mainMod, S, exec, rofi -show drun 
       
       # Move focus with mainMod + arrow keys
       bind = $mainMod, left, movefocus, l
