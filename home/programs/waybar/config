@@ -103,10 +103,12 @@
         },
         "custom/power-menu": {
             "format": " ⏻ ",
+            "tooltip" : false,
             "on-click": "bash ~/.config/waybar/scripts/power-menu/powermenu.sh &",
         }, 
         "custom/launcher": {
             "format": "",
+            "tooltip" : false,
             "on-click": "rofi -show drun &",
         },
     }
