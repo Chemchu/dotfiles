@@ -1,11 +1,6 @@
 {pkgs, ...}:
 {
 
-  #programs.waybar = {
-  #  enable = true;
-  #  package = pkgs.waybar;   
-  #};
-
   home.packages = with pkgs; [
     font-awesome # --> It's here because it's the closest to weather.py which was not able to render emojis
     playerctl
