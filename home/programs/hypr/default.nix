@@ -12,6 +12,8 @@
 
   # Here I import all my wallpapers
   home.file.".config/hypr/wallpapers/wallpaper".source = ../../wallpapers/sorolla.jpg;
+  home.file.".local/share/icons".source = ../../icons;
+  home.file.".local/share/icons".recursive = true;
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -41,7 +43,8 @@
       # source = ~/.config/hypr/myColors.conf
       
       # Some default env vars.
-      env = XCURSOR_SIZE,24
+      #env = XCURSOR_SIZE,24
+      env = HYPRCURSOR_THEME,rose-pine-hyprcursor
       
       # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
       input {
