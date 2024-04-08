@@ -49,8 +49,8 @@ window {
     anchor:                      north east;
     fullscreen:                  false;
     width:                       400px;
-    x-offset:                    -30px;
-    y-offset:                    60px;
+    x-offset:                    -10px;
+    y-offset:                    20px;
 
     /* properties for all widgets */
     enabled:                     true;
@@ -75,9 +75,9 @@ window {
 /*****----- Main Box -----*****/
 mainbox {
     enabled:                     true;
-    spacing:                     10px;
+    spacing:                     5px;
     margin:                      0px;
-    padding:                     30px;
+    padding:                     10px;
     border:                      0px solid;
     border-radius:               0px 0px 0px 0px;
     border-color:                @border-colour;
