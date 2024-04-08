@@ -15,7 +15,13 @@
         mkdir $DIR
       }}
       '';
-      rm = ''rm -rf $f'';
+      rm = ''
+      ''${{
+        echo 'delete?[y/n]'
+        read ans
+        [ $ans = 'y' ] && echo 'deleting files..' && rm -rf "$fx" || echo 'cancelled.'
+        }}
+      '';
     };
 
     keybindings = {
@@ -23,7 +29,7 @@
       "\\\"" = "";
       o = "";
       c = "mkdir";
-      d = "rm";
+      D = "rm";
       "." = "set hidden!";
       "`" = "mark-load";
       "\\'" = "mark-load";
