@@ -1,5 +1,6 @@
 {
   imports = [
+    ./lf
     ./python3
     ./hypr
     ./kitty
