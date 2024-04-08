@@ -15,6 +15,7 @@
         mkdir $DIR
       }}
       '';
+      rm = ''rm -rf $f'';
     };
 
     keybindings = {
@@ -22,6 +23,7 @@
       "\\\"" = "";
       o = "";
       c = "mkdir";
+      d = "rm";
       "." = "set hidden!";
       "`" = "mark-load";
       "\\'" = "mark-load";
