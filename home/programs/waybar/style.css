@@ -221,7 +221,7 @@ window#waybar.hidden {
   color: #e78284;
   margin-right: 12px;
   border-radius: 8px;
-  padding: 0 6px 0 6.8px;
+  padding: 0 10px 0 6.8px;
   margin-top: 7px;
   margin-bottom: 7px;
 }

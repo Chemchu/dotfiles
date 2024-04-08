@@ -199,9 +199,10 @@
       bind = $mainMod, mouse_up, workspace, e-1
       
       # Manage pipewire volume
-      bind = , XF86AudioRaiseVolume, execr, wpctl set-volume @DEFAULT_SOURCE@ 0.15+ --limit 1
-      bind = , XF86AudioLowerVolume, execr, wpctl set-volume @DEFAULT_SOURCE@ 0.15- 
-      bind = , XF86AudioMute, execr, wpctl set-mut @DEFAULT_SOURCE@ toggle
+      bind = , XF86AudioRaiseVolume, execr, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.15+ --limit 1
+      bind = , XF86AudioLowerVolume, execr, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.15- 
+      bind = , XF86AudioMute, execr, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+      bind = , XF86AudioMicMute, execr, wpctl set-mut @DEFAULT_AUDIO_SOURCE@ toggle
 
       # Screenshot
       bind = $mainMod, F5, exec, grim -g "$(slurp -d)" - | wl-copy
