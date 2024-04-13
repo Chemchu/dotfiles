@@ -6,7 +6,6 @@
     ./kitty
     ./rofi
     ./waybar
-    ./xorg
     ./zoxide
     ./zsh
   ];
