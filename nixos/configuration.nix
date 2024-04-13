@@ -49,18 +49,18 @@
     # Configure keymap in X11
     xkb.layout = "es";
     # He desactivado SDDM por ahora porque no va ni queriendo
-    #displayManager = {
-    #  sddm = {
-    #    enable = true;
-    #    theme = "${import ./theme.nix { inherit pkgs; }}";
-    #    wayland.enable = true;
-    #    settings = {
-    #      General.DefaultSession = "wayland.desktop";
-    #      General.DisplayServer = "wayland";
-    #      #General.InputMethod = "";
-    #    };
-    #  };
-    #};
+    displayManager = {
+      sddm = {
+        enable = true;
+        theme = "${import ./theme.nix { inherit pkgs; }}";
+        #wayland.enable = true;
+        settings = {
+          General.DefaultSession = "wayland.desktop";
+          General.DisplayServer = "wayland";
+          #General.InputMethod = "";
+        };
+      };
+    };
   };
 
   # Configure console keymap
@@ -156,9 +156,6 @@
     pulse.enable = true;
     jack.enable = true;
   };
-
-  # Adding this line to autostart Hyprland
-  programs.hyprland.enable = true;
 
   # Adding zsh also in configuration.nix to source it
   programs.zsh.enable = true;
