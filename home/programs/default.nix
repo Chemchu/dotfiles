@@ -6,7 +6,8 @@
     ./kitty
     ./rofi
     ./waybar
-    ./nixvim
+    ./neovim
+    #./nixvim
     ./zoxide
     ./zsh
   ];
