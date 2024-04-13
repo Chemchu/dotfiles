@@ -4,11 +4,11 @@
     inputs.nixvim.homeManagerModules.nixvim
   ];
 
-  home.shellAliases.v = "nvim";
+  #home.shellAliases.v = "nvim";
  
   programs.nixvim = {
     enable = true;
-    defaultEditor = true;
+    #defaultEditor = true;
 
     viAlias = true;
     vimAlias = true;

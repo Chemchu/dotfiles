@@ -44,23 +44,20 @@
   };
 
   # SDDM + Keyboard
+  services.displayManager.sddm = {
+    enable = true;
+    theme = "${import ./theme.nix { inherit pkgs; }}";
+    #wayland.enable = true;
+    settings = {
+      General.DefaultSession = "wayland.desktop";
+      General.DisplayServer = "wayland";
+      #General.InputMethod = "";
+    };
+  };
   services.xserver = {
     enable = true;
     # Configure keymap in X11
     xkb.layout = "es";
-    # He desactivado SDDM por ahora porque no va ni queriendo
-    displayManager = {
-      sddm = {
-        enable = true;
-        theme = "${import ./theme.nix { inherit pkgs; }}";
-        #wayland.enable = true;
-        settings = {
-          General.DefaultSession = "wayland.desktop";
-          General.DisplayServer = "wayland";
-          #General.InputMethod = "";
-        };
-      };
-    };
   };
 
   # Configure console keymap
