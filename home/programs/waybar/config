@@ -49,7 +49,7 @@
             "format": "{icon}",
             "tooltip-format": "{percent}",
             "format-icons": ["󱩎 ", "󱩏 ", "󱩐 ", "󱩑 ", "󱩒 ", "󱩓 ", "󱩔 ", "󱩕 ", "󱩖 ", "󰛨 "],
-    
+
         },
         "network": {
             /* "format-wifi": "直", */
@@ -79,17 +79,17 @@
           "format-warning": "{icon}",
           "format-critical": "{icon}",
           "format-charging": "<span font-family='Font Awesome 6 Free'></span>",
-          "format-plugged": "ﮣ", 
-    
+          "format-plugged": "ﮣ",
+
           "format-alt": "{icon} {time}",
-          "format-full": "󱊦", 
+          "format-full": "󱊦",
           "format-icons": ["󱊡", "󱊢", "󱊣"]
         },
         "custom/weather": {
           "exec": "python3 ~/.config/waybar/scripts/weather.py",
           "restart-interval": 300,
           "return-type": "json",
-        },   
+        },
        "custom/lock": {
            "tooltip" : false,
            "on-click": "swaylock --config ~/.config/swaylock/config",
@@ -107,7 +107,7 @@
             "format": " ⏻ ",
             "tooltip" : false,
             "on-click": "bash ~/.config/waybar/scripts/power-menu/powermenu.sh &",
-        }, 
+        },
         "custom/launcher": {
             "format": "",
             "tooltip" : false,
