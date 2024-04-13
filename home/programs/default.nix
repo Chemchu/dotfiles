@@ -1,7 +1,8 @@
 {
   imports = [
+    ./dev
     ./lf
-    ./python3
+    #./python3
     ./hypr
     ./kitty
     ./rofi

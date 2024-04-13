@@ -12,6 +12,7 @@
             # RL
             matplotlib
             numpy
+            requests
             torch
             tensorboard
           ]
