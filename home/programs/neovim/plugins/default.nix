@@ -18,7 +18,7 @@
   ];
 
   programs.nixvim = {
-    colorschemes.gruvbox.enable = true;
+    colorschemes.one-dark.enable = true;
 
     plugins = {
       gitsigns = {

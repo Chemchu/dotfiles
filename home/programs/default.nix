@@ -19,7 +19,7 @@
     home-manager.enable = true;
 
     # runs programs without installing them
-    #nix-index-database.comma.enable = true;
+    nix-index-database.comma.enable = true;
   };
 
   home = {
