@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ./apptainer.nix
-    #./github-token.nix
     ./nix
     ./python.nix
     ./rust.nix
