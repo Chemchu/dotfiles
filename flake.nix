@@ -28,7 +28,6 @@
 					./nixos/configuration.nix
 					inputs.home-manager.nixosModules.default
 					inputs.hyprland.nixosModules.default
-					#inputs.nixvim.homeManagerModules.nixvim
 				];
 			};
 		};

@@ -78,14 +78,10 @@
   #  /etc/profiles/per-user/gus/etc/profile.d/hm-session-vars.sh
   #
 
-  home.sessionVariables = {
-    EDITOR = "vim";
-  };
-
   home.shellAliases = {
     cd = "z";
   };
-  
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
