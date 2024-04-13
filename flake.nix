@@ -17,13 +17,18 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # nix-index-database = {
+    #   url = "github:Mic92/nix-index-database";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
-  outputs = { self, nixpkgs, nixvim, ... }@inputs:
-	let
-		system = "x86_64-linux";
-		pkgs = nixpkgs.legacyPackages.${system};
-	in
+  outputs = { self,
+    nixpkgs,
+    nixvim,
+    nix-index-database,
+    ...
+  } @ inputs:
 	{
 		nixosConfigurations = {
 			nixos = nixpkgs.lib.nixosSystem {
