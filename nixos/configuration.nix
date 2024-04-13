@@ -157,6 +157,9 @@
     jack.enable = true;
   };
 
+  # Adding this line to autostart Hyprland
+  programs.hyprland.enable = true;
+
   # Adding zsh also in configuration.nix to source it
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
