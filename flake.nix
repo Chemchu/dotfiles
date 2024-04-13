@@ -32,7 +32,7 @@
   outputs = { self,
     nixpkgs,
     nixvim,
-    # nix-index-database,
+    nix-index-database,
     ...
   } @ inputs:
 	{

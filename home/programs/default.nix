@@ -1,8 +1,10 @@
 {
   pkgs,
+  inputs,
   ...
 }: {
   imports = [
+    inputs.nix-index-database.hmModules.nix-index
     ./dev
     ./lf
     ./hypr
@@ -19,7 +21,7 @@
     home-manager.enable = true;
 
     # runs programs without installing them
-    # nix-index-database.comma.enable = true;
+    nix-index-database.comma.enable = true;
   };
 
   home = {
