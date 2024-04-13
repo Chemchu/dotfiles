@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    devshell = {
+      url = "github:numtide/devshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hyprland.url = "github:hyprwm/Hyprland";
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
     nixvim = {
@@ -16,10 +20,10 @@
   };
 
   outputs = { self, nixpkgs, nixvim, ... }@inputs:
-	let 
-		system = "x86_64-linux"; 
+	let
+		system = "x86_64-linux";
 		pkgs = nixpkgs.legacyPackages.${system};
-	in 
+	in
 	{
 		nixosConfigurations = {
 			nixos = nixpkgs.lib.nixosSystem {
