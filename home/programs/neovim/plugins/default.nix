@@ -15,6 +15,7 @@
     ./telescope.nix
     ./treesitter.nix
     ./vimtex.nix
+    ./which-key.nix
   ];
 
   programs.nixvim = {
@@ -37,6 +38,11 @@
       };
 
       oil.enable = true;
+
+      yanky.highlight = {
+        onYank = true;
+        onPut = true;
+      };
     };
   };
 }

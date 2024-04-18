@@ -5,6 +5,7 @@
 
       keymaps = {
         # Find files using Telescope command-line sugar.
+        "<leader><space>" = "find_files";
         "<leader>ff" = "find_files";
         "<leader>fg" = "live_grep";
         "<leader>b" = "buffers";
