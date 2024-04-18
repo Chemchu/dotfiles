@@ -92,6 +92,7 @@
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
     pavucontrol # --> Interfaz grafica para controlar el sonido
+    nh # --> CLI for NixOs
   ];
 
   environment.sessionVariables = {
@@ -99,6 +100,9 @@
     WLR_NO_HARDWARE_CURSORS = "1";
     # Hint electron apps to use wayland
     NIXOS_OZONE_WL = "1";
+
+    # Env for nh CLI
+    FLAKE = "/home/gus/dotfiles";
   };
 
   services.xserver.videoDrivers = ["nvidia"];
@@ -116,7 +120,7 @@
     nvidia = {
       # Most wayland compositors need this
       modesetting.enable = true;
-      
+
       powerManagement.enable = false;
       powerManagement.finegrained = false;
 
@@ -138,7 +142,7 @@
     };
   };
 
-  # Desktop stuff 
+  # Desktop stuff
   xdg.portal.config.common.default = "*";
   #xdg.portal.enable = true;
   #xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
