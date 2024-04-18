@@ -36,5 +36,12 @@
       ];
       command = "setlocal spell spelllang=en,fr";
     }
+
+    # Highlight on Yank
+    {
+      event = "TextYankPost";
+      command = "lua vim.highlight.on_yank()";
+    }
+
   ];
 }

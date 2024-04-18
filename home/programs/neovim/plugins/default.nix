@@ -39,10 +39,6 @@
 
       oil.enable = true;
 
-      yanky.highlight = {
-        onYank = true;
-        onPut = true;
-      };
     };
   };
 }

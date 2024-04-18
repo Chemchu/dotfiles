@@ -36,12 +36,8 @@
           "<C-s>" = ":w<CR>";
 
           # navigate to left/right window
-          "<leader>h" = "<C-w>h";
-          "<leader>l" = "<C-w>l";
-
-          # Press 'H', 'L' to jump to start/end of a line (first/last character)
-          L = "$";
-          H = "^";
+          "<C-h>" = "<C-w>h";
+          "<C-l>" = "<C-w>l";
 
           # resize with arrows
           "<C-Up>" = ":resize -2<CR>";

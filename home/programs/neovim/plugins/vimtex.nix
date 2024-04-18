@@ -34,7 +34,7 @@
     keymaps = [
       {
         mode = "n";
-        key = "m";
+        key = "mm";
         action = ":VimtexView<CR>";
         options.silent = true;
       }

@@ -4,9 +4,9 @@
     keymaps = {
       silent = true;
 
-      next = "<TAB>";
-      previous = "<S-TAB>";
-      close = "<C-w>";
+      next = "<S-l>";
+      previous = "<S-h>";
+      close = "<leader>x";
     };
   };
 }
