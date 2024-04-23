@@ -12,6 +12,7 @@
     ./rofi
     ./waybar
     ./neovim
+    ./zellij
     ./zoxide
     ./zsh
   ];

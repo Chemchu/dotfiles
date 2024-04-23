@@ -1,6 +1,6 @@
-{ config, pkgs, ... }:
+{  pkgs, ... }:
 {
-  home.packages = with pkgs; [ 
+  home.packages = with pkgs; [
     rofi-wayland
   ];
 
@@ -12,7 +12,7 @@
        *
        * Colors
        **/
-      
+
       * {
           background:     #20212CFF;
           background-alt: #282B3CFF;
@@ -28,11 +28,11 @@
        *
        * Author : Aditya Shakya (adi1090x)
        * Github : @adi1090x
-       * 
+       *
        * Rofi Theme File
        * Rofi Version: 1.7.3
        **/
-      
+
       /*****----- Configuration -----*****/
       configuration {
       	modi:                       "drun,run,filebrowser,window";
@@ -44,11 +44,11 @@
       	drun-display-format:        "{name}";
       	window-format:              "{w} · {c} · {t}";
       }
-      
+
       /*****----- Global Properties -----*****/
       @import                          "./colors.rasi"
       @import                          "./fonts.rasi"
-      
+
       * {
           border-colour:               var(selected);
           handle-colour:               var(selected);
@@ -74,7 +74,7 @@
           alternate-active-background: var(active);
           alternate-active-foreground: var(background);
       }
-      
+
       /*****----- Main Window -----*****/
       window {
           /* properties for window widget */
@@ -85,7 +85,7 @@
           width:                       400px;
           x-offset:                    0px;
           y-offset:                    0px;
-      
+
           /* properties for all widgets */
           enabled:                     true;
           margin:                      0px;
@@ -105,7 +105,7 @@
           /* Angle Linear Gradient */
           //background-image:          linear-gradient(45, cyan, purple, indigo);
       }
-      
+
       /*****----- Main Box -----*****/
       mainbox {
           enabled:                     true;
@@ -119,7 +119,7 @@
           transparency :               "real";
           children:                    [ "inputbar", "message", "listview" ];
       }
-      
+
       /*****----- Inputbar -----*****/
       inputbar {
           enabled:                     true;
@@ -133,7 +133,7 @@
           text-color:                  @foreground-colour;
           children:                    [ "textbox-prompt-colon", "entry", "mode-switcher" ];
       }
-      
+
       prompt {
           enabled:                     true;
           background-color:            inherit;
@@ -180,7 +180,7 @@
           background-color:            inherit;
           text-color:                  inherit;
       }
-      
+
       /*****----- Listview -----*****/
       listview {
           enabled:                     true;
@@ -193,7 +193,7 @@
           reverse:                     false;
           fixed-height:                true;
           fixed-columns:               true;
-          
+
           spacing:                     5px;
           margin:                      0px;
           padding:                     0px;
@@ -210,7 +210,7 @@
           border-radius:               10px;
           background-color:            @alternate-background;
       }
-      
+
       /*****----- Elements -----*****/
       element {
           enabled:                     true;
@@ -274,7 +274,7 @@
           vertical-align:              0.5;
           horizontal-align:            0.0;
       }
-      
+
       /*****----- Mode Switcher -----*****/
       mode-switcher{
           enabled:                     true;
@@ -300,7 +300,7 @@
           background-color:            var(selected-normal-background);
           text-color:                  var(selected-normal-foreground);
       }
-      
+
       /*****----- Message -----*****/
       message {
           enabled:                     true;
@@ -341,11 +341,11 @@
        *
        * Author : Aditya Shakya (adi1090x)
        * Github : @adi1090x
-       * 
+       *
        * Fonts
        *
        **/
-      
+
       * {
          font: "JetBrains Mono Nerd Font 11.6";
       }
