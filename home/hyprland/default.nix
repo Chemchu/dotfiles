@@ -1,12 +1,16 @@
 {
   pkgs,
+  inputs,
   ...
 }: {
   imports = [
+		inputs.hyprland.nixosModules.default
     ./hypr
     ./rofi
     ./waybar
   ];
+
+  networking.hostName = "hyprland"; # Define your hostname.
 
   # SDDM + Keyboard
   services.displayManager.sddm = {

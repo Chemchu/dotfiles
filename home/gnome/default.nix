@@ -7,6 +7,9 @@
     ./rofi
     ./waybar
   ];
+
+  networking.hostName = "gnome"; # Define your hostname.
+
   config = {
     services.xserver.enable = true;
     services.xserver.displayManager.gdm.enable = true;
