@@ -41,7 +41,7 @@
 				specialArgs = { inherit inputs; };
 				modules = [
 					./nixos/configuration.nix
-					./home/hyprland/default.nix
+					#./home/hyprland/default.nix
 					inputs.home-manager.nixosModules.default
 				];
 			};
