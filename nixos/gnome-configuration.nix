@@ -79,6 +79,7 @@
     nh # --> CLI for NixOs
     pkg-config
     openssl
+    gnome.gnome-tweaks
   ];
 
   environment.sessionVariables = {
@@ -136,23 +137,9 @@
   #xdg.portal.enable = true;
   #xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
-  # Enable sound with pipewire
-  sound.enable = true;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
-
   # Adding zsh also in configuration.nix to source it
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
-
-  # Swaylock not getting password correctly fix
-  security.pam.services.swaylock = {};
 
   # Home-Manager config
   home-manager = {
@@ -161,6 +148,28 @@
       "gus" = import ../home/gnome/home.nix;
     };
   };
+
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+  environment.gnome.excludePackages = (with pkgs; [
+    gnome-photos
+    gnome-tour
+    gedit # text editor
+  ]) ++ (with pkgs.gnome; [
+    cheese # webcam tool
+    gnome-music
+    epiphany # web browser
+    geary # email reader
+    gnome-characters
+    tali # poker game
+    iagno # go game
+    hitori # sudoku game
+    atomix # puzzle game
+    yelp # Help view
+    gnome-contacts
+    gnome-initial-setup
+  ]);
+  programs.dconf.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
