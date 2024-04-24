@@ -42,17 +42,6 @@
     LC_TIME = "es_ES.UTF-8";
   };
 
-  # SDDM + Keyboard
-  services.displayManager.sddm = {
-    enable = true;
-    theme = "${import ./theme.nix { inherit pkgs; }}";
-    #wayland.enable = true;
-    settings = {
-      General.DefaultSession = "wayland.desktop";
-      General.DisplayServer = "wayland";
-      #General.InputMethod = "";
-    };
-  };
   services.xserver = {
     enable = true;
     # Configure keymap in X11
@@ -87,9 +76,6 @@
     wget
     kitty
     firefox
-    libsForQt5.qt5.qtquickcontrols2
-    libsForQt5.qt5.qtgraphicaleffects
-    pavucontrol # --> Interfaz grafica para controlar el sonido
     nh # --> CLI for NixOs
     pkg-config
     openssl
@@ -172,7 +158,7 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
-      "gus" = import ../home/home.nix;
+      "gus" = import ../home/gnome/home.nix;
     };
   };
 
@@ -204,3 +190,4 @@
   system.stateVersion = "23.11"; # Did you read the comment?
 
 }
+

@@ -40,16 +40,14 @@
 			hyprland = nixpkgs.lib.nixosSystem {
 				specialArgs = { inherit inputs; };
 				modules = [
-					./nixos/configuration.nix
-					#./home/hyprland/default.nix
+					./nixos/hyprland-configuration.nix
 					inputs.home-manager.nixosModules.default
 				];
 			};
 			gnome = nixpkgs.lib.nixosSystem {
 				specialArgs = { inherit inputs; };
 				modules = [
-					./nixos/configuration.nix
-					./home/gnome/default.nix
+					./nixos/gnome-configuration.nix
 					inputs.home-manager.nixosModules.default
 				];
 			};
