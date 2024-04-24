@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
+    ../commons
     ./programs
   ];
 
