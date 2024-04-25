@@ -1,7 +1,8 @@
 {pkgs, ...}: {
   imports = [
     ./apptainer.nix
-    ./java
+    ./direnv.nix
+    ./java.nix
     ./nix
     ./python.nix
     ./rust.nix
