@@ -1,6 +1,7 @@
 {
   imports = [
     ./barbar.nix
+    ./copilot.nix
     ./comment.nix
     ./efm.nix
     ./floaterm.nix
