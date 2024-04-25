@@ -76,6 +76,7 @@
     wget
     kitty
     firefox
+    pavucontrol # --> Interfaz grafica para controlar el sonido
     nh # --> CLI for NixOs
     pkg-config
     openssl
@@ -136,6 +137,18 @@
   xdg.portal.config.common.default = "*";
   #xdg.portal.enable = true;
   #xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
+  # Enable sound
+  hardware.pulseaudio.enable = false;
+  sound.enable = true;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
 
   # Adding zsh also in configuration.nix to source it
   programs.zsh.enable = true;
