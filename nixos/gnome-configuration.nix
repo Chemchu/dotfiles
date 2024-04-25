@@ -76,7 +76,6 @@
     wget
     kitty
     firefox
-    pavucontrol # --> Interfaz grafica para controlar el sonido
     nh # --> CLI for NixOs
     pkg-config
     openssl
