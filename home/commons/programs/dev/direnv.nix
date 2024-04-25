@@ -6,6 +6,11 @@
       nix-direnv.enable = true;
     };
 
-    zsh.enable = true; # see note on other shells below
+    zsh = {
+      enable = true;
+      initExtra = ''
+        export DIRENV_LOG_FORMAT=""
+      '';
+    };
   };
 }
