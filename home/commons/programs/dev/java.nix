@@ -5,6 +5,7 @@
   home = {
     packages = with pkgs; [
       # Packages needed for Java
+      temurin-bin-17
     ];
   };
 
