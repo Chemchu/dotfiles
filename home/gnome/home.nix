@@ -1,9 +1,9 @@
 { pkgs, ... }:
 let
   wallpaperImg = pkgs.fetchurl {
-    url = "https://images.pexels.com/photos/3269264/pexels-photo-3269264.jpeg";
+    url = "https://images.pexels.com/photos/1287124/pexels-photo-1287124.jpeg";
     # replace this with the SHA256 hash of the image file
-    sha256 = "0crlc97prh5cl43rmhlrsy5ms0hwjiwsrinpwvdvxwm9zncm9gnf";
+    sha256 = "13bbssncmmrsydwgqx8637wyqypklcad9l9fzqc0cpwsl7vi9zi1";
   };
 in
 {
