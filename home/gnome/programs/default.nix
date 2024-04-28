@@ -6,6 +6,7 @@
     teams-for-linux
     postman
     dbeaver
+    spotify
   ];
 }
 

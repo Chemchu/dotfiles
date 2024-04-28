@@ -1,4 +1,11 @@
 { pkgs, ... }:
+let
+  wallpaperImg = pkgs.fetchurl {
+    url = "https://images.pexels.com/photos/3269264/pexels-photo-3269264.jpeg";
+    # replace this with the SHA256 hash of the image file
+    sha256 = "0crlc97prh5cl43rmhlrsy5ms0hwjiwsrinpwvdvxwm9zncm9gnf";
+  };
+in
 {
   imports = [
     ../commons
@@ -84,6 +91,39 @@
 
   home.shellAliases = {
     cd = "z";
+  };
+
+  home.file.".config/wallpapers/wallpaper".source = ../wallpapers/sorolla.jpg;
+
+  # ...
+  dconf.settings = {
+    # ...
+    "org/gnome/shell" = {
+      favorite-apps = [
+        "firefox.desktop"
+        "kitty.desktop"
+/*         "code.desktop" */
+/*         "org.gnome.Terminal.desktop" */
+/*         "spotify.desktop" */
+      ];
+    };
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      enable-hot-corners = false;
+    };
+    "org/gnome/desktop/wm/preferences" = {
+      workspace-names = [ "Main" ];
+    };
+    "org/gnome/desktop/background" = {
+/*       picture-uri-dark = "file://$(echo $HOME)/.config/wallpapers/wallpaper"; */
+      picture-uri = "file://${wallpaperImg}";
+      picture-uri-dark = "file://${wallpaperImg}";
+    };
+    "org/gnome/desktop/screensaver" = {
+      picture-uri = "file://${wallpaperImg}";
+      primary-color = "#3465a4";
+      secondary-color = "#000000";
+    };
   };
 
   # Let Home Manager install and manage itself.
