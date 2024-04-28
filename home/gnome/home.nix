@@ -102,9 +102,9 @@ in
       favorite-apps = [
         "firefox.desktop"
         "kitty.desktop"
+        "spotify.desktop"
 /*         "code.desktop" */
 /*         "org.gnome.Terminal.desktop" */
-/*         "spotify.desktop" */
       ];
     };
     "org/gnome/desktop/interface" = {
@@ -113,6 +113,31 @@ in
     };
     "org/gnome/desktop/wm/preferences" = {
       workspace-names = [ "Main" ];
+      num-workspaces = 10;
+    };
+    "org/gnome/desktop/wm/keybindings" = {
+      switch-to-workspace-1 = ["<![CDATA[['<Super>1']]]>"];
+      switch-to-workspace-2 = ["<![CDATA[['<Super>2']]]>"];
+      switch-to-workspace-3 = ["<![CDATA[['<Super>3']]]>"];
+      switch-to-workspace-4 = ["<![CDATA[['<Super>4']]]>"];
+      switch-to-workspace-5 = ["<![CDATA[['<Super>5']]]>"];
+      switch-to-workspace-6 = ["<![CDATA[['<Super>6']]]>"];
+      switch-to-workspace-7 = ["<![CDATA[['<Super>7']]]>"];
+      switch-to-workspace-8 = ["<![CDATA[['<Super>8']]]>"];
+      switch-to-workspace-9 = ["<![CDATA[['<Super>9']]]>"];
+      switch-to-workspace-10 = ["<![CDATA[['<Super>10']]]>"];
+
+      move-to-workspace-1 = ["<![CDATA[['<Super><Shift>1']]]>"];
+      move-to-workspace-2 = ["<![CDATA[['<Super><Shift>2']]]>"];
+      move-to-workspace-3 = ["<![CDATA[['<Super><Shift>3']]]>"];
+      move-to-workspace-4 = ["<![CDATA[['<Super><Shift>4']]]>"];
+      move-to-workspace-5 = ["<![CDATA[['<Super><Shift>5']]]>"];
+      move-to-workspace-6 = ["<![CDATA[['<Super><Shift>6']]]>"];
+      move-to-workspace-7 = ["<![CDATA[['<Super><Shift>7']]]>"];
+      move-to-workspace-8 = ["<![CDATA[['<Super><Shift>8']]]>"];
+      move-to-workspace-9 = ["<![CDATA[['<Super><Shift>9']]]>"];
+      move-to-workspace-10 = ["<![CDATA[['<Super><Shift>10']]]>"];
+
     };
     "org/gnome/desktop/background" = {
 /*       picture-uri-dark = "file://$(echo $HOME)/.config/wallpapers/wallpaper"; */
