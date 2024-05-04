@@ -39,6 +39,7 @@
       ncdu
       sshfs
       tlrc
+      killall
     ];
   };
 }

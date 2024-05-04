@@ -93,6 +93,9 @@
     nh # --> CLI for NixOs
     pkg-config
     openssl
+    libsForQt5.qt5.qtwayland
+    qt6.qtwayland
+    xwaylandvideobridge
   ];
 
   environment.sessionVariables = {
@@ -104,7 +107,7 @@
     # Env for nh CLI
     FLAKE = "/home/gus/dotfiles";
 
-    # To make rust work when builing
+    # To make rust work when building
     PKG_CONFIG_PATH= "${pkgs.openssl.dev}/lib/pkgconfig";
   };
 
@@ -147,8 +150,12 @@
 
   # Desktop stuff
   xdg.portal.config.common.default = "*";
-  #xdg.portal.enable = true;
-  #xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [
+    pkgs.xdg-desktop-portal-gtk
+    pkgs.xdg-desktop-portal-hyprland # Utils for De like screen sharing and stuff
+    #pkgs.xdg-desktop-portal-wlr
+  ];
 
   # Enable sound with pipewire
   sound.enable = true;
