@@ -37,12 +37,18 @@
   } @ inputs:
 	{
 		nixosConfigurations = {
-			nixos = nixpkgs.lib.nixosSystem {
+			hyprland-personal = nixpkgs.lib.nixosSystem {
 				specialArgs = { inherit inputs; };
 				modules = [
-					./nixos/configuration.nix
+					./nixos/hyprland-configuration.nix
 					inputs.home-manager.nixosModules.default
-					inputs.hyprland.nixosModules.default
+				];
+			};
+			gnome-work = nixpkgs.lib.nixosSystem {
+				specialArgs = { inherit inputs; };
+				modules = [
+					./nixos/gnome-configuration.nix
+					inputs.home-manager.nixosModules.default
 				];
 			};
 		};

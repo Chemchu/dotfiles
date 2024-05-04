@@ -15,7 +15,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -43,17 +42,6 @@
     LC_TIME = "es_ES.UTF-8";
   };
 
-  # SDDM + Keyboard
-  services.displayManager.sddm = {
-    enable = true;
-    theme = "${import ./theme.nix { inherit pkgs; }}";
-    #wayland.enable = true;
-    settings = {
-      General.DefaultSession = "wayland.desktop";
-      General.DisplayServer = "wayland";
-      #General.InputMethod = "";
-    };
-  };
   services.xserver = {
     enable = true;
     # Configure keymap in X11
@@ -88,12 +76,10 @@
     wget
     kitty
     firefox
-    libsForQt5.qt5.qtquickcontrols2
-    libsForQt5.qt5.qtgraphicaleffects
-    pavucontrol # --> Interfaz grafica para controlar el sonido
     nh # --> CLI for NixOs
     pkg-config
     openssl
+    gnome.gnome-tweaks
   ];
 
   environment.sessionVariables = {
@@ -151,7 +137,8 @@
   #xdg.portal.enable = true;
   #xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
-  # Enable sound with pipewire
+  # Enable sound
+  hardware.pulseaudio.enable = false;
   sound.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -166,16 +153,36 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
-  # Swaylock not getting password correctly fix
-  security.pam.services.swaylock = {};
-
   # Home-Manager config
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
-      "gus" = import ../home/home.nix;
+      "gus" = import ../home/gnome/home.nix;
     };
   };
+
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.displayManager.gdm.autoSuspend = false;
+  services.xserver.desktopManager.gnome.enable = true;
+  environment.gnome.excludePackages = (with pkgs; [
+    gnome-photos
+    gnome-tour
+    gedit # text editor
+  ]) ++ (with pkgs.gnome; [
+    cheese # webcam tool
+    gnome-music
+    epiphany # web browser
+    geary # email reader
+    gnome-characters
+    tali # poker game
+    iagno # go game
+    hitori # sudoku game
+    atomix # puzzle game
+    yelp # Help view
+    gnome-contacts
+    gnome-initial-setup
+  ]);
+  programs.dconf.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -205,3 +212,4 @@
   system.stateVersion = "23.11"; # Did you read the comment?
 
 }
+

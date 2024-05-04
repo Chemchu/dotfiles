@@ -8,6 +8,7 @@
                 theme = "gnzh";
                 plugins = [
                     "git"
+                    "direnv"
                 ];
             };
 

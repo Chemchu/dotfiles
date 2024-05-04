@@ -10,7 +10,7 @@
     bold_italic_font auto
 
     font_size 14
-    background_opacity 0.6
+    background_opacity 0.8
 
     # window settings
     initial_window_width 95c

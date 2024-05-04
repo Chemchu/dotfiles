@@ -7,10 +7,7 @@
     inputs.nix-index-database.hmModules.nix-index
     ./dev
     ./lf
-    ./hypr
     ./kitty
-    ./rofi
-    ./waybar
     ./neovim
     ./zellij
     ./zoxide
@@ -42,7 +39,7 @@
       ncdu
       sshfs
       tlrc
-
     ];
   };
 }
+
