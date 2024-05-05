@@ -2,6 +2,7 @@
   home = {
     packages = with pkgs; [
       playerctl
+      gobject-introspection
       # Python
       (python3.withPackages (
         ps:
