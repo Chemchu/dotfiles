@@ -42,6 +42,17 @@
     LC_TIME = "es_ES.UTF-8";
   };
 
+  # SDDM + Keyboard
+  services.displayManager.sddm = {
+    enable = true;
+    theme = "${import ./theme.nix { inherit pkgs; }}";
+    #wayland.enable = true;
+    settings = {
+      General.DefaultSession = "wayland.desktop";
+      General.DisplayServer = "wayland";
+      #General.InputMethod = "";
+    };
+  };
   services.xserver = {
     enable = true;
     # Configure keymap in X11
@@ -76,10 +87,15 @@
     wget
     kitty
     firefox
+    libsForQt5.qt5.qtquickcontrols2
+    libsForQt5.qt5.qtgraphicaleffects
+    pavucontrol # --> Interfaz grafica para controlar el sonido
     nh # --> CLI for NixOs
     pkg-config
     openssl
-    gnome.gnome-tweaks
+    libsForQt5.qt5.qtwayland
+    qt6.qtwayland
+    #xwaylandvideobridge
   ];
 
   environment.sessionVariables = {
@@ -91,7 +107,7 @@
     # Env for nh CLI
     FLAKE = "/home/gus/dotfiles";
 
-    # To make rust work when builing
+    # To make rust work when building
     PKG_CONFIG_PATH= "${pkgs.openssl.dev}/lib/pkgconfig";
   };
 
@@ -118,27 +134,24 @@
 
       open = false;
 
-      #package = config.boot.kernelPackages.nvidiaPackages.stable; # ---> This does not currently work for me
-      # I had to use this specific driver because versions 550 just breaks everything
-      package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-         version = "535.129.03";
-         sha256_64bit = "sha256-5tylYmomCMa7KgRs/LfBrzOLnpYafdkKwJu4oSb/AC4=";
-         sha256_aarch64 = "sha256-i6jZYUV6JBvN+Rt21v4vNstHPIu9sC+2ZQpiLOLoWzM=";
-         openSha256 = "sha256-/Hxod/LQ4CGZN1B1GRpgE/xgoYlkPpMh+n8L7tmxwjs=";
-         settingsSha256 = "sha256-QKN/gLGlT+/hAdYKlkIjZTgvubzQTt4/ki5Y+2Zj3pk=";
-         persistencedSha256 = "sha256-FRMqY5uAJzq3o+YdM2Mdjj8Df6/cuUUAnh52Ne4koME=";
-      };
-
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
   };
 
   # Desktop stuff
   xdg.portal.config.common.default = "*";
-  #xdg.portal.enable = true;
-  #xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [
+    pkgs.xdg-desktop-portal-gtk
+    #pkgs.xdg-desktop-portal-hyprland # Utils for De like screen sharing and stuff
+    #pkgs.xdg-desktop-portal-wlr
+  ];
 
-  # Enable sound
-  hardware.pulseaudio.enable = false;
+  # Enable Hyprland
+  #programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland; # --> Use flake
+  programs.hyprland.enable = true;
+
+  # Enable sound with pipewire
   sound.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -153,36 +166,16 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
+  # Swaylock not getting password correctly fix
+  security.pam.services.swaylock = {};
+
   # Home-Manager config
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
-      "gus" = import ../home/gnome/home.nix;
+      "gus" = import ../home/hyprland-personal/home.nix;
     };
   };
-
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.displayManager.gdm.autoSuspend = false;
-  services.xserver.desktopManager.gnome.enable = true;
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-photos
-    gnome-tour
-    gedit # text editor
-  ]) ++ (with pkgs.gnome; [
-    cheese # webcam tool
-    gnome-music
-    epiphany # web browser
-    geary # email reader
-    gnome-characters
-    tali # poker game
-    iagno # go game
-    hitori # sudoku game
-    atomix # puzzle game
-    yelp # Help view
-    gnome-contacts
-    gnome-initial-setup
-  ]);
-  programs.dconf.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -212,4 +205,3 @@
   system.stateVersion = "23.11"; # Did you read the comment?
 
 }
-
