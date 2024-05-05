@@ -153,7 +153,7 @@
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [
     pkgs.xdg-desktop-portal-gtk
-    pkgs.xdg-desktop-portal-hyprland # Utils for De like screen sharing and stuff
+    #pkgs.xdg-desktop-portal-hyprland # Utils for De like screen sharing and stuff
     #pkgs.xdg-desktop-portal-wlr
   ];
 
