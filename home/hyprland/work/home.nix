@@ -2,7 +2,7 @@
 {
   imports = [
     ../commons
-    ./hyprland-commons
+    ../hyprland-commons
     ./programs
   ];
 
