@@ -95,7 +95,7 @@
     openssl
     libsForQt5.qt5.qtwayland
     qt6.qtwayland
-    xwaylandvideobridge
+    #xwaylandvideobridge
   ];
 
   environment.sessionVariables = {
@@ -156,6 +156,10 @@
     pkgs.xdg-desktop-portal-hyprland # Utils for De like screen sharing and stuff
     #pkgs.xdg-desktop-portal-wlr
   ];
+
+  # Enable Hyprland
+  programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  programs.hyprland.enable = true;
 
   # Enable sound with pipewire
   sound.enable = true;
