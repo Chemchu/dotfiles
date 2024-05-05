@@ -173,7 +173,7 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
-      "gus" = import ../home/hyprland-personal/home.nix;
+      "gus" = import ../home/hyprland/personal/home.nix;
     };
   };
 
