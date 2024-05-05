@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-    ../commons
+    ../../commons
     ../hyprland-commons
     ./programs
   ];
