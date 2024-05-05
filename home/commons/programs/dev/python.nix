@@ -1,11 +1,14 @@
 {pkgs, ...}: {
   home = {
     packages = with pkgs; [
+      playerctl
       # Python
       (python3.withPackages (
         ps:
           with ps; [
             # Misc
+            pygobject3
+            pygobject-stubs
             pip
             setuptools
 
