@@ -73,14 +73,14 @@
         "custom/weather": {
           "exec": "python3 ~/.config/waybar/scripts/weather.py",
           "restart-interval": 300,
-          "return-type": "json",
+          "return-type": "json"
         },
        "custom/spotify": {
             "format": " {}",
             "return-type": "json",
             "exec": "bash ~/.config/waybar/scripts/mediaplayer.sh spotify 2> /dev/null",
             "exec-if": "pgrep spotify",
-            "interval": 30,
+            "interval": 10,
             "on-click": "playerctl play-pause",
             "on-double-click-right": "playerctl next",
             "on-scroll-down": "playerctl previous",

@@ -9,7 +9,6 @@ write_output() {
 
 on_metadata() {
 	local player="$1"
-	local manager="$2"
 	metadata=$(playerctl --player="$player" metadata)
 	track_info=""
 	if [ "$player" = "spotify" ] && echo "$metadata" | grep -q ':ad:'; then
