@@ -3,7 +3,7 @@
 write_output() {
 	local text="$1"
 	local player_name="$2"
-	output=$(jq -n --arg text "$text" --arg class "custom-$player_name" --arg alt "$player_name" '{"text":$text,"class":$class,"alt":$alt}')
+	output=$(jq -c -n --arg text "$text" --arg class "custom-$player_name" --arg alt "$player_name" '{"text":$text,"class":$class,"alt":$alt}')
 	echo "$output"
 }
 
