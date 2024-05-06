@@ -40,6 +40,7 @@
       sshfs
       tlrc
       killall
+      openconnect
     ];
   };
 }
