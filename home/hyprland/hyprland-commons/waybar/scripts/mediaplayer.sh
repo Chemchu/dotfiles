@@ -15,8 +15,8 @@ on_metadata() {
 	if [ "$player" = "spotify" ] && echo "$metadata" | grep -q ':ad:'; then
 		track_info="AD PLAYING"
 	else
-		artist=$(echo "$metadata" | grep "xesam:artist" | cut -d '"' -f 2)
-		title=$(echo "$metadata" | grep "xesam:title" | cut -d '"' -f 2)
+		artist=$(playerctl --player="$player" metadata --format "{{ artist }}" 2>/dev/null)
+		title=$(playerctl --player="$player" metadata --format "{{ title }}" 2>/dev/null)
 		if [ -n "$artist" ] && [ -n "$title" ]; then
 			track_info="$artist - $title"
 		else
