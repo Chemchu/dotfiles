@@ -41,7 +41,7 @@
       # Execute your favorite apps at launch
       exec-once = swww init
       exec-once = swww img ~/.config/wallpaper/wallpaper
-      exec-once = waybar
+      exec-once = sleep 3 ; waybar
       exec-once = dunst
 
       # Source a file (multi-file configs)

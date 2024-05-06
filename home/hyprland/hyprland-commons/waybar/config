@@ -23,7 +23,7 @@
         },
         "clock": {
             "locale": "es_ES.utf8",
-            "format": "󰥔  {:L%m/%d %A %H:%M:%S}",
+            "format": "󰥔  {:L%d/%m %A %H:%M:%S}",
             "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
             "interval": 1
         },
