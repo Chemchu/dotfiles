@@ -17,6 +17,7 @@
 
   programs.nixvim = {
     plugins = {
+      crates-nvim.enable = true;
       lsp-format.lspServersToEnable = ["rust-analyzer"];
       lsp.servers = {
         rust-analyzer = {
