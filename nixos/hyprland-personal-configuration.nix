@@ -91,8 +91,6 @@
     libsForQt5.qt5.qtgraphicaleffects
     pavucontrol # --> Interfaz grafica para controlar el sonido
     nh # --> CLI for NixOs
-    pkg-config
-    openssl
     libsForQt5.qt5.qtwayland
     qt6.qtwayland
     #xwaylandvideobridge
@@ -106,9 +104,6 @@
 
     # Env for nh CLI
     FLAKE = "/home/gus/dotfiles";
-
-    # To make rust work when building
-    PKG_CONFIG_PATH= "${pkgs.openssl.dev}/lib/pkgconfig";
   };
 
   services.xserver.videoDrivers = ["nvidia"];

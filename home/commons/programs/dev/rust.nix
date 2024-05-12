@@ -10,9 +10,15 @@
       gcc
       rustc
       rustfmt
+      pkg-config
+      openssl
     ];
 
-    sessionVariables.CARGO_HOME = "${config.xdg.dataHome}/cargo";
+    sessionVariables = {
+      # To make rust work when building
+      PKG_CONFIG_PATH= "${pkgs.openssl.dev}/lib/pkgconfig";
+      CARGO_HOME = "${config.xdg.dataHome}/cargo";
+    };
   };
 
   programs.nixvim = {
