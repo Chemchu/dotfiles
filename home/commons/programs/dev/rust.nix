@@ -12,6 +12,7 @@
       rustfmt
       pkg-config
       openssl
+      surrealist
     ];
 
     sessionVariables = {
