@@ -1,8 +1,12 @@
 {
   pkgs,
   config,
+  inputs,
   ...
 }: {
+  imports = [
+    inputs.home-manager.nixosModules.default
+  ];
   home = {
     packages = with pkgs; [
       bacon
