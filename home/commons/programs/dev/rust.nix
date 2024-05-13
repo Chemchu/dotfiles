@@ -13,6 +13,7 @@
       pkg-config
       openssl
       surrealist
+      surrealdb
     ];
 
     sessionVariables = {
