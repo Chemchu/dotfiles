@@ -23,6 +23,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    rust-overlay.url = "github:oxalica/rust-overlay";
+
     nix-index-database = {
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,6 +35,7 @@
     nixpkgs,
     nixvim,
     nix-index-database,
+    rust-overlay,
     ...
   } @ inputs:
 	{
@@ -42,6 +45,10 @@
 				modules = [
 					./nixos/hyprland-personal-configuration.nix
 					inputs.home-manager.nixosModules.default
+          ({ pkgs, ... }: {
+            nixpkgs.overlays = [ rust-overlay.overlays.default ];
+            environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
+          })
 				];
 			};
 			hyprland-work = nixpkgs.lib.nixosSystem {
@@ -49,6 +56,10 @@
 				modules = [
 					./nixos/hyprland-work-configuration.nix
 					inputs.home-manager.nixosModules.default
+          ({ pkgs, ... }: {
+            nixpkgs.overlays = [ rust-overlay.overlays.default ];
+            environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
+          })
 				];
 			};
 			gnome-work = nixpkgs.lib.nixosSystem {
@@ -56,6 +67,10 @@
 				modules = [
 					./nixos/gnome-work-configuration.nix
 					inputs.home-manager.nixosModules.default
+          ({ pkgs, ... }: {
+            nixpkgs.overlays = [ rust-overlay.overlays.default ];
+            environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
+          })
 				];
 			};
 		};

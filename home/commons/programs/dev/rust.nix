@@ -6,10 +6,10 @@
   home = {
     packages = with pkgs; [
       bacon
-      cargo
       gcc
-      rustc
-      rustfmt
+      #cargo
+      #rustc
+      #rustfmt
       pkg-config
       openssl
       surrealist
