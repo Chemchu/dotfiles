@@ -78,6 +78,8 @@
     firefox
     nh # --> CLI for NixOs
     gnome.gnome-tweaks
+    glxinfo
+    vulkan-tools
   ];
 
   environment.sessionVariables = {

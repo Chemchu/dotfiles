@@ -93,7 +93,8 @@
     nh # --> CLI for NixOs
     libsForQt5.qt5.qtwayland
     qt6.qtwayland
-    #xwaylandvideobridge
+    glxinfo
+    vulkan-tools
   ];
 
   environment.sessionVariables = {
