@@ -94,6 +94,14 @@
     libsForQt5.qt5.qtwayland
     qt6.qtwayland
     glxinfo
+
+    #Vulkan
+    vulkan-tools
+    vulkan-headers
+    vulkan-loader
+    vulkan-utility-libraries
+    vulkan-validation-layers
+
   ];
 
   environment.sessionVariables = {

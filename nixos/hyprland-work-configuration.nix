@@ -102,11 +102,11 @@
     #xorg.libXcursor
     #xorg.libXrandr
     #xorg.libXi
-    #vulkan-tools
-    #vulkan-headers
-    #vulkan-loader
-    #vulkan-utility-libraries
-    #vulkan-validation-layers
+    vulkan-tools
+    vulkan-headers
+    vulkan-loader
+    vulkan-utility-libraries
+    vulkan-validation-layers
   ];
 
   environment.sessionVariables = {
