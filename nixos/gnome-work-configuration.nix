@@ -79,10 +79,6 @@
     nh # --> CLI for NixOs
     gnome.gnome-tweaks
     glxinfo
-    vulkan-tools
-    vulkan-headers
-    vulkan-loader
-    vulkan-validation-layers
   ];
 
   environment.sessionVariables = {
