@@ -95,6 +95,9 @@
     qt6.qtwayland
     glxinfo
     vulkan-tools
+    vulkan-headers
+    vulkan-loader
+    vulkan-validation-layers
   ];
 
   environment.sessionVariables = {
