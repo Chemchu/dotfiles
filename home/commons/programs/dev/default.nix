@@ -3,6 +3,7 @@
     ./apptainer.nix
     ./direnv.nix
 /*     ./java.nix */
+    ./node.nix
     ./nix
     ./python.nix
     ./rust.nix
