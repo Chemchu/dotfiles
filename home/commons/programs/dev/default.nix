@@ -8,6 +8,7 @@
     ./python.nix
     ./rust.nix
     ./shell.nix
+/*     ./vulkan.nix */
     ./typst.nix
   ];
 
