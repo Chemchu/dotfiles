@@ -4,13 +4,13 @@
     linux_display_server wayland
     wayland_titlebar_color background
 
-    font_family IosevkaTerm Nerd Font Mono
+    font_family FiraCode Nerd Font
     bold_font        auto
     italic_font      auto
     bold_italic_font auto
 
-    font_size 14
-    background_opacity 0.8
+    font_size 12
+    background_opacity 0.6
 
     # window settings
     initial_window_width 95c

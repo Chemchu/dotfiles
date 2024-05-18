@@ -11,7 +11,7 @@
   ];
 
   # Here I import all my wallpapers
-  home.file.".config/hypr/wallpapers/wallpaper".source = ../../../wallpapers/sorolla.jpg;
+  home.file.".config/hypr/wallpapers/wallpaper".source = ../../../wallpapers/autunm.jpg;
   home.file.".local/share/icons".source = ../../../icons;
   home.file.".local/share/icons".recursive = true;
 
@@ -41,7 +41,7 @@
       # Execute your favorite apps at launch
       exec-once = swww init
       exec-once = swww img ~/.config/wallpaper/wallpaper
-      exec-once = sleep 3 ; waybar
+      exec-once = waybar
       exec-once = dunst
 
       # Source a file (multi-file configs)
@@ -71,10 +71,13 @@
       general {
       # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-      gaps_in = 5
-      gaps_out = 10
+      #gaps_in = 5
+      gaps_in = 3
+      #gaps_out = 10
+      gaps_out = 5
       border_size = 2
-      col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
+      #col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg # -> default
+      col.active_border = rgba(ffffffff)
       col.inactive_border = rgba(595959aa)
 
       layout = dwindle
