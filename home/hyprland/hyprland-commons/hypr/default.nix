@@ -2,16 +2,10 @@
 let
   wallpaper_path = ".config/hypr/wallpapers";
   wallpaper = pkgs.fetchurl {
-    url = "https://www.reddit.com/media\?url\=https%3A%2F%2Fexternal-preview.redd.it%2FEX1XmtBiRoECsaz5hdwqcZcPSPkL4RLRmzYS4c1laPo.gif%3Fwidth%3D1200%26format%3Dmp4%26s%3D3b27
-863e9bb8d52fef09185976e2584c95fe6400https://images.pexels.com/photos/1287124/pexels-photo-1287124.jpeg";
+    url = "https://raw.githubusercontent.com/dharmx/walls/main/flowers/a_painting_of_flowers_in_a_vase.jpeg";
     # replace this with the SHA256 hash of the image file
-    sha256 = "1d5hsbw5a3702cpxq5p9bwa21gjlf2yd2bzjcvpzmj6wpwfxcf9p";
+    sha256 = "1vddhvhsq0ykcl58wsr6fg9xap79kbn9b9bfzq71jrmxx9d92398";
   };
-  #wallpaper = pkgs.fetchurl {
-  #  url = "https://images.pexels.com/photos/1287124/pexels-photo-1287124.jpeg";
-  #  # replace this with the SHA256 hash of the image file
-  #  sha256 = "13bbssncmmrsydwgqx8637wyqypklcad9l9fzqc0cpwsl7vi9zi1";
-  #};
 in
 {
   home.packages = with pkgs; [
@@ -25,7 +19,6 @@ in
   ];
 
   # Here I import all my wallpapers
-  # home.file.".config/hypr/wallpapers/wallpaper".source = ../../../wallpapers/autunm.jpg;
   home.file."${wallpaper_path}/wallpaper".source = wallpaper;
   home.file.".local/share/icons".source = ../../../icons;
   home.file.".local/share/icons".recursive = true;
@@ -54,7 +47,6 @@ in
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
       # Execute your favorite apps at launch
-      exec-once = swww init
       exec-once = swww img ~/${wallpaper_path}/wallpaper
       exec-once = waybar
       exec-once = dunst
@@ -86,12 +78,9 @@ in
       general {
       # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-      #gaps_in = 5
       gaps_in = 3
-      #gaps_out = 10
       gaps_out = 5
       border_size = 2
-      #col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg # -> default
       col.active_border = rgba(ffffffff)
       col.inactive_border = rgba(595959aa)
 
