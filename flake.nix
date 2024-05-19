@@ -40,10 +40,10 @@
   } @ inputs:
 	{
 		nixosConfigurations = {
-			hyprland-personal = nixpkgs.lib.nixosSystem {
+		hyprland= nixpkgs.lib.nixosSystem {
 				specialArgs = { inherit inputs; };
 				modules = [
-					./nixos/hyprland-personal-configuration.nix
+					./nixos/hyprland-configuration.nix
 					inputs.home-manager.nixosModules.default
           ({ pkgs, ... }: {
             nixpkgs.overlays = [ rust-overlay.overlays.default ];
@@ -51,21 +51,10 @@
           })
 				];
 			};
-			hyprland-work = nixpkgs.lib.nixosSystem {
+			gnome= nixpkgs.lib.nixosSystem {
 				specialArgs = { inherit inputs; };
 				modules = [
-					./nixos/hyprland-work-configuration.nix
-					inputs.home-manager.nixosModules.default
-          ({ pkgs, ... }: {
-            nixpkgs.overlays = [ rust-overlay.overlays.default ];
-            environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
-          })
-				];
-			};
-			gnome-work = nixpkgs.lib.nixosSystem {
-				specialArgs = { inherit inputs; };
-				modules = [
-					./nixos/gnome-work-configuration.nix
+					./nixos/gnome-configuration.nix
 					inputs.home-manager.nixosModules.default
           ({ pkgs, ... }: {
             nixpkgs.overlays = [ rust-overlay.overlays.default ];

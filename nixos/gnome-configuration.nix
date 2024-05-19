@@ -150,7 +150,7 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
-      "gus" = import ../home/gnome-work/home.nix;
+      "gus" = import ../home/gnome/home.nix;
     };
   };
 

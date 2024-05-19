@@ -1,5 +1,6 @@
 { pkgs, ... }:
 let
+  wallpaper_path = ".config/hypr/wallpapers";
   wallpaper = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/dharmx/walls/main/flowers/a_painting_of_flowers_in_a_vase.jpeg";
     # replace this with the SHA256 hash of the image file
@@ -18,6 +19,7 @@ in
   ];
 
   # Here I import all my wallpapers
+  home.file."${wallpaper_path}/wallpaper".source = wallpaper;
   home.file.".local/share/icons".source = ../../../icons;
   home.file.".local/share/icons".recursive = true;
 
@@ -45,8 +47,7 @@ in
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
       # Execute your favorite apps at launch
-      exec-once = swww init
-      exec-once = swww img ${wallpaper}
+      exec-once = swww-daemon ; swww img ~/${wallpaper_path}/wallpaper
       exec-once = waybar
       exec-once = dunst
 

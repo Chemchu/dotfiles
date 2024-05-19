@@ -14,6 +14,9 @@
     mpv
     spotify
     jq
+    teams-for-linux
+    postman
+    dbeaver
   ];
 
 }
