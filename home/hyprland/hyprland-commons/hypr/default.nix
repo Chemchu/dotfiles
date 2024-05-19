@@ -1,4 +1,11 @@
 { pkgs, ... }:
+let
+  wallpaper = pkgs.fetchurl {
+    url = "https://images.pexels.com/photos/1287124/pexels-photo-1287124.jpeg";
+    # replace this with the SHA256 hash of the image file
+    sha256 = "13bbssncmmrsydwgqx8637wyqypklcad9l9fzqc0cpwsl7vi9zi1";
+  };
+in
 {
   home.packages = with pkgs; [
     waybar
@@ -11,9 +18,10 @@
   ];
 
   # Here I import all my wallpapers
-  home.file.".config/hypr/wallpapers/wallpaper".source = ../../../wallpapers/autunm.jpg;
+  # home.file.".config/hypr/wallpapers/wallpaper".source = ../../../wallpapers/autunm.jpg;
+  home.file.".config/hypr/wallpapers/wallpaper".source = wallpaper;
   home.file.".local/share/icons".source = ../../../icons;
-  home.file.".local/share/icons".recursive = true;
+    home.file.".local/share/icons".recursive = true;
 
   wayland.windowManager.hyprland = {
     enable = true;
