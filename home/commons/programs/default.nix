@@ -9,6 +9,7 @@
     ./lf
     ./kitty
     ./neovim
+    ./steam
     ./zellij
     ./zoxide
     ./zsh
