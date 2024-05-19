@@ -6,6 +6,7 @@
     ./efm.nix
     ./floaterm.nix
     ./harpoon.nix
+    ./leap.nix
     ./lsp.nix
     ./lualine.nix
     ./markdown-preview.nix
