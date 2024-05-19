@@ -21,7 +21,7 @@ in
   # home.file.".config/hypr/wallpapers/wallpaper".source = ../../../wallpapers/autunm.jpg;
   home.file.".config/hypr/wallpapers/wallpaper".source = wallpaper;
   home.file.".local/share/icons".source = ../../../icons;
-    home.file.".local/share/icons".recursive = true;
+  home.file.".local/share/icons".recursive = true;
 
   wayland.windowManager.hyprland = {
     enable = true;
