@@ -47,7 +47,7 @@ in
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
       # Execute your favorite apps at launch
-      exec-once = swww-daemon ; swww img ~/${wallpaper_path}/wallpaper
+      exec-once = swww-daemon ; sleep 1s ; swww img ~/${wallpaper_path}/wallpaper
       exec-once = waybar
       exec-once = dunst
 
