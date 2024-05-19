@@ -1,5 +1,6 @@
 { pkgs, ... }:
 let
+  wallpaper_path = ".config/hypr/wallpapers";
   wallpaper = pkgs.fetchurl {
     url = "https://images.pexels.com/photos/1287124/pexels-photo-1287124.jpeg";
     # replace this with the SHA256 hash of the image file
@@ -19,7 +20,7 @@ in
 
   # Here I import all my wallpapers
   # home.file.".config/hypr/wallpapers/wallpaper".source = ../../../wallpapers/autunm.jpg;
-  home.file.".config/hypr/wallpapers/wallpaper".source = wallpaper;
+  home.file."${wallpaper_path}/wallpaper".source = wallpaper;
   home.file.".local/share/icons".source = ../../../icons;
   home.file.".local/share/icons".recursive = true;
 
@@ -48,7 +49,8 @@ in
 
       # Execute your favorite apps at launch
       exec-once = swww init
-      exec-once = swww img ~/.config/wallpaper/wallpaper
+      #exec-once = swww img ~/.config/wallpaper/wallpaper
+      exec-once = swww img ~/${wallpaper_path}/wallpaper
       exec-once = waybar
       exec-once = dunst
 
