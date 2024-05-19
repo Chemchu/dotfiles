@@ -2,9 +2,8 @@
 { pkgs, ... }:
 {
   imports = [
-    ../../commons
-    ../hyprland-commons
-    ./programs
+    ../commons
+    ./hyprland-commons
   ];
 
   # Home Manager needs a bit of information about you and the paths it should

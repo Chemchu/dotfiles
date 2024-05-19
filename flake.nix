@@ -40,7 +40,7 @@
   } @ inputs:
 	{
 		nixosConfigurations = {
-		hyprland= nixpkgs.lib.nixosSystem {
+		  hyprland = nixpkgs.lib.nixosSystem {
 				specialArgs = { inherit inputs; };
 				modules = [
 					./nixos/hyprland-configuration.nix
