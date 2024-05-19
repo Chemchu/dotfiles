@@ -1,5 +1,6 @@
 { pkgs, ... }:
 let
+  wallpaper_path = ".config/wallpapers";
   wallpaperImg = pkgs.fetchurl {
     url = "https://images.pexels.com/photos/1287124/pexels-photo-1287124.jpeg";
     # replace this with the SHA256 hash of the image file
@@ -91,18 +92,14 @@ in
     cd = "z";
   };
 
-  home.file.".config/wallpapers/wallpaper".source = ../wallpapers/sorolla.jpg;
+  home.file."${wallpaper_path}/wallpaper".source = ../wallpapers/sorolla.jpg;
 
-  # ...
   dconf.settings = {
-    # ...
     "org/gnome/shell" = {
       favorite-apps = [
         "firefox.desktop"
         "kitty.desktop"
         "spotify.desktop"
-/*         "code.desktop" */
-/*         "org.gnome.Terminal.desktop" */
       ];
     };
     "org/gnome/desktop/interface" = {
@@ -138,7 +135,6 @@ in
 
     };
     "org/gnome/desktop/background" = {
-/*       picture-uri-dark = "file://$(echo $HOME)/.config/wallpapers/wallpaper"; */
       picture-uri = "file://${wallpaperImg}";
       picture-uri-dark = "file://${wallpaperImg}";
     };

@@ -2,10 +2,16 @@
 let
   wallpaper_path = ".config/hypr/wallpapers";
   wallpaper = pkgs.fetchurl {
-    url = "https://images.pexels.com/photos/1287124/pexels-photo-1287124.jpeg";
+    url = "https://www.reddit.com/media\?url\=https%3A%2F%2Fexternal-preview.redd.it%2FEX1XmtBiRoECsaz5hdwqcZcPSPkL4RLRmzYS4c1laPo.gif%3Fwidth%3D1200%26format%3Dmp4%26s%3D3b27
+863e9bb8d52fef09185976e2584c95fe6400https://images.pexels.com/photos/1287124/pexels-photo-1287124.jpeg";
     # replace this with the SHA256 hash of the image file
-    sha256 = "13bbssncmmrsydwgqx8637wyqypklcad9l9fzqc0cpwsl7vi9zi1";
+    sha256 = "1d5hsbw5a3702cpxq5p9bwa21gjlf2yd2bzjcvpzmj6wpwfxcf9p";
   };
+  #wallpaper = pkgs.fetchurl {
+  #  url = "https://images.pexels.com/photos/1287124/pexels-photo-1287124.jpeg";
+  #  # replace this with the SHA256 hash of the image file
+  #  sha256 = "13bbssncmmrsydwgqx8637wyqypklcad9l9fzqc0cpwsl7vi9zi1";
+  #};
 in
 {
   home.packages = with pkgs; [
@@ -49,7 +55,6 @@ in
 
       # Execute your favorite apps at launch
       exec-once = swww init
-      #exec-once = swww img ~/.config/wallpaper/wallpaper
       exec-once = swww img ~/${wallpaper_path}/wallpaper
       exec-once = waybar
       exec-once = dunst
