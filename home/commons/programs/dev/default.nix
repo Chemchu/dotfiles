@@ -2,7 +2,7 @@
   imports = [
     ./apptainer.nix
     ./direnv.nix
-/*     ./java.nix */
+    ./java.nix
     ./node.nix
     ./nix
     ./python.nix

@@ -1,11 +1,11 @@
 { pkgs, lib, ... }:
 {
-  home = {
+  /* home = {
     packages = with pkgs; [
       # Packages needed for Java
       temurin-bin-17
     ];
-  };
+  }; */
 
   programs.nixvim = {
     plugins.nvim-jdtls = {
