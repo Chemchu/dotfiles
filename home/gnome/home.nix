@@ -2,9 +2,9 @@
 let
   wallpaper_path = ".config/wallpapers";
   wallpaperImg = pkgs.fetchurl {
-    url = "https://images.pexels.com/photos/1287124/pexels-photo-1287124.jpeg";
+    url = "https://raw.githubusercontent.com/dharmx/walls/main/nord/a_group_of_pink_flowers.png";
     # replace this with the SHA256 hash of the image file
-    sha256 = "13bbssncmmrsydwgqx8637wyqypklcad9l9fzqc0cpwsl7vi9zi1";
+    sha256 = "0077wb5da8wn8jv4v9qk89kvlfkdg6mfcv61nb40wf6sn208a825";
   };
 in
 {
