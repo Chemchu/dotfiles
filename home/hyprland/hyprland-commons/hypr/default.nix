@@ -2,9 +2,9 @@
 let
   wallpaper_path = ".config/hypr/wallpapers";
   wallpaper = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/dharmx/walls/main/painting/a_painting_of_a_landscape_with_trees_and_houses.jpg";
+    url = "https://raw.githubusercontent.com/dharmx/walls/main/nord/a_group_of_pink_flowers.png";
     # replace this with the SHA256 hash of the image file
-    sha256 = "0jpn63ibq2p8mdm0bx76cgrlqmzhr3f746gzpwb2xbhk1df0gyfj";
+    sha256 = "0077wb5da8wn8jv4v9qk89kvlfkdg6mfcv61nb40wf6sn208a825";
   };
 in
 {
