@@ -1,7 +1,7 @@
     {
         "height": 50, // Waybar height (to be removed for auto height)
         "layer": "top", // Waybar at top layer
-        "modules-left": ["custom/launcher", "cpu", "memory", "hyprland/workspaces" ],
+        "modules-left": ["custom/launcher", "cpu", "memory", "disk", "hyprland/workspaces" ],
         "modules-center": ["custom/spotify"],
     	"modules-right": ["tray", "custom/weather", "wireplumber", "clock"],
         "hyprland/workspaces" : {
@@ -20,6 +20,14 @@
         },
         "tray": {
             "spacing": 10
+        },
+        "disk": {
+            "interval": 30,
+            "format": " {percentage_used}% ",
+            "tooltip": true,
+            "tooltip-format":"{free} de {total} disponible",
+            "unit": "GB",
+            "path": "/",
         },
         "clock": {
             "locale": "es_ES.utf8",

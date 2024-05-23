@@ -53,8 +53,8 @@ window#waybar.hidden {
   margin-left: 4px;
   margin-right: 4px;
 
-  margin-top: 8.5px;
-  margin-bottom: 8.5px;
+  margin-top: 7px;
+  margin-bottom: 7px;
 }
 
 #user {
@@ -76,6 +76,18 @@ window#waybar.hidden {
 
 #memory {
   color: #a1c999;
+}
+
+#disk {
+  color: #ecd3a0;
+
+  background-color: #252733;
+  border-radius: 8px;
+  padding: 0 8px 0 13px;
+  margin-right: 4px;
+  margin-left: 4px;
+  margin-top: 7px;
+  margin-bottom: 7px;
 }
 
 #workspaces button {
@@ -119,8 +131,8 @@ window#waybar.hidden {
 
   color: #7a95c9;
 
-  margin-top: 8.5px;
-  margin-bottom: 8.5px;
+  margin-top: 7px;
+  margin-bottom: 7px;
 }
 
 #backlight,
@@ -231,6 +243,7 @@ window#waybar.hidden {
   font-size: 16;
   margin-top: 7px;
   margin-bottom: 7px;
+  padding-left: 18px;
 }
 
 #custom-power-menu {
