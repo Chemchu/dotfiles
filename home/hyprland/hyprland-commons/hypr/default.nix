@@ -20,8 +20,6 @@ in
 
   # Here I import all my wallpapers
   home.file."${wallpaper_path}/wallpaper".source = wallpaper;
-  home.file.".local/share/icons".source = ../../../icons;
-  home.file.".local/share/icons".recursive = true;
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -56,7 +54,7 @@ in
 
       # Some default env vars.
       #env = XCURSOR_SIZE,24
-      env = HYPRCURSOR_THEME,rose-pine-hyprcursor
+      env = HYPRCURSOR_THEME
 
       # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
       input {
