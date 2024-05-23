@@ -3,8 +3,7 @@
   home = {
     packages = with pkgs; [
       # Packages needed for Java
-      temurin-bin-17
-      #jdk
+      jdk17
       jdt-language-server
       jetbrains.idea-community
     ];
