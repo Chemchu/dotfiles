@@ -5,15 +5,13 @@
 }: {
   home = {
     packages = with pkgs; [
+      # Rust dependencies
       bacon
       gcc
-      #cargo
-      #rustc
-      #rustfmt
       pkg-config
       openssl
-      surrealist
-      surrealdb
+      surrealist # Database manager
+      surrealdb # Database engine
     ];
 
     sessionVariables = {
