@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   imports =
@@ -71,6 +71,21 @@
 
   # Enable automatic login for the user.
   services.getty.autologinUser = "gus";
+
+  # Enable sound with pipewire
+  sound.enable = true;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+    jack.enable = true;
+
+    alsa = {
+      enable = true;
+      support32Bit = true;
+    };
+  };
+
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -169,20 +184,6 @@
   # Enable Hyprland
   #programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland; # --> Use flake
   programs.hyprland.enable = true;
-
-  # Enable sound with pipewire
-  sound.enable = true;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-    jack.enable = true;
-
-    alsa = {
-      enable = true;
-      support32Bit = true;
-    };
-  };
 
   # Adding zsh also in configuration.nix to source it
   programs.zsh.enable = true;
