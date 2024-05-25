@@ -15,11 +15,12 @@
 
       # Bevy development
       alsa-lib
+      systemd
     ];
 
     sessionVariables = {
       # To make rust work when building
-      PKG_CONFIG_PATH = "${pkgs.alsa-lib.dev}/lib/pkgconfig:${pkgs.openssl.dev}/lib/pkgconfig";
+      PKG_CONFIG_PATH = "${pkgs.alsa-lib.dev}/lib/pkgconfig:${pkgs.openssl.dev}/lib/pkgconfig:${pkgs.systemd.dev}/lib/pkgconfig";
       CARGO_HOME = "${config.xdg.dataHome}/cargo";
     };
   };
