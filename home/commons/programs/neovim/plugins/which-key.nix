@@ -36,6 +36,8 @@
         "gi" = "Go to implementation";
         "K" = "Hover (details)";
         "<F2>" = "Rename";
+        "<leader>cr" = "Rename";
+        "<leader>ca" = "Code Action";
 
         # Markdown
         "<leader>m" = "Markdown preview";
