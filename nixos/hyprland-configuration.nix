@@ -94,19 +94,30 @@
     libsForQt5.qt5.qtwayland
     qt6.qtwayland
     glxinfo
+  ];
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # Add any missing dynamic libraries for unpackaged programs
+    # here, NOT in environment.systemPackages
 
     # Vulkan
-    #udev
-    #alsaLib
-    #lutris
-    #xorg.libXcursor
-    #xorg.libXrandr
-    #xorg.libXi
     vulkan-tools
     vulkan-headers
     vulkan-loader
     vulkan-utility-libraries
     vulkan-validation-layers
+
+    # Mainly for Rust development
+    pkg-config
+    openssl
+    alsa-lib
+    systemd
+    xorg.libX11
+    xorg.libXcursor
+    xorg.libxcb
+    xorg.libXi
+    libxkbcommon
   ];
 
   environment.sessionVariables = {
@@ -117,6 +128,8 @@
 
     # Env for nh CLI
     FLAKE = "/home/gus/dotfiles";
+
+    PKG_CONFIG_PATH = "${pkgs.alsa-lib.dev}/lib/pkgconfig:${pkgs.openssl.dev}/lib/pkgconfig:${pkgs.systemd.dev}/lib/pkgconfig";
   };
 
   services.xserver.videoDrivers = ["nvidia"];
