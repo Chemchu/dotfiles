@@ -9,7 +9,7 @@
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [ "dm-snapshot" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
@@ -22,6 +22,11 @@
     { device = "/dev/disk/by-uuid/4F15-CBD4";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
+    };
+
+  fileSystems."/mnt/storage" =
+    { device = "/dev/disk/by-uuid/b3630ba1-639c-4f2c-b48f-ca1a840dc125";
+      fsType = "ext4";
     };
 
   swapDevices =

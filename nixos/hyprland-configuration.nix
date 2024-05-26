@@ -2,7 +2,9 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, lib, ... }:
+{ config, pkgs, inputs, ... }:
+
+#UUID=b3630ba1-639c-4f2c-b48f-ca1a840dc125 /mnt/storage ext4 defaults 0 2
 
 {
   imports =
