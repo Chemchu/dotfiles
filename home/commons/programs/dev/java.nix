@@ -6,6 +6,7 @@
       jdk17
       jdt-language-server
       jetbrains.idea-community
+      vimPlugins.nvim-jdtls
     ];
   };
 
@@ -15,6 +16,7 @@
         enable = true;
         cmd = [
           "${pkgs.jdt-language-server}/bin/jdt-language-server"
+          "-data ${pkgs.jdt-language-server}/workspace"
         ];
       };
 
