@@ -42,6 +42,7 @@
       tlrc
       killall
       openconnect
+      lsof
     ];
   };
 }
