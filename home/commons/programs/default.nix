@@ -43,6 +43,7 @@
       killall
       openconnect
       lsof
+      lm_sensors
     ];
   };
 }
