@@ -44,6 +44,7 @@
       openconnect
       lsof
       lm_sensors
+      mangohud
     ];
   };
 }
