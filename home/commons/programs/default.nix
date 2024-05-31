@@ -44,7 +44,6 @@
       openconnect
       lsof
       lm_sensors
-      wlr-randr
     ];
   };
 }
