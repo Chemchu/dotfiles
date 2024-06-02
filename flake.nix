@@ -2,7 +2,7 @@
   description = "My NixOS flake";
 
   inputs = {
-    #nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable"; --> Unstable channel
+    #nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable"; # --> Unstable channel
     nixpkgs.url = "github:nixos/nixpkgs";
 
     home-manager = {
@@ -15,8 +15,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #hyprland.url = "github:hyprwm/Hyprland"; # --> Last commit
-    hyprland.url = "github:hyprwm/Hyprland?ref=fe7b748";
+    hyprland.url = "github:hyprwm/Hyprland"; # --> Last commit
+    #hyprland.url = "github:hyprwm/Hyprland?ref=fe7b748";
 
     nixvim = {
       url = "github:nix-community/nixvim";

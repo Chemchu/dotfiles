@@ -205,7 +205,7 @@
 
   # Enable Hyprland
   programs.hyprland.enable = true;
-  programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland; # --> Use flake
+  #programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland; # --> Use flake
 
   # Adding zsh also in configuration.nix to source it
   programs.zsh.enable = true;
