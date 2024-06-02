@@ -14,7 +14,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    #hyprland.url = "github:hyprwm/Hyprland"; # --> Last commit
+    hyprland.url = "github:hyprwm/Hyprland?ref=fe7b748";
 
     nixvim = {
       url = "github:nix-community/nixvim";
