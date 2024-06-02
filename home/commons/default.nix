@@ -16,7 +16,7 @@
     jq
     teams-for-linux
     postman
-    dbeaver
+    dbeaver-bin
   ];
 
 }

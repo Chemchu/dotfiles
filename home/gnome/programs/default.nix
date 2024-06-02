@@ -5,7 +5,7 @@
   home.packages = with pkgs; [
     teams-for-linux
     postman
-    dbeaver
+    dbeaver-bin
   ];
 }
 

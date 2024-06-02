@@ -2,7 +2,8 @@
   description = "My NixOS flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    #nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable"; --> Unstable channel
+    nixpkgs.url = "github:nixos/nixpkgs";
 
     home-manager = {
       url = "github:nix-community/home-manager";
