@@ -14,8 +14,7 @@
       enableCompletion = true;
       syntaxHighlighting.enable = true;
       initExtra = ''
-        neofetch
-        fortune
+        fastfetch
       '';
     };
     fzf = {

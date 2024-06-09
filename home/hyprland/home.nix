@@ -41,10 +41,9 @@
     #'')
 
     pkgs.nerdfonts
-    pkgs.neofetch
+    pkgs.fastfetch
     pkgs.htop
     pkgs.btop
-    pkgs.fortune
 
   ];
 

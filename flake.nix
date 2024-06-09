@@ -43,18 +43,7 @@
 		  hyprland = nixpkgs.lib.nixosSystem {
 				specialArgs = { inherit inputs; };
 				modules = [
-					./nixos/hyprland-configuration.nix
-					inputs.home-manager.nixosModules.default
-          ({ pkgs, ... }: {
-            nixpkgs.overlays = [ rust-overlay.overlays.default ];
-            environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
-          })
-				];
-			};
-			gnome= nixpkgs.lib.nixosSystem {
-				specialArgs = { inherit inputs; };
-				modules = [
-					./nixos/gnome-configuration.nix
+					./nixos/configuration.nix
 					inputs.home-manager.nixosModules.default
           ({ pkgs, ... }: {
             nixpkgs.overlays = [ rust-overlay.overlays.default ];
