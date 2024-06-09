@@ -10,6 +10,7 @@
     ./lsp.nix
     ./lualine.nix
     ./markdown-preview.nix
+    ./mini.nix
     ./neorg.nix
     ./neo-tree.nix
     ./startify.nix
