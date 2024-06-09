@@ -5,7 +5,7 @@
 
       modules = {
         ai = { };
-        surround = { };
+        animate = { };
         cursorword = { };
       };
     };
