@@ -5,7 +5,6 @@
 
       modules = {
         ai = { };
-        animate = { };
         cursorword = { };
       };
     };
