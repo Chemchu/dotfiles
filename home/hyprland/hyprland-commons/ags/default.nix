@@ -9,9 +9,6 @@
     # null or path, leave as null if you don't want hm to manage the config
     configDir = null;
 
-    home.file.".config/ags".source = ./ags-config;
-    home.file.".config/ags".recursive = true;
-
     # additional packages to add to gjs's runtime
     extraPackages = with pkgs; [
       gtksourceview
@@ -19,4 +16,9 @@
       accountsservice
     ];
   };
+
+  # AGS configuration project
+  home.file.".config/ags".source = ./ags-config;
+  home.file.".config/ags".recursive = true;
+
 }
