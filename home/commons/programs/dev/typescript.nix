@@ -1,6 +1,15 @@
 {
+  pkgs,
   ...
 }: {
+
+  home = {
+    packages = with pkgs; [
+      # Typescript dependencies
+      typescript
+    ];
+  };
+
   programs.nixvim = {
     plugins = {
       typescript-tools = {
@@ -9,10 +18,6 @@
           function(client, bufnr)
             client.server_capabilities.documentFormattingProvider = false
             client.server_capabilities.documentRangeFormattingProvider = false
-
-            if vim.lsp.inlay_hint then
-              vim.lsp.inlay_hint(bufnr, true)
-            end
           end
         '';
         settings = {
