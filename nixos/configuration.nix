@@ -214,6 +214,9 @@
   # Swaylock not getting password correctly fix
   security.pam.services.swaylock = {};
 
+  # Enable Gvfs (Mpris)
+  security.gvfs.enable = true;
+
   # Home-Manager config
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
