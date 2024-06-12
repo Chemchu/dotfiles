@@ -11,6 +11,7 @@
     ./shell.nix
     ./htmx.nix
 /*     ./vulkan.nix */
+    ./typescript.nix
     ./typst.nix
   ];
 
