@@ -3,18 +3,20 @@
   # add the home manager module
   imports = [ inputs.ags.homeManagerModules.default ];
 
-  programs.ags = {
-    enable = true;
+  programs = {
+    ags = {
+      enable = true;
 
-    # null or path, leave as null if you don't want hm to manage the config
-    configDir = null;
+      # null or path, leave as null if you don't want hm to manage the config
+      configDir = null;
 
-    # additional packages to add to gjs's runtime
-    extraPackages = with pkgs; [
-      gtksourceview
-      webkitgtk
-      accountsservice
-    ];
+      # additional packages to add to gjs's runtime
+      extraPackages = with pkgs; [
+        gtksourceview
+        webkitgtk
+        accountsservice
+      ];
+    };
   };
 
   # AGS configuration project
