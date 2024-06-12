@@ -6,6 +6,7 @@
     ./hypr
     ./rofi
     ./waybar
+    ./ags
   ];
 
   home.pointerCursor = {
