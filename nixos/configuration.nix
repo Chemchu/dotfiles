@@ -94,6 +94,9 @@
   # Enable automatic login for the user.
   services.getty.autologinUser = "gus";
 
+  # Enable Gvfs (Mpris)
+  services.gvfs.enable = true;
+
   # Enable sound with pipewire
   sound.enable = true;
   security.rtkit.enable = true;
@@ -213,9 +216,6 @@
 
   # Swaylock not getting password correctly fix
   security.pam.services.swaylock = {};
-
-  # Enable Gvfs (Mpris)
-  security.gvfs.enable = true;
 
   # Home-Manager config
   home-manager = {
