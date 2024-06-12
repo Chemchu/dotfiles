@@ -3,10 +3,7 @@ const notifications = await Service.import("notifications")
 const mpris = await Service.import("mpris")
 const audio = await Service.import("audio")
 const systemtray = await Service.import("systemtray")
-
-const date = Variable("", {
-    poll: [1000, 'date "+%H:%M:%S %b %e."'],
-})
+import { execAsync } from 'resource:///com/github/Aylur/ags/utils.js';
 
 // widgets can be only assigned as a child in one container
 // so to make a reuseable widget, make it a function
@@ -27,21 +24,14 @@ function Workspaces() {
     })
 }
 
+const Clock = () => Widget.Button({
+    child: Widget.Label({
+            className: 'clock'
+        }).poll(1000, self => execAsync(['date', '+%H:%M'])
+        .then(date => self.label = date).catch(console.error)),
+    onClicked: () => App.toggleWindow('calendar')
 
-function ClientTitle() {
-    return Widget.Label({
-        class_name: "client-title",
-        label: hyprland.active.client.bind("title"),
-    })
-}
-
-
-function Clock() {
-    return Widget.Label({
-        class_name: "clock",
-        label: date.bind(),
-    })
-}
+});
 
 
 // we don't need dunst or any other notification daemon
@@ -141,7 +131,6 @@ function Left() {
         spacing: 8,
         children: [
             Workspaces(),
-            ClientTitle(),
         ],
     })
 }
