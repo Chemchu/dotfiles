@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./apptainer.nix
+    ./bun.nix
     ./direnv.nix
     ./java.nix
     ./node.nix
