@@ -29,6 +29,9 @@
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Widgets
+    ags.url = "github:Aylur/ags";
   };
 
   outputs = { self,
