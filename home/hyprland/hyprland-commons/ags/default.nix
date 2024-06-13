@@ -4,8 +4,18 @@
   imports = [ inputs.ags.homeManagerModules.default ];
 
   home.packages = with pkgs; [
-    sass
+    dart-sass
+    fd
     brightnessctl
+    inputs.matugen.packages.${system}.default
+    slurp
+    wf-recorder
+    wl-clipboard
+    wayshot
+    swappy
+    hyprpicker
+    networkmanager
+    gtk3
   ];
 
   programs = {

@@ -32,6 +32,7 @@
 
     # Widgets
     ags.url = "github:Aylur/ags";
+    matugen.url = "github:InioX/matugen?ref=v2.2.0";
   };
 
   outputs = { self,
