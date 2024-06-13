@@ -1,10 +1,11 @@
-@define-color theme-bg-color #101e21;
-@define-color theme-fg-color #ffffff;
-@define-color theme-selected-bg-color #ffcc00;
+@define-color theme-primary-color #ffffff;
+@define-color theme-secondary-color #0e1a2a;
+@define-color theme-selected-color #ffcc00;
 
 window.bar {
-    background-color: @theme-bg-color;
-    color: @theme-fg-color;
+    background-color: transparent;
+    color: @theme-selected-color;
+    border-bottom: 2px solid @theme-primary-color;
 }
 
 button {
@@ -15,27 +16,35 @@ button {
 }
 
 button:active {
-    background-color: @theme-selected-bg-color;
+    background-color: @theme-selected-color;
 }
 
 button:hover {
-    border-bottom: 3px solid @theme-fg-color;
+    border-bottom: 3px solid @theme-secondary-color;
 }
 
-label {
-    font-weight: bold;
+.workspaces box {
+    background-color: transparent;
+}
+
+.workspaces button {
+    color: @theme-primary-color;
+    background-color: transparent;
 }
 
 .workspaces button.focused {
-    border-bottom: 3px solid @theme-selected-bg-color;
+    color: @theme-selected-color;
+    background-color: transparent;
 }
 
 .client-title {
-    color: @theme-selected-bg-color;
+    color: @theme-selected-color;
+    background-color: transparent;
 }
 
 .notification {
     color: yellow;
+    background-color: transparent;
 }
 
 levelbar block,
