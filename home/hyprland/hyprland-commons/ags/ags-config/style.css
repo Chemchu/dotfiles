@@ -1,6 +1,10 @@
+@define-color theme-bg-color #101e21;
+@define-color theme-fg-color #ffffff;
+@define-color theme-selected-bg-color #ffcc00;
+
 window.bar {
-    background-color: @theme_bg_color;
-    color: @theme_fg_color;
+    background-color: @theme-bg-color;
+    color: @theme-fg-color;
 }
 
 button {
@@ -11,11 +15,11 @@ button {
 }
 
 button:active {
-    background-color: @theme_selected_bg_color;
+    background-color: @theme-selected-bg-color;
 }
 
 button:hover {
-    border-bottom: 3px solid @theme_fg_color;
+    border-bottom: 3px solid @theme-fg-color;
 }
 
 label {
@@ -23,11 +27,11 @@ label {
 }
 
 .workspaces button.focused {
-    border-bottom: 3px solid @theme_selected_bg_color;
+    border-bottom: 3px solid @theme-selected-bg-color;
 }
 
 .client-title {
-    color: @theme_selected_bg_color;
+    color: @theme-selected-bg-color;
 }
 
 .notification {
