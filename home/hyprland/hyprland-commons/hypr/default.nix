@@ -2,9 +2,9 @@
 let
   wallpaper_path = ".config/hypr/wallpapers";
   wallpaper = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/dharmx/walls/main/painting/a_painting_of_a_garden_with_a_house_and_trees.jpeg";
+    url = "https://raw.githubusercontent.com/dharmx/walls/main/abstract/a_black_and_white_image_of_a_group_of_people.png";
     # replace this with the SHA256 hash of the image file
-    sha256 = "1j312ja2j4ylc9apny70rbkwsr9w369ymj6qxkk2rxqyxhh7p7x7";
+    sha256 = "1cg2zchxpkdf0hk7yhrn1q146k9llir3pdsgqwngxc7ylikqf8wf";
   };
 in
 {
@@ -223,7 +223,7 @@ in
       bind = , XF86AudioMicMute, execr, wpctl set-mut @DEFAULT_AUDIO_SOURCE@ toggle
 
       # Screenshot
-      bind = $mainMod, F5, exec, grim -g "$(slurp -d)" - | wl-copy
+      bind = $mainMod, F5, exec, grim -g "$(slurp -d)" - | wl-copy ; notify-send "Captura copiada al portapapeles"
 
       # Move/resize windows with mainMod + LMB/RMB and dragging
       bindm = $mainMod, mouse:272, movewindow
