@@ -6,7 +6,7 @@ const { scheme } = options.theme
 
 export const DarkModeToggle = () => SimpleToggleButton({
     icon: scheme.bind().as(s => icons.color[s]),
-    label: scheme.bind().as(s => s === "dark" ? "Dark" : "Light"),
+    label: scheme.bind().as(s => s === "dark" ? "Oscuro" : "Claro"),
     toggle: () => scheme.value = scheme.value === "dark" ? "light" : "dark",
     connection: [scheme, () => scheme.value === "dark"],
 })
