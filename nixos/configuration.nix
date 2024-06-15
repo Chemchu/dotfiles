@@ -10,8 +10,8 @@
 {
   imports = [
     # Include the results of the hardware scan.
-    ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
+    ./hardware-configuration.nix
     ./configuration-components/disks.nix
     ./configuration-components/environment-variables.nix
     ./configuration-components/gnome.nix

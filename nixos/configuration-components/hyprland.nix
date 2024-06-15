@@ -6,6 +6,7 @@
   lib,
   ...
 }: {
+
   options.hyprland = {
     enable = lib.mkEnableOption "Hyprland";
   };
@@ -22,7 +23,7 @@
 
     programs.hyprland = {
       enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      package = inputs.hyprland.packages.${pkgs.system}.hyprland.default;
       xwayland.enable = true;
     };
 
@@ -62,6 +63,7 @@
       pavucontrol
       brightnessctl
       swww
+      hyprwayland-scanner
     ];
 
     systemd = {

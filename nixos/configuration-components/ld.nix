@@ -26,5 +26,12 @@
     xorg.libxcb
     xorg.libXi
     libxkbcommon
+
+    cmake
+    cairo
+    ninja
+    pugixml
+    libgcc
+    hyprwayland-scanner
   ];
 }
