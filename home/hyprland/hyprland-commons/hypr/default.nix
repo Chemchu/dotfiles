@@ -49,8 +49,11 @@ in
 
       # Execute your favorite apps at launch
       exec-once = swww-daemon ; sleep 1s ; swww img ~/${wallpaper_path}/wallpaper
-      exec-once = waybar
-      exec-once = dunst
+      #exec-once = waybar # --> Testing AGS
+      #exec-once = dunst # --> Testing AGS
+      exec-once = ags -b hypr
+      exec-once = hyprctl setcursor Qogir 24
+      exec-once = transmission-gtk
 
       # Source a file (multi-file configs)
       # source = ~/.config/hypr/myColors.conf
