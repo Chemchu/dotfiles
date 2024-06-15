@@ -2,87 +2,22 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
-    ];
-
-  # Define your filesystems here
-  fileSystems = {
-    "/" = {
-      device = "/dev/disk/by-uuid/3db698b6-f625-4629-8b09-1ce9dbd6ae68";
-      fsType = "ext4";
-    };
-    "/boot" = {
-      device = "/dev/disk/by-uuid/058B-CAE4";
-      fsType = "vfat";
-    };
-    "/mnt/lvm" = {
-      device = "/dev/mapper/vg_nixos-lv_nixos";
-      fsType = "ext4";
-    };
-  };
-
-  swapDevices = [
-    {
-      device = "/dev/disk/by-uuid/8eb27adc-ed5e-4c3b-bc97-fa4abc4c73f1";
-    }
+  pkgs,
+  inputs,
+  ...
+}:
+{
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.default
+    ./configuration.nix/disks.nix
+    ./locale.nix
+    ./gnome.nix
+    ./nautilus.nix
+    ./sound.nix
   ];
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Set your time zone.
-  time.timeZone = "Europe/Madrid";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "es_ES.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "es_ES.UTF-8";
-    LC_IDENTIFICATION = "es_ES.UTF-8";
-    LC_MEASUREMENT = "es_ES.UTF-8";
-    LC_MONETARY = "es_ES.UTF-8";
-    LC_NAME = "es_ES.UTF-8";
-    LC_NUMERIC = "es_ES.UTF-8";
-    LC_PAPER = "es_ES.UTF-8";
-    LC_TELEPHONE = "es_ES.UTF-8";
-    LC_TIME = "es_ES.UTF-8";
-  };
-
-  # SDDM + Keyboard
-  services.displayManager.sddm = {
-    enable = true;
-    theme = "${import ./theme.nix { inherit pkgs; }}";
-    #wayland.enable = true;
-    settings = {
-      General.DefaultSession = "wayland.desktop";
-      General.DisplayServer = "wayland";
-      #General.InputMethod = "";
-    };
-  };
-  services.xserver = {
-    enable = true;
-    # Configure keymap in X11
-    xkb.layout = "es";
-  };
-
-  # Configure console keymap
-  console.keyMap = "es";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.gus = {
@@ -93,21 +28,6 @@
 
   # Enable automatic login for the user.
   services.getty.autologinUser = "gus";
-
-  # Enable sound with pipewire
-  sound.enable = true;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-    jack.enable = true;
-
-    alsa = {
-      enable = true;
-      support32Bit = true;
-    };
-  };
-
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -126,30 +46,10 @@
     firefox
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
-    pavucontrol # --> Interfaz grafica para controlar el sonido
     nh # --> CLI for NixOs
     libsForQt5.qt5.qtwayland
     qt6.qtwayland
     glxinfo
-
-    # AGS Gnome Apps
-    morewaita-icon-theme
-    gnome.adwaita-icon-theme
-    qogir-icon-theme
-    loupe
-    gnome.nautilus
-    baobab
-    gnome-text-editor
-    gnome.gnome-calendar
-    gnome.gnome-boxes
-    gnome.gnome-system-monitor
-    gnome.gnome-control-center
-    gnome.gnome-weather
-    gnome.gnome-calculator
-    gnome.gnome-clocks
-    gnome.gnome-software # for flatpak
-    wl-gammactl
-    wayshot
   ];
 
   systemd = {
@@ -184,83 +84,9 @@
     };
   };
 
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    # Add any missing dynamic libraries for unpackaged programs
-    # here, NOT in environment.systemPackages
-
-    # Vulkan
-    vulkan-tools
-    vulkan-headers
-    vulkan-loader
-    vulkan-utility-libraries
-    vulkan-validation-layers
-
-    # Mainly for Rust development
-    pkg-config
-    openssl
-    alsa-lib
-    systemd
-    xorg.libX11
-    xorg.libXcursor
-    xorg.libxcb
-    xorg.libXi
-    libxkbcommon
-  ];
-
-  environment.sessionVariables = {
-    # If your cursor becomes invisible
-    WLR_NO_HARDWARE_CURSORS = "1";
-    # Hint electron apps to use wayland
-    NIXOS_OZONE_WL = "1";
-
-    # Env for nh CLI
-    FLAKE = "/home/gus/dotfiles";
-
-    PKG_CONFIG_PATH = "${pkgs.alsa-lib.dev}/lib/pkgconfig:${pkgs.openssl.dev}/lib/pkgconfig:${pkgs.systemd.dev}/lib/pkgconfig";
-  };
-
-  services.xserver.videoDrivers = ["nvidia"];
-
-  hardware = {
-    # OpenGl
-    opengl.enable = true;
-    opengl.driSupport = true;
-    opengl.driSupport32Bit = true;
-    opengl.extraPackages = with pkgs; [
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
-
-    nvidia = {
-      # Most wayland compositors need this
-      modesetting.enable = true;
-
-      powerManagement.enable = false;
-      powerManagement.finegrained = false;
-
-      nvidiaSettings = true;
-
-      open = false;
-
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
-    };
-  };
-
-  # Desktop stuff
-  xdg.portal.config.common.default = "*";
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [
-    pkgs.xdg-desktop-portal-gtk
-  ];
-
   # Enable Hyprland
   programs.hyprland.enable = true;
   #programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland; # --> Use flake
-
-  # Adding zsh also in configuration.nix to source it
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
 
   # Swaylock not getting password correctly fix
   security.pam.services.swaylock = {};
