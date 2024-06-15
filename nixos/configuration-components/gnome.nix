@@ -59,9 +59,6 @@
           "org/gnome/desktop/peripherals/touchpad" = {
             tap-to-click = true;
           };
-          "org/gnome/desktop/interface" = {
-            cursor-theme = "Qogir";
-          };
         };
       }
     ];
