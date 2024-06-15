@@ -45,11 +45,4 @@
       package = config.boot.kernelPackages.nvidiaPackages.beta;
     };
   };
-
-  # Desktop stuff
-  xdg.portal.config.common.default = "*";
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [
-    pkgs.xdg-desktop-portal-gtk
-  ];
 }
