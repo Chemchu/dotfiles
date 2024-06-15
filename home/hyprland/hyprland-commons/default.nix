@@ -3,17 +3,18 @@
   ...
 }: {
   imports = [
+    ./ags
     ./hypr
     ./rofi
+    ./theme.nix
     ./waybar
-    ./ags
   ];
 
-  home.pointerCursor = {
-    gtk.enable = true;
-    x11.enable = true;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic";
-    size = 26;
-  };
+  #home.pointerCursor = {
+  #  gtk.enable = true;
+  #  x11.enable = true;
+  #  package = pkgs.bibata-cursors;
+  #  name = "Bibata-Modern-Classic";
+  #  size = 26;
+  #};
 }
