@@ -50,15 +50,15 @@ const options = mkOptions(OPTIONS, {
         },
 
         shadows: opt(true),
-        padding: opt(7),
-        spacing: opt(12),
+        padding: opt(6),
+        spacing: opt(5),
         radius: opt(11),
     },
 
     transition: opt(200),
 
     font: {
-        size: opt(13),
+        size: opt(11),
         name: opt("Ubuntu Nerd Font"),
     },
 
@@ -96,7 +96,7 @@ const options = mkOptions(OPTIONS, {
             },
             label: {
                 colored: opt(false),
-                label: opt(" Applications"),
+                label: opt(" Home"),
             },
             action: opt(() => App.toggleWindow("launcher")),
         },
@@ -158,7 +158,7 @@ const options = mkOptions(OPTIONS, {
             favorites: opt([
                 [
                     "firefox",
-                    "wezterm",
+                    "kitty",
                     "org.gnome.Nautilus",
                     "org.gnome.Calendar",
                     "spotify",

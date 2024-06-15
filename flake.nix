@@ -59,6 +59,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    lf-icons = {
+      url = "github:gokcehan/lf";
+      flake = false;
+    };
+
     # Widgets
     ags.url = "github:Aylur/ags";
     matugen.url = "github:InioX/matugen?ref=v2.2.0";

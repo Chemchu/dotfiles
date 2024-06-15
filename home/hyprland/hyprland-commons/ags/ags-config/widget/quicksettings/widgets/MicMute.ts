@@ -7,8 +7,8 @@ const icon = () => microphone.is_muted || microphone.stream?.is_muted
     : icons.audio.mic.high
 
 const label = () => microphone.is_muted || microphone.stream?.is_muted
-    ? "Muted"
-    : "Unmuted"
+    ? "Silenciado"
+    : "Activado"
 
 export const MicMute = () => SimpleToggleButton({
     icon: Utils.watch(icon(), microphone, icon),

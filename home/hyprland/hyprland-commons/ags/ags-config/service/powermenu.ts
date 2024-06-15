@@ -19,10 +19,10 @@ class PowerMenu extends Service {
 
     action(action: Action) {
         [this.#cmd, this.#title] = {
-            sleep: [sleep.value, "Sleep"],
-            reboot: [reboot.value, "Reboot"],
-            logout: [logout.value, "Log Out"],
-            shutdown: [shutdown.value, "Shutdown"],
+            sleep: [sleep.value, "Hibernar"],
+            reboot: [reboot.value, "Reiniciar"],
+            logout: [logout.value, "Cerrar sesión"],
+            shutdown: [shutdown.value, "Apagar"],
         }[action]
 
         this.notify("cmd")
