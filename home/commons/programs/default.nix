@@ -8,8 +8,6 @@
     ./dev
     ./lf
     ./kitty
-    ./gnome
-    ./nautilus
     ./neovim
     ./steam
     ./zellij
