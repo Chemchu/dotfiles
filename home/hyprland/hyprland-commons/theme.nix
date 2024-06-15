@@ -43,29 +43,8 @@ in {
       iconTheme.package
       gnome.adwaita-icon-theme
       papirus-icon-theme
-
-      morewaita-icon-theme
-      qogir-icon-theme
-      loupe
-      gnome.nautilus
-      baobab
-      gnome-text-editor
-      gnome.gnome-calendar
-      gnome.gnome-boxes
-      gnome.gnome-system-monitor
-      gnome.gnome-control-center
-      gnome.gnome-weather
-      gnome.gnome-calculator
-      gnome.gnome-clocks
-      gnome.gnome-software # for flatpak
-      wl-gammactl
-      wl-clipboard
-      wayshot
-      pavucontrol
-      brightnessctl
-      swww
-
     ];
+
     sessionVariables = {
       XCURSOR_THEME = cursorTheme.name;
       XCURSOR_SIZE = "${toString cursorTheme.size}";

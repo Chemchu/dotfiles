@@ -14,6 +14,7 @@
     FLAKE = "/home/gus/dotfiles";
 
     PKG_CONFIG_PATH = "${pkgs.alsa-lib.dev}/lib/pkgconfig:${pkgs.openssl.dev}/lib/pkgconfig:${pkgs.systemd.dev}/lib/pkgconfig";
+    #LD_LIBRARY_PATH = "${pkgs.stdenv.lib.getEnv "LD_LIBRARY_PATH"}:${pkgs.stdenv.lib.getEnv "NIX_LD_LIBRARY_PATH"}";
   };
 
   # Adding zsh also in configuration.nix to source it

@@ -44,7 +44,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland"; # --> Last commit
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?tag=v0.40.0&submodules=1"; # --> Probando comentario que vi en discord
+    #hyprland.url = "github:hyprwm/Hyprland"; # --> Last commit
     #hyprland.url = "github:hyprwm/Hyprland?ref=fe7b748";
 
     nixvim = {

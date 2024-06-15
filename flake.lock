@@ -277,23 +277,26 @@
       "inputs": {
         "hyprcursor": "hyprcursor",
         "hyprlang": "hyprlang",
+        "hyprutils": "hyprutils",
         "hyprwayland-scanner": "hyprwayland-scanner",
         "nixpkgs": "nixpkgs_2",
         "systems": "systems_2",
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1717352589,
-        "narHash": "sha256-uA6kIOVFnadGzomQ3QUIAOA6/SI2kyBYoF5gR/xCusY=",
-        "owner": "hyprwm",
-        "repo": "Hyprland",
-        "rev": "6868a39f1145dcb11c1d721e765077f21128e80c",
-        "type": "github"
+        "lastModified": 1718480796,
+        "narHash": "sha256-BMLFzvIn5Qdrfc1zyIXWTMA5FHx+R9JNDJ7dkwbvdzk=",
+        "ref": "refs/heads/main",
+        "rev": "1f5fd7e64a1c0e8d1815bdd6d168193bf9c28d6d",
+        "revCount": 4839,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/hyprwm/Hyprland?tag=v0.40.0"
       },
       "original": {
-        "owner": "hyprwm",
-        "repo": "Hyprland",
-        "type": "github"
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/hyprwm/Hyprland?tag=v0.40.0"
       }
     },
     "hyprland-protocols": {
@@ -345,6 +348,31 @@
       "original": {
         "owner": "hyprwm",
         "repo": "hyprlang",
+        "type": "github"
+      }
+    },
+    "hyprutils": {
+      "inputs": {
+        "nixpkgs": [
+          "hyprland",
+          "nixpkgs"
+        ],
+        "systems": [
+          "hyprland",
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1718444188,
+        "narHash": "sha256-5CqwizspUOnyKacxav/o0Vao00/HMlG6H9lak/CZnpQ=",
+        "owner": "hyprwm",
+        "repo": "hyprutils",
+        "rev": "ea8fd1d3eaaf0cea34792315a15ed0cabcbccadb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprutils",
         "type": "github"
       }
     },

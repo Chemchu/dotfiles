@@ -1,4 +1,8 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  inputs,
+  ...
+}:
 let
   wallpaper_path = ".config/hypr/wallpapers";
   wallpaper = pkgs.fetchurl {
@@ -6,13 +10,22 @@ let
     # replace this with the SHA256 hash of the image file
     sha256 = "1cg2zchxpkdf0hk7yhrn1q146k9llir3pdsgqwngxc7ylikqf8wf";
   };
+
+  hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  # plugins = inputs.hyprland-plugins.packages.${pkgs.system};
+
+  yt = pkgs.writeShellScript "yt" ''
+    notify-send "Opening video" "$(wl-paste)"
+    mpv "$(wl-paste)"
+  '';
+
+  playerctl = "${pkgs.playerctl}/bin/playerctl";
+  brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
+  pactl = "${pkgs.pulseaudio}/bin/pactl";
 in
 {
   home.packages = with pkgs; [
-    waybar
-    dunst
     libnotify
-    swww
     grim
     slurp
     wl-clipboard
@@ -21,10 +34,20 @@ in
   # Here I import all my wallpapers
   home.file."${wallpaper_path}/wallpaper".source = wallpaper;
 
+  xdg.desktopEntries."org.gnome.Settings" = {
+    name = "Settings";
+    comment = "Gnome Control Center";
+    icon = "org.gnome.Settings";
+    exec = "env XDG_CURRENT_DESKTOP=gnome ${pkgs.gnome.gnome-control-center}/bin/gnome-control-center";
+    categories = ["X-Preferences"];
+    terminal = false;
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
-    xwayland.enable = true;
+    package = hyprland;
     systemd.enable = true;
+    xwayland.enable = true;
 
     extraConfig = ''
       #
