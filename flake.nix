@@ -35,7 +35,8 @@
     matugen.url = "github:InioX/matugen?ref=v2.2.0";
   };
 
-  outputs = { self,
+  outputs = {
+    self,
     nixpkgs,
     nixvim,
     nix-index-database,
@@ -43,9 +44,15 @@
     ...
   } @ inputs:
 	{
+    packages.x86_64-linux.default =
+      nixpkgs.legacyPackages.x86_64-linux.callPackage ./home/hyprland/hyprland-commons/ags/ags-config {inherit inputs;};
+
 		nixosConfigurations = {
 		  hyprland = nixpkgs.lib.nixosSystem {
-				specialArgs = { inherit inputs; };
+				specialArgs = {
+          inherit inputs;
+          asztal = self.packages.x86_64-linux.default;
+        };
 				modules = [
 					./nixos/configuration.nix
 					inputs.home-manager.nixosModules.default
