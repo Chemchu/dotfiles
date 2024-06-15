@@ -134,6 +134,25 @@
     libsForQt5.qt5.qtwayland
     qt6.qtwayland
     glxinfo
+
+    # AGS Gnome Apps
+    morewaita-icon-theme
+    gnome.adwaita-icon-theme
+    qogir-icon-theme
+    loupe
+    gnome.nautilus
+    baobab
+    gnome-text-editor
+    gnome.gnome-calendar
+    gnome.gnome-boxes
+    gnome.gnome-system-monitor
+    gnome.gnome-control-center
+    gnome.gnome-weather
+    gnome.gnome-calculator
+    gnome.gnome-clocks
+    gnome.gnome-software # for flatpak
+    wl-gammactl
+    wayshot
   ];
 
   programs.nix-ld.enable = true;
