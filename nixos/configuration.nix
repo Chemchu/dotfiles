@@ -12,11 +12,14 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
-    ./configuration.nix/disks.nix
-    ./locale.nix
-    ./gnome.nix
-    ./nautilus.nix
-    ./sound.nix
+    ./configuration-components/disks.nix
+    ./configuration-components/locale.nix
+    ./configuration-components/gnome.nix
+    ./configuration-components/nautilus.nix
+    ./configuration-components/sound.nix
+    ./configuration-components/ld.nix
+    ./configuration-components/system.nix
+    ./configuration-components/environment-variables.nix
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
