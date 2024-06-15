@@ -13,14 +13,14 @@
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
     ./configuration-components/disks.nix
-    ./configuration-components/locale.nix
+    ./configuration-components/environment-variables.nix
     ./configuration-components/gnome.nix
+    ./configuration-components/hyprland.nix
+    ./configuration-components/ld.nix
+    ./configuration-components/locale.nix
     ./configuration-components/nautilus.nix
     ./configuration-components/sound.nix
-    ./configuration-components/ld.nix
     ./configuration-components/system.nix
-    ./configuration-components/environment-variables.nix
-    ./configuration-components/hyprland.nix
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
