@@ -14,7 +14,6 @@
     mpv
     spotify
     jq
-    electron-bin
     teams-for-linux
     postman
     dbeaver-bin
