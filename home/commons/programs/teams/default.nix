@@ -1,7 +1,11 @@
 {
-  services.flatpak.packages = [
-    { appId = "com.brave.Browser"; origin = "flathub";  }
-    "com.obsproject.Studio"
-    "im.riot.Riot"
-  ];
+  inputs,
+  ...
+}
+:
+{
+  #imports = [ inputs.flatpaks.homeManagerModules.nix-flatpak ];
+  #services.flatpak.packages = [
+  #  "com.github.IsmaelMartinez.teams_for_linux"
+  #];
 }

@@ -76,7 +76,6 @@
             ];
             environment.systemPackages = with pkgs; [
               rust-bin.stable.latest.default
-              #hyprwayland-scanner.packages.${system}.hyprwayland-scanner
             ];
           })
         ];
