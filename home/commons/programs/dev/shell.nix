@@ -12,14 +12,14 @@
           sh = shellTools;
         };
 
-        lsp.servers = {
-          bashls.enable = true;
+        #lsp.servers = {
+        #  bashls.enable = true;
 
-          efm.filetypes = [
-            "bash"
-            "sh"
-          ];
-        };
+        #  efm.filetypes = [
+        #    "bash"
+        #    "sh"
+        #  ];
+        #};
       };
     };
   };
