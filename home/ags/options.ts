@@ -96,7 +96,7 @@ const options = mkOptions(OPTIONS, {
             },
             label: {
                 colored: opt(false),
-                label: opt(" Home"),
+                label: opt(""),
             },
             action: opt(() => App.toggleWindow("launcher")),
         },
