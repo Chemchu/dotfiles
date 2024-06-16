@@ -4,7 +4,7 @@
   ...
 }: {
   xdg = {
-    configFile.nvim.source = ../nvim;
+    configFile.nvim.source = ./nvim-config;
     desktopEntries."nvim" = lib.mkIf pkgs.stdenv.isLinux {
       name = "NeoVim";
       comment = "Edit text files";
