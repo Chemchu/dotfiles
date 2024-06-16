@@ -21,6 +21,7 @@
     hyprpicker
     networkmanager
     gtk3
+    swww
   ];
 
   programs.ags = {
