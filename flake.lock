@@ -284,16 +284,17 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1718480796,
-        "narHash": "sha256-BMLFzvIn5Qdrfc1zyIXWTMA5FHx+R9JNDJ7dkwbvdzk=",
-        "ref": "refs/heads/main",
-        "rev": "1f5fd7e64a1c0e8d1815bdd6d168193bf9c28d6d",
-        "revCount": 4839,
+        "lastModified": 1718272446,
+        "narHash": "sha256-hLnnNBWP1Qjs1I3fndMgp8rbWJruxdnGTq77A4Rv4R4=",
+        "ref": "refs/tags/v0.41.1",
+        "rev": "9e781040d9067c2711ec2e9f5b47b76ef70762b3",
+        "revCount": 4818,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
       },
       "original": {
+        "ref": "refs/tags/v0.41.1",
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -393,6 +394,22 @@
         "owner": "hyprwm",
         "repo": "hyprwayland-scanner",
         "rev": "b06c0b8e56bd73c42218148efd8600c5e9fd6619",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprwayland-scanner",
+        "type": "github"
+      }
+    },
+    "hyprwayland-scanner_2": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1718119275,
+        "narHash": "sha256-nqDYXATNkyGXVmNMkT19fT4sjtSPBDS1LLOxa3Fueo4=",
+        "owner": "hyprwm",
+        "repo": "hyprwayland-scanner",
+        "rev": "1419520d5f7f38d35e05504da5c1b38212a38525",
         "type": "github"
       },
       "original": {
@@ -617,6 +634,7 @@
         "devshell": "devshell",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "hyprwayland-scanner": "hyprwayland-scanner_2",
         "lf-icons": "lf-icons",
         "matugen": "matugen",
         "nix-index-database": "nix-index-database",
