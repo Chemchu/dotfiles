@@ -58,7 +58,7 @@
   }: let
     system = "x86_64-linux";
   in {
-    packages.${system}.default = nixpkgs.legacyPackages.${system}.callPackage ./home/hyprland/hyprland-commons/ags/ags-config { inherit inputs; };
+    packages.${system}.default = nixpkgs.legacyPackages.${system}.callPackage ./home/ags {inherit inputs;};
 
     nixosConfigurations = {
       hyprland = nixpkgs.lib.nixosSystem {
@@ -70,7 +70,7 @@
           ./nixos/configuration.nix
           home-manager.nixosModules.default
           nix-flatpak.nixosModules.nix-flatpak
-          ({ pkgs, ... }: {
+          ({pkgs, ...}: {
             nixpkgs.overlays = [
               rust-overlay.overlays.default
             ];
