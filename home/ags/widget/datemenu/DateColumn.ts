@@ -3,7 +3,7 @@ import { clock, uptime } from "lib/variables"
 function up(up: number) {
     const h = Math.floor(up / 60)
     const m = Math.floor(up % 60)
-    return `uptime: ${h}:${m < 10 ? "0" + m : m}`
+    return `sesión: ${h}:${m < 10 ? "0" + m : m}`
 }
 
 export default () => Widget.Box({

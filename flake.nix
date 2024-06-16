@@ -48,23 +48,22 @@
 
   outputs = inputs @ {
     self,
+    home-manager,
     nixpkgs,
     nix-index-database,
     rust-overlay,
-    home-manager,
     hyprwayland-scanner,
     nix-flatpak,
     ...
-  }: let
-    system = "x86_64-linux";
-  in {
-    packages.${system}.default = nixpkgs.legacyPackages.${system}.callPackage ./home/ags {inherit inputs;};
+  }: {
+    #system = "x86_64-linux";
+    packages.x86_64-linux.default = nixpkgs.legacyPackages.x86_64-linux.callPackage ./home/ags {inherit inputs;};
 
     nixosConfigurations = {
       hyprland = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs;
-          asztal = self.packages.${system}.default;
+          asztal = self.packages.x86_64-linux.default;
         };
         modules = [
           ./nixos/configuration.nix
