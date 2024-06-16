@@ -11,6 +11,7 @@
     #./neovim # --> nixvim
     ./nvim
     ./steam
+    ./teams
     ./zellij
     ./zoxide
     ./zsh

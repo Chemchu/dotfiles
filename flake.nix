@@ -18,6 +18,9 @@
     hyprwayland-scanner = {
       url = "github:hyprwm/hyprwayland-scanner";
     };
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
+
     #nixvim = {
     #  #url = "github:nix-community/nixvim?ref=ad6a08b"; # --> Only for unstable channel
     #  #url = "github:nix-community/nixvim/nixos-24.05"; # --> Only for stable channel
@@ -50,6 +53,7 @@
     rust-overlay,
     home-manager,
     hyprwayland-scanner,
+    nix-flatpak,
     ...
   }: let
     system = "x86_64-linux";
@@ -65,6 +69,7 @@
         modules = [
           ./nixos/configuration.nix
           home-manager.nixosModules.default
+          nix-flatpak.nixosModules.nix-flatpak
           ({ pkgs, ... }: {
             nixpkgs.overlays = [
               rust-overlay.overlays.default

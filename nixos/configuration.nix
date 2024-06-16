@@ -14,6 +14,7 @@
     ./hardware-configuration.nix
     ./configuration-components/disks.nix
     ./configuration-components/environment-variables.nix
+    ./configuration-components/flatpak.nix # Only installing this to avoid building electron from source
     ./configuration-components/gnome.nix
     ./configuration-components/hyprland.nix
     ./configuration-components/ld.nix
