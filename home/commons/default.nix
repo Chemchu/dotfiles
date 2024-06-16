@@ -14,7 +14,6 @@
     mpv
     spotify
     jq
-    #teams-for-linux
     postman
     dbeaver-bin
     thunderbird-bin
