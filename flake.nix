@@ -56,8 +56,8 @@
     nix-flatpak,
     ...
   }: {
-    #system = "x86_64-linux";
-    packages.x86_64-linux.default = nixpkgs.legacyPackages.x86_64-linux.callPackage ./home/ags {inherit inputs;};
+    packages.x86_64-linux.default =
+      nixpkgs.legacyPackages.x86_64-linux.callPackage ./home/ags {inherit inputs;};
 
     nixosConfigurations = {
       hyprland = nixpkgs.lib.nixosSystem {

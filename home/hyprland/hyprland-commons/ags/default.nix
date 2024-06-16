@@ -12,6 +12,7 @@
     dart-sass
     fd
     brightnessctl
+    swww
     inputs.matugen.packages.${system}.default
     slurp
     wf-recorder
@@ -19,9 +20,9 @@
     wayshot
     swappy
     hyprpicker
+    pavucontrol
     networkmanager
     gtk3
-    swww
   ];
 
   programs.ags = {
