@@ -47,6 +47,8 @@
       lua-language-server
       stylua
       alejandra
+      marksman
+      rust-analyzer
     ];
   };
 }
