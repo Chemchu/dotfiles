@@ -2,8 +2,8 @@
   description = "Gus NixOs cool configuration";
 
   inputs = {
-    #nixpkgs.url = "github:nixos/nixpkgs"; # --> Stable channel
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable-small";
+    nixpkgs.url = "github:nixos/nixpkgs"; # --> Stable channel
+    #nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable-small";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,12 +18,12 @@
     hyprwayland-scanner = {
       url = "github:hyprwm/hyprwayland-scanner";
     };
-    nixvim = {
-      #url = "github:nix-community/nixvim?ref=ad6a08b"; # --> Only for unstable channel
-      #url = "github:nix-community/nixvim/nixos-24.05"; # --> Only for stable channel
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #nixvim = {
+    #  #url = "github:nix-community/nixvim?ref=ad6a08b"; # --> Only for unstable channel
+    #  #url = "github:nix-community/nixvim/nixos-24.05"; # --> Only for stable channel
+    #  url = "github:nix-community/nixvim";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
     };
@@ -46,7 +46,6 @@
   outputs = inputs @ {
     self,
     nixpkgs,
-    nixvim,
     nix-index-database,
     rust-overlay,
     home-manager,

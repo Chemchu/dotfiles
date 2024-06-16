@@ -5,10 +5,11 @@
 }: {
   imports = [
     inputs.nix-index-database.hmModules.nix-index
-    ./dev
+    #./dev
     ./lf
     ./kitty
-    ./neovim
+    #./neovim # --> nixvim
+    ./nvim
     ./steam
     ./zellij
     ./zoxide
