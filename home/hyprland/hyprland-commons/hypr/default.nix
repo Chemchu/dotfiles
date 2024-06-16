@@ -2,9 +2,8 @@
   pkgs,
   inputs,
   ...
-}:
-let
-  wallpaper_path = ".config/hypr/wallpapers";
+}: let
+  config_path = ".config/";
   wallpaper = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/dharmx/walls/main/abstract/a_black_and_white_image_of_a_group_of_people.png";
     # replace this with the SHA256 hash of the image file
@@ -22,8 +21,7 @@ let
   playerctl = "${pkgs.playerctl}/bin/playerctl";
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
   pactl = "${pkgs.pulseaudio}/bin/pactl";
-in
-{
+in {
   home.packages = with pkgs; [
     libnotify
     grim
@@ -32,7 +30,7 @@ in
   ];
 
   # Here I import all my wallpapers
-  home.file."${wallpaper_path}/wallpaper".source = wallpaper;
+  home.file."${config_path}/background".source = wallpaper;
 
   xdg.desktopEntries."org.gnome.Settings" = {
     name = "Settings";
@@ -71,7 +69,7 @@ in
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
       # Execute your favorite apps at launch
-      exec-once = swww-daemon ; sleep 1s ; swww img ~/${wallpaper_path}/wallpaper
+      #exec-once = swww-daemon ; sleep 1s ; swww img ~/${config_path}/backgroung
       #exec-once = waybar # --> Testing AGS
       #exec-once = dunst # --> Testing AGS
       exec-once = ags -b hypr
