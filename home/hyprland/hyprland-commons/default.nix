@@ -1,12 +1,8 @@
-{
-  ...
-}: {
+{...}: {
   imports = [
-    ./ags
-    ./hypr
-    ./rofi
+    ./ags.nix
+    ./hypr.nix
     ./theme.nix
-    ./waybar
   ];
 
   #home.pointerCursor = {
