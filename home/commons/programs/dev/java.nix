@@ -8,7 +8,7 @@
       # Packages needed for Java
       jdk17
       jdt-language-server
-      jetbrains.idea-community
+      jetbrains.idea-community-bin
       lombok
     ];
   };
@@ -33,7 +33,7 @@
       lsp = {
         enable = true;
         servers = {
-          java-language-server = { enable = true; };
+          java-language-server = {enable = true;};
         };
       };
     };
