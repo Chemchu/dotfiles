@@ -67,7 +67,7 @@
         };
         modules = [
           ./nixos/configuration.nix
-          home-manager.nixosModules.home-manager
+          home-manager.nixosModules.default
           nix-flatpak.nixosModules.nix-flatpak
           ({pkgs, ...}: {
             nixpkgs.overlays = [

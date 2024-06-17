@@ -46,7 +46,12 @@
       lsof
       lm_sensors
       mangohud
+
+      # Java dev
+      jdk17
+      jdt-language-server
+      jetbrains.idea-community
+      lombok
     ];
   };
 }
-
