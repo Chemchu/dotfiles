@@ -1,7 +1,7 @@
 {...}: {
   imports = [
     ./ags.nix
-    ./hypr.nix
+    ./hyprland.nix
     ./theme.nix
   ];
 
