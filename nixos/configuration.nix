@@ -1,13 +1,11 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
 {
   pkgs,
   inputs,
   ...
-}:
-{
+}: {
   imports = [
     # Include the results of the hardware scan.
     inputs.home-manager.nixosModules.default
@@ -22,13 +20,14 @@
     ./configuration-components/nautilus.nix
     ./configuration-components/sound.nix
     ./configuration-components/system.nix
+    ./configuration-components/tuigreet.nix
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.gus = {
     isNormalUser = true;
     description = "gus";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
   };
 
   # Enable automatic login for the user.
@@ -39,7 +38,7 @@
   nixpkgs.config.nvidia.acceptLicense = true;
 
   # Flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -66,7 +65,7 @@
 
   # Home-Manager config
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {inherit inputs;};
     users = {
       "gus" = import ../home/hyprland/home.nix;
     };
@@ -98,5 +97,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }

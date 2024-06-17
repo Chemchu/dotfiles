@@ -48,9 +48,15 @@
         ]);
     };
 
+    system.autoUpgrade.enable = lib.mkForce false;
+
+    services.greetd.enable = lib.mkForce false;
+    systemd.services.greetd.enable = lib.mkForce false;
+
     services.xserver = {
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
+      enable = lib.mkForce true;
+      displayManager.gdm.enable = lib.mkForce true;
+      desktopManager.gnome.enable = lib.mkForce true;
     };
 
     programs.dconf.profiles.gdm.databases = [
