@@ -6,6 +6,7 @@
   imports = [
     inputs.nix-index-database.hmModules.nix-index
     #./dev
+    ./direnv
     ./lf
     ./kitty
     #./neovim # --> nixvim
