@@ -193,7 +193,9 @@ in {
       bind = $mainMod, C, killactive,
       bind = $mainMod, M, exit,
       bind = $mainMod, V, togglefloating,
-      bind = $mainMod, R, exec, wofi --show drun
+      bind = CTRL SHIFT, R, exec, ags -b hypr quit; ags -b hypr
+      bind = $mainMod, S, exec, ags -b hypr -t launcher
+
       bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
 
@@ -240,6 +242,18 @@ in {
       bind = , XF86AudioLowerVolume, execr, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.15-
       bind = , XF86AudioMute, execr, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
       bind = , XF86AudioMicMute, execr, wpctl set-mut @DEFAULT_AUDIO_SOURCE@ toggle
+      bind = , XF86AudioPlay,    exec, ${playerctl} play-pause
+      bind = , XF86AudioStop,    exec, ${playerctl} pause
+      bind = , XF86AudioPause,   exec, ${playerctl} pause
+      bind = , XF86AudioPrev,    exec, ${playerctl} previous
+      bind = , XF86AudioNext,    exec, ${playerctl} next
+      bind = , XF86AudioMicMute, exec, ${pactl} set-source-mute @DEFAULT_SOURCE@ toggle
+
+      # Brightness
+      bind = , XF86MonBrightnessUp, exec, ${brightnessctl} set +5%
+      bind = , XF86MonBrightnessDown, exec, ${brightnessctl} set  5%-
+      bind = , XF86KbdBrightnessUp,   exec, ${brightnessctl} -d asus::kbd_backlight set +1
+      bind = , XF86KbdBrightnessDown, exec, ${brightnessctl} -d asus::kbd_backlight set  1-
 
       # Screenshot
       bind = $mainMod, F5, exec, grim -g "$(slurp -d)" - | wl-copy ; notify-send "Captura copiada al portapapeles"
@@ -247,6 +261,9 @@ in {
       # Move/resize windows with mainMod + LMB/RMB and dragging
       bindm = $mainMod, mouse:272, movewindow
       bindm = $mainMod, mouse:273, resizewindow
+
+      # Youtube
+      bind = , XF86Launch1,  exec, ${yt}
 
     '';
   };
