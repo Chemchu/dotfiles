@@ -69,9 +69,6 @@ in {
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
       # Execute your favorite apps at launch
-      #exec-once = swww-daemon ; sleep 1s ; swww img ~/${config_path}/backgroung
-      #exec-once = waybar # --> Testing AGS
-      #exec-once = dunst # --> Testing AGS
       exec-once = ags -b hypr
       exec-once = hyprctl setcursor Qogir 24
       exec-once = transmission-gtk
@@ -195,12 +192,10 @@ in {
       bind = $mainMod, W, exec, firefox
       bind = $mainMod, C, killactive,
       bind = $mainMod, M, exit,
-      bind = $mainMod, E, exec, dolphin
       bind = $mainMod, V, togglefloating,
       bind = $mainMod, R, exec, wofi --show drun
       bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
-      bind = $mainMod, S, exec, rofi -show drun
 
       # Move focus with mainMod + arrow keys
       bind = $mainMod, left, movefocus, l
