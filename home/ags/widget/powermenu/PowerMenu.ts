@@ -33,21 +33,21 @@ export default () => PopupWindow({
         children: layout.bind().as(layout => {
             switch (layout) {
                 case "line": return [
-                    SysButton("shutdown", "Shutdown"),
-                    SysButton("logout", "Log Out"),
-                    SysButton("reboot", "Reboot"),
-                    SysButton("sleep", "Sleep"),
+                    SysButton("shutdown", "Apagar"),
+                    SysButton("logout", "Cerrar sesión"),
+                    SysButton("reboot", "Reiniciar"),
+                    SysButton("sleep", "Hibernar"),
                 ]
                 case "box": return [
                     Widget.Box(
                         { vertical: true },
-                        SysButton("shutdown", "Shutdown"),
-                        SysButton("logout", "Log Out"),
+                        SysButton("shutdown", "Apagar"),
+                        SysButton("logout", "Cerrar sesión"),
                     ),
                     Widget.Box(
                         { vertical: true },
-                        SysButton("reboot", "Reboot"),
-                        SysButton("sleep", "Sleep"),
+                        SysButton("reboot", "Reiniciar"),
+                        SysButton("sleep", "Hibernar"),
                     ),
                 ]
             }
