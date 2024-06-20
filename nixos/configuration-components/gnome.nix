@@ -55,8 +55,8 @@
 
     services.xserver = {
       enable = lib.mkForce true;
-      displayManager.gdm.enable = lib.mkForce true;
-      desktopManager.gnome.enable = lib.mkForce true;
+      displayManager.gdm.enable = lib.mkForce false;
+      desktopManager.gnome.enable = lib.mkForce false;
     };
 
     programs.dconf.profiles.gdm.databases = [
