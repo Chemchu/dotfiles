@@ -51,8 +51,9 @@
       # Java dev
       jdk17
       jdt-language-server
-      jetbrains.idea-community-bin
+      jetbrains.idea-community
       lombok
+      jdt-language-server
     ];
   };
 }
