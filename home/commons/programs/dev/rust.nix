@@ -9,8 +9,8 @@
       cargo-watch
       bacon
       gcc
-      surrealist # Database manager
-      surrealdb # Database engine
+      #surrealist # Database manager
+      #surrealdb # Database engine
     ];
 
     sessionVariables = {

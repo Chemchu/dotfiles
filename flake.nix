@@ -21,12 +21,12 @@
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
 
-    #nixvim = {
-    #  #url = "github:nix-community/nixvim?ref=ad6a08b"; # --> Only for unstable channel
-    #  #url = "github:nix-community/nixvim/nixos-24.05"; # --> Only for stable channel
-    #  url = "github:nix-community/nixvim";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
+    nixvim = {
+      url = "github:nix-community/nixvim?ref=1a46075"; 
+      #url = "github:nix-community/nixvim/nixos-24.05"; # --> Only for stable channel
+      #url = "github:nix-community/nixvim"; # --> Stable channel
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
     };
