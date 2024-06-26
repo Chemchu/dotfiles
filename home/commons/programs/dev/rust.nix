@@ -25,7 +25,7 @@
       lsp-format.lspServersToEnable = ["rust-analyzer"];
       lsp.servers = {
         rust-analyzer = {
-          enable = false;
+          enable = true;
           installCargo = true;
           installRustc = true;
           settings = {
