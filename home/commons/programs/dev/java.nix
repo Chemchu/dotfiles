@@ -8,7 +8,7 @@
       # Packages needed for Java
       jdk17
       jdt-language-server
-      jetbrains.idea-community-bin
+      #jetbrains.idea-community
       lombok
     ];
   };

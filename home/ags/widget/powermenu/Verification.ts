@@ -18,7 +18,7 @@ export default () => PopupWindow({
                     }),
                     Widget.Label({
                         class_name: "desc",
-                        label: "Are you sure?",
+                        label: "¿Estás seguro?",
                     }),
                 ],
             }),

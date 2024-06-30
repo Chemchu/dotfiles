@@ -1,9 +1,9 @@
 {pkgs, ...}: {
   imports = [
     ./apptainer.nix
-    ./bun.nix
+    #./bun.nix
     ./direnv.nix
-    ./java.nix
+    #./java.nix
     ./node.nix
     ./nix
     ./python.nix

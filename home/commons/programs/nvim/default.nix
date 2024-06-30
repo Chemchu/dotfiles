@@ -48,7 +48,7 @@
       stylua
       alejandra
       marksman
-      rust-analyzer
+      jdt-language-server
     ];
   };
 }

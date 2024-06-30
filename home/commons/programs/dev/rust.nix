@@ -9,8 +9,8 @@
       cargo-watch
       bacon
       gcc
-      surrealist # Database manager
-      surrealdb # Database engine
+      #surrealist # Database manager
+      #surrealdb # Database engine
     ];
 
     sessionVariables = {
@@ -19,20 +19,20 @@
     };
   };
 
-  #programs.nixvim = {
-  #  plugins = {
-  #    crates-nvim.enable = true;
-  #    lsp-format.lspServersToEnable = ["rust-analyzer"];
-  #    lsp.servers = {
-  #      rust-analyzer = {
-  #        enable = false;
-  #        installCargo = true;
-  #        installRustc = true;
-  #        settings = {
-  #          cargo.features = "all";
-  #        };
-  #      };
-  #    };
-  #  };
-  #};
+  programs.nixvim = {
+    plugins = {
+      crates-nvim.enable = true;
+      lsp-format.lspServersToEnable = ["rust-analyzer"];
+      lsp.servers = {
+        rust-analyzer = {
+          enable = true;
+          installCargo = true;
+          installRustc = true;
+          settings = {
+            cargo.features = "all";
+          };
+        };
+      };
+    };
+  };
 }

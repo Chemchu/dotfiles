@@ -159,7 +159,7 @@ const options = mkOptions(OPTIONS, {
                 [
                     "firefox",
                     "kitty",
-                    "org.gnome.Nautilus",
+                    "steam",
                     "spotify",
                 ],
             ]),
