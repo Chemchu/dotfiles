@@ -13,7 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1&ref=refs/tags/v0.41.1";
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1&ref=refs/tags/v0.41.2";
     };
     hyprwayland-scanner = {
       url = "github:hyprwm/hyprwayland-scanner";
@@ -22,7 +22,7 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
 
     nixvim = {
-      url = "github:nix-community/nixvim?ref=1a46075"; 
+      url = "github:nix-community/nixvim?ref=1a46075";
       #url = "github:nix-community/nixvim/nixos-24.05"; # --> Only for stable channel
       #url = "github:nix-community/nixvim"; # --> Stable channel
       inputs.nixpkgs.follows = "nixpkgs";
