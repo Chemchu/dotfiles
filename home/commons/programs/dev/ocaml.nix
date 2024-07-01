@@ -3,6 +3,7 @@
     packages = with pkgs; [
       ocaml
       opam
+      ocamlPackages.utop
     ];
   };
 
