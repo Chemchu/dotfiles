@@ -12,6 +12,7 @@
   programs.nixvim = {
     plugins = {
       none-ls.sources.formatting.ocamlformat.enable = true;
+      lsp-format.enable = true;
       lsp-format.lspServersToEnable = ["ocamllsp"];
       lsp.servers = {
         ocamllsp = {
