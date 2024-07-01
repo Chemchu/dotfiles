@@ -4,6 +4,7 @@
       ocaml
       opam
       ocamlPackages.utop
+      dune_3
     ];
   };
 
