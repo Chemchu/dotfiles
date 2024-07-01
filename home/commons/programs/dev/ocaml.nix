@@ -5,12 +5,13 @@
       opam
       ocamlPackages.utop
       dune_3
+      ocamlPackages.ocamlformat
     ];
   };
 
   programs.nixvim = {
     plugins = {
-      crates-nvim.enable = true;
+      none-ls.sources.formatting.ocamlformat.enable = true;
       lsp-format.lspServersToEnable = ["ocamllsp"];
       lsp.servers = {
         ocamllsp = {
