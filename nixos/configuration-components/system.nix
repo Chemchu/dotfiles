@@ -24,7 +24,7 @@
   hardware = {
     # OpenGl
     opengl.enable = true;
-    #opengl.driSupport32Bit = true;
+    opengl.driSupport32Bit = true;
     opengl.extraPackages = with pkgs; [
       vaapiVdpau
       libvdpau-va-gl
