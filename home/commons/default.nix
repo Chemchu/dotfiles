@@ -20,4 +20,9 @@
     beekeeper-studio
   ];
 
+  home.file.".config/bks-flags.conf".text = ''
+    --ozone-platform-hint=auto
+    --enable-features=UseOzonePlatform
+  '';
+
 }

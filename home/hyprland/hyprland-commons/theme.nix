@@ -53,6 +53,7 @@ in {
       cursorTheme
       // {
         gtk.enable = true;
+        x11.enable = true;
       };
     file = {
       ".config/gtk-4.0/gtk.css".text = ''
