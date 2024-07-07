@@ -19,7 +19,6 @@
     };
 
     services.xserver.displayManager.startx.enable = true;
-    #services.xserver.desktopManager.default = "none";
 
     programs.hyprland = {
       enable = true;

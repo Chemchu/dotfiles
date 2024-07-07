@@ -20,7 +20,6 @@
     ./configuration-components/nautilus.nix
     ./configuration-components/sound.nix
     ./configuration-components/system.nix
-    ./configuration-components/tuigreet.nix
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -31,7 +30,7 @@
   };
 
   # Enable automatic login for the user.
-  #services.getty.autologinUser = "gus";
+  services.getty.autologinUser = "gus";
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
