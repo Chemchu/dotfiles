@@ -66,7 +66,7 @@
             tap-to-click = true;
           };
           "org/gnome/desktop/interface" = {
-            cursor-theme = "Qogir";
+            cursor-theme = "Bibata-Modern-Classic";
           };
         };
       }

@@ -24,9 +24,9 @@
     size = 11;
   };
   cursorTheme = {
-    name = "Qogir";
-    size = 24;
-    package = pkgs.qogir-icon-theme;
+    name = "Bibata-Modern-Classic";
+    size = 26;
+    package = pkgs.bibata-cursors;
   };
   iconTheme = {
     name = "MoreWaita";

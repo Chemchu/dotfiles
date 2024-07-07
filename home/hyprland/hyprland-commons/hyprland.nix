@@ -70,7 +70,7 @@ in {
 
       # Execute your favorite apps at launch
       exec-once = ags -b hypr
-      exec-once = hyprctl setcursor Qogir 24
+      exec-once = hyprctl setcursor Bibata-Modern-Classic 24
       exec-once = transmission-gtk
 
       # Source a file (multi-file configs)
