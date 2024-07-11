@@ -47,6 +47,7 @@
     wget
     kitty
     firefox
+    google-chrome
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
     nh # --> CLI for NixOs
