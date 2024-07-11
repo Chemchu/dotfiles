@@ -17,7 +17,6 @@
     postman
     dbeaver-bin
     thunderbird-bin
-    qFlipper
     beekeeper-studio
   ];
 
