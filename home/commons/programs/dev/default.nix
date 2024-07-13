@@ -14,6 +14,7 @@
 /*     ./vulkan.nix */
     ./typescript.nix
     ./typst.nix
+    ./zig.nix
   ];
 
   home.packages = with pkgs; [
