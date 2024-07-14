@@ -9,8 +9,7 @@
     ./direnv
     ./lf
     ./kitty
-    ./neovim # --> nixvim
-    #./nvim
+    ./neovim
     ./steam
     ./zellij
     ./zoxide
