@@ -159,7 +159,7 @@ const options = mkOptions(OPTIONS, {
                 [
                     "firefox",
                     "kitty",
-                    "steam",
+                    "en Steam",
                     "spotify",
                 ],
             ]),
