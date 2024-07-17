@@ -22,7 +22,7 @@
 
     programs.hyprland = {
       enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland.default;
+      #package = inputs.hyprland.packages.${pkgs.system}.hyprland.default;
       xwayland.enable = true;
     };
 
