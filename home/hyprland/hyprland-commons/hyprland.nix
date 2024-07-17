@@ -10,7 +10,7 @@
     sha256 = "0y0gy0y4vczb2nkd6jwsyv64jfkm88fi5dfgmra76ryyjzrgmgiy";
   };
 
-  hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  #hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
   # plugins = inputs.hyprland-plugins.packages.${pkgs.system};
 
   yt = pkgs.writeShellScript "yt" ''
@@ -43,7 +43,7 @@ in {
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = hyprland;
+    #package = hyprland;
     systemd.enable = true;
     xwayland.enable = true;
 
