@@ -5,7 +5,7 @@
         enable = true;
         servers.html = {
           enable = true;
-          filetypes = [ "html" "test" ];
+          filetypes = [ "html" ];
         };
       };
     };
