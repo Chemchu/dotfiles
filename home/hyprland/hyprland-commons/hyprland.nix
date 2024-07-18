@@ -1,13 +1,12 @@
 {
   pkgs,
-  inputs,
   ...
 }: let
   config_path = ".config/";
   wallpaper = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/dharmx/walls/main/abstract/a_skeleton_standing_on_a_pile_of_skulls.png";
+    url = "https://raw.githubusercontent.com/dharmx/walls/main/centered/a_rocket_launching_in_the_sky.png";
     # replace this with the SHA256 hash of the image file
-    sha256 = "0y0gy0y4vczb2nkd6jwsyv64jfkm88fi5dfgmra76ryyjzrgmgiy";
+    sha256 = "160p9dvx87fpc11yczh6gzaqpb0awkdahisx4hwpsbq574y533sq";
   };
 
   #hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
