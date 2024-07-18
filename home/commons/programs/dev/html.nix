@@ -1,6 +1,7 @@
   {
-    programs.nixvim = {
-      plugins.lsp = {
+    programs.nixvim.plugins= {
+      friendly-snippets.enable = true;
+      lsp = {
         enable = true;
         servers.html = {
           enable = true;
