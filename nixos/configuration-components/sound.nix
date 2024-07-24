@@ -1,6 +1,6 @@
 {
   # Enable sound with pipewire
-  sound.enable = true;
+  #sound.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
