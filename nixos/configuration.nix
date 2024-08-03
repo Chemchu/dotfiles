@@ -14,11 +14,8 @@
     ./configuration-components/environment-variables.nix
     ./configuration-components/flatpak.nix # Only installing this to avoid building electron from source
     ./configuration-components/flipperzero.nix
-    ./configuration-components/gnome.nix
-    ./configuration-components/hyprland.nix
     ./configuration-components/ld.nix
     ./configuration-components/locale.nix
-    ./configuration-components/nautilus.nix
     ./configuration-components/sound.nix
     ./configuration-components/system.nix
   ];

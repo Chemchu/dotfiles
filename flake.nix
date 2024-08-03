@@ -15,9 +15,6 @@
     #hyprland = {
     #  url = "git+https://github.com/hyprwm/Hyprland?submodules=1&ref=refs/tags/v0.41.2";
     #};
-    #hyprwayland-scanner = {
-    #  url = "github:hyprwm/hyprwayland-scanner";
-    #};
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
 
@@ -38,9 +35,6 @@
       url = "github:gokcehan/lf";
       flake = false;
     };
-    ags = {
-      url = "github:Aylur/ags";
-    };
     matugen = {
       url = "github:InioX/matugen?ref=v2.2.0";
     };
@@ -52,19 +46,13 @@
     nixpkgs,
     nix-index-database,
     rust-overlay,
-    #hyprwayland-scanner,
     nix-flatpak,
     ...
   }: {
-    packages.x86_64-linux.default =
-      nixpkgs.legacyPackages.x86_64-linux.callPackage ./home/ags {inherit inputs;};
 
     nixosConfigurations = {
       hyprland = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
-          asztal = self.packages.x86_64-linux.default;
-        };
+        specialArgs = { inherit inputs; };
         modules = [
           ./nixos/configuration.nix
           home-manager.nixosModules.default

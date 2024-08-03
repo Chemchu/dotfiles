@@ -9,9 +9,6 @@
     sha256 = "160p9dvx87fpc11yczh6gzaqpb0awkdahisx4hwpsbq574y533sq";
   };
 
-  #hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
-  # plugins = inputs.hyprland-plugins.packages.${pkgs.system};
-
   yt = pkgs.writeShellScript "yt" ''
     notify-send "Opening video" "$(wl-paste)"
     mpv "$(wl-paste)"
@@ -26,19 +23,11 @@ in {
     grim
     slurp
     wl-clipboard
+    swww
   ];
 
   # Here I import all my wallpapers
   home.file."${config_path}/background".source = wallpaper;
-
-  xdg.desktopEntries."org.gnome.Settings" = {
-    name = "Settings";
-    comment = "Gnome Control Center";
-    icon = "org.gnome.Settings";
-    exec = "env XDG_CURRENT_DESKTOP=gnome ${pkgs.gnome.gnome-control-center}/bin/gnome-control-center";
-    categories = ["X-Preferences"];
-    terminal = false;
-  };
 
   wayland.windowManager.hyprland = {
     enable = true;
