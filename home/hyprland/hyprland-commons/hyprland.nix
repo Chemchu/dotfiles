@@ -2,7 +2,7 @@
   pkgs,
   ...
 }: let
-  config_path = ".config/";
+  config_path = ".config/hypr";
   wallpaper = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/dharmx/walls/main/centered/a_black_and_white_picture_of_a_man_holding_a_devil.jpg";
     # replace this with the SHA256 hash of the image file
