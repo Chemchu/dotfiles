@@ -6,7 +6,7 @@
     "margin-left": 5,
     "spacing": 20,
     "modules-left": ["custom/launcher", "hyprland/workspaces" ],
-    "modules-right": ["tray", "custom/spotify", "wireplumber" ],
+    "modules-right": ["tray", "mpris", "wireplumber" ],
     "modules-center": ["clock"],
     "hyprland/workspaces" : {
         "format" : "{icon}",
@@ -38,19 +38,24 @@
         "on-click": "pavucontrol &",
         "format-icons": ["󰕿", "󰖀", "󰕾"]
     },
-   "custom/spotify": {
-        "format": " {}",
-        "return-type": "json",
-        "exec": "bash ~/.config/waybar/scripts/mediaplayer.sh spotify 2> /dev/null",
-        "exec-if": "pgrep spotify",
-        "interval": 5,
-        "on-click": "playerctl play-pause",
-        "on-double-click-right": "playerctl next",
-        "on-scroll-down": "playerctl previous",
-    },
     "custom/launcher": {
         "format": "",
         "tooltip" : false,
         "on-click": "rofi -show drun &",
     },
+    "mpris": {
+        "format": "{player_icon} {artist} - {title}",
+        "format-paused": "{player_icon} {status_icon} <i>{artist} - {title}</i>",
+        "player-icons": {
+            "default": "▶",
+            "mpv": "🎵",
+            "spotify": "",
+            "firefox": "",
+            "chrome": ""
+        },
+        "status-icons": {
+            "paused": "⏸"
+        },
+        // "ignored-players": ["firefox"]
+    }
 }
