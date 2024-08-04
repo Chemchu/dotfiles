@@ -4,6 +4,7 @@
 }: let
   nerdfonts = pkgs.nerdfonts.override {
     fonts = [
+      "Iosevka Nerd Font"
       "Ubuntu"
       "UbuntuMono"
       "CascadiaCode"

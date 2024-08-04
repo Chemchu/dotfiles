@@ -1,6 +1,6 @@
 * {
   /* `otf-font-awesome` is required to be installed for icons */
-  font-family: FiraCode Nerd Font, Material Design Icons, JetBrainsMono Nerd Font, Iosevka Nerd Font;
+  font-family: Iosevka Nerd Font, FiraCode Nerd Font, Material Design Icons, JetBrainsMono Nerd Font;
   font-size: 16px;
 }
 
@@ -72,17 +72,17 @@ window#waybar.hidden {
 
 #clock {
   color: #FCFFFC;
-  font-family: FiraCode Nerd Font;
+  font-family: Iosevka Nerd Font;
 }
 
 tooltip {
-  font-family: FiraCode Nerd Font;
   border-radius: 15px;
   background-color: #171717;
+  font-family: Iosevka Nerd Font;
 }
 
 tooltip label {
-  font-family: FiraCode Nerd Font;
+  font-family: Iosevka Nerd Font;
 }
 
 label:focus {
