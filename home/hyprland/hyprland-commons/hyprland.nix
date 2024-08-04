@@ -57,12 +57,12 @@ in {
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
       # Execute your favorite apps at launch
-      exec-once = ags -b hypr
       exec-once = hyprctl setcursor Bibata-Modern-Classic 24
-      exec-once = transmission-gtk
 
-      # Source a file (multi-file configs)
-      # source = ~/.config/hypr/myColors.conf
+      # Exec-once from refactor
+      exec-once = swww-daemon ; sleep 1s ; swww img ~/${config_path}/background
+      exec-once = waybar
+      exec-once = dunst
 
       # Some default env vars.
       env = HYPRCURSOR_THEME
