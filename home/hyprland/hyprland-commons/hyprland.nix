@@ -64,6 +64,9 @@ in {
       exec-once = swww-daemon ; sleep 1s ; swww img ~/${config_path}/background
       exec-once = waybar
       exec-once = dunst
+      exec-once=[workspace 1 silent] kitty
+      exec-once=[workspace 2 silent] firefox
+      exec-once=[workspace 7 silent] spotify
 
       # Some default env vars.
       env = HYPRCURSOR_THEME

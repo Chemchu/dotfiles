@@ -17,7 +17,7 @@
           "default": ""
         },
         "persistent-workspaces" : {
-          "*": 6 // 6 workspaces by default on every monitor
+          "*": 9 // 9 workspaces by default on every monitor
         },
     },
     "hyprland/window": {
