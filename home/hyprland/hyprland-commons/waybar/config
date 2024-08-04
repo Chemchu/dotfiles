@@ -6,8 +6,8 @@
     "margin-left": 5,
     "spacing": 20,
     "modules-left": ["custom/launcher", "hyprland/workspaces" ],
-    "modules-center": ["custom/spotify"],
-    "modules-right": ["tray", "wireplumber", "clock"],
+    "modules-right": ["tray", "custom/spotify", "wireplumber" ],
+    "modules-center": ["clock"],
     "hyprland/workspaces" : {
         "format" : "{icon}",
         "on-click" : "activate",
@@ -28,15 +28,15 @@
     },
     "clock": {
         "locale": "es_ES.utf8",
-        "format": "󰥔  {:L%d/%m %A %H:%M:%S}",
+        "format": "{:L%d/%m %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "interval": 1
     },
     "wireplumber": {
-        "format": "{icon}  {volume}%",
-        "format-muted": "󰖁",
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟 0%",
         "on-click": "pavucontrol &",
-        "format-icons": ["", "", ""]
+        "format-icons": ["󰕿", "󰖀", "󰕾"]
     },
    "custom/spotify": {
         "format": " {}",

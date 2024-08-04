@@ -5,7 +5,7 @@
 }
 
 window#waybar {
-  background-color: #1f232b;
+  background-color: #171717;
   color: #ffffff;
   transition-property: background-color;
   transition-duration: 0.5s;
@@ -30,19 +30,18 @@ window#waybar.hidden {
 #custom-spotify,
 
 #workspaces button {
-  color: #7a95c9;
+  color: #FCFFFC;
   padding: 0px 0px;
-
-  /* animation: gradient_f 20s ease-in infinite; */
-  /* transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.682); */
+  animation: gradient_f 20s ease-in infinite;
+  transition: color 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 
 #workspaces button.active {
-  color: #ecd3a0;
+  color: #71A9F7;
   padding: 0px 0px;
   margin-right: 10px;
-  /* animation: gradient_f 20s ease-in infinite; */
-  /* transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682); */
+  animation: gradient_f 20s ease-in infinite;
+  transition: color 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -56,29 +55,30 @@ window#waybar.hidden {
 }
 
 #custom-launcher {
-  color: #7a95c9;
+  color: #71A9F7;
   margin-left: 16px; /* El espacio entre el logo de Nix y la barra por la izquierda */
+  font-size: 18px;
 }
 
 #wireplumber {
-  color: #81A1C1;
+  color: #FCFFFC;
+  margin-right: 16px; /* El espacio entre la hora y la barra por la derecha */
 }
 
 #wireplumber.muted {
-  color: #fb958b;
+  color: #E78F8E;
+  margin-right: 16px; /* El espacio entre la hora y la barra por la derecha */
 }
 
 #clock {
-  color: #8a909e;
+  color: #FCFFFC;
   font-family: FiraCode Nerd Font;
-  font-weight: bold;
-  margin-right: 16px; /* El espacio entre la hora y la barra por la derecha */
 }
 
 tooltip {
   font-family: FiraCode Nerd Font;
   border-radius: 15px;
-  background-color: #1f232b;
+  background-color: #171717;
 }
 
 tooltip label {
@@ -86,7 +86,7 @@ tooltip label {
 }
 
 label:focus {
-  background-color: #1f232b;
+  background-color: #171717;
 }
 
 #tray {
@@ -110,6 +110,6 @@ label:focus {
   color: #2d3436;
 }
 
-#custom-spotify {
+#custom-spotify.logo {
   color: #1DB954;
 }
