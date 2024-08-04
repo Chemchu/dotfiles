@@ -176,8 +176,7 @@ in {
       bind = $mainMod, C, killactive,
       bind = $mainMod, M, exit,
       bind = $mainMod, V, togglefloating,
-      bind = CTRL SHIFT, R, exec, ags -b hypr quit; ags -b hypr
-      bind = $mainMod, S, exec, ags -b hypr -t launcher
+      bind = $mainMod, S, exec, rofi -show drun
 
       bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
