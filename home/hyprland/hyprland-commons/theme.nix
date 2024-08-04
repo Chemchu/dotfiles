@@ -15,7 +15,7 @@
   };
 
   font = {
-    name = "Ubuntu Nerd Font";
+    name = "Iosevka Nerd Font";
     package = nerdfonts;
     size = 11;
   };
