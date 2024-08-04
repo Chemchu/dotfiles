@@ -19,6 +19,7 @@
   pactl = "${pkgs.pulseaudio}/bin/pactl";
 in {
   home.packages = with pkgs; [
+    pavucontrol
     libnotify
     grim
     slurp
