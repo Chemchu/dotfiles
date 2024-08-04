@@ -5,10 +5,11 @@
 }
 
 window#waybar {
-  background-color: rgba(26, 27, 38, 0.5);
+  background-color: #1f232b;
   color: #ffffff;
   transition-property: background-color;
   transition-duration: 0.5s;
+  border-radius: 20px;
 }
 
 window#waybar.hidden {
@@ -20,97 +21,28 @@ window#waybar.hidden {
 }
 
 #clock,
-#cpu,
-#memory,
-#custom-media,
 #tray,
 #mode,
-#custom-lock,
 #workspaces,
 #idle_inhibitor,
 #wireplumber,
-#custom-pipewire,
-#custom-power-menu,
 #custom-launcher,
 #custom-spotify,
-#custom-weather,
-#custom-weather.severe,
-#custom-weather.sunnyDay,
-#custom-weather.clearNight,
-#custom-weather.cloudyFoggyDay,
-#custom-weather.cloudyFoggyNight,
-#custom-weather.rainyDay,
-#custom-weather.rainyNight,
-#custom-weather.showyIcyDay,
-#custom-weather.snowyIcyNight,
-#custom-weather.default {
-  color: #e5e5e5;
-  padding: 2px 10px;
-  background-color: #252733;
-  border-radius: 8px;
-  font-size: 16px;
-
-  margin-left: 4px;
-  margin-right: 4px;
-
-  margin-top: 7px;
-  margin-bottom: 7px;
-}
-
-#user {
-  color: #d8dcff;
-  font-size: 14px;
-
-  background-color: #252733;
-  border-radius: 8px;
-  padding: 0 13px 0 13px;
-  margin-right: 7px;
-  margin-left: 7px;
-  margin-top: 7px;
-  margin-bottom: 7px;
-}
-
-#cpu {
-  color: #fb958b;
-}
-
-#memory {
-  color: #a1c999;
-}
-
-#disk {
-  color: #ecd3a0;
-
-  background-color: #252733;
-  border-radius: 8px;
-  padding: 0 8px 0 13px;
-  margin-right: 4px;
-  margin-left: 4px;
-  margin-top: 7px;
-  margin-bottom: 7px;
-}
 
 #workspaces button {
-  font-size: 18px;
   color: #7a95c9;
-  box-shadow: inset 0 -3px transparent;
+  padding: 0px 0px;
 
-  padding-right: 3px;
-  padding-left: 4px;
-
-  margin-left: 0.1em;
-  margin-right: 0em;
-  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68);
+  /* animation: gradient_f 20s ease-in infinite; */
+  /* transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.682); */
 }
 
 #workspaces button.active {
-  font-size: 18px;
   color: #ecd3a0;
-  padding-left: 1px;
-  padding-right: 12px;
-  margin-left: 0em;
-  margin-right: 0em;
-  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68);
+  padding: 0px 0px;
+  margin-right: 10px;
+  /* animation: gradient_f 20s ease-in infinite; */
+  /* transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682); */
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -124,147 +56,33 @@ window#waybar.hidden {
 }
 
 #custom-launcher {
-  margin-left: 12px;
-  padding-right: 18px;
-
-  font-size: 18px;
-
   color: #7a95c9;
-
-  margin-top: 7px;
-  margin-bottom: 7px;
-}
-
-#backlight,
-#battery,
-#network {
-  background-color: #252733;
-
-  font-size: 20px;
-
-  padding: 0px 18px 0px 15px;
-
-  margin-top: 7px;
-  margin-bottom: 7px;
-
-  border-radius: 8px;
-
+  margin-left: 16px; /* El espacio entre el logo de Nix y la barra por la izquierda */
 }
 
 #wireplumber {
   color: #81A1C1;
-
-  font-size: 16px;
-
-  border-radius: 8px;
-  padding: 0 13px 0 13px;
-  margin-right: 1px;
-  margin-left: 8px;
-  margin-top: 7px;
-  margin-bottom: 7px;
 }
 
 #wireplumber.muted {
   color: #fb958b;
-  font-size: 16px;
-}
-
-#backlight {
-  color: #8a909e;
-  padding-right: 5px;
-  padding-left: 8px;
-  font-size: 21.2px;
-}
-
-#network {
-  color: #5E81AC;
-}
-
-#network.disconnected {
-  color: #fb958b;
-}
-
-#battery {
-  color: #8fbcbb;
-  border-radius: 0px 8px 8px 0px;
-  padding-right: 2px;
-  font-size: 22px;
-}
-
-#battery.critical,
-#battery.warning,
-#battery.full,
-#battery.plugged {
-  color: #8fbcbb;
-  padding-left: 6px;
-  padding-right: 12px;
-  font-size: 22px;
-}
-
-#battery.charging {
-  font-size: 18px;
-  padding-right: 13px;
-  padding-left: 4px;
-}
-
-#battery.full,
-#battery.plugged {
-  font-size: 22.5px;
-  padding-right: 10px;
-}
-
-@keyframes blink {
-  to {
-    background-color: rgba(30, 34, 42, 0.5);
-    color: #abb2bf;
-  }
-}
-
-#battery.warning {
-  color: #ecd3a0;
-}
-
-#battery.critical:not(.charging) {
-  color: #fb958b;
-}
-
-#custom-lock {
-  color: #ecd3a0;
-  padding: 0 15px 0 15px;
-  margin-left: 7px;
-  margin-top: 7px;
-  margin-bottom: 7px;
 }
 
 #clock {
   color: #8a909e;
   font-family: FiraCode Nerd Font;
   font-weight: bold;
-  font-size: 16;
-  margin-top: 7px;
-  margin-bottom: 7px;
-  padding-left: 18px;
-}
-
-#custom-power-menu {
-  color: #e78284;
-  margin-right: 12px;
-  border-radius: 8px;
-  padding: 0 10px 0 6.8px;
-  margin-top: 7px;
-  margin-bottom: 7px;
+  margin-right: 16px; /* El espacio entre la hora y la barra por la derecha */
 }
 
 tooltip {
   font-family: FiraCode Nerd Font;
   border-radius: 15px;
-  padding: 20px;
   background-color: #1f232b;
 }
 
 tooltip label {
   font-family: FiraCode Nerd Font;
-  padding: 5px;
 }
 
 label:focus {
@@ -272,10 +90,6 @@ label:focus {
 }
 
 #tray {
-  margin-right: 8px;
-  margin-top: 7px;
-  margin-bottom: 7px;
-  font-size: 30px;
 }
 
 #tray > .passive {
@@ -297,42 +111,5 @@ label:focus {
 }
 
 #custom-spotify {
-  color: #abb2bf;
-}
-
-#custom-weather {
-  font-family: FiraCode Nerd Font;
-  font-size: 19px;
-  color: #8a909e;
-}
-
-#custom-weather.severe {
-  color: #eb937d;
-}
-
-#custom-weather.sunnyDay {
-  color: #c2ca76;
-}
-
-#custom-weather.clearNight {
-  color: #cad3f5;
-}
-
-#custom-weather.cloudyFoggyDay,
-#custom-weather.cloudyFoggyNight {
-  color: #c2ddda;
-}
-
-#custom-weather.rainyDay,
-#custom-weather.rainyNight {
-  color: #5aaca5;
-}
-
-#custom-weather.showyIcyDay,
-#custom-weather.snowyIcyNight {
-  color: #d6e7e5;
-}
-
-#custom-weather.default {
-  color: #dbd9d8;
+  color: #1DB954;
 }
