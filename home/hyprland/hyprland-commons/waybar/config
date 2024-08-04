@@ -4,9 +4,9 @@
     "margin-top": 5,
     "margin-right": 5,
     "margin-left": 5,
-    "spacing": 20,
+    "spacing": 15,
     "modules-left": ["custom/launcher", "hyprland/workspaces" ],
-    "modules-right": ["tray", "mpris", "wireplumber" ],
+    "modules-right": ["tray", "wireplumber", "mpris"],
     "modules-center": ["clock"],
     "hyprland/workspaces" : {
         "format" : "{icon}",
@@ -14,10 +14,10 @@
         "format-icons" : {
           "urgent": "",
           "active": "",
-          "default": " "
+          "default": ""
         },
         "persistent-workspaces" : {
-          "*": 9 // 9 workspaces by default on every monitor
+          "*": 6 // 6 workspaces by default on every monitor
         },
     },
     "hyprland/window": {
@@ -27,8 +27,8 @@
         "spacing": 10
     },
     "clock": {
-        "locale": "es_ES.utf8",
-        "format": "{:L%d/%m %H:%M}",
+        "locale": "es_ES.UTF8",
+        "format": "{:L%A %d de %B - %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "interval": 1
     },
@@ -44,18 +44,21 @@
         "on-click": "rofi -show drun &",
     },
     "mpris": {
-        "format": "{player_icon} {artist} - {title}",
-        "format-paused": "{player_icon} {status_icon} <i>{artist} - {title}</i>",
+        "artist-len": 20,
+        "title-len": 25,
+        "format": "{player_icon}  {title} - {artist}",
+        "format-paused": "{player_icon}  {status_icon} <i>{title} - {artist}</i>",
         "player-icons": {
-            "default": "▶",
+            "default": "<span foreground='#279AF1'>▶</span>",
             "mpv": "🎵",
-            "spotify": "",
-            "firefox": "",
-            "chrome": ""
+            "spotify": "<span foreground='#1DB954'></span>",
+            "firefox": "<span foreground='#E66000'></span>",
+            "chrome": "<span foreground='#3369E8'></span>"
         },
         "status-icons": {
-            "paused": "⏸"
+            "paused": "<span foreground='#279AF1'>⏸</span>"
         },
+        "tooltip": false,
         // "ignored-players": ["firefox"]
     }
 }
