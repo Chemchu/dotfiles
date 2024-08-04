@@ -8,41 +8,22 @@
   ];
 
     home.file.".config/rofi/colors.rasi".text = ''
-      /**
-       *
-       * Author : Levi Lacoss (fishyfishfish55)
-       * Github : @fishyfishfish55
-       *
-       * Colors
-       **/
-
       * {
-          background:     #20212CFF;
-          background-alt: #282B3CFF;
+          background:     #171717FF;
+          background-alt: #262626FF;
           foreground:     #C0CAF5;
-          selected:       #7A95C9;
-          active:         #414868;
-          urgent:         #ECD3A0;
+          selected:       #279AF1;
+          active:         #FCFFFC;
+          urgent:         #E78F8E;
       }
     '';
 
     home.file.".config/rofi/config.rasi".text = ''
-      /**
-       *
-       * Author : Aditya Shakya (adi1090x)
-       * Github : @adi1090x
-       *
-       * Rofi Theme File
-       * Rofi Version: 1.7.3
-       **/
-
       /*****----- Configuration -----*****/
       configuration {
-      	modi:                       "drun,run,filebrowser,window";
-          show-icons:                 false;
+      	modi:                       "drun,window";
+          show-icons:                 true;
           display-drun:               " ";
-          display-run:                " ";
-          display-filebrowser:        " ";
           display-window:             " ";
       	drun-display-format:        "{name}";
       	window-format:              "{w} · {c} · {t}";
@@ -92,9 +73,9 @@
           /* properties for all widgets */
           enabled:                     true;
           margin:                      0px;
-          padding:                     0px;
+          padding:                     10px;
           border:                      0px solid;
-          border-radius:               10px;
+          border-radius:               20px;
           border-color:                #89B4FA;
           cursor:                      "default";
           /* Backgroud Colors */
@@ -114,9 +95,9 @@
           enabled:                     true;
           spacing:                     10px;
           margin:                      0px;
-          padding:                     30px;
+          padding:                     10px;
           border:                      0px solid;
-          border-radius:               15px;
+          border-radius:               20px;
           border-color:                #6f91c9;
           background-color:            transparent;
           transparency :               "real";
@@ -156,7 +137,7 @@
           background-color:            inherit;
           text-color:                  inherit;
           cursor:                      text;
-          placeholder:                 "Search...";
+          placeholder:                 "Buscar...";
           placeholder-color:           inherit;
       }
       num-filtered-rows {
@@ -332,7 +313,7 @@
       error-message {
           padding:                     10px;
           border:                      2px solid;
-          border-radius:               10px;
+          border-radius:               20px;
           border-color:                @border-colour;
           background-color:            @background-colour;
           text-color:                  @foreground-colour;
@@ -340,17 +321,8 @@
     '';
 
     home.file.".config/rofi/fonts.rasi".text = ''
-      /**
-       *
-       * Author : Aditya Shakya (adi1090x)
-       * Github : @adi1090x
-       *
-       * Fonts
-       *
-       **/
-
       * {
-         font: "JetBrains Mono Nerd Font 11.6";
+         font: "Iosevka Nerd Font 14";
       }
     '';
 }

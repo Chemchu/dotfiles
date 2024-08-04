@@ -4,9 +4,9 @@
 }: let
   config_path = ".config/";
   wallpaper = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/dharmx/walls/main/centered/a_rocket_launching_in_the_sky.png";
+    url = "https://raw.githubusercontent.com/dharmx/walls/main/centered/a_black_and_white_picture_of_a_man_holding_a_devil.jpg";
     # replace this with the SHA256 hash of the image file
-    sha256 = "160p9dvx87fpc11yczh6gzaqpb0awkdahisx4hwpsbq574y533sq";
+    sha256 = "069yag2rw86shmaj1rg221alk8z4zyjrppz9ybr5981qzw2pvapv";
   };
 
   yt = pkgs.writeShellScript "yt" ''
