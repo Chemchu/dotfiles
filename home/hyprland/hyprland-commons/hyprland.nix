@@ -66,7 +66,7 @@ in {
       exec-once = dunst
       exec-once=[workspace 1 silent] kitty
       exec-once=[workspace 2 silent] firefox
-      exec-once=[workspace 7 silent] spotify
+      exec-once=[workspace 10 silent] spotify
 
       # Some default env vars.
       env = HYPRCURSOR_THEME

@@ -4,6 +4,6 @@
     ./theme.nix
     ./rofi.nix
     ./waybar
-    ./dunst.nix
+    ./dunst
   ];
 }
