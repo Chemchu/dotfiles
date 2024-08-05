@@ -15,7 +15,6 @@
     spotify
     jq
     postman
-    dbeaver-bin
     thunderbird-bin
     beekeeper-studio
   ];
