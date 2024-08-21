@@ -7,7 +7,7 @@
     ./node.nix
     ./nix
     ./ocaml.nix
-    ./python.nix
+/*     ./python.nix */
     ./rust.nix
     ./shell.nix
     ./html.nix
@@ -15,7 +15,7 @@
 /*     ./vulkan.nix */
     ./tailwindcss.nix
     ./typescript.nix
-    ./typst.nix
+/*     ./typst.nix */
     ./zig.nix
   ];
 
