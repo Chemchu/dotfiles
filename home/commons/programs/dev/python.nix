@@ -54,7 +54,7 @@
         lsp.servers = {
           ruff-lsp.enable = true;
           pylsp = {
-            enable = true;
+            enable = false; # --> Cambiar cuando se use python
             settings = {
               plugins = {
                 jedi_completion.fuzzy = true;

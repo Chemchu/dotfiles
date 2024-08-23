@@ -14,6 +14,7 @@
     FLAKE = "/home/gus/dotfiles";
 
     PKG_CONFIG_PATH = "${pkgs.alsa-lib.dev}/lib/pkgconfig:${pkgs.openssl.dev}/lib/pkgconfig:${pkgs.systemd.dev}/lib/pkgconfig";
+    GTK_IM_MODULE= "ibus";
   };
 
   # Adding zsh also in configuration.nix to source it

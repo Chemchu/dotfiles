@@ -22,11 +22,9 @@
   services.xserver.videoDrivers = ["nvidia"];
 
   hardware = {
-    # OpenGl
-    opengl.enable = true;
-    opengl.driSupport = true;
-    opengl.driSupport32Bit = true;
-    opengl.extraPackages = with pkgs; [
+    graphics.enable = true;
+    graphics.enable32Bit = true;
+    graphics.extraPackages = with pkgs; [
       vaapiVdpau
       libvdpau-va-gl
     ];

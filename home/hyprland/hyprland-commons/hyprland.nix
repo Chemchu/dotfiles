@@ -1,17 +1,13 @@
 {
   pkgs,
-  inputs,
   ...
 }: let
-  config_path = ".config/";
+  config_path = ".config/hypr";
   wallpaper = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/dharmx/walls/main/abstract/a_skeleton_standing_on_a_pile_of_skulls.png";
+    url = "https://raw.githubusercontent.com/dharmx/walls/main/centered/a_black_and_white_picture_of_a_man_holding_a_devil.jpg";
     # replace this with the SHA256 hash of the image file
-    sha256 = "0y0gy0y4vczb2nkd6jwsyv64jfkm88fi5dfgmra76ryyjzrgmgiy";
+    sha256 = "069yag2rw86shmaj1rg221alk8z4zyjrppz9ybr5981qzw2pvapv";
   };
-
-  hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
-  # plugins = inputs.hyprland-plugins.packages.${pkgs.system};
 
   yt = pkgs.writeShellScript "yt" ''
     notify-send "Opening video" "$(wl-paste)"
@@ -23,27 +19,20 @@
   pactl = "${pkgs.pulseaudio}/bin/pactl";
 in {
   home.packages = with pkgs; [
+    pavucontrol
     libnotify
     grim
     slurp
     wl-clipboard
+    swww
   ];
 
   # Here I import all my wallpapers
   home.file."${config_path}/background".source = wallpaper;
 
-  xdg.desktopEntries."org.gnome.Settings" = {
-    name = "Settings";
-    comment = "Gnome Control Center";
-    icon = "org.gnome.Settings";
-    exec = "env XDG_CURRENT_DESKTOP=gnome ${pkgs.gnome.gnome-control-center}/bin/gnome-control-center";
-    categories = ["X-Preferences"];
-    terminal = false;
-  };
-
   wayland.windowManager.hyprland = {
     enable = true;
-    package = hyprland;
+    #package = hyprland;
     systemd.enable = true;
     xwayland.enable = true;
 
@@ -69,12 +58,15 @@ in {
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
       # Execute your favorite apps at launch
-      exec-once = ags -b hypr
-      exec-once = hyprctl setcursor Qogir 24
-      exec-once = transmission-gtk
+      exec-once = hyprctl setcursor Bibata-Modern-Classic 24
 
-      # Source a file (multi-file configs)
-      # source = ~/.config/hypr/myColors.conf
+      # Exec-once from refactor
+      exec-once = swww-daemon ; sleep 1s ; swww img ~/${config_path}/background
+      exec-once = waybar
+      exec-once = dunst
+      exec-once=[workspace 1 silent] kitty
+      exec-once=[workspace 2 silent] firefox
+      exec-once=[workspace 10 silent] spotify
 
       # Some default env vars.
       env = HYPRCURSOR_THEME
@@ -102,8 +94,8 @@ in {
       gaps_in = 3
       gaps_out = 5
       border_size = 2
-      col.active_border = rgba(ffffffff)
-      col.inactive_border = rgba(595959aa)
+      col.active_border = rgba(279AF1ee)
+      col.inactive_border = rgba(171717ee)
 
       layout = dwindle
 
@@ -114,7 +106,7 @@ in {
       decoration {
         # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-        rounding = 10
+        rounding = 20
 
         blur {
             enabled = true
@@ -154,11 +146,6 @@ in {
         preserve_split = yes # you probably want this
       }
 
-      master {
-        # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-        new_is_master = true
-      }
-
       gestures {
         # See https://wiki.hyprland.org/Configuring/Variables/ for more
         workspace_swipe = off
@@ -193,8 +180,7 @@ in {
       bind = $mainMod, C, killactive,
       bind = $mainMod, M, exit,
       bind = $mainMod, V, togglefloating,
-      bind = CTRL SHIFT, R, exec, ags -b hypr quit; ags -b hypr
-      bind = $mainMod, S, exec, ags -b hypr -t launcher
+      bind = $mainMod, S, exec, rofi -show drun
 
       bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle

@@ -1,0 +1,127 @@
+* {
+  /* `otf-font-awesome` is required to be installed for icons */
+  font-family: Iosevka Nerd Font, FiraCode Nerd Font, Material Design Icons, JetBrainsMono Nerd Font;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+window#waybar {
+  background-color: #171717;
+  color: #ffffff;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  border-radius: 20px;
+}
+
+window#waybar.hidden {
+  opacity: 0.1;
+}
+
+#window {
+  color: #64727d;
+}
+
+#clock,
+#tray,
+#mode,
+#workspaces,
+#idle_inhibitor,
+#wireplumber,
+#custom-launcher,
+#custom-spotify,
+
+#workspaces button {
+  color: #FCFFFC;
+  padding: 0px;
+  padding-right: 2px;
+  padding-left: 2px;
+  animation: gradient_f 20s ease-in infinite;
+  transition: color 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+}
+
+#workspaces button.active {
+  color: #279AF1;
+  padding: 0px;
+  padding-right: 2px;
+  padding-left: 2px;
+  animation: gradient_f 20s ease-in infinite;
+  transition: color 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+}
+
+#workspaces button.urgent {
+  color: #E78F8E;
+  padding: 0px;
+  padding-right: 2px;
+  padding-left: 2px;
+  animation: gradient_f 20s ease-in infinite;
+  transition: color 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+  margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+  margin-right: 0;
+}
+
+#custom-launcher {
+  color: #279AF1;
+  margin-left: 15px; /* El espacio entre el logo de Nix y la barra por la izquierda */
+  font-size: 18px;
+}
+
+#wireplumber {
+  color: #FCFFFC;
+}
+
+#wireplumber.muted {
+  color: #E78F8E;
+}
+
+#clock {
+  color: #FCFFFC;
+  font-family: Iosevka Nerd Font;
+}
+
+tooltip {
+  border-radius: 15px;
+  background-color: #171717;
+  font-family: Iosevka Nerd Font;
+}
+
+tooltip label {
+  font-family: Iosevka Nerd Font;
+}
+
+label:focus {
+  background-color: #171717;
+}
+
+#tray {
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: #eb4d4b;
+}
+
+#idle_inhibitor {
+  background-color: #242933;
+}
+
+#idle_inhibitor.activated {
+  background-color: #ecf0f1;
+  color: #2d3436;
+}
+
+#mpris {
+  color: #FCFFFC;
+  margin-right: 20px; /* El espacio entre la hora y la barra por la derecha */
+}

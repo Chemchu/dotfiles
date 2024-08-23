@@ -13,14 +13,11 @@
     ./configuration-components/disks.nix
     ./configuration-components/environment-variables.nix
     ./configuration-components/flatpak.nix # Only installing this to avoid building electron from source
-    ./configuration-components/gnome.nix
-    ./configuration-components/hyprland.nix
+    ./configuration-components/flipperzero.nix
     ./configuration-components/ld.nix
     ./configuration-components/locale.nix
-    ./configuration-components/nautilus.nix
     ./configuration-components/sound.nix
     ./configuration-components/system.nix
-    ./configuration-components/tuigreet.nix
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -31,7 +28,7 @@
   };
 
   # Enable automatic login for the user.
-  #services.getty.autologinUser = "gus";
+  services.getty.autologinUser = "gus";
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -55,6 +52,9 @@
     qt6.qtwayland
     glxinfo
   ];
+
+  # Enable locate file finder
+  services.locate.enable = true;
 
   # Enable Hyprland
   programs.hyprland.enable = true;
