@@ -53,6 +53,9 @@
     glxinfo
   ];
 
+  # Enable locate file finder
+  services.locate.enable = true;
+
   # Enable Hyprland
   programs.hyprland.enable = true;
   #programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland; # --> Use flake
