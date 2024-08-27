@@ -4,9 +4,9 @@
 }: let
   config_path = ".config/hypr";
   wallpaper = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/dharmx/walls/main/centered/a_black_and_white_picture_of_a_man_holding_a_devil.jpg";
+    url = "https://raw.githubusercontent.com/dharmx/walls/main/digital/a_person_sitting_on_a_horse_next_to_a_lamp_post.png";
     # replace this with the SHA256 hash of the image file
-    sha256 = "069yag2rw86shmaj1rg221alk8z4zyjrppz9ybr5981qzw2pvapv";
+    sha256 = "0ls9mfxcpr8224la5w2x3z7w7cv3gp10a0n3ly9r1waplb8rv8j5";
   };
 
   yt = pkgs.writeShellScript "yt" ''
