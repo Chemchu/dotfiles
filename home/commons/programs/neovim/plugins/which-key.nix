@@ -2,54 +2,118 @@
   programs.nixvim = {
     plugins.which-key= {
       enable = true;
-      registrations = {
-        #Save
-        "<leader>s" = "Save";
-
-        # Telescope
-        "<leader>f" = "Find";
-        "<leader>ff" = "Find files";
-        "<leader><space>" = "Find files";
-        "<leader>fg" = "Find (live) grep";
-        "<leader>b" = "Show buffers";
-        "<leader>fh" = "Help tags";
-        "<leader>fd" = "Show diagnostics";
-
-        ## FZF like bindings
-        "<C-p>" = "Git files";
-        "<leader>p" = "Find oldfiles";
-        "<C-f>" = "Find (live) grep";
-
-        # Comment
-        "<C-b>" = "Toggle line";
-
-        #Floaterm
-        "<leader>," = "Toggle Floaterm";
-
-        # LSP - Diagnostics
-        "<leader>k" = "Go to prev diagnostics";
-        "<leader>j" = "Go to next diagnostics";
-        # LSP
-        "gd" = "Go to definition";
-        "gD" = "Go to references";
-        "gt" = "Type definition";
-        "gi" = "Go to implementation";
-        "K" = "Hover (details)";
-        "<F2>" = "Rename";
-        "<leader>cr" = "Rename";
-        "<leader>ca" = "Code Action";
-
-        # Markdown
-        "<leader>m" = "Markdown preview";
-
-        # Neotree
-        "<leader>e" = "Toggle NeoTree";
-
-        # Neorg
-        "<C-g>" = "(Neo)rganizar?";
-
-       # Vimtex
-       "mm" = "VimTex view";
+      settings = {
+        preset = "modern";
+        spec = [
+          {
+            __unkeyed-1 = "<leader>s";
+            desc = "Save";
+          }
+          {
+            __unkeyed-1 = "<leader>f";
+            desc = "Find";
+          }
+          {
+            __unkeyed-1 = "<leader>ff";
+            desc = "Find files";
+          }
+          {
+            __unkeyed-1 = "<leader><space>";
+            desc = "Find files";
+          }
+          {
+            __unkeyed-1 = "<leader>fg";
+            desc = "Find (live) grep";
+          }
+          {
+            __unkeyed-1 = "<leader>b";
+            desc = "Show buffers";
+          }
+          {
+            __unkeyed-1 = "<leader>fh";
+            desc = "Help tags";
+          }
+          {
+            __unkeyed-1 = "<leader>fd";
+            desc = "Show diagnostics";
+          }
+          {
+            __unkeyed-1 = "<C-p>";
+            desc = "Git files";
+          }
+          {
+            __unkeyed-1 = "<leader>p";
+            desc = "Find oldfiles";
+          }
+          {
+            __unkeyed-1 = "<C-f>";
+            desc = "Find (live) grep";
+          }
+          {
+            __unkeyed-1 = "<C-b>";
+            desc = "Toggle line";
+          }
+          {
+            __unkeyed-1 = "<leader>,";
+            desc = "Toggle Floaterm";
+          }
+          {
+            __unkeyed-1 = "<leader>k";
+            desc = "Go to prev diagnostics";
+          }
+          {
+            __unkeyed-1 = "<leader>j";
+            desc = "Go to next diagnostics";
+          }
+          {
+            __unkeyed-1 = "gd";
+            desc = "Go to definition";
+          }
+          {
+            __unkeyed-1 = "gD";
+            desc = "Go to references";
+          }
+          {
+            __unkeyed-1 = "gt";
+            desc = "Type definition";
+          }
+          {
+            __unkeyed-1 = "gi";
+            desc = "Go to implementation";
+          }
+          {
+            __unkeyed-1 = "K";
+            desc = "Hover (details)";
+          }
+          {
+            __unkeyed-1 = "<F2>";
+            desc = "Rename";
+          }
+          {
+            __unkeyed-1 = "<leader>cr";
+            desc = "Rename";
+          }
+          {
+            __unkeyed-1 = "<leader>ca";
+            desc = "Code Action";
+          }
+          {
+            __unkeyed-1 = "<leader>m";
+            desc = "Markdown preview";
+          }
+          {
+            __unkeyed-1 = "<leader>e";
+            desc = "Toggle NeoTree";
+          }
+          {
+            __unkeyed-1 = "<C-g>";
+            desc = "(Neo)rganizar?";
+          }
+          {
+            __unkeyed-1 = "mm";
+            desc = "VimTex view";
+          }
+        ];
       };
     };
   };

@@ -20,9 +20,7 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
 
     nixvim = {
-      url = "github:nix-community/nixvim?ref=1a46075";
-      #url = "github:nix-community/nixvim/nixos-24.05"; # --> Only for stable channel
-      #url = "github:nix-community/nixvim"; # --> Stable channel
+      url = "github:nix-community/nixvim"; # --> Stable channel
       inputs.nixpkgs.follows = "nixpkgs";
     };
     rust-overlay = {
@@ -52,10 +50,32 @@
   }: {
 
     nixosConfigurations = {
-      hyprland = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
+      spaceship = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+            inherit inputs;
+            systemName = "spaceship";
+        };
         modules = [
-          ./nixos/configuration.nix
+          ./nixos/spaceship-configuration.nix
+          home-manager.nixosModules.default
+          nix-flatpak.nixosModules.nix-flatpak
+          ({pkgs, ...}: {
+            nixpkgs.overlays = [
+              rust-overlay.overlays.default
+            ];
+            environment.systemPackages = with pkgs; [
+              rust-bin.stable.latest.default
+            ];
+          })
+        ];
+      };
+      framework = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+            inherit inputs;
+            systemName = "framework";
+        };
+        modules = [
+          ./nixos/framework-configuration.nix
           home-manager.nixosModules.default
           nix-flatpak.nixosModules.nix-flatpak
           ({pkgs, ...}: {

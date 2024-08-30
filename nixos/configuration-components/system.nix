@@ -4,6 +4,9 @@
   ...
 }
 :
+let
+  systemName = config.systemName;
+in
 {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -19,7 +22,12 @@
   networking.networkmanager.enable = true;
 
   # Nvidia stuff
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = if systemName == "spaceship" then
+    ["nvidia"]
+  else if systemName == "framework" then
+    ["amdgpu"]
+  else
+    [];
 
   hardware = {
     graphics.enable = true;
@@ -29,7 +37,7 @@
       libvdpau-va-gl
     ];
 
-    nvidia = {
+    nvidia = if systemName == "spaceship" then {
       # Most wayland compositors need this
       modesetting.enable = true;
 
@@ -40,7 +48,7 @@
 
       open = false;
 
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
-    };
+      package = config.boot.kernelPackages.nvidiaPackages.production;
+    } else null;
   };
 }

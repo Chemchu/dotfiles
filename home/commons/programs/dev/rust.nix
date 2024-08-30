@@ -11,6 +11,7 @@
       gcc
       #surrealist # Database manager
       #surrealdb # Database engine
+      cargo-tauri
     ];
 
     sessionVariables = {
