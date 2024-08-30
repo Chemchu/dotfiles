@@ -4,7 +4,7 @@
   ...
 } :
 let
-  battery = if systemName == "framework" then "battery" else "";
+  battery = if systemName == "spaceship" then "" else "battery";
 in
 {
   home.packages = with pkgs; [
