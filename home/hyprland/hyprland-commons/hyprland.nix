@@ -2,7 +2,8 @@
   pkgs,
   systemName,
   ...
-}: let
+} :
+let
   config_path = ".config/hypr";
   wallpaper = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/dharmx/walls/main/digital/a_person_sitting_on_a_horse_next_to_a_lamp_post.png";
@@ -18,7 +19,7 @@
   playerctl = "${pkgs.playerctl}/bin/playerctl";
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
   pactl = "${pkgs.pulseaudio}/bin/pactl";
-  scale = if systemName == "spaceship" then 1 else 1.5;
+  scale = if systemName == "spaceship" then "1" else "1.5";
 in {
   home.packages = with pkgs; [
     pavucontrol

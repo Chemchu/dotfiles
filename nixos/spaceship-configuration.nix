@@ -4,8 +4,10 @@
 {
   pkgs,
   inputs,
+  systemName,
   ...
-}: {
+} :
+{
   imports = [
     # Include the results of the hardware scan.
     inputs.home-manager.nixosModules.default
@@ -65,7 +67,10 @@
 
   # Home-Manager config
   home-manager = {
-    extraSpecialArgs = {inherit inputs;};
+    extraSpecialArgs = {
+      inherit inputs;
+      inherit systemName;
+    };
     users = {
       "gus" = import ../home/hyprland/home.nix;
     };
