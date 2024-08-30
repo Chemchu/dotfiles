@@ -50,10 +50,26 @@
   }: {
 
     nixosConfigurations = {
-      hyprland = nixpkgs.lib.nixosSystem {
+      spaceship = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./nixos/configuration.nix
+          ./nixos/spaceship-configuration.nix
+          home-manager.nixosModules.default
+          nix-flatpak.nixosModules.nix-flatpak
+          ({pkgs, ...}: {
+            nixpkgs.overlays = [
+              rust-overlay.overlays.default
+            ];
+            environment.systemPackages = with pkgs; [
+              rust-bin.stable.latest.default
+            ];
+          })
+        ];
+      };
+      framework = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./nixos/framework-configuration.nix
           home-manager.nixosModules.default
           nix-flatpak.nixosModules.nix-flatpak
           ({pkgs, ...}: {
