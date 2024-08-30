@@ -4,6 +4,7 @@
 {
   pkgs,
   inputs,
+  systemName,
   ...
 }: {
   imports = [
@@ -64,7 +65,10 @@
 
   # Home-Manager config
   home-manager = {
-    extraSpecialArgs = {inherit inputs;};
+    extraSpecialArgs = {
+      inherit inputs;
+      inherit systemName;
+    };
     users = {
       "gus" = import ../home/hyprland/home.nix;
     };
