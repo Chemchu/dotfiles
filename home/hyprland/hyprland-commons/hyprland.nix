@@ -20,7 +20,8 @@ let
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
   pactl = "${pkgs.pulseaudio}/bin/pactl";
   scale = if systemName == "spaceship" then "1" else "1.5";
-in {
+in
+{
   home.packages = with pkgs; [
     pavucontrol
     libnotify
