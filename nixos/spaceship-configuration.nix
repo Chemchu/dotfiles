@@ -9,7 +9,7 @@
   imports = [
     # Include the results of the hardware scan.
     inputs.home-manager.nixosModules.default
-    ./hardware-configuration.nix
+    ./spaceship-hardware-configuration.nix
     ./configuration-components/disks.nix
     ./configuration-components/environment-variables.nix
     ./configuration-components/flatpak.nix # Only installing this to avoid building electron from source

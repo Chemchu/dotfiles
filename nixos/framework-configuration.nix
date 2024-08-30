@@ -9,7 +9,7 @@
   imports = [
     # Include the results of the hardware scan.
     inputs.home-manager.nixosModules.default
-    #./hardware-configuration.nix --> Add Framework hardware configuration
+    ./framework-hardware-configuration.nix # --> Add Framework hardware configuration
     ./configuration-components/environment-variables.nix
     ./configuration-components/flatpak.nix # Only installing this to avoid building electron from source
     ./configuration-components/flipperzero.nix
