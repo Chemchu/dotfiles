@@ -1,12 +1,10 @@
 {
   config,
   pkgs,
+  systemName,
   ...
 }
 :
-let
-  systemName = config.systemName;
-in
 {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -49,6 +47,6 @@ in
       open = false;
 
       package = config.boot.kernelPackages.nvidiaPackages.production;
-    } else null;
+    } else {};
   };
 }
