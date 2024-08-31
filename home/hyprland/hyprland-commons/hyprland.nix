@@ -247,7 +247,8 @@ in
       bind = , XF86KbdBrightnessDown, exec, ${brightnessctl} -d asus::kbd_backlight set  1-
 
       # Screenshot
-      bind = $mainMod, F5, exec, grim -g "$(slurp -d)" - | wl-copy ; notify-send "Captura copiada al portapapeles"
+      bind = $mainMod, F5, exec, grim -g "$(slurp -d)" - | wl-copy ; notify-send "Captura copiada ✓ "
+      bind = , XF86Screenshot, exec, grim -g "$(slurp -d)" - | wl-copy ; notify-send "Captura copiada ✓ "
 
       # Move/resize windows with mainMod + LMB/RMB and dragging
       bindm = $mainMod, mouse:272, movewindow
@@ -259,6 +260,10 @@ in
       xwayland {
         force_zero_scaling = ${xwayland_force_zero_scaling}
       }
+
+      # toolkit-specific scale for fixing unscaled XWayland apps
+      env = GDK_DPI_SCALE,1
+      env = XCURSOR_SIZE,26
 
     '';
   };
