@@ -19,7 +19,8 @@ let
   playerctl = "${pkgs.playerctl}/bin/playerctl";
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
   pactl = "${pkgs.pulseaudio}/bin/pactl";
-  scale = if systemName == "spaceship" then "1" else "1.566667";
+  scale = if systemName == "spaceship" then "auto" else "1.566667";
+  xwayland_force_zero_scaling = toString (systemName != "spaceship");
 in
 {
   home.packages = with pkgs; [
@@ -254,6 +255,10 @@ in
 
       # Youtube
       bind = , XF86Launch1,  exec, ${yt}
+
+      xwayland {
+        force_zero_scaling = ${xwayland_force_zero_scaling}
+      }
 
     '';
   };
