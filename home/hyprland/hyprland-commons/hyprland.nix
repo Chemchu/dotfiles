@@ -19,7 +19,7 @@ let
   playerctl = "${pkgs.playerctl}/bin/playerctl";
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
   pactl = "${pkgs.pulseaudio}/bin/pactl";
-  scale = if systemName == "spaceship" then "1" else "1.5";
+  scale = if systemName == "spaceship" then "1" else "1.566667";
 in
 {
   home.packages = with pkgs; [

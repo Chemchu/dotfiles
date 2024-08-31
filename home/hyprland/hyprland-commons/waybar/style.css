@@ -84,6 +84,7 @@ window#waybar.hidden {
 #clock {
   color: #FCFFFC;
   font-family: Iosevka Nerd Font;
+  margin-right: 20px; /* El espacio entre la hora y la barra por la derecha */
 }
 
 tooltip {
@@ -123,5 +124,4 @@ label:focus {
 
 #mpris {
   color: #FCFFFC;
-  margin-right: 20px; /* El espacio entre la hora y la barra por la derecha */
 }

@@ -4,7 +4,8 @@
   ...
 } :
 let
-  battery = if systemName == "spaceship" then "" else "battery";
+  framework_modules = if systemName == "spaceship" then "\"wireplumber\""
+    else "\"network\", \"wireplumber\", \"battery\"";
 in
 {
   home.packages = with pkgs; [
@@ -21,10 +22,10 @@ in
         "margin-top": 5,
         "margin-right": 5,
         "margin-left": 5,
-        "spacing": 15,
-        "modules-left": ["custom/launcher", "hyprland/workspaces" ],
-        "modules-right": ["tray", "wireplumber", "mpris", ${battery}],
-        "modules-center": ["clock"],
+        "spacing": 10,
+        "modules-left": ["custom/launcher", "hyprland/workspaces"],
+        "modules-right": ["tray", ${framework_modules}, "clock"],
+        "modules-center": ["mpris"],
         "hyprland/workspaces" : {
             "format" : "{icon}",
             "on-click" : "activate",
@@ -45,7 +46,7 @@ in
         },
         "clock": {
             "locale": "es_ES.UTF8",
-            "format": "{:L%A %d de %B - %H:%M}",
+            "format": "{:L%d de %B - %H:%M}",
             "tooltip-format": "<tt><small>{calendar}</small></tt>",
             "calendar": {
                 "mode"          : "year",
@@ -69,39 +70,42 @@ in
             "interval": 1
         },
         "wireplumber": {
-            "format": "{icon} {volume}%",
-            "format-muted": "󰝟 0%",
+            "format": "{icon} ",
+            "format-muted": "󰝟  ",
             "on-click": "pavucontrol &",
             "format-icons": ["󰕿", "󰖀", "󰕾"]
         },
         "custom/launcher": {
-            "format": "",
+            "format": " ",
             "tooltip" : false,
             "on-click": "rofi -show drun &",
         },
         "battery": {
-          "bat": "BAT2",
           "interval": 60,
           "states": {
               "warning": 30,
               "critical": 15
           },
-          "format": "{capacity}% {icon}",
-          "format-icons": ["", "", "", "", ""],
-          "max-length": 25
+          "max-length": 20,
+          "format": "{icon} {capacity}% ",
+          "format-warning": "{icon}",
+          "format-critical": "{icon}",
+          "format-charging": "<span font-family='Font Awesome 6 Free'></span>",
+          "format-alt": "{icon}",
+          "format-icons": [" ", " ", " ", " ", " "]
         },
-        "bluetooth": {
-          // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
-          "format": " {status}",
-          "format-disabled": "", // an empty format will hide the module
-          "format-connected": " {num_connections} connected",
-          "tooltip-format": "{controller_alias}\t{controller_address}",
-          "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-          "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+        "network": {
+            "format-wifi": " ",
+            "format-ethernet": " ",
+            "format-disconnected": " ",
+            "tooltip-format-wifi": "{essid} ({signalStrength}%)  ",
+            "tooltip-format-ethernet": "{ifname}  ",
+            "tooltip-format-disconnected": "",
+            "max-length": 50
         },
         "mpris": {
-            "artist-len": 10,
-            "title-len": 15,
+            "artist-len": 20,
+            "title-len": 30,
             "format": "{player_icon}  {title} - {artist}",
             "format-paused": "{player_icon}  {status_icon} <i>{title} - {artist}</i>",
             "player-icons": {
