@@ -83,17 +83,20 @@ in
         "battery": {
           "interval": 5,
           "states": {
-              "warning": 30,
-              "critical": 15
+              "warning": 40,
+              "critical": 20,
+              "normal": 100
           },
           "max-length": 20,
           "format": "{icon} {capacity}%",
           "format-warning": "{icon} {capacity}%",
           "format-critical": "{icon} {capacity}%",
+          "format-normal": "{icon} {capacity}%",
           "format-charging": "<span foreground='#1DB954'> {capacity}%</span>",
-          "format-alt": "{icon}",
           "format-warning-alt": "{icon}",
           "format-critical-alt": "{icon}",
+          "format-normal-alt": "{icon}",
+          "format-alt": "{icon}",
           "format-icons": [
             "<span foreground='#EB4D4B'> </span>",
             "<span foreground='#FFB400'> </span>",
@@ -114,14 +117,14 @@ in
         "mpris": {
             "artist-len": 20,
             "title-len": 30,
-            "format": "{player_icon}  {title} - {artist}",
-            "format-paused": "{player_icon}  {status_icon} <i>{title} - {artist}</i>",
+            "format": "{player_icon} {title} - {artist}",
+            "format-paused": "{player_icon} {status_icon} {title} - {artist}",
             "player-icons": {
                 "default": "<span foreground='#279AF1'>▶</span>",
                 "mpv": "🎵",
-                "spotify": "<span foreground='#1DB954'></span>",
-                "firefox": "<span foreground='#E66000'></span>",
-                "chrome": "<span foreground='#3369E8'></span>"
+                "spotify": "<span foreground='#1DB954'> </span>",
+                "firefox": "<span foreground='#E66000'> </span>",
+                "chrome": "<span foreground='#3369E8'> </span>"
             },
             "status-icons": {
                 "paused": "<span foreground='#279AF1'>⏸</span>"
