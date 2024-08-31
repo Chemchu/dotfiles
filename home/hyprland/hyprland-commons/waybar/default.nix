@@ -81,18 +81,26 @@ in
             "on-click": "rofi -show drun &",
         },
         "battery": {
-          "interval": 60,
+          "interval": 5,
           "states": {
               "warning": 30,
               "critical": 15
           },
           "max-length": 20,
-          "format": "{icon} {capacity}% ",
-          "format-warning": "{icon}",
-          "format-critical": "{icon}",
-          "format-charging": "<span font-family='Font Awesome 6 Free'></span>",
+          "format": "{icon} {capacity}%",
+          "format-warning": "{icon} {capacity}%",
+          "format-critical": "{icon} {capacity}%",
+          "format-charging": "<span foreground='#1DB954'> {capacity}%</span>",
           "format-alt": "{icon}",
-          "format-icons": [" ", " ", " ", " ", " "]
+          "format-warning-alt": "{icon}",
+          "format-critical-alt": "{icon}",
+          "format-icons": [
+            "<span foreground='#EB4D4B'> </span>",
+            "<span foreground='#FFB400'> </span>",
+            "<span foreground='#1DB954'> </span>",
+            "<span foreground='#1DB954'> </span>",
+            "<span foreground='#1DB954'> </span>"
+          ]
         },
         "network": {
             "format-wifi": " ",
