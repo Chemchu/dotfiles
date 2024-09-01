@@ -54,6 +54,7 @@
         specialArgs = {
             inherit inputs;
             systemName = "spaceship";
+            config_path = ".config";
         };
         modules = [
           ./nixos/spaceship-configuration.nix
@@ -73,6 +74,7 @@
         specialArgs = {
             inherit inputs;
             systemName = "framework";
+            config_path = ".config";
         };
         modules = [
           ./nixos/framework-configuration.nix

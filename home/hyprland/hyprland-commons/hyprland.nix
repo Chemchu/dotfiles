@@ -4,13 +4,6 @@
   ...
 } :
 let
-  config_path = ".config/hypr";
-  wallpaper = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/dharmx/walls/main/digital/a_person_sitting_on_a_horse_next_to_a_lamp_post.png";
-    # replace this with the SHA256 hash of the image file
-    sha256 = "0ls9mfxcpr8224la5w2x3z7w7cv3gp10a0n3ly9r1waplb8rv8j5";
-  };
-
   yt = pkgs.writeShellScript "yt" ''
     notify-send "Opening video" "$(wl-paste)"
     mpv "$(wl-paste)"
@@ -29,11 +22,7 @@ in
     grim
     slurp
     wl-clipboard
-    swww
   ];
-
-  # Here I import all my wallpapers
-  home.file."${config_path}/background".source = wallpaper;
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -64,9 +53,8 @@ in
 
       # Execute your favorite apps at launch
       exec-once = hyprctl setcursor Bibata-Modern-Classic 24
+      exec-once = hyprpaper
 
-      # Exec-once from refactor
-      exec-once = swww-daemon ; sleep 1s ; swww img ~/${config_path}/background
       exec-once = waybar
       exec-once = dunst
       exec-once=[workspace 1 silent] kitty

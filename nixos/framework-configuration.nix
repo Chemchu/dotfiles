@@ -5,6 +5,7 @@
   pkgs,
   inputs,
   systemName,
+  config_path,
   ...
 }: {
   imports = [
@@ -68,6 +69,7 @@
     extraSpecialArgs = {
       inherit inputs;
       inherit systemName;
+      inherit config_path;
     };
     users = {
       "gus" = import ../home/hyprland/home.nix;
