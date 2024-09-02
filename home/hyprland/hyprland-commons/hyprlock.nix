@@ -21,7 +21,7 @@ in
     background {
         monitor =
         path = ~/${config_path}/hypr/lock_wallpaper.jpg #path to background image
-        blur_passes = 3
+        blur_passes = 1
         contrast = 0.8916
         brightness = 0.8172
         vibrancy = 0.1696
@@ -70,7 +70,7 @@ in
     # USER
     label {
         monitor =
-        text = cmd[update:100] echo "Bienvenido $USER"
+        text = cmd[update:100] echo "Hola $USER"
         color = rgba(255, 255, 255, 0.9)
         font_size = 25
         font_family = JetBrains Mono Nerd Font Mono
