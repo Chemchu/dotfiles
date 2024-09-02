@@ -14,7 +14,7 @@ let
   pactl = "${pkgs.pulseaudio}/bin/pactl";
   is_desktop = systemName == "spaceship";
   main_display = if is_desktop then ",preferred,auto,auto" else "eDP-1,preferred,auto,1.566667";
-  secondary_display = if is_desktop then ",preferred,auto,auto" else "DP-3,preferred,auto,auto";
+  secondary_display = if is_desktop then ",preferred,-1920x0,auto" else "DP-3,preferred,-1920x0,auto";
   xwayland_force_zero_scaling = toString (!is_desktop);
 in
 {
