@@ -26,7 +26,6 @@ in
 
   wayland.windowManager.hyprland = {
     enable = true;
-    #package = hyprland;
     systemd.enable = true;
     xwayland.enable = true;
 
@@ -234,6 +233,9 @@ in
       bind = , XF86MonBrightnessDown, exec, ${brightnessctl} set  5%-
       bind = , XF86KbdBrightnessUp,   exec, ${brightnessctl} -d asus::kbd_backlight set +1
       bind = , XF86KbdBrightnessDown, exec, ${brightnessctl} -d asus::kbd_backlight set  1-
+
+      # Suspend
+      bind = $mainMod, L, exec, systemctl suspend
 
       # Screenshot
       bind = $mainMod, F5, exec, grim -g "$(slurp -d)" - | wl-copy ; notify-send "Captura copiada ✓ "

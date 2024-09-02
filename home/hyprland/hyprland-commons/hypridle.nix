@@ -9,7 +9,6 @@
     hyprlock
   ];
 
-  # Here I import all my wallpapers
   home.file."${config_path}/hypr/hypridle.conf".text = ''
     general {
         lock_cmd = pidof hyprlock || hyprlock       # avoid starting multiple hyprlock instances.
