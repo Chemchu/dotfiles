@@ -17,7 +17,7 @@
     jq
     postman
     thunderbird-bin
-    beekeeper-studio
+    libreoffice
   ];
 
   home.file.".config/bks-flags.conf".text = ''
