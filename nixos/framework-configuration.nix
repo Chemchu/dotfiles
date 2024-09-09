@@ -12,6 +12,7 @@
     # Include the results of the hardware scan.
     inputs.home-manager.nixosModules.default
     ./framework-hardware-configuration.nix # --> Add Framework hardware configuration
+    ./configuration-components/bluetooth.nix
     ./configuration-components/environment-variables.nix
     ./configuration-components/flatpak.nix # Only installing this to avoid building electron from source
     ./configuration-components/flipperzero.nix
