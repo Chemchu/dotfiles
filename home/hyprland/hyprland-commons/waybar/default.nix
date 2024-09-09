@@ -5,7 +5,7 @@
 } :
 let
   framework_modules = if systemName == "spaceship" then "\"wireplumber\""
-    else "\"network\", \"wireplumber\", \"battery\"";
+    else "\"bluetooth\", \"network\", \"wireplumber\", \"battery\"";
 in
 {
   home.packages = with pkgs; [
@@ -24,8 +24,8 @@ in
         "margin-left": 5,
         "spacing": 10,
         "modules-left": ["custom/launcher", "hyprland/workspaces"],
-        "modules-right": ["tray", ${framework_modules}, "clock"],
         "modules-center": ["mpris"],
+        "modules-right": ["tray", ${framework_modules}, "clock"],
         "hyprland/workspaces" : {
             "format" : "{icon}",
             "on-click" : "activate",
@@ -46,7 +46,8 @@ in
         },
         "clock": {
             "locale": "es_ES.UTF8",
-            "format": "{:L%d de %B - %H:%M}",
+            "format": "{:L%H:%M}",
+            "format-alt": "{:L%d de %B - %H:%M}",
             "tooltip-format": "<tt><small>{calendar}</small></tt>",
             "calendar": {
                 "mode"          : "year",
@@ -131,6 +132,16 @@ in
             },
             "tooltip": false,
             // "ignored-players": ["firefox"]
+        },
+        "bluetooth": {
+          "format": "<span foreground='#0082FC'></span>",
+          "format-connected": "<span foreground='#0082FC'></span> {device_alias}",
+          "format-connected-battery": "<span foreground='#0082FC'></span> {device_alias} {device_battery_percentage}%",
+          // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+          "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+          "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+          "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+          "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
         }
     }
   '';
