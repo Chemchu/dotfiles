@@ -95,6 +95,8 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  networking.firewall.allowedTCPPorts = [ 57621 ]; # --> https://nixos.wiki/wiki/Spotify
+  networking.firewall.allowedUDPPorts = [ 5353 ]; # --> https://nixos.wiki/wiki/Spotify
 
   networking.hostName = "framework";
 
