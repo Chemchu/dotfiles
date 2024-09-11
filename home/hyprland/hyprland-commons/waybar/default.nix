@@ -5,7 +5,7 @@
 } :
 let
   framework_modules = if systemName == "spaceship" then "\"wireplumber\""
-    else "\"bluetooth\", \"network\", \"wireplumber\", \"battery\"";
+    else "\"network\", \"bluetooth\", \"wireplumber\", \"backlight\", \"battery\"";
 in
 {
   home.packages = with pkgs; [
@@ -57,7 +57,7 @@ in
                 "format": {
                     "months":     "<span color='#FCFFFC'>{}</span>",
                     "days":       "<span color='#FCFFFC'>{}</span>",
-                    "weekdays":   "<span color='#E78F8E'>{}</span>",
+                    "weekdays":   "<span color='#FF6A6A'>{}</span>",
                     "today":      "<span color='#279AF1'><b>{}</b></span>"
                 }
             },
@@ -71,10 +71,10 @@ in
             "interval": 1
         },
         "wireplumber": {
-            "format": "{icon} ",
-            "format-muted": "󰝟  ",
+            "format": "{icon}",
+            "format-muted": " ",
             "on-click": "pavucontrol &",
-            "format-icons": ["󰕿", "󰖀", "󰕾"]
+            "format-icons": ["", " ", " "]
         },
         "custom/launcher": {
             "format": " ",
@@ -107,10 +107,11 @@ in
           ]
         },
         "network": {
-            "format-wifi": " ",
+            "format-wifi": "󰤨 ",
             "format-ethernet": " ",
             "format-disconnected": " ",
-            "tooltip-format-wifi": "{essid} ({signalStrength}%)  ",
+            "format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
+            "tooltip-format-wifi": "{essid} ({signalStrength}%) 󰤨 ",
             "tooltip-format-ethernet": "{ifname}  ",
             "tooltip-format-disconnected": "",
             "max-length": 50
@@ -134,14 +135,24 @@ in
             // "ignored-players": ["firefox"]
         },
         "bluetooth": {
-          "format": "<span foreground='#0082FC'></span>",
-          "format-connected": "<span foreground='#0082FC'></span> {device_alias}",
-          "format-connected-battery": "<span foreground='#0082FC'></span> {device_alias} {device_battery_percentage}%",
+          "format": "",
+          "format-connected": " {device_alias}",
+          "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+          //"format": "<span foreground='#0082FC'></span>",
+          //"format-connected": "<span foreground='#0082FC'></span> {device_alias}",
+          //"format-connected-battery": "<span foreground='#0082FC'></span> {device_alias} {device_battery_percentage}%",
           // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
           "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
           "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
           "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
           "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+        },
+        "backlight": {
+          "device": "amdgpu_bl1",
+          //"format": "<span foreground='#FFB400'>{icon}</span>",
+          //"format-icons": ["󰹐 ", "󱩎 ", "󱩏 ", "󱩐 ", "󱩑 ", "󱩒 ", "󱩓 ", "󱩔 ", "󱩕 ", "󱩖 ", "󰛨 "]
+          "format": "{icon}",
+          "format-icons": ["󰃚 ", "󰃛 ", "󰃜 ", "󰃝 ", "󰃞 ", "󰃟 ", "󰃠 "]
         }
     }
   '';
