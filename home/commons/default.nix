@@ -18,6 +18,7 @@
     postman
     thunderbird-bin
     libreoffice
+    godot_4
   ];
 
   home.file.".config/bks-flags.conf".text = ''
