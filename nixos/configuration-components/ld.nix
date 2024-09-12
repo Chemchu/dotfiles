@@ -1,7 +1,8 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, lib, ... }:
 
 {
   environment.systemPackages = with pkgs; [
+    # Mainly for Rust and C/C++ development
     curl
     wget
     pkg-config
@@ -12,7 +13,20 @@
     libsoup
     webkitgtk
     librsvg
-    # Add more packages as needed
+    openssl
+    alsa-lib
+    systemd
+    xorg.libX11
+    xorg.libXcursor
+    xorg.libxcb
+    xorg.libxcb.dev
+    xorg.libXi
+    libxkbcommon
+    cmake
+    cairo
+    ninja
+    pugixml
+    libgcc
   ];
 
   environment.variables = {
