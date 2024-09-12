@@ -1,49 +1,31 @@
-{
-  pkgs,
-  ...
-}:
-{
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    # Add any missing dynamic libraries for unpackaged programs
-    # here, NOT in environment.systemPackages
+{ config, pkgs, lib, ... }:
 
-    # Vulkan
-    vulkan-tools
-    vulkan-headers
-    vulkan-loader
-    vulkan-utility-libraries
-    vulkan-validation-layers
-
-    # Mainly for Rust development
+{
+  environment.systemPackages = with pkgs; [
+    curl
+    wget
     pkg-config
-    openssl
-    alsa-lib
-    systemd
-    xorg.libX11
-    xorg.libXcursor
-    xorg.libxcb
-    xorg.libxcb.dev
-    xorg.libXi
-    libxkbcommon
-
-    cmake
-    cairo
-    ninja
-    pugixml
-    libgcc
-    hyprwayland-scanner
-
-    # Additional libraries from the original script
-    nss
-    sane-backends
-    nspr
-    zlib
-    libglvnd
-    qt5.qtbase
-    qt5.qtsvg
-    qt5.qtdeclarative
-    qt5.qtwayland
-    stdenv.cc.cc
+    dbus
+    openssl_3
+    glib
+    gtk3
+    libsoup
+    webkitgtk
+    librsvg
+    # Add more packages as needed
   ];
+
+  environment.variables = {
+    LD_LIBRARY_PATH = lib.mkForce "${pkgs.lib.makeLibraryPath [
+      pkgs.vulkan-tools
+      pkgs.vulkan-headers
+      pkgs.vulkan-loader
+      pkgs.openssl
+      pkgs.xorg.libX11
+      pkgs.gtk3
+    ]}:$LD_LIBRARY_PATH";
+
+    # Concatenate XDG_DATA_DIRS with the current environment value
+    XDG_DATA_DIRS = lib.mkForce "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}:$XDG_DATA_DIRS";
+  };
 }
