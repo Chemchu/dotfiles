@@ -1,0 +1,23 @@
+  ~/dotfiles
+    home
+    nixos
+   │  configuration-components
+   │ │  android.nix                      
+   │ │  bluetooth.nix
+   │ │  disks.nix
+   │ │  environment-variables.nix
+   │ │  flatpak.nix
+   │ │  flipperzero.nix
+   │ │  ld.nix
+   │ │  locale.nix
+   │ │  sound.nix
+   │ └  system.nix
+   │  framework-configuration.nix
+   │  framework-hardware-configuration.nix
+   │  spaceship-configuration.nix
+   └  spaceship-hardware-configuration.nix
+    LICENSE
+    README.md
+    flake.lock
+    flake.nix
+   (2 hidden items)
