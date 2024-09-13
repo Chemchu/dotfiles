@@ -21,6 +21,8 @@
     xorg.libxcb
     xorg.libxcb.dev
     xorg.libXi
+		xorg.libXrandr
+		libudev-zero
     libxkbcommon
     cmake
     cairo
@@ -35,8 +37,16 @@
       pkgs.vulkan-headers
       pkgs.vulkan-loader
       pkgs.openssl
-      pkgs.xorg.libX11
       pkgs.gtk3
+      pkgs.pkg-config
+      pkgs.libudev-zero
+      pkgs.alsa-lib
+      pkgs.xorg.libX11
+      pkgs.xorg.libXrandr
+      pkgs.xorg.libXcursor
+      pkgs.xorg.libXi
+      pkgs.libxkbcommon
+      pkgs.libglvnd
     ]}:$LD_LIBRARY_PATH";
 
     # Concatenate XDG_DATA_DIRS with the current environment value
