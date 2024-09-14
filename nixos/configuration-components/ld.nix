@@ -29,6 +29,9 @@
     ninja
     pugixml
     libgcc
+    glibc
+    libsoup_3
+    webkitgtk_4_1
   ];
 
   environment.variables = {
@@ -47,6 +50,9 @@
       pkgs.xorg.libXi
       pkgs.libxkbcommon
       pkgs.libglvnd
+      pkgs.glibc
+      pkgs.libsoup_3
+      pkgs.webkitgtk_4_1
     ]}:$LD_LIBRARY_PATH";
 
     # Concatenate XDG_DATA_DIRS with the current environment value
