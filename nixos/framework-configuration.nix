@@ -16,7 +16,7 @@
     ./configuration-components/environment-variables.nix
     ./configuration-components/flatpak.nix # Only installing this to avoid building electron from source
     ./configuration-components/flipperzero.nix
-    ./configuration-components/ld.nix
+/*     ./configuration-components/ld.nix */ # --> Removed by now. I need to test using flakes for repositories
     ./configuration-components/locale.nix
     ./configuration-components/sound.nix
     ./configuration-components/system.nix
