@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs"; # --> Stable channel
-    #nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable-small";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -12,10 +11,6 @@
       url = "github:numtide/devshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    #hyprland = {
-    #  url = "git+https://github.com/hyprwm/Hyprland?submodules=1&ref=refs/tags/v0.41.2";
-    #};
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
 
@@ -33,9 +28,6 @@
     lf-icons = {
       url = "github:gokcehan/lf";
       flake = false;
-    };
-    matugen = {
-      url = "github:InioX/matugen?ref=v2.2.0";
     };
   };
 

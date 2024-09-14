@@ -11,7 +11,7 @@
       zig = {
         enable = true;
         settings = {
-          fmt_autosave = true;
+          fmt_autosave = 1;
         };
       };
       lsp-format.enable = true;
