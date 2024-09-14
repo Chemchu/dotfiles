@@ -107,7 +107,7 @@ in
           ]
         },
         "network": {
-            "format-wifi": "󰤨 ",
+            "format-wifi": "{icon}",
             "format-ethernet": " ",
             "format-disconnected": " ",
             "format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
