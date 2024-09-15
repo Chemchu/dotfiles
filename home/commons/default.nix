@@ -14,6 +14,7 @@
     feh
     mpv
     spotify
+    flyctl
     jq
     postman
     thunderbird-bin
