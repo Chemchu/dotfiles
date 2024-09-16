@@ -1,41 +1,6 @@
 { pkgs, lib, ... }:
-
-{
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    # Mainly for Rust and C/C++ development
-    curl
-    wget
-    pkg-config
-    dbus
-    openssl_3
-    glib
-    gtk3
-    libsoup
-    webkitgtk
-    librsvg
-    alsa-lib
-    systemd
-    xorg.libX11
-    xorg.libXcursor
-    xorg.libxcb
-    xorg.libxcb.dev
-    xorg.libXi
-		xorg.libXrandr
-		libudev-zero
-    libxkbcommon
-    cmake
-    cairo
-    ninja
-    pugixml
-    libgcc
-    glibc
-    libsoup_3
-    webkitgtk_4_1
-  ];
-
-  environment.variables = {
-    LD_LIBRARY_PATH = lib.mkForce "${pkgs.lib.makeLibraryPath [
+let
+  buildInputs = [
       pkgs.vulkan-tools
       pkgs.vulkan-headers
       pkgs.vulkan-loader
@@ -53,7 +18,33 @@
       pkgs.glibc
       pkgs.libsoup_3
       pkgs.webkitgtk_4_1
-    ]}:$LD_LIBRARY_PATH";
+      pkgs.udev
+      pkgs.wayland
+  ];
+in
+{
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # Mainly for Rust and C/C++ development
+    curl
+    wget
+    dbus
+    openssl_3
+    glib
+    libsoup
+    librsvg
+    cmake
+    cairo
+    ninja
+    pugixml
+    libgcc
+    glibc
+    libsoup_3
+    webkitgtk_4_1
+  ] ++ buildInputs;
+
+  environment.variables = {
+    LD_LIBRARY_PATH = lib.makeLibraryPath buildInputs;
 
     # Concatenate XDG_DATA_DIRS with the current environment value
     PKG_CONFIG_PATH = "${pkgs.alsa-lib.dev}/lib/pkgconfig:${pkgs.openssl.dev}/lib/pkgconfig:${pkgs.systemd.dev}/lib/pkgconfig";
