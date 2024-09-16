@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  systemName,
+  system_name,
   ...
 }
 :
@@ -20,9 +20,9 @@
   networking.networkmanager.enable = true;
 
   # Nvidia stuff
-  services.xserver.videoDrivers = if systemName == "spaceship" then
+  services.xserver.videoDrivers = if system_name == "spaceship" then
     ["nvidia"]
-  else if systemName == "framework" then
+  else if system_name == "framework" then
     ["amdgpu"]
   else
     [];
@@ -35,7 +35,7 @@
       libvdpau-va-gl
     ];
 
-    nvidia = if systemName == "spaceship" then {
+    nvidia = if system_name == "spaceship" then {
       # Most wayland compositors need this
       modesetting.enable = true;
 

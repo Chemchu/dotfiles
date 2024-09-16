@@ -1,10 +1,10 @@
 {
   pkgs,
-  systemName,
+  system_name,
   ...
 } :
 let
-  framework_modules = if systemName == "spaceship" then "\"wireplumber\""
+  framework_modules = if system_name == "spaceship" then "\"wireplumber\""
     else "\"network\", \"bluetooth\", \"wireplumber\", \"backlight\", \"battery\"";
 in
 {

@@ -1,6 +1,6 @@
 {
   pkgs,
-  systemName,
+  system_name,
   ...
 } :
 let
@@ -12,7 +12,7 @@ let
   playerctl = "${pkgs.playerctl}/bin/playerctl";
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
   pactl = "${pkgs.pulseaudio}/bin/pactl";
-  is_desktop = systemName == "spaceship";
+  is_desktop = system_name == "spaceship";
   main_display = if is_desktop then ",preferred,auto,auto" else "eDP-1,preferred,auto,1.566667";
   secondary_display = if is_desktop then ",preferred,-1920x0,auto" else "DP-3,preferred,-1920x0,auto";
   xwayland_force_zero_scaling = if is_desktop then "false" else "true";

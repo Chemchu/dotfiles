@@ -45,11 +45,11 @@
       spaceship = nixpkgs.lib.nixosSystem {
         specialArgs = {
             inherit inputs;
-            systemName = "spaceship";
+            system_name = "spaceship";
             config_path = ".config";
         };
         modules = [
-          ./nixos/spaceship-configuration.nix
+          ./nixos/configuration.nix
           home-manager.nixosModules.default
           nix-flatpak.nixosModules.nix-flatpak
           ({pkgs, ...}: {
@@ -65,11 +65,11 @@
       framework = nixpkgs.lib.nixosSystem {
         specialArgs = {
             inherit inputs;
-            systemName = "framework";
+            system_name = "framework";
             config_path = ".config";
         };
         modules = [
-          ./nixos/framework-configuration.nix
+          ./nixos/configuration.nix
           home-manager.nixosModules.default
           nix-flatpak.nixosModules.nix-flatpak
           ({pkgs, ...}: {

@@ -4,20 +4,23 @@
 {
   pkgs,
   inputs,
-  systemName,
+  system_name,
   config_path,
   ...
 } :
+let
+  hardware-configuration =  ./${system_name}-hardware-configuration.nix;
+in
 {
   imports = [
     # Include the results of the hardware scan.
     inputs.home-manager.nixosModules.default
-    ./spaceship-hardware-configuration.nix
+    hardware-configuration
     ./configuration-components/disks.nix
     ./configuration-components/environment-variables.nix
     ./configuration-components/flatpak.nix # Only installing this to avoid building electron from source
     ./configuration-components/flipperzero.nix
-/*     ./configuration-components/ld.nix */ # --> Removed by now. I need to test using flakes for repositories
+    ./configuration-components/ld.nix # --> Removed by now. I need to test using flakes for repositories
     ./configuration-components/locale.nix
     ./configuration-components/sound.nix
     ./configuration-components/system.nix
@@ -70,7 +73,7 @@
   home-manager = {
     extraSpecialArgs = {
       inherit inputs;
-      inherit systemName;
+      inherit system_name;
       inherit config_path;
     };
     users = {
@@ -96,8 +99,10 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  networking.firewall.allowedTCPPorts = [ 57621 ]; # --> https://nixos.wiki/wiki/Spotify
+  networking.firewall.allowedUDPPorts = [ 5353 ]; # --> https://nixos.wiki/wiki/Spotify
 
-  networking.hostName = "spaceship";
+  networking.hostName = system_name;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
