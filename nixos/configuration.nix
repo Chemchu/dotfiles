@@ -50,7 +50,7 @@ in
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     kitty
-    firefox
+    firefoxpwa
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
     nh # --> CLI for NixOs
@@ -58,6 +58,12 @@ in
     qt6.qtwayland
     glxinfo
   ];
+
+  programs.firefox = {
+    enable = true;
+    package = pkgs.firefox;
+    nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
+  };
 
   # Enable locate file finder
   services.locate.enable = true;
