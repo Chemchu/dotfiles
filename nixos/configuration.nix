@@ -10,13 +10,13 @@
 } :
 let
   hardware-configuration =  ./${system_name}-hardware-configuration.nix;
+  lvm-disk = if system_name == "spaceship" then [ ./configuration-components/disks.nix ] else [./configuration-components/bluetooth.nix];
 in
 {
   imports = [
     # Include the results of the hardware scan.
     inputs.home-manager.nixosModules.default
     hardware-configuration
-    ./configuration-components/disks.nix
     ./configuration-components/environment-variables.nix
     ./configuration-components/flatpak.nix # Only installing this to avoid building electron from source
     ./configuration-components/flipperzero.nix
@@ -24,7 +24,7 @@ in
     ./configuration-components/locale.nix
     ./configuration-components/sound.nix
     ./configuration-components/system.nix
-  ];
+  ] ++ lvm-disk;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.gus = {
