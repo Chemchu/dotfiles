@@ -7,9 +7,6 @@
     packages = with pkgs; [
       # Packages needed for Java
       jdk17
-      jdt-language-server
-      jetbrains.idea-community-bin
-      lombok
     ];
   };
 
@@ -26,7 +23,6 @@
         settings = null;
         cmd = [
           "${pkgs.jdt-language-server}/bin/jdtls"
-          "-settings /home/gus/ssg/facsa/waternology/tools/apache-maven-3.8.4/conf/settings.xml"
         ];
       };
 
