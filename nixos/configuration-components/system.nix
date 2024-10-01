@@ -27,13 +27,15 @@
   else
     [];
 
-  hardware = {
-    graphics.enable = true;
-    graphics.enable32Bit = true;
-    graphics.extraPackages = with pkgs; [
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
+  hardware= {
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+      extraPackages = with pkgs; [
+        vaapiVdpau
+        libvdpau-va-gl
+      ];
+    };
 
     nvidia = if system_name == "spaceship" then {
       # Most wayland compositors need this
@@ -46,7 +48,7 @@
 
       open = false;
 
-      package = config.boot.kernelPackages.nvidiaPackages.production;
+      package = config.boot.kernelPackages.nvidiaPackages.latest;
     } else {};
   };
 }
