@@ -20,6 +20,7 @@ let
       pkgs.webkitgtk_4_1
       pkgs.udev
       pkgs.wayland
+      pkgs.pipewire.jack # Add Jack to ensure Jack support
   ];
 in
 {
@@ -41,13 +42,26 @@ in
     glibc
     libsoup_3
     webkitgtk_4_1
+    pipewire.jack # Ensure Jack is included in the environment
   ] ++ buildInputs;
 
   environment.variables = {
-    LD_LIBRARY_PATH = lib.makeLibraryPath buildInputs;
+    # Use mkForce to prioritize this definition of LD_LIBRARY_PATH, include Jack2 libs
+    LD_LIBRARY_PATH = lib.mkForce (lib.makeLibraryPath buildInputs);
 
     # Concatenate XDG_DATA_DIRS with the current environment value
     PKG_CONFIG_PATH = "${pkgs.alsa-lib.dev}/lib/pkgconfig:${pkgs.openssl.dev}/lib/pkgconfig:${pkgs.systemd.dev}/lib/pkgconfig";
     XDG_DATA_DIRS = lib.mkForce "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}:$XDG_DATA_DIRS";
+  };
+
+  # PipeWire and Jack settings
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+    jack.enable = true; # Enable Jack support with PipeWire
+    alsa = {
+      enable = true;
+      support32Bit = true;
+    };
   };
 }
