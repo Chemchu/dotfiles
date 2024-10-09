@@ -29,7 +29,7 @@
       lsp = {
         enable = true;
         servers = {
-          java-language-server = {enable = true;};
+          java_language_server = {enable = true;};
         };
       };
     };

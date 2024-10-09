@@ -30,7 +30,7 @@
 
         servers = {
           clangd.enable = true;
-          lua-ls.enable = true;
+          lua_ls.enable = true;
           texlab.enable = true;
         };
       };
