@@ -6,7 +6,6 @@
     ./java.nix
     ./node.nix
     ./nix
-    ./ocaml.nix
     ./rust.nix
     ./shell.nix
     ./html.nix
