@@ -21,6 +21,7 @@
     libreoffice
     godot_4
     blender
+    discord
   ];
 
   home.file.".config/bks-flags.conf".text = ''
