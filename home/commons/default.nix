@@ -22,6 +22,7 @@
     godot_4
     blender
     discord
+    obs-studio
   ];
 
   home.file.".config/bks-flags.conf".text = ''
