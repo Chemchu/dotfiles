@@ -10,6 +10,7 @@
     ./direnv
     ./lf
     ./kitty
+    ./obs
     ./neovim
     ./steam
     ./zellij
