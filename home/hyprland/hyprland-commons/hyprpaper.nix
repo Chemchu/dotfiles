@@ -5,20 +5,21 @@
 } :
 let
   wallpaper = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/dharmx/walls/main/anime/a_cartoon_of_a_man_standing_in_a_desert.jpg";
+    url = "https://raw.githubusercontent.com/dharmx/walls/refs/heads/main/anime/a_door_with_a_doorway_and_shoes_on_the_ground.jpg";
     # replace this with the SHA256 hash of the image file
-    sha256 = "01lnwymp2zzpxnk41yhl843p0q0pvi3jcc7pawk18myy9kdn023s";
+    sha256 = "18zfqax82kvhbi3n5xp9ab9yq64akqhqgbhn3lj7ac4gq113lcva";
   };
 in
 {
-  home.packages = with pkgs; [
-    hyprpaper
-  ];
-
-  home.file."${config_path}/hypr/background.jpg".source = wallpaper;
-  home.file."${config_path}/hypr/hyprpaper.conf".text = ''
-    preload = ~/${config_path}/hypr/background.jpg
-    wallpaper = , ~/${config_path}/hypr/background.jpg
-    ipc = on
-  '';
+  home = {
+    packages = with pkgs; [
+      hyprpaper
+    ];
+    file."${config_path}/hypr/background.jpg".source = wallpaper;
+    file."${config_path}/hypr/hyprpaper.conf".text = ''
+      preload = ~/${config_path}/hypr/background.jpg
+      wallpaper = , ~/${config_path}/hypr/background.jpg
+      ipc = on
+    '';
+  };
 }
