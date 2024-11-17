@@ -5,9 +5,9 @@
 } :
 let
   lock_wallpaper = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/dharmx/walls/main/anime/a_door_with_a_doorway_and_shoes_on_the_ground.jpg";
+    url = "https://raw.githubusercontent.com/dharmx/walls/refs/heads/main/m-26.jp/a_person_on_a_beach.jpg";
     # replace this with the SHA256 hash of the image file
-    sha256 = "18zfqax82kvhbi3n5xp9ab9yq64akqhqgbhn3lj7ac4gq113lcva";
+    sha256 = "0mpm7c1mlas8xbf0h5hcw9xh4kff75yjrl7nz7qyr73rjy2m8si6";
   };
 in
 {
