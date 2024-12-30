@@ -7,6 +7,7 @@
   inputs,
   system_name,
   config_path,
+  lib,
   ...
 } :
 let
@@ -59,6 +60,8 @@ in
     glxinfo
     chromium
   ];
+
+  fonts.packages = [] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback

@@ -1,55 +1,21 @@
 {
   pkgs,
   ...
-}: let
-  nerdfonts = pkgs.nerdfonts.override {
-    fonts = [
-      "Iosevka"
-      "Ubuntu"
-      "UbuntuMono"
-      "CascadiaCode"
-      "FantasqueSansMono"
-      "FiraCode"
-      "Mononoki"
-    ];
-  };
-
-  font = {
-    name = "Iosevka";
-    package = nerdfonts;
-    size = 11;
-  };
-  cursorTheme = {
-    name = "Bibata-Modern-Classic";
-    size = 26;
-    package = pkgs.bibata-cursors;
-  };
-  iconTheme = {
-    name = "MoreWaita";
-    package = pkgs.morewaita-icon-theme;
-  };
-in {
+}: {
   home = {
     packages = with pkgs; [
       cantarell-fonts
       font-awesome
-      font.package
-      cursorTheme.package
-      iconTheme.package
+      bibata-cursors
       adwaita-icon-theme
       papirus-icon-theme
+      morewaita-icon-theme
     ];
 
     sessionVariables = {
-      XCURSOR_THEME = cursorTheme.name;
-      XCURSOR_SIZE = "${toString cursorTheme.size}";
+      XCURSOR_THEME = "Bibata-Modern-Classic";
+      XCURSOR_SIZE = "26";
     };
-    pointerCursor =
-      cursorTheme
-      // {
-        gtk.enable = true;
-        x11.enable = true;
-      };
   };
 
   fonts.fontconfig.enable = true;
