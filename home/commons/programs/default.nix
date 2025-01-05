@@ -1,17 +1,15 @@
 {
   pkgs,
-  inputs,
   ...
 }: {
   imports = [
-    inputs.nix-index-database.hmModules.nix-index
     ./guitar
-    ./dev
+/*     ./dev */
     ./direnv
     ./lf
     ./kitty
     ./obs
-    ./neovim
+/*     ./neovim */
     ./steam
     ./zellij
     ./zoxide
@@ -21,9 +19,6 @@
   programs = {
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
-
-    # runs programs without installing them
-    nix-index-database.comma.enable = true;
   };
 
   home = {
