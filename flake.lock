@@ -425,11 +425,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1736066484,
-        "narHash": "sha256-uTstP36WaFrw+TEHb8nLF14hFPzQBOhmIxzioHCDaL8=",
+        "lastModified": 1736089250,
+        "narHash": "sha256-/LPWMiiJGPHGd7ZYEgmbE2da4zvBW0acmshUjYC3WG4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "5ad12b6ea06b84e48f6b677957c74f32d47bdee0",
+        "rev": "172b91bfb2b7f5c4a8c6ceac29fd53a01ef07196",
         "type": "github"
       },
       "original": {
@@ -503,11 +503,11 @@
         "snowfall-lib": "snowfall-lib_2"
       },
       "locked": {
-        "lastModified": 1736106667,
-        "narHash": "sha256-jgCWeQed1J/55xrbd8/VorLwwIk8U+62CvB78eS/eLI=",
+        "lastModified": 1736125593,
+        "narHash": "sha256-BAr1PsbGUglzM9NT/4aGeLRBuhVKSpdTKVFDTs+sR08=",
         "owner": "Chemchu",
         "repo": "nvim-config",
-        "rev": "30f63446e62282a5cbf30261ce3a6b341fc00025",
+        "rev": "21053b60c44e2490eee84bee9ffb8ac5f822f69b",
         "type": "github"
       },
       "original": {
@@ -663,11 +663,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1736106176,
-        "narHash": "sha256-3XX0OMCDDp2YDuW9avHtut1IvbttKb8EvYQE0Zfjkr0=",
+        "lastModified": 1736125565,
+        "narHash": "sha256-3d8fh1cWkO13z+ONoTDt9mDkuwNEqeAEz9tG2WuPuWU=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "6bff619479177cdb0c6fcac894c5ee91f2fbf517",
+        "rev": "ecd810c4cc90890229ef353a12fb384c47ee75c3",
         "type": "github"
       },
       "original": {

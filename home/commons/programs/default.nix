@@ -1,15 +1,15 @@
 {
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./guitar
-/*     ./dev */
+    ./dev
     ./direnv
     ./lf
     ./kitty
     ./obs
-/*     ./neovim */
     ./steam
     ./zellij
     ./zoxide
