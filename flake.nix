@@ -14,7 +14,7 @@
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
-    khanelivim.url = "github:Chemchu/nvim-config"; # Nixvim config
+    nvf.url = "github:notashelf/nvf";
 
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
@@ -32,59 +32,39 @@
       nixpkgs,
       rust-overlay,
       nix-flatpak,
-      khanelivim,
       ...
     }:
+    let
+      createConfiguration =
+        name:
+        nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+            system_name = name;
+            config_path = ".config";
+          };
+          modules = [
+            ./nixos/configuration.nix
+            home-manager.nixosModules.default
+            nix-flatpak.nixosModules.nix-flatpak
+            (
+              { pkgs, ... }:
+              {
+                nixpkgs.overlays = [
+                  rust-overlay.overlays.default
+                ];
+                environment.systemPackages = with pkgs; [
+                  rust-bin.stable.latest.default
+                ];
+              }
+            )
+          ];
+        };
+    in
     {
       nixosConfigurations = {
-        spaceship = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs;
-            system_name = "spaceship";
-            config_path = ".config";
-          };
-          modules = [
-            ./nixos/configuration.nix
-            home-manager.nixosModules.default
-            nix-flatpak.nixosModules.nix-flatpak
-            (
-              { pkgs, ... }:
-              {
-                nixpkgs.overlays = [
-                  rust-overlay.overlays.default
-                ];
-                environment.systemPackages = with pkgs; [
-                  rust-bin.stable.latest.default
-                  khanelivim.packages.${pkgs.system}.default
-                ];
-              }
-            )
-          ];
-        };
-        framework = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs;
-            system_name = "framework";
-            config_path = ".config";
-          };
-          modules = [
-            ./nixos/configuration.nix
-            home-manager.nixosModules.default
-            nix-flatpak.nixosModules.nix-flatpak
-            (
-              { pkgs, ... }:
-              {
-                nixpkgs.overlays = [
-                  rust-overlay.overlays.default
-                ];
-                environment.systemPackages = with pkgs; [
-                  rust-bin.stable.latest.default
-                  khanelivim.packages.${pkgs.system}.default
-                ];
-              }
-            )
-          ];
-        };
+        spaceship = createConfiguration "spaceship";
+        framework = createConfiguration "framework";
       };
     };
 }

@@ -9,10 +9,14 @@
   config_path,
   lib,
   ...
-} :
+}:
 let
-  hardware-configuration =  ./${system_name}-hardware-configuration.nix;
-  lvm-disk = if system_name == "spaceship" then [ ./configuration-components/disks.nix ] else [./configuration-components/bluetooth.nix];
+  hardware-configuration = ./${system_name}-hardware-configuration.nix;
+  lvm-disk =
+    if system_name == "spaceship" then
+      [ ./configuration-components/disks.nix ]
+    else
+      [ ./configuration-components/bluetooth.nix ];
 in
 {
   imports = [
@@ -32,7 +36,10 @@ in
   users.users.gus = {
     isNormalUser = true;
     description = "gus";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
   };
 
   # Enable automatic login for the user.
@@ -43,7 +50,10 @@ in
   nixpkgs.config.nvidia.acceptLicense = true;
 
   # Flakes
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -61,7 +71,9 @@ in
     chromium
   ];
 
-  fonts.packages = [] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+  fonts.packages =
+    [ ]
+    ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
@@ -81,7 +93,6 @@ in
 
   # Enable Hyprland
   programs.hyprland.enable = true;
-  #programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland; # --> Use flake
 
   # Swaylock not getting password correctly fix
   # security.pam.services.swaylock = {};

@@ -9,6 +9,7 @@
     ./direnv
     ./lf
     ./kitty
+    ./nvf
     ./obs
     ./steam
     ./zellij
