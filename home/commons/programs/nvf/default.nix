@@ -59,7 +59,10 @@
           sql.enable = true;
           java.enable = true;
           kotlin.enable = false;
-          ts.enable = true;
+          ts = {
+            extraDiagnostics.types = [];
+            enable = true;
+          };
           go.enable = true;
           lua.enable = true;
           zig.enable = true;
@@ -281,6 +284,13 @@
             silent = true;
             action = ":bprevious<CR>";
             desc = "Previous buffer";
+          }
+          {
+            key = "<ESC>";
+            mode = ["n" "c" "v"];
+            silent = true;
+            action = ":noh<CR>";
+            desc = "Clear search highlight";
           }
         ];
       };
