@@ -2,15 +2,13 @@
   pkgs,
   config_path,
   ...
-} :
-let
+}: let
   wallpaper = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/dharmx/walls/refs/heads/main/m-26.jp/a_lighthouse_with_a_large_cloud_of_pink_clouds.jpg";
+    url = "https://raw.githubusercontent.com/dharmx/walls/refs/heads/main/decay/a_car_on_fire_at_night.jpg";
     # replace this with the SHA256 hash of the image file
-    sha256 = "04yvx7634g34q4c43793ib66gsrnnav9raih0mk8pd37fvhah7af";
+    sha256 = "1yzslgkkxigf6hn2xpb4xm4sc93ng7z7r3lb1hbqsgd7wpy5sn4p";
   };
-in
-{
+in {
   home = {
     packages = with pkgs; [
       hyprpaper
