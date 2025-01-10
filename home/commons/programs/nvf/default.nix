@@ -253,7 +253,7 @@
         };
 
         presence = {
-          neocord.enable = false;
+          neocord.enable = true;
         };
 
         keymaps = [
