@@ -2,8 +2,7 @@
   pkgs,
   system_name,
   ...
-} :
-let
+}: let
   yt = pkgs.writeShellScript "yt" ''
     notify-send "Opening video" "$(wl-paste)"
     mpv "$(wl-paste)"
@@ -13,11 +12,19 @@ let
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
   pactl = "${pkgs.pulseaudio}/bin/pactl";
   is_desktop = system_name == "spaceship";
-  main_display = if is_desktop then ",preferred,auto,auto" else "eDP-1,preferred,auto,1.566667";
-  secondary_display = if is_desktop then ",preferred,-1920x0,auto" else "DP-3,preferred,-1920x0,auto";
-  xwayland_force_zero_scaling = if is_desktop then "false" else "true";
-in
-{
+  main_display =
+    if is_desktop
+    then ",preferred,auto,auto"
+    else "eDP-1,preferred,auto,1.566667";
+  secondary_display =
+    if is_desktop
+    then ",preferred,-1920x0,auto"
+    else "DP-3,preferred,-1920x0,auto";
+  xwayland_force_zero_scaling =
+    if is_desktop
+    then "false"
+    else "true";
+in {
   home.packages = with pkgs; [
     pavucontrol
     libnotify
@@ -56,12 +63,18 @@ in
       # Execute your favorite apps at launch
       exec-once = hyprctl setcursor Bibata-Modern-Classic 24
       exec-once = hyprpaper
-      ${if is_desktop then "" else "exec-once = hypridle" }
+      ${
+        if is_desktop
+        then ""
+        else "exec-once = hypridle"
+      }
 
       exec-once = waybar
       exec-once = dunst
       exec-once=[workspace 1 silent] kitty
       exec-once=[workspace 2 silent] firefox
+      exec-once=[workspace 8 silent] discord
+      exec-once=[workspace 9 silent] thunderbird
       exec-once=[workspace 10 silent] spotify
 
       # Some default env vars.
