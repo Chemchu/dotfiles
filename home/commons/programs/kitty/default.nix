@@ -1,8 +1,8 @@
-{ ... }:
-{
+{...}: {
   home.file.".config/kitty/kitty.conf".text = ''
     linux_display_server wayland
     wayland_titlebar_color background
+    enable_audio_bell no
 
     font_family Iosevka Nerd Font
     bold_font        auto

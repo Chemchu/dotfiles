@@ -1,8 +1,4 @@
-{
-  pkgs,
-  ...
-}:
-{
+{pkgs, ...}: {
   imports = [
     ./programs
   ];
@@ -14,6 +10,7 @@
     feh
     mpv
     spotify
+    bucklespring
     flyctl
     jq
     postman
@@ -28,5 +25,4 @@
     --ozone-platform-hint=auto
     --enable-features=UseOzonePlatform
   '';
-
 }
