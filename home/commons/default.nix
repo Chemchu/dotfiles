@@ -10,7 +10,7 @@
     feh
     mpv
     spotify
-    bucklespring
+    bucklespring-libinput
     flyctl
     jq
     postman
