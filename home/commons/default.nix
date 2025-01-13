@@ -10,6 +10,7 @@
     feh
     mpv
     spotify
+    zoom-us
     bucklespring-libinput
     flyctl
     jq
