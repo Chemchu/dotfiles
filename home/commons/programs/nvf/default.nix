@@ -293,6 +293,8 @@
             desc = "Clear search highlight";
           }
         ];
+        luaConfigRC.no-backup = "vim.cmd('set nobackup')";
+        luaConfigRC.no-writebackup = "vim.cmd('set nowritebackup')";
       };
     };
   };

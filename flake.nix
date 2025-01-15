@@ -26,45 +26,40 @@
     };
   };
 
-  outputs =
-    inputs@{
-      home-manager,
-      nixpkgs,
-      rust-overlay,
-      nix-flatpak,
-      ...
-    }:
-    let
-      createConfiguration =
-        name:
-        nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs;
-            system_name = name;
-            config_path = ".config";
-          };
-          modules = [
-            ./nixos/configuration.nix
-            home-manager.nixosModules.default
-            nix-flatpak.nixosModules.nix-flatpak
-            (
-              { pkgs, ... }:
-              {
-                nixpkgs.overlays = [
-                  rust-overlay.overlays.default
-                ];
-                environment.systemPackages = with pkgs; [
-                  rust-bin.stable.latest.default
-                ];
-              }
-            )
-          ];
+  outputs = inputs @ {
+    home-manager,
+    nixpkgs,
+    rust-overlay,
+    nix-flatpak,
+    ...
+  }: let
+    createConfiguration = name:
+      nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+          system_name = name;
+          config_path = ".config";
         };
-    in
-    {
-      nixosConfigurations = {
-        spaceship = createConfiguration "spaceship";
-        framework = createConfiguration "framework";
+        modules = [
+          ./nixos/configuration.nix
+          home-manager.nixosModules.default
+          nix-flatpak.nixosModules.nix-flatpak
+          (
+            {pkgs, ...}: {
+              nixpkgs.overlays = [
+                rust-overlay.overlays.default
+              ];
+              environment.systemPackages = with pkgs; [
+                rust-bin.stable.latest.default
+              ];
+            }
+          )
+        ];
       };
+  in {
+    nixosConfigurations = {
+      spaceship = createConfiguration "spaceship";
+      framework = createConfiguration "framework";
     };
+  };
 }
