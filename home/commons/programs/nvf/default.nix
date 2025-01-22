@@ -55,13 +55,20 @@
           bash.enable = true;
           clang.enable = true;
           css.enable = true;
-          html.enable = true;
+          html = {
+            enable = true;
+            treesitter.enable = true;
+          };
           sql.enable = true;
           java.enable = true;
           kotlin.enable = false;
           ts = {
             extraDiagnostics.types = [];
             enable = true;
+          };
+          tailwind = {
+            enable = true;
+            lsp.enable = true;
           };
           go.enable = true;
           lua.enable = true;
@@ -87,8 +94,6 @@
           ocaml.enable = false;
           elixir.enable = false;
           haskell.enable = false;
-
-          tailwind.enable = false;
           svelte.enable = false;
 
           # Nim LSP is broken on Darwin and therefore
