@@ -42,8 +42,28 @@ in {
     ];
   };
 
-  # Enable automatic login for the user.
-  services.getty.autologinUser = "gus";
+  services = {
+    # Enable automatic login for the user.
+    getty.autologinUser = "gus";
+    # Enable locate file finder
+    locate.enable = true;
+
+    tlp = {
+      enable = true;
+      settings = {
+        CPU_SCALING_GOVERNOR_ON_AC = "powersave";
+        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "powersave";
+        CPU_ENERGY_PERF_POLICY_ON_AC = "powersave";
+
+        CPU_MIN_PERF_ON_AC = 0;
+        CPU_MAX_PERF_ON_AC = 70;
+        CPU_MIN_PERF_ON_BAT = 0;
+        CPU_MAX_PERF_ON_BAT = 70;
+      };
+    };
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -87,9 +107,6 @@ in {
     package = pkgs.firefox-bin;
   };
 
-  # Enable locate file finder
-  services.locate.enable = true;
-
   # Enable Hyprland
   programs.hyprland.enable = true;
 
@@ -106,6 +123,11 @@ in {
     users = {
       "gus" = import ../home/hyprland/home.nix;
     };
+  };
+
+  powerManagement = {
+    enable = true;
+    cpuFreqGovernor = lib.mkDefault "powersave";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
