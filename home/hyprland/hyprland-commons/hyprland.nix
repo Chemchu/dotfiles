@@ -49,14 +49,6 @@ in {
       # See https://wiki.hyprland.org/Configuring/Monitors/
       monitor=${main_display}
       monitor=${secondary_display}
-      #monitor=DP-2,preferred,auto,auto
-      #monitor=Unknown-1,disable
-
-      # monitor=DP-1, 1920x1080, 1920x0, 1
-      # monitor=DP-2, 1920x1080, 0x0, 1
-
-      # monitor=DP-1, 1920x1080, 0x0, 1
-      # monitor=DP-2, 1920x1080, -1920x0, 1
 
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 

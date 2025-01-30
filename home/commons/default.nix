@@ -22,8 +22,16 @@
     discord
   ];
 
-  home.file.".config/bks-flags.conf".text = ''
-    --ozone-platform-hint=auto
-    --enable-features=UseOzonePlatform
-  '';
+  home.file = {
+    ".config/electron-flags.conf".text = ''
+      --ozone-platform-hint=auto
+      --enable-features=UseOzonePlatform
+      --ozone-platform=wayland
+    '';
+    ".config/bks-flags.conf".text = ''
+      --ozone-platform-hint=auto
+      --enable-features=UseOzonePlatform
+      --ozone-platform=wayland
+    '';
+  };
 }
