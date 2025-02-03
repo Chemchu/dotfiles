@@ -10,6 +10,7 @@
     feh
     mpv
     spotify
+    warp-terminal
     zoom-us
     bucklespring-libinput
     flyctl
