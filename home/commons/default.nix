@@ -21,6 +21,7 @@
     godot_4
     blender
     discord
+    bottles
   ];
 
   home.file = {
