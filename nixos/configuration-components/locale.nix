@@ -1,6 +1,6 @@
 {
   # Set your time zone.
-  time.timeZone = "Europe/Madrid";
+  time.timeZone = "Eire";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "es_ES.UTF-8";
@@ -27,5 +27,4 @@
 
   # Configure console keymap
   console.keyMap = "es";
-
 }
