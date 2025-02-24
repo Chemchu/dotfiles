@@ -1,8 +1,8 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ./bun.nix
     ./direnv.nix
+    ./java.nix
     ./node.nix
     ./nix
     ./rust.nix
