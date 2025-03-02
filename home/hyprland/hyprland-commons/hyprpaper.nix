@@ -4,9 +4,9 @@
   ...
 }: let
   wallpaper = pkgs.fetchurl {
-    url = "https://data.ukiyo-e.org/mfa/images/sc209131.jpg";
+    url = "https://tbhsqpulyboxxqnluknn.supabase.co/storage/v1/object/public/article_thumbnail//6";
     # replace this with the SHA256 hash of the image file
-    sha256 = "0wycc8773n85mf6mnwmma6s2r0j7qhgr6cip69l69kb0xc86sznf";
+    sha256 = "168hs83h7njvmqdfii5ndk31piyd88n9175hfcl4391inxrvr9yn";
   };
 in {
   home = {
