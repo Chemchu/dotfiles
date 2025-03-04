@@ -1,8 +1,4 @@
-{
-  pkgs,
-  ...
-}:
-{
+{pkgs, ...}: {
   imports = [
     ./guitar
     ./dev
@@ -11,6 +7,7 @@
     ./kitty
     ./nvf
     ./obs
+    ./mouse
     ./steam
     ./zellij
     ./zoxide
@@ -44,7 +41,6 @@
       lsof
       lm_sensors
       mangohud
-
     ];
   };
 }
