@@ -149,7 +149,7 @@ in {
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
   networking = {
-    firewall.allowedTCPPorts = [57621]; # --> https://nixos.wiki/wiki/Spotify
+    firewall.allowedTCPPorts = [57621 3000]; # --> https://nixos.wiki/wiki/Spotify
     firewall.allowedUDPPorts = [5353]; # --> https://nixos.wiki/wiki/Spotify
     hostName = system_name;
   };
