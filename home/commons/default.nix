@@ -22,7 +22,6 @@
     blender
     discord
     bottles
-    git-lfs
     unzip
   ];
 
