@@ -22,6 +22,8 @@
     blender
     discord
     bottles
+    git-lfs
+    unzip
   ];
 
   home.file = {
