@@ -93,13 +93,23 @@
       vim-nix
       neo-tree-nvim
       yanky-nvim
-      trouble-nvim
+      {
+        plugin = trouble-nvim;
+        config = toLuaFile ./nvim/plugin/trouble.lua;
+      }
       {
         plugin = conform-nvim;
         config = toLuaFile ./nvim/plugin/conform.lua;
       }
-      lualine-nvim
-      bufferline-nvim
+      {
+        plugin = lualine-nvim;
+        config = toLuaFile ./nvim/plugin/lualine.lua;
+      }
+      {
+        plugin = bufferline-nvim;
+        config = toLuaFile ./nvim/plugin/bufferline.lua;
+      }
+
       mini-icons
     ];
 
