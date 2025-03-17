@@ -19,6 +19,8 @@
       prettierd
       typescript-language-server
       rust-analyzer
+      jdt-language-server
+      zulu17
     ];
 
     plugins = with pkgs.vimPlugins; [
@@ -108,6 +110,10 @@
       {
         plugin = bufferline-nvim;
         config = toLuaFile ./nvim/plugin/bufferline.lua;
+      }
+      {
+        plugin = nvim-jdtls;
+        config = toLuaFile ./nvim/plugin/java.lua;
       }
 
       mini-icons
