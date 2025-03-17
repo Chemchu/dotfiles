@@ -5,7 +5,10 @@
     ./direnv
     ./lf
     ./kitty
+    /*
     ./nvf
+    */
+    ./neovim
     ./obs
     ./mouse
     ./steam
