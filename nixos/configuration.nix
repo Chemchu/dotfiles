@@ -107,6 +107,8 @@ in {
     package = pkgs.firefox-bin;
   };
 
+  programs.java.enable = true;
+
   # Enable Hyprland
   programs.hyprland.enable = true;
 
