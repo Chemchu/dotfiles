@@ -76,6 +76,7 @@
           p.tree-sitter-javascript
           p.tree-sitter-go
           p.tree-sitter-html
+          p.tree-sitter-htmldjango
           p.tree-sitter-css
           p.tree-sitter-scss
           p.tree-sitter-jinja
@@ -88,6 +89,7 @@
           p.tree-sitter-regex
           p.tree-sitter-toml
           p.tree-sitter-yaml
+          p.tree-sitter-gdscript
         ]);
         config = toLuaFile ./nvim/plugin/treesitter.lua;
       }

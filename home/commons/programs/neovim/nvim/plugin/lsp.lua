@@ -19,10 +19,13 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+-- LSP setup
+local lspconfig = require('lspconfig')
+local configs = require('lspconfig.configs')
 require('neodev').setup()
 
 -- Lua LSP
-require('lspconfig').lua_ls.setup {
+lspconfig.lua_ls.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 	root_dir = function()
@@ -38,7 +41,7 @@ require('lspconfig').lua_ls.setup {
 }
 
 -- Rust LSP (rust-analyzer)
-require('lspconfig').rust_analyzer.setup {
+lspconfig.rust_analyzer.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 	root_dir = function()
@@ -55,7 +58,7 @@ require('lspconfig').rust_analyzer.setup {
 }
 
 -- TypeScript LSP (typescript-language-server, aka ts_ls)
-require('lspconfig').ts_ls.setup {
+lspconfig.ts_ls.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 	root_dir = function()
@@ -63,4 +66,49 @@ require('lspconfig').ts_ls.setup {
 	end,
 	cmd = { "typescript-language-server", "--stdio" }, -- Make sure the correct command is specified
 	filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact", "html", "css", "json" },
+}
+
+-- Godot 4 LSP
+lspconfig.godot.setup({
+	cmd = { "/home/gus/.nix-profile/bin/godot", "--lsp" },        -- Command to start the Godot LSP
+	filetypes = { "gdscript", "gd" },                             -- Supported filetypes for Godot scripts
+	root_dir = lspconfig.util.root_pattern("project.godot", ".git"), -- Root of the project (check for project.godot file)
+	settings = {},
+})
+
+vim.filetype.add {
+	extension = {
+		jinja = 'jinja',
+		jinja2 = 'jinja',
+		j2 = 'jinja',
+	},
+}
+
+-- if you want to debug
+vim.lsp.set_log_level("debug")
+
+-- Jinja and Askama with Rust
+if not configs.jinja_lsp then
+	configs.jinja_lsp = {
+		default_config = {
+			name = "jinja-lsp",
+			cmd = { 'path_to_lsp_or_command' },
+			filetypes = { 'jinja', 'rust' },
+			root_dir = function(fname)
+				return "."
+				--return lspconfig.util.find_git_ancestor(fname)
+			end,
+			init_options = {
+				templates = './templates',
+				backend = { './src' },
+				lang = "rust"
+			},
+		},
+	}
+end
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+lspconfig.jinja_lsp.setup {
+	capabilities = capabilities
+}
+lspconfig.jinja_lsp.setup {
 }
