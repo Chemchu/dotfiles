@@ -65,7 +65,7 @@ lspconfig.ts_ls.setup {
 		return vim.loop.cwd()
 	end,
 	cmd = { "typescript-language-server", "--stdio" }, -- Make sure the correct command is specified
-	filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact", "html", "css", "json" },
+	filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact", "css", "json" },
 }
 
 -- Godot 4 LSP
