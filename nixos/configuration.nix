@@ -88,7 +88,6 @@ in {
     libsForQt5.qt5.qtwayland
     qt6.qtwayland
     glxinfo
-    chromium
   ];
 
   fonts.packages =
