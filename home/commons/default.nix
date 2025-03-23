@@ -23,6 +23,7 @@
     discord
     bottles
     unzip
+    google-chrome
   ];
 
   home.file = {
