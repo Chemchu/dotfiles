@@ -2,8 +2,7 @@
   pkgs,
   config_path,
   ...
-} :
-{
+}: {
   home.packages = with pkgs; [
     hypridle
     hyprlock
@@ -17,25 +16,25 @@
     }
 
     listener {
-        timeout = 3600                                         # 60min
+        timeout = 18000                               # 5 hours
         on-timeout = brightnessctl -s set 10         # set monitor backlight to minimum, avoid 0 on OLED monitor.
         on-resume = brightnessctl -r                 # monitor backlight restore.
     }
 
     # turn off keyboard backlight, comment out this section if you dont have a keyboard backlight.
     listener {
-        timeout = 3600                                         # 60min
+        timeout = 18000                                         # 5 hours
         on-timeout = brightnessctl -sd rgb:kbd_backlight set 0 # turn off keyboard backlight.
         on-resume = brightnessctl -rd rgb:kbd_backlight        # turn on keyboard backlight.
     }
 
     listener {
-        timeout = 3600                                # 60min
+        timeout = 18000                                # 5 hours
         on-timeout = loginctl lock-session            # lock screen when timeout has passed
     }
 
     listener {
-        timeout = 7200                                # 120min
+        timeout = 21600                               # 6 hours
         on-timeout = systemctl suspend                # suspend pc
     }
   '';
