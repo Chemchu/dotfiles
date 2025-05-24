@@ -3,7 +3,6 @@
     ./guitar
     ./dev
     ./direnv
-    ./evil-helix
     ./lf
     ./kitty
     ./neovim
