@@ -3,17 +3,15 @@
     ./guitar
     ./dev
     ./direnv
+    ./evil-helix
     ./lf
     ./kitty
-    /*
-    ./nvf
-    */
     ./neovim
     ./obs
     ./mouse
     ./steam
     ./zellij
-    ./zoxide
+    ./oxide
     ./zsh
   ];
 
@@ -33,6 +31,7 @@
       dysk # df
       procs # ps
       ripgrep
+      uutils-coreutils
 
       # Other utils
       htop

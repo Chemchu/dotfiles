@@ -180,7 +180,7 @@ in {
 
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
       bind = $mainMod, Q, exec, kitty
-      bind = $mainMod, W, exec, firefox
+      bind = $mainMod, W, exec, app.zen_browser.zen
       bind = $mainMod, C, killactive,
       bind = $mainMod, M, exit,
       bind = $mainMod, V, togglefloating,

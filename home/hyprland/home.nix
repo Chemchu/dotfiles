@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ../commons
     ./hyprland-commons
@@ -41,7 +40,6 @@
     pkgs.fastfetch
     pkgs.htop
     pkgs.btop
-
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -77,6 +75,7 @@
 
   home.shellAliases = {
     cd = "z";
+    ls = "eza";
   };
 
   # Let Home Manager install and manage itself.

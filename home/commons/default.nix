@@ -23,6 +23,7 @@
     bottles
     unzip
     google-chrome
+    evil-helix
   ];
 
   home.file = {
