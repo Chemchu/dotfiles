@@ -71,7 +71,6 @@
           p.tree-sitter-lua
           p.tree-sitter-python
           p.tree-sitter-json
-          p.tree-sitter-java
           p.tree-sitter-typescript
           p.tree-sitter-javascript
           p.tree-sitter-go
@@ -112,12 +111,6 @@
         plugin = bufferline-nvim;
         config = toLuaFile ./nvim/plugin/bufferline.lua;
       }
-      /*
-         {
-        plugin = nvim-jdtls;
-        config = toLuaFile ./nvim/plugin/java.lua;
-      }
-      */
 
       mini-icons
     ];

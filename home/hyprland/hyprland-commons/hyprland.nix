@@ -63,10 +63,8 @@ in {
 
       exec-once = waybar
       exec-once = dunst
-      exec-once = buckle -g 20
       exec-once=[workspace 1 silent] kitty
-      exec-once=[workspace 2 silent] firefox
-      exec-once=[workspace 8 silent] discord
+      exec-once=[workspace 2 silent] app.zen_browser.zen
       exec-once=[workspace 9 silent] thunderbird
       exec-once=[workspace 10 silent] spotify
 

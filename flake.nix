@@ -14,8 +14,6 @@
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
-    nvf.url = "github:notashelf/nvf";
-
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
     };
@@ -23,6 +21,9 @@
     lf-icons = {
       url = "github:gokcehan/lf";
       flake = false;
+    };
+    nh = {
+      url = "github:notashelf/nh?rev=29f74df5734cdaf41edc81aaa25e6ff0a73fe78f";
     };
   };
 

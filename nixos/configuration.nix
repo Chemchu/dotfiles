@@ -84,7 +84,6 @@ in {
     kitty
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
-    nh # --> CLI for NixOs
     libsForQt5.qt5.qtwayland
     qt6.qtwayland
     glxinfo

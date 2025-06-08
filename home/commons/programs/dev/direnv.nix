@@ -8,7 +8,7 @@
 
     zsh = {
       enable = true;
-      initExtra = ''
+      initContent = ''
         export DIRENV_LOG_FORMAT=""
       '';
     };
