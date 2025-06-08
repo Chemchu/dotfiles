@@ -58,7 +58,9 @@
     },
     "nh": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1745434669,
@@ -92,22 +94,6 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1745279238,
-        "narHash": "sha256-AQ7M9wTa/Pa/kK5pcGTgX/DGqMHyzsyINfN7ktsI7Fo=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "9684b53175fc6c09581e94cc85f05ab77464c7e3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-24.11",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
         "lastModified": 1749323244,
         "narHash": "sha256-+hBO18dfV3Kp5UAW7v4p39A7uRPIfXeG1/TUQDNWP98=",
         "owner": "nixos",
@@ -121,7 +107,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1744536153,
         "narHash": "sha256-awS2zRgF4uTwrOKwwiJcByDzDOdo3Q1rPZbiHQg/N38=",
@@ -144,13 +130,13 @@
         "lf-icons": "lf-icons",
         "nh": "nh",
         "nix-flatpak": "nix-flatpak",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "rust-overlay": "rust-overlay"
       }
     },
     "rust-overlay": {
       "inputs": {
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
         "lastModified": 1749263796,
