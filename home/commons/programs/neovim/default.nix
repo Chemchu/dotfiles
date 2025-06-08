@@ -8,114 +8,78 @@
     toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
   in {
     enable = true;
-
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-
     extraPackages = with pkgs; [
       lua-language-server
+      nil # Nix LSP
       wl-clipboard
       prettierd
       typescript-language-server
       rust-analyzer
-      jdt-language-server
+      vscode-extensions.vadimcn.vscode-lldb
     ];
-
     plugins = with pkgs.vimPlugins; [
-      {
-        plugin = nvim-lspconfig;
-        config = toLuaFile ./nvim/plugin/lsp.lua;
-      }
-
-      {
-        plugin = comment-nvim;
-        config = toLua "require(\"Comment\").setup()";
-      }
-
-      {
-        plugin = onedarkpro-nvim;
-        config = "colorscheme onedark";
-      }
-
-      neodev-nvim
-
-      nvim-cmp
-      {
-        plugin = nvim-cmp;
-        config = toLuaFile ./nvim/plugin/cmp.lua;
-      }
-
-      {
-        plugin = telescope-nvim;
-        config = toLuaFile ./nvim/plugin/telescope.lua;
-      }
-
+      bufferline-nvim
+      
+      # File explorer
+      nvim-tree-lua
+      
+      # Fuzzy finder
+      telescope-nvim
       telescope-fzf-native-nvim
-      which-key-nvim
-
-      cmp_luasnip
+      
+      # Syntax highlighting and parsing
+      nvim-treesitter.withAllGrammars
+      
+      # LSP support
+      nvim-lspconfig
+      
+      # Autocompletion
+      nvim-cmp
       cmp-nvim-lsp
-
+      cmp-buffer
+      cmp-path
+      cmp-cmdline
       luasnip
-      friendly-snippets
-
+      cmp_luasnip
+      
+      # Status line
       lualine-nvim
+      
+      # Git integration
+      gitsigns-nvim
+      
+      # Color scheme
+      onedarkpro-nvim
+      
+      # Icons
       nvim-web-devicons
-
-      {
-        plugin = nvim-treesitter.withPlugins (p: [
-          p.tree-sitter-nix
-          p.tree-sitter-vim
-          p.tree-sitter-bash
-          p.tree-sitter-lua
-          p.tree-sitter-python
-          p.tree-sitter-json
-          p.tree-sitter-typescript
-          p.tree-sitter-javascript
-          p.tree-sitter-go
-          p.tree-sitter-html
-          p.tree-sitter-css
-          p.tree-sitter-scss
-          p.tree-sitter-jinja
-          p.tree-sitter-sql
-          p.tree-sitter-hyprlang
-          p.tree-sitter-xml
-          p.tree-sitter-c
-          p.tree-sitter-markdown
-          p.tree-sitter-tsx
-          p.tree-sitter-regex
-          p.tree-sitter-toml
-          p.tree-sitter-yaml
-          p.tree-sitter-gdscript
-        ]);
-        config = toLuaFile ./nvim/plugin/treesitter.lua;
-      }
-
-      vim-nix
-      neo-tree-nvim
-      yanky-nvim
-      {
-        plugin = trouble-nvim;
-        config = toLuaFile ./nvim/plugin/trouble.lua;
-      }
-      {
-        plugin = conform-nvim;
-        config = toLuaFile ./nvim/plugin/conform.lua;
-      }
-      {
-        plugin = lualine-nvim;
-        config = toLuaFile ./nvim/plugin/lualine.lua;
-      }
-      {
-        plugin = bufferline-nvim;
-        config = toLuaFile ./nvim/plugin/bufferline.lua;
-      }
-
-      mini-icons
+      
+      # Autopairs
+      nvim-autopairs
+      
+      # Comment toggling
+      comment-nvim
+      
+      # Indentation guides
+      indent-blankline-nvim
+      
+      # Which-key for keybindings help
+      which-key-nvim
     ];
 
     extraLuaConfig = ''
+      ${builtins.readFile ./nvim/plugin/bufferline.lua}
+      ${builtins.readFile ./nvim/plugin/lsp.lua}
+      ${builtins.readFile ./nvim/plugin/cmp.lua}
+      ${builtins.readFile ./nvim/plugin/conform.lua}
+      ${builtins.readFile ./nvim/plugin/lualine.lua}
+      ${builtins.readFile ./nvim/plugin/other.lua}
+      ${builtins.readFile ./nvim/plugin/telescope.lua}
+      ${builtins.readFile ./nvim/plugin/treesitter.lua}
+      ${builtins.readFile ./nvim/plugin/trouble.lua}
       ${builtins.readFile ./nvim/options.lua}
       ${builtins.readFile ./nvim/keymaps.lua}
     '';

@@ -1,4 +1,48 @@
--- Make sure which-key is required
+-- Key mappings
+local keymap = vim.keymap.set
+
+-- File explorer
+keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = 'Toggle file explorer' })
+
+-- Telescope
+keymap('n', '<leader>ff', require('telescope.builtin').find_files, { desc = 'Find files' })
+keymap('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = 'Live grep' })
+keymap('n', '<leader>fb', require('telescope.builtin').buffers, { desc = 'Find buffers' })
+keymap('n', '<leader>fh', require('telescope.builtin').help_tags, { desc = 'Help tags' })
+
+-- Buffer navigation
+keymap('n', '<S-l>', ':bnext<CR>', { desc = 'Next buffer' })
+keymap('n', '<S-h>', ':bprevious<CR>', { desc = 'Previous buffer' })
+
+-- Window navigation
+keymap('n', '<C-h>', '<C-w>h', { desc = 'Go to left window' })
+keymap('n', '<C-j>', '<C-w>j', { desc = 'Go to lower window' })
+keymap('n', '<C-k>', '<C-w>k', { desc = 'Go to upper window' })
+keymap('n', '<C-l>', '<C-w>l', { desc = 'Go to right window' })
+
+-- Clear search highlighting
+keymap('n', '<leader>h', ':nohlsearch<CR>', { desc = 'Clear search highlight' })
+
+-- LSP keybindings
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    local opts = { buffer = ev.buf }
+    keymap('n', 'gD', vim.lsp.buf.declaration, opts)
+    keymap('n', 'gd', vim.lsp.buf.definition, opts)
+    keymap('n', 'K', vim.lsp.buf.hover, opts)
+    keymap('n', 'gi', vim.lsp.buf.implementation, opts)
+    keymap('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    keymap('n', '<leader>rn', vim.lsp.buf.rename, opts)
+    keymap('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+    keymap('n', 'gr', vim.lsp.buf.references, opts)
+    keymap('n', '<leader>f', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+  end,
+})
+
+--[[ -- Make sure which-key is required
 local wk = require("which-key")
 
 local keymaps = {
@@ -38,4 +82,4 @@ local lspmaps = {
 wk.add(keymaps, { mode = "n" })
 wk.add(troublemaps, { mode = "n" })
 wk.add(bufferlinemaps, { mode = "n" });
-wk.add(lspmaps, { mode = "n" });
+wk.add(lspmaps, { mode = "n" }); ]]

@@ -8,7 +8,6 @@
     ./neovim
     ./obs
     ./mouse
-    # ./nh
     ./steam
     ./zellij
     ./oxide

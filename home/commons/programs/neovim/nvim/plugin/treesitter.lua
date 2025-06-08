@@ -1,4 +1,14 @@
-require('nvim-treesitter.configs').setup {
+-- Treesitter setup
+require('nvim-treesitter.configs').setup({
+  highlight = {
+    enable = true,
+  },
+  indent = {
+    enable = true,
+  },
+})
+
+--[[ require('nvim-treesitter.configs').setup {
         ensure_installed = {},
 
         auto_install = false,
@@ -6,4 +16,4 @@ require('nvim-treesitter.configs').setup {
         highlight = { enable = true },
 
         indent = { enable = true },
-}
+} ]]

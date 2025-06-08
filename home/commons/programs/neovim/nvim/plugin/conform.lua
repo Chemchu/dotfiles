@@ -1,4 +1,4 @@
-require("conform").setup({
+--[[ require("conform").setup({
 	-- Map of filetype to formatters
 	formatters_by_ft = {
 		lua = { "stylua" },
@@ -110,4 +110,4 @@ require("conform").setup({
 require("conform").formatters_by_ft.lua = { "stylua" }
 require("conform").formatters.my_formatter = {
 	command = "my_cmd",
-}
+} ]]

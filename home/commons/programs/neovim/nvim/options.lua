@@ -1,18 +1,23 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+-- Basic settings
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.smartindent = true
+vim.opt.wrap = false
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+vim.opt.termguicolors = true
+vim.opt.scrolloff = 8
+vim.opt.signcolumn = "yes"
+vim.opt.updatetime = 50
+vim.opt.colorcolumn = "80"
+vim.opt.mouse = "a"
+vim.opt.clipboard = "unnamedplus"
 
-vim.o.clipboard = 'unnamedplus'
-
---vim.o.number = true
-vim.o.relativenumber = true
-
-vim.o.signcolumn = 'yes'
-
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-
-vim.o.updatetime = 300
-
-vim.o.termguicolors = true
-
-vim.o.mouse = 'a'
+-- Leader key
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "

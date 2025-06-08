@@ -1,6 +1,12 @@
--- lualine.lua configuration for Neovim
-
+-- Lualine setup
 require('lualine').setup({
+  options = {
+    theme = 'onedark',
+  },
+})
+      
+
+--[[ require('lualine').setup({
 	options = {
 		icons_enabled = true, -- Enable icons
 		theme = 'auto', -- Use an auto-detected theme (or specify a custom theme like 'onedark')
@@ -28,4 +34,4 @@ require('lualine').setup({
 	},
 	tabline = {},                                       -- Disable tabline (we'll use bufferline for this)
 	extensions = { 'fugitive', 'nvim-tree', 'toggleterm' } -- Extensions for specific plugins
-})
+}) ]]

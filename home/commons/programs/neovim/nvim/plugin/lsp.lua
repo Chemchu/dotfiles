@@ -1,4 +1,20 @@
-local on_attach = function(_, bufnr)
+-- LSP setup
+local lspconfig = require('lspconfig')
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+-- Lua LSP
+lspconfig.lua_ls.setup({
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = {'vim'},
+      },
+    },
+  },
+})
+
+--[[ local on_attach = function(_, bufnr)
 	local bufmap = function(keys, func)
 		vim.keymap.set('n', keys, func, { buffer = bufnr })
 	end
@@ -40,23 +56,6 @@ lspconfig.lua_ls.setup {
 	}
 }
 
--- Rust LSP (rust-analyzer)
-lspconfig.rust_analyzer.setup {
-	on_attach = on_attach,
-	capabilities = capabilities,
-	root_dir = function()
-		return vim.loop.cwd()
-	end,
-	cmd = { "rust-analyzer" }, -- Make sure the correct command is specified
-	settings = {
-		["rust-analyzer"] = {
-			checkOnSave = {
-				command = "clippy",
-			},
-		},
-	}
-}
-
 -- TypeScript LSP (typescript-language-server, aka ts_ls)
 lspconfig.ts_ls.setup {
 	on_attach = on_attach,
@@ -85,30 +84,4 @@ vim.filetype.add {
 }
 
 -- if you want to debug
-vim.lsp.set_log_level("debug")
-
--- Jinja and Askama with Rust
-if not configs.jinja_lsp then
-	configs.jinja_lsp = {
-		default_config = {
-			name = "jinja-lsp",
-			cmd = { 'path_to_lsp_or_command' },
-			filetypes = { 'jinja', 'rust' },
-			root_dir = function(fname)
-				return "."
-				--return lspconfig.util.find_git_ancestor(fname)
-			end,
-			init_options = {
-				templates = './templates',
-				backend = { './src' },
-				lang = "rust"
-			},
-		},
-	}
-end
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-lspconfig.jinja_lsp.setup {
-	capabilities = capabilities
-}
-lspconfig.jinja_lsp.setup {
-}
+vim.lsp.set_log_level("debug") ]]

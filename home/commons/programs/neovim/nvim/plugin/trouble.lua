@@ -1,4 +1,4 @@
--- trouble.lua configuration for Neovim
+--[[ -- trouble.lua configuration for Neovim
 
 local trouble = require("trouble")
 
@@ -46,4 +46,4 @@ trouble.setup({
 		other = "﫠"
 	},
 	use_diagnostic_signs = true, -- Use the diagnostic signs defined above
-})
+}) ]]
