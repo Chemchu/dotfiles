@@ -22,6 +22,7 @@
       url = "github:notashelf/nh?rev=29f74df5734cdaf41edc81aaa25e6ff0a73fe78f"; # Using the specific commit
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nvf.url = "github:notashelf/nvf";
   };
   outputs = inputs @ {
     home-manager,
