@@ -250,13 +250,6 @@
 
         keymaps = [
           {
-            key = "<leader>w";
-            mode = "n";
-            silent = true;
-            action = ":w<CR>";
-            desc = "Save";
-          }
-          {
             key = "<leader>bx";
             mode = "n";
             silent = true;
@@ -278,11 +271,18 @@
             desc = "Previous buffer";
           }
           {
-            key = "<Tab>";
+            key = "<C-h>";
             mode = "n";
             silent = true;
-            action = "<C-w>w";
-            desc = "Switch between windows";
+            action = "<C-w>h";
+            desc = "Move to the left window";
+          }
+          {
+            key = "<C-l>";
+            mode = "n";
+            silent = true;
+            action = "<C-w>l";
+            desc = "Move to the right window";
           }
         ];
       };
