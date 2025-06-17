@@ -5,9 +5,6 @@
     ./direnv
     ./lf
     ./kitty
-    /*
-    ./neovim
-    */
     ./nvf
     ./obs
     ./mouse

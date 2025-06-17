@@ -23,6 +23,8 @@
     bottles
     unzip
     google-chrome
+    cmake
+    python3
   ];
 
   home.file = {
