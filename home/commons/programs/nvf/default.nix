@@ -284,6 +284,34 @@
             action = "<C-w>l";
             desc = "Move to the right window";
           }
+          {
+            key = "<Esc>";
+            mode = "n";
+            silent = true;
+            action = ":nohlsearch<CR>";
+            desc = "Clear search result";
+          }
+          {
+            key = "<leader>xx";
+            mode = "n";
+            silent = true;
+            action = "<cmd>Trouble diagnostics toggle<cr>";
+            desc = "Toggle diagnostics";
+          }
+          {
+            key = "<leader>xX";
+            mode = "n";
+            silent = true;
+            action = "<cmd>Trouble diagnostics toggle filter.buf=0<cr>";
+            desc = "Toggle buffer diagnostics";
+          }
+          {
+            key = "<leader>xk";
+            mode = "n";
+            silent = true;
+            action = ":lua vim.diagnostic.open_float()<CR>";
+            desc = "Toggle inline diagnostics";
+          }
         ];
       };
     };
