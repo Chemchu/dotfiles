@@ -306,7 +306,7 @@
             desc = "Toggle buffer diagnostics";
           }
           {
-            key = "<leader>xk";
+            key = "J";
             mode = "n";
             silent = true;
             action = ":lua vim.diagnostic.open_float()<CR>";
@@ -325,6 +325,13 @@
             silent = true;
             action = ":lua vim.lsp.buf.declaration()<CR>";
             desc = "Go to declaration";
+          }
+          {
+            key = "s";
+            mode = "n";
+            silent = true;
+            action = ":lua require('leap').leap { target_windows = { vim.fn.win_getid() } }<CR>";
+            desc = "Leap in buffer";
           }
         ];
       };
