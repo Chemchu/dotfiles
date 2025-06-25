@@ -312,6 +312,20 @@
             action = ":lua vim.diagnostic.open_float()<CR>";
             desc = "Toggle inline diagnostics";
           }
+          {
+            key = "gd";
+            mode = "n";
+            silent = true;
+            action = ":lua vim.lsp.buf.definition()<CR>";
+            desc = "Go to definition";
+          }
+          {
+            key = "gD";
+            mode = "n";
+            silent = true;
+            action = ":lua vim.lsp.buf.declaration()<CR>";
+            desc = "Go to declaration";
+          }
         ];
       };
     };
