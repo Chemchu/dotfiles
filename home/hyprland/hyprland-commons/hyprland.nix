@@ -11,19 +11,9 @@
   playerctl = "${pkgs.playerctl}/bin/playerctl";
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
   pactl = "${pkgs.pulseaudio}/bin/pactl";
-  is_desktop = system_name == "spaceship";
-  main_display =
-    if is_desktop
-    then ",preferred,auto,auto"
-    else "eDP-1,preferred,auto,1.566667";
-  secondary_display =
-    if is_desktop
-    then ",preferred,-1920x0,auto"
-    else "DP-3,preferred,-1920x0,auto";
-  xwayland_force_zero_scaling =
-    if is_desktop
-    then "false"
-    else "true";
+  main_display = "eDP-1,preferred,auto,1.566667";
+  secondary_display = "DP-3,preferred,-1920x0,auto";
+  xwayland_force_zero_scaling = "true";
 in {
   home.packages = with pkgs; [
     pavucontrol
@@ -55,11 +45,7 @@ in {
       # Execute your favorite apps at launch
       exec-once = hyprctl setcursor Bibata-Modern-Classic 24
       exec-once = hyprpaper
-      ${
-        if is_desktop
-        then ""
-        else "exec-once = hypridle"
-      }
+      exec-once = hypridle
 
       exec-once = waybar
       exec-once = dunst

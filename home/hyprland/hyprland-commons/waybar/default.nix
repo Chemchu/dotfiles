@@ -3,10 +3,7 @@
   system_name,
   ...
 }: let
-  framework_modules =
-    if system_name == "spaceship"
-    then "\"wireplumber\""
-    else "\"network\", \"wireplumber\", \"backlight\", \"battery\"";
+  framework_modules = "\"network\", \"wireplumber\", \"backlight\", \"battery\"";
 in {
   home = {
     packages = with pkgs; [

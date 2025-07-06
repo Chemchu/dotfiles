@@ -11,10 +11,6 @@
   ...
 }: let
   hardware-configuration = ./${system_name}-hardware-configuration.nix;
-  lvm-disk =
-    if system_name == "spaceship"
-    then [./configuration-components/disks.nix]
-    else [./configuration-components/bluetooth.nix];
 in {
   imports =
     [
@@ -28,8 +24,8 @@ in {
       ./configuration-components/locale.nix
       ./configuration-components/sound.nix
       ./configuration-components/system.nix
-    ]
-    ++ lvm-disk;
+      ./configuration-components/bluetooth.nix
+    ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.gus = {

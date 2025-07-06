@@ -20,12 +20,7 @@
   networking.networkmanager.enable = true;
 
   # Nvidia stuff
-  services.xserver.videoDrivers = if system_name == "spaceship" then
-    ["nvidia"]
-  else if system_name == "framework" then
-    ["amdgpu"]
-  else
-    [];
+  services.xserver.videoDrivers = ["amdgpu"];
 
   hardware= {
     graphics = {
@@ -36,19 +31,5 @@
         libvdpau-va-gl
       ];
     };
-
-    nvidia = if system_name == "spaceship" then {
-      # Most wayland compositors need this
-      modesetting.enable = true;
-
-      powerManagement.enable = false;
-      powerManagement.finegrained = false;
-
-      nvidiaSettings = true;
-
-      open = false;
-
-      package = config.boot.kernelPackages.nvidiaPackages.latest;
-    } else {};
   };
 }

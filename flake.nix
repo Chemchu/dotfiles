@@ -58,7 +58,6 @@
       };
   in {
     nixosConfigurations = {
-      spaceship = createConfiguration "spaceship";
       framework = createConfiguration "framework";
     };
   };
