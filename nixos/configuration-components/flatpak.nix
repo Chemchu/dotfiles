@@ -16,7 +16,6 @@
       "app.zen_browser.zen".Context = {
         filesystems = [
           "home"
-          "host"
         ];
       };
     };
