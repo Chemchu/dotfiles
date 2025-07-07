@@ -80,7 +80,7 @@
           elixir.enable = false;
           haskell.enable = false;
 
-          tailwind.enable = false;
+          tailwind.enable = true;
           svelte.enable = false;
 
           # Nim LSP is broken on Darwin and therefore

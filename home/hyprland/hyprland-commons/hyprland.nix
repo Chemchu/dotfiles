@@ -51,7 +51,6 @@ in {
       exec-once = dunst
       exec-once=[workspace 1 silent] kitty
       exec-once=[workspace 2 silent] app.zen_browser.zen
-      exec-once=[workspace 9 silent] thunderbird
       exec-once=[workspace 10 silent] spotify
 
       # Some default env vars.

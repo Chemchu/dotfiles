@@ -15,8 +15,6 @@
     flyctl
     jq
     postman
-    thunderbird-bin
-    libreoffice
     godot_4
     blender
     discord
