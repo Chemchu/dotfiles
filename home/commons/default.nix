@@ -23,7 +23,6 @@
     google-chrome
     cmake
     python3
-    zed-editor
   ];
 
   home.file = {
