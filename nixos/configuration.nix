@@ -35,6 +35,7 @@ in {
       "networkmanager"
       "wheel"
       "input"
+      "wireshark"
     ];
   };
 
@@ -105,6 +106,11 @@ in {
 
   # Enable Hyprland
   programs.hyprland.enable = true;
+
+  programs.wireshark = {
+    enable = true;
+    usbmon.enable = true;
+  };
 
   # Swaylock not getting password correctly fix
   # security.pam.services.swaylock = {};

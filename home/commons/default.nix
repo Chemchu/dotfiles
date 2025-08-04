@@ -23,6 +23,10 @@
     google-chrome
     cmake
     python3
+    thc-hydra
+    tcpdump
+    wireshark
+    aseprite
   ];
 
   home.file = {
