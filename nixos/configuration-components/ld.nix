@@ -35,7 +35,6 @@ in {
       dbus
       openssl_3
       glib
-      libsoup_2_4
       librsvg
       cmake
       cairo
