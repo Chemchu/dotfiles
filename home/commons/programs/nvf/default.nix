@@ -11,6 +11,33 @@
     enableManpages = true;
     settings = {
       vim = {
+        # Add prettier auto-formatting on save using luaConfigRC
+        luaConfigRC.prettier-autocmd = ''
+          -- Prettier auto-format on save
+          local prettier_group = vim.api.nvim_create_augroup("PrettierAutoFormat", { clear = true })
+
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            group = prettier_group,
+            pattern = { "*.tsx", "*.jsx", "*.js", "*.ts", "*.css", "*.html" },
+            callback = function()
+              local file = vim.api.nvim_buf_get_name(0)
+              if file ~= "" then
+                -- Save cursor position
+                local cursor_pos = vim.api.nvim_win_get_cursor(0)
+
+                -- Run prettier
+                vim.fn.system("prettier --write " .. vim.fn.shellescape(file))
+
+                -- Reload buffer to show changes
+                vim.cmd("edit!")
+
+                -- Restore cursor position
+                vim.api.nvim_win_set_cursor(0, cursor_pos)
+              end
+            end,
+          })
+        '';
+
         repl = {
           conjure.enable = false;
         };
@@ -572,13 +599,6 @@
             mode = "n";
             silent = true;
             desc = "Toggle Undotree";
-          }
-          {
-            key = "<leader>w";
-            action = ":lua local file = vim.api.nvim_buf_get_name(0) vim.cmd('w') local ext = vim.fn.fnamemodify(file, ':e') if vim.tbl_contains({'tsx', 'jsx', 'js', 'ts', 'css', 'html'}, ext) then vim.cmd('silent !prettier --write ' .. vim.fn.shellescape(file)) vim.cmd('e') end<cr>";
-            mode = "n";
-            silent = true;
-            desc = "Save and format with Prettier";
           }
         ];
       };
