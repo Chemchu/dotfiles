@@ -73,7 +73,10 @@
           nix.enable = true;
           markdown.enable = true;
           html.enable = true;
-          css.enable = true;
+          css = {
+            enable = true;
+            format.enable = false;
+          };
           r = {
             enable = true;
             format.type = "styler";
@@ -83,6 +86,7 @@
           java.enable = false;
           ts = {
             enable = true;
+            format.enable = false;
             extraDiagnostics.enable = false;
           };
           svelte.enable = false;
@@ -568,6 +572,13 @@
             mode = "n";
             silent = true;
             desc = "Toggle Undotree";
+          }
+          {
+            key = "<leader>w";
+            action = ":lua local file = vim.api.nvim_buf_get_name(0) vim.cmd('w') local ext = vim.fn.fnamemodify(file, ':e') if vim.tbl_contains({'tsx', 'jsx', 'js', 'ts', 'css', 'html'}, ext) then vim.cmd('silent !prettier --write ' .. vim.fn.shellescape(file)) vim.cmd('e') end<cr>";
+            mode = "n";
+            silent = true;
+            desc = "Save and format with Prettier";
           }
         ];
       };
