@@ -1,35 +1,61 @@
-{inputs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     inputs.nvf.homeManagerModules.default
   ];
-
   programs.nvf = {
     enable = true;
-
+    enableManpages = true;
     settings = {
       vim = {
+        repl = {
+          conjure.enable = false;
+        };
+        spellcheck = {
+          enable = false;
+          languages = [
+            "en"
+            "es"
+          ];
+        };
+        clipboard = {
+          enable = true;
+          registers = "unnamedplus";
+          providers.wl-copy.enable = true;
+        };
+        options = {
+          shiftwidth = 2;
+          conceallevel = 1;
+          scrolloff = 1;
+        };
+        preventJunkFiles = true;
+        searchCase = "smart";
         viAlias = true;
         vimAlias = true;
+        undoFile = {
+          enable = true;
+        };
         debugMode = {
           enable = false;
           level = 16;
           logFile = "/tmp/nvim.log";
         };
-
-        spellcheck = {
-          enable = false;
-        };
-
         lsp = {
           enable = true;
           formatOnSave = true;
           lspkind.enable = false;
-          lightbulb.enable = true;
+          lightbulb.enable = false;
           lspsaga.enable = false;
+          otter-nvim = {
+            enable = true;
+            setupOpts.buffers.write_to_disk = true;
+          };
           trouble.enable = true;
-          lspSignature.enable = true;
-          otter-nvim.enable = false;
-          nvim-docs-view.enable = false;
+          lspSignature.enable = false; # doesn't work with blink
+          nvim-docs-view.enable = false; # lags *horribly* whenever l is pressed
         };
 
         debugger = {
@@ -39,70 +65,70 @@
           };
         };
 
-        # This section does not include a comprehensive list of available language modules.
-        # To list all available language module options, please visit the nvf manual.
         languages = {
           enableFormat = true;
           enableTreesitter = true;
           enableExtraDiagnostics = true;
-
-          # Languages that will be supported in default and maximal configurations.
-          nix.enable = false;
+          nim.enable = true;
+          nix.enable = true;
           markdown.enable = true;
-
-          # Languages that are enabled in the maximal configuration.
-          bash.enable = true;
-          clang.enable = true;
-          css.enable = true;
           html.enable = true;
+          css.enable = true;
+          r = {
+            enable = true;
+            format.type = "styler";
+          };
           sql.enable = true;
-          ts.enable = true;
+          haskell.enable = true;
+          java.enable = false;
+          ts = {
+            enable = true;
+            extraDiagnostics.enable = false;
+          };
+          svelte.enable = false;
+          vala.enable = true;
           go.enable = true;
-          lua.enable = true;
+          elixir.enable = false;
           zig.enable = true;
+          ocaml.enable = true;
+          nu.enable = true;
+          python = {
+            enable = true;
+            lsp.server = "pyright";
+          };
+          dart.enable = false;
+          lua.enable = true;
+          bash.enable = true;
+          tailwind.enable = true;
+          typst.enable = true;
+          julia.enable = true;
+          clang = {
+            enable = true;
+            lsp.server = "clangd";
+          };
+
           rust = {
             enable = true;
             crates.enable = true;
           };
-
-          # Language modules that are not as common.
-          assembly.enable = false;
-          astro.enable = false;
-          nu.enable = false;
-          csharp.enable = false;
-          julia.enable = false;
-          vala.enable = false;
-          scala.enable = false;
-          r.enable = false;
-          gleam.enable = false;
-          dart.enable = false;
-          ocaml.enable = false;
-          elixir.enable = false;
-          haskell.enable = false;
-
-          tailwind.enable = true;
-          svelte.enable = false;
-
-          # Nim LSP is broken on Darwin and therefore
-          # should be disabled by default. Users may still enable
-          # `vim.languages.vim` to enable it, this does not restrict
-          # that.
-          # See: <https://github.com/PMunch/nimlsp/issues/178#issue-2128106096>
-          nim.enable = false;
         };
 
         visuals = {
-          nvim-scrollbar.enable = false;
           nvim-web-devicons.enable = true;
-          nvim-cursorline.enable = true;
-          cinnamon-nvim.enable = false;
-          fidget-nvim.enable = false;
-
-          highlight-undo.enable = true;
-          indent-blankline.enable = false;
-
-          # Fun
           cellular-automaton.enable = false;
+          fidget-nvim.enable = true;
+          highlight-undo.enable = true;
+
+          indent-blankline = {
+            enable = true;
+          };
+
+          nvim-cursorline = {
+            enable = true;
+            setupOpts = {
+              lineTimeout = 0;
+            };
+          };
         };
 
         statusline = {
@@ -111,6 +137,11 @@
             theme = "onedark";
           };
         };
+
+        # luaConfigRC.basic = ''
+        #   vim.g.nvim_ghost_use_script = 1
+        #   vim.g.nvim_ghost_python_executable = '${ghosttext-dependencies}/bin/python'
+        # '';
 
         theme = {
           enable = true;
@@ -121,16 +152,22 @@
 
         autopairs.nvim-autopairs.enable = true;
 
-        autocomplete.nvim-cmp.enable = true;
+        autocomplete.blink-cmp = {
+          enable = true;
+          friendly-snippets.enable = true;
+          setupOpts = {
+            signature.enabled = true;
+            cmdline = {
+              keymap.preset = "cmdline";
+              completion.menu.auto_show = true;
+            };
+          };
+        };
         snippets.luasnip.enable = true;
 
         filetree = {
-          neo-tree = {
-            enable = false;
-          };
           nvimTree = {
-            enable = true;
-            mappings.toggle = "<leader>e";
+            enable = false;
           };
         };
 
@@ -138,7 +175,17 @@
           nvimBufferline.enable = true;
         };
 
-        treesitter.context.enable = true;
+        treesitter = {
+          context.enable = true;
+          grammars = [
+            pkgs.vimPlugins.nvim-treesitter-parsers.nu
+            pkgs.vimPlugins.nvim-treesitter-parsers.kdl
+            pkgs.vimPlugins.nvim-treesitter-parsers.rnoweb
+            pkgs.vimPlugins.nvim-treesitter-parsers.yaml
+            pkgs.vimPlugins.nvim-treesitter-parsers.markdown
+            pkgs.vimPlugins.nvim-treesitter-parsers.r
+          ];
+        };
 
         binds = {
           whichKey.enable = true;
@@ -149,8 +196,10 @@
 
         git = {
           enable = true;
-          gitsigns.enable = true;
-          gitsigns.codeActions.enable = false; # throws an annoying debug message
+          gitsigns = {
+            enable = true;
+            codeActions.enable = false; # throws an annoying debug message
+          };
         };
 
         minimap = {
@@ -168,28 +217,74 @@
         };
 
         projects = {
-          project-nvim.enable = true;
+          project-nvim.enable = false;
         };
 
         utility = {
+          undotree.enable = true;
+          oil-nvim.enable = true;
           ccc.enable = false;
           vim-wakatime.enable = false;
+          icon-picker.enable = true;
           surround.enable = true;
           diffview-nvim.enable = true;
           motion = {
             hop.enable = false;
-            leap.enable = true;
+            leap = {
+              enable = true;
+              mappings = {
+                leapForwardTo = "s";
+                leapBackwardTo = "S";
+              };
+            };
             precognition.enable = false;
           };
 
           images = {
             image-nvim.enable = false;
+            img-clip.enable = true;
           };
         };
 
         notes = {
-          obsidian.enable = false;
-          neorg.enable = false;
+          obsidian = {
+            enable = false;
+            setupOpts = {
+              workspaces = [
+                {
+                  name = "notes";
+                  path = "~/Documents/Nextcloud/Notes/markdown";
+                }
+              ];
+              templates = {
+                folder = "templates";
+                date_format = "%Y-%m-%d-%a";
+                time_format = "%H:%M";
+              };
+            };
+          };
+          neorg = {
+            enable = false;
+            setupOpts = {
+              load = {
+                "core.defaults" = {};
+                "core.concealer" = {};
+                "core.completion" = {
+                  config.engine = "nvim-cmp";
+                };
+                "core.export" = {};
+                "core.summary" = {};
+                "core.text-objects" = {};
+                "core.dirman" = {
+                  config = {
+                    workspaces = {
+                      notes = "~/Documents/neorg";
+                    };
+                  };
+                };
+              };
+            };
+          };
           orgmode.enable = false;
           mind-nvim.enable = false;
           todo-comments.enable = true;
@@ -197,8 +292,8 @@
 
         terminal = {
           toggleterm = {
-            enable = false;
-            lazygit.enable = false;
+            enable = true;
+            lazygit.enable = true;
           };
         };
 
@@ -208,6 +303,7 @@
           colorizer.enable = true;
           modes-nvim.enable = false; # the theme looks terrible with catppuccin
           illuminate.enable = true;
+          # fastaction.enable = true;
           breadcrumbs = {
             enable = false;
             navbuddy.enable = false;
@@ -219,16 +315,8 @@
               nix = "110";
               ruby = "120";
               java = "130";
-              go = ["90" "130"];
+              # go = ["90 130"];
             };
-          };
-          fastaction.enable = true;
-        };
-
-        assistant = {
-          chatgpt.enable = false;
-          copilot = {
-            enable = false;
           };
         };
 
@@ -248,6 +336,140 @@
           neocord.enable = false;
         };
 
+        extraPlugins = {
+          # ghost-nvim = {
+          #   package = pkgs.vimUtils.buildVimPlugin {
+          #     name = "ghost-nvim";
+          #     src = pkgs.fetchFromGitHub {
+          #       owner = "subnut";
+          #       repo = "nvim-ghost.nvim";
+          #       rev = "v0.5.4";
+          #       hash = "sha256-XldDgPqVeIfUjaRLVUMp88eHBHLzoVgOmT3gupPs+ao=";
+          #     };
+          #     setup = ''
+          #       require('ghost').setup(),
+          #     '';
+          #   };
+          # };
+          /*
+             R-nvim = {
+            package = pkgs.vimUtils.buildVimPlugin {
+              name = "R-nvim";
+              src = pkgs.fetchFromGitHub {
+                owner = "R-nvim";
+                repo = "R.nvim";
+                rev = "68a033246a1863c8028f7d7aae91d65fc06058c8";
+                hash = "sha256-GhgzmIylttMyaV/B2QjlRcdtHW/Epw8ghQtJbQEJZN0=";
+              };
+              doCheck = false;
+              setup = ''
+                require('r').setup(),
+              '';
+            };
+          };
+          */
+        };
+
+        lazy.plugins = with pkgs.vimPlugins; {
+          /*
+             ${twilight-nvim.pname} = {
+            lazy = true;
+            package = twilight-nvim;
+            setupModule = "twilight-nvim";
+            cmd = ["Twilight"];
+            after = ''print('hello')'';
+            keys = [
+              {
+                key = "<leader>ut";
+                mode = "n";
+                action = '':Twilight<CR>'';
+                silent = true;
+                desc = "Toggle Twilight";
+              }
+            ];
+          };
+          */
+          ${zen-mode-nvim.pname} = {
+            lazy = true;
+            package = zen-mode-nvim;
+            setupModule = "zen-mode-nvim";
+            cmd = ["ZenMode"];
+            after = ''print('hello')'';
+            keys = [
+              {
+                key = "<leader>uz";
+                mode = "n";
+                action = '':ZenMode<CR>'';
+                silent = true;
+                desc = "Toggle ZenMode";
+              }
+            ];
+          };
+          /*
+             ${eyeliner-nvim.pname} = {
+            package = eyeliner-nvim;
+            event = ["BufEnter"];
+            after = ''print('hello')'';
+          };
+          */
+          /*
+             ${quarto-nvim.pname} = {
+            lazy = true;
+            cmd = "QuartoPreview";
+            package = quarto-nvim;
+          };
+          */
+          ${lazygit-nvim.pname} = {
+            lazy = true;
+            cmd = [
+              "LazyGit"
+              "LazyGitConfig"
+              "LazyGitCurrentFile"
+              "LazyGitFilter"
+              "LazyGitFilterCurrentFile"
+            ];
+            package = lazygit-nvim;
+            setupOpts = {
+              open_cmd = "zen %s";
+            };
+            keys = [
+              {
+                key = "<leader>lg";
+                action = "<cmd>LazyGit<cr>";
+                mode = "n";
+              }
+            ];
+          };
+          ${typst-preview-nvim.pname} = {
+            lazy = true;
+            cmd = "TypstPreview";
+            package = typst-preview-nvim;
+            setupOpts = {
+              open_cmd = "zen %s";
+            };
+          };
+          ${harpoon2.pname} = {
+            lazy = true;
+            cmd = "TypstPreview";
+            package = harpoon2;
+            keys = [
+              {
+                key = "<leader>ad";
+                mode = "n";
+                action = '':lua require("harpoon"):list():add()<CR>'';
+                silent = true;
+                desc = "Harpoon add";
+              }
+              {
+                key = "<leader>as";
+                mode = "n";
+                action = '':lua require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())<CR>'';
+                silent = true;
+                desc = "Harpoon switch";
+              }
+            ];
+          };
+        };
         keymaps = [
           {
             key = "<leader>bx";
@@ -332,6 +554,20 @@
             silent = true;
             action = ":lua require('leap').leap { target_windows = { vim.fn.win_getid() } }<CR>";
             desc = "Leap in buffer";
+          }
+          {
+            key = "-";
+            action = ":Oil<CR>";
+            mode = "n";
+            silent = true;
+            desc = "enable Oil";
+          }
+          {
+            key = "<F5>";
+            action = ":UndotreeToggle<CR>";
+            mode = "n";
+            silent = true;
+            desc = "Toggle Undotree";
           }
         ];
       };
