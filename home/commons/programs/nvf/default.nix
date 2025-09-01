@@ -11,33 +11,14 @@
     enableManpages = true;
     settings = {
       vim = {
-        # Add prettier auto-formatting on save using luaConfigRC
-        luaConfigRC.prettier-autocmd = ''
-          -- Prettier auto-format on save
-          local prettier_group = vim.api.nvim_create_augroup("PrettierAutoFormat", { clear = true })
-
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            group = prettier_group,
-            pattern = { "*.tsx", "*.jsx", "*.js", "*.ts", "*.css", "*.html" },
-            callback = function()
-              local file = vim.api.nvim_buf_get_name(0)
-              if file ~= "" then
-                -- Save cursor position
-                local cursor_pos = vim.api.nvim_win_get_cursor(0)
-
-                -- Run prettier
-                vim.fn.system("prettier --write " .. vim.fn.shellescape(file))
-
-                -- Reload buffer to show changes
-                vim.cmd("edit!")
-
-                -- Restore cursor position
-                vim.api.nvim_win_set_cursor(0, cursor_pos)
-              end
-            end,
-          })
-        '';
-
+        formatter.conform-nvim = {
+          enable = true;
+          setupOpts.formatters_by_ft = {
+            html = [
+              "prettier"
+            ];
+          };
+        };
         repl = {
           conjure.enable = false;
         };
@@ -99,10 +80,12 @@
           nim.enable = true;
           nix.enable = true;
           markdown.enable = true;
-          html.enable = true;
+          html = {
+            enable = true;
+          };
           css = {
             enable = true;
-            format.enable = false;
+            format.enable = true;
           };
           r = {
             enable = true;
@@ -113,7 +96,7 @@
           java.enable = false;
           ts = {
             enable = true;
-            format.enable = false;
+            format.enable = true;
             extraDiagnostics.enable = false;
           };
           svelte.enable = false;
