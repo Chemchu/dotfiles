@@ -12,20 +12,19 @@
 }: let
   hardware-configuration = ./${system_name}-hardware-configuration.nix;
 in {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      inputs.home-manager.nixosModules.default
-      hardware-configuration
-      ./configuration-components/environment-variables.nix
-      ./configuration-components/flatpak.nix # Only installing this to avoid building electron from source
-      ./configuration-components/flipperzero.nix
-      ./configuration-components/ld.nix # --> Removed by now. I need to test using flakes for repositories
-      ./configuration-components/locale.nix
-      ./configuration-components/sound.nix
-      ./configuration-components/system.nix
-      ./configuration-components/bluetooth.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    inputs.home-manager.nixosModules.default
+    hardware-configuration
+    ./configuration-components/environment-variables.nix
+    ./configuration-components/flatpak.nix # Only installing this to avoid building electron from source
+    ./configuration-components/flipperzero.nix
+    ./configuration-components/ld.nix # --> Removed by now. I need to test using flakes for repositories
+    ./configuration-components/locale.nix
+    ./configuration-components/sound.nix
+    ./configuration-components/system.nix
+    ./configuration-components/bluetooth.nix
+  ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.gus = {
@@ -40,6 +39,10 @@ in {
   };
 
   services = {
+    deluge = {
+      enable = true;
+      web.enable = true;
+    };
     # Enable automatic login for the user.
     getty.autologinUser = "gus";
     # Enable locate file finder
