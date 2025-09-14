@@ -124,6 +124,7 @@
           rust = {
             enable = true;
             crates.enable = true;
+            dap.enable = true;
           };
         };
 
