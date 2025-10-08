@@ -27,6 +27,7 @@
     tcpdump
     wireshark
     aseprite
+    mold
   ];
 
   home.file = {
