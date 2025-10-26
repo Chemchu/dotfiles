@@ -191,7 +191,7 @@
         };
 
         treesitter = {
-          context.enable = true;
+          context.enable = false;
           grammars = [
             pkgs.vimPlugins.nvim-treesitter-parsers.nu
             pkgs.vimPlugins.nvim-treesitter-parsers.kdl
