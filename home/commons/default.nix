@@ -10,15 +10,12 @@
     feh
     mpv
     spotify
-    zoom-us
-    bucklespring-libinput
     flyctl
     jq
     postman
     godot_4
     blender
     discord
-    bottles
     unzip
     google-chrome
     cmake
@@ -26,7 +23,6 @@
     thc-hydra
     tcpdump
     wireshark
-    aseprite
     mold
   ];
 

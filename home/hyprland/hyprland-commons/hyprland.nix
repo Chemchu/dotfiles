@@ -133,11 +133,6 @@ in {
         preserve_split = yes # you probably want this
       }
 
-      gestures {
-        # See https://wiki.hyprland.org/Configuring/Variables/ for more
-        workspace_swipe = off
-      }
-
       misc {
         # See https://wiki.hyprland.org/Configuring/Variables/ for more
         force_default_wallpaper = -1 # Set to 0 to disable the anime mascot wallpapers

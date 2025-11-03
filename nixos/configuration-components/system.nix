@@ -4,8 +4,7 @@
   system_name,
   ...
 }
-:
-{
+: {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -22,12 +21,12 @@
   # Nvidia stuff
   services.xserver.videoDrivers = ["amdgpu"];
 
-  hardware= {
+  hardware = {
     graphics = {
       enable = true;
       enable32Bit = true;
       extraPackages = with pkgs; [
-        vaapiVdpau
+        libva-vdpau-driver
         libvdpau-va-gl
       ];
     };

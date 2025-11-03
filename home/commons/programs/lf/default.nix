@@ -1,31 +1,28 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   xdg.configFile."lf/icons".source = ./icons;
 
   programs.lf = {
     enable = true;
     commands = {
-      dragon-out = ''%${pkgs.xdragon}/bin/xdragon -a -x "$fx"'';
+      dragon-out = ''%${pkgs.dragon-drop}/bin/xdragon -a -x "$fx"'';
       editor-open = ''$$EDITOR $f'';
       mkdir = ''
-      ''${{
-        printf "Directory Name: "
-        read DIR
-        mkdir $DIR
-      }}
+        ''${{
+          printf "Directory Name: "
+          read DIR
+          mkdir $DIR
+        }}
       '';
       rm = ''
-      ''${{
-        echo 'delete?[y/n]'
-        read ans
-        [ $ans = 'y' ] && echo 'deleting files..' && rm -rf "$fx" || echo 'cancelled.'
-        }}
+        ''${{
+          echo 'delete?[y/n]'
+          read ans
+          [ $ans = 'y' ] && echo 'deleting files..' && rm -rf "$fx" || echo 'cancelled.'
+          }}
       '';
     };
 
     keybindings = {
-
       "\\\"" = "";
       o = "";
       c = "mkdir";
@@ -55,10 +52,8 @@
       ignorecase = true;
     };
 
-    extraConfig =
-    let
-      previewer =
-        pkgs.writeShellScriptBin "pv.sh" ''
+    extraConfig = let
+      previewer = pkgs.writeShellScriptBin "pv.sh" ''
         file=$1
         w=$2
         h=$3
@@ -75,8 +70,7 @@
       cleaner = pkgs.writeShellScriptBin "clean.sh" ''
         ${pkgs.kitty}/bin/kitty +kitten icat --clear --stdin no --silent --transfer-mode file < /dev/null > /dev/tty
       '';
-    in
-    ''
+    in ''
       set cleaner ${cleaner}/bin/clean.sh
       set previewer ${previewer}/bin/pv.sh
     '';

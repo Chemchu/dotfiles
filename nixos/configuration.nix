@@ -13,7 +13,6 @@
   hardware-configuration = ./${system_name}-hardware-configuration.nix;
 in {
   imports = [
-    # Include the results of the hardware scan.
     inputs.home-manager.nixosModules.default
     hardware-configuration
     ./configuration-components/environment-variables.nix
@@ -79,18 +78,20 @@ in {
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim
     wget
     kitty
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
     libsForQt5.qt5.qtwayland
     qt6.qtwayland
-    glxinfo
+    mesa-demos
   ];
 
-  fonts.packages =
-    builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+  fonts.packages = with pkgs.nerd-fonts; [
+    iosevka
+    iosevka-term
+  ];
 
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
@@ -99,20 +100,21 @@ in {
     options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
   '';
   security.polkit.enable = true;
+  programs = {
+    firefox = {
+      enable = true;
+      package = pkgs.firefox-bin;
+    };
 
-  programs.firefox = {
-    enable = true;
-    package = pkgs.firefox-bin;
-  };
+    java.enable = false;
 
-  programs.java.enable = true;
+    # Enable Hyprland
+    hyprland.enable = true;
 
-  # Enable Hyprland
-  programs.hyprland.enable = true;
-
-  programs.wireshark = {
-    enable = true;
-    usbmon.enable = true;
+    wireshark = {
+      enable = true;
+      usbmon.enable = true;
+    };
   };
 
   # Swaylock not getting password correctly fix

@@ -25,7 +25,7 @@
       # Rust implementations of linux commands
       bat # cat
       bottom # System monitor
-      du-dust # du
+      dust
       dua # du
       fd # find
       dysk # df
