@@ -1,8 +1,4 @@
-{
-  pkgs,
-  system_name,
-  ...
-}: let
+{pkgs, ...}: let
   yt = pkgs.writeShellScript "yt" ''
     notify-send "Opening video" "$(wl-paste)"
     mpv "$(wl-paste)"

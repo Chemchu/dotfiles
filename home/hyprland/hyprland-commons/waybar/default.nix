@@ -1,8 +1,4 @@
-{
-  pkgs,
-  system_name,
-  ...
-}: let
+{pkgs, ...}: let
   framework_modules = "\"network\", \"wireplumber\", \"backlight\", \"battery\"";
 in {
   home = {
