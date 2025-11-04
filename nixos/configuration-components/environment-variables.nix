@@ -6,9 +6,6 @@
     # Hint electron apps to use wayland
     NIXOS_OZONE_WL = "1";
 
-    # Env for nh CLI
-    FLAKE = "/home/gus/dotfiles";
-
     GTK_IM_MODULE = "ibus";
     EDITOR = "vim";
   };

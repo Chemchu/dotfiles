@@ -115,6 +115,13 @@ in {
       enable = true;
       usbmon.enable = true;
     };
+
+    nh = {
+      enable = true;
+      clean.enable = true;
+      clean.extraArgs = "--keep-since 4d --keep 3";
+      flake = "../."; # sets NH_OS_FLAKE variable for you
+    };
   };
 
   # Swaylock not getting password correctly fix

@@ -108,27 +108,6 @@
         "type": "github"
       }
     },
-    "nh": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1745434669,
-        "narHash": "sha256-Pqff6gVSNP2kA0Oo0t9CUy9cdf2yGnwSfwlOvS5LtKM=",
-        "owner": "notashelf",
-        "repo": "nh",
-        "rev": "29f74df5734cdaf41edc81aaa25e6ff0a73fe78f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "notashelf",
-        "repo": "nh",
-        "rev": "29f74df5734cdaf41edc81aaa25e6ff0a73fe78f",
-        "type": "github"
-      }
-    },
     "nix-flatpak": {
       "locked": {
         "lastModified": 1754777568,
@@ -204,7 +183,6 @@
         "devshell": "devshell",
         "home-manager": "home-manager",
         "lf-icons": "lf-icons",
-        "nh": "nh",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs",
         "nvf": "nvf",
