@@ -1,8 +1,4 @@
-{
-  pkgs,
-  ...
-}:
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     dunst
     libnotify
@@ -63,7 +59,7 @@
     frame_width = 1
 
     # Defines color of the frame around the notification window.
-    frame_color = "#279AF1"
+    frame_color = "#B7410E"
 
     # Define a color for the separator.
     # possible values are:
@@ -207,4 +203,3 @@
     timeout = 3
   '';
 }
-

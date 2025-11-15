@@ -72,10 +72,10 @@ in {
       general {
       # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-      gaps_in = 3
-      gaps_out = 5
+      gaps_in = 1
+      gaps_out = 3
       border_size = 2
-      col.active_border = rgba(279AF1ee)
+      col.active_border = rgba(B7410Eee)
       col.inactive_border = rgba(171717ee)
 
       layout = dwindle
@@ -87,7 +87,7 @@ in {
       decoration {
         # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-        rounding = 20
+        rounding = 0
 
         blur {
             enabled = true

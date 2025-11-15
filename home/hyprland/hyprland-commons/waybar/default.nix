@@ -12,9 +12,9 @@ in {
       {
           "height": 35, // Waybar height (to be removed for auto height)
           "layer": "top", // Waybar at top layer
-          "margin-top": 5,
-          "margin-right": 5,
-          "margin-left": 5,
+          "margin-top": 0,
+          "margin-right": 0,
+          "margin-left": 0,
           "spacing": 10,
           "modules-left": ["custom/launcher", "hyprland/workspaces"],
           "modules-center": ["mpris"],
@@ -51,7 +51,7 @@ in {
                       "months":     "<span color='#FCFFFC'>{}</span>",
                       "days":       "<span color='#FCFFFC'>{}</span>",
                       "weekdays":   "<span color='#FF6A6A'>{}</span>",
-                      "today":      "<span color='#279AF1'><b>{}</b></span>"
+                      "today":      "<span color='#B7410E'><b>{}</b></span>"
                   }
               },
               "actions": {
@@ -115,14 +115,14 @@ in {
               "format": "{player_icon} {title} - {artist}",
               "format-paused": "{player_icon} {status_icon} {title} - {artist}",
               "player-icons": {
-                  "default": "<span foreground='#279AF1'>▶</span>",
+                  "default": "<span foreground='#B7410E'>▶</span>",
                   "mpv": "🎵",
                   "spotify": "<span foreground='#1DB954'> </span>",
                   "firefox": "<span foreground='#E66000'> </span>",
                   "chrome": "<span foreground='#3369E8'> </span>"
               },
               "status-icons": {
-                  "paused": "<span foreground='#279AF1'>⏸</span>"
+                  "paused": "<span foreground='#B7410E'>⏸</span>"
               },
               "tooltip": false,
               // "ignored-players": ["firefox"]

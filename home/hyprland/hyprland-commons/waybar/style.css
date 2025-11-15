@@ -1,6 +1,10 @@
 * {
   /* `otf-font-awesome` is required to be installed for icons */
-  font-family: Iosevka Nerd Font, FiraCode Nerd Font, Material Design Icons, JetBrainsMono Nerd Font;
+  font-family:
+    Iosevka Nerd Font,
+    FiraCode Nerd Font,
+    Material Design Icons,
+    JetBrainsMono Nerd Font;
   font-size: 16px;
   font-weight: 500;
 }
@@ -10,7 +14,7 @@ window#waybar {
   color: #ffffff;
   transition-property: background-color;
   transition-duration: 0.5s;
-  border-radius: 20px;
+  border-radius: 0px;
 }
 
 window#waybar.hidden {
@@ -29,9 +33,8 @@ window#waybar.hidden {
 #wireplumber,
 #custom-launcher,
 #custom-spotify,
-
 #workspaces button {
-  color: #FCFFFC;
+  color: #fcfffc;
   padding: 0px;
   padding-right: 2px;
   padding-left: 2px;
@@ -40,7 +43,7 @@ window#waybar.hidden {
 }
 
 #workspaces button.active {
-  color: #279AF1;
+  color: #b7410e;
   padding: 0px;
   padding-right: 2px;
   padding-left: 2px;
@@ -49,7 +52,7 @@ window#waybar.hidden {
 }
 
 #workspaces button.urgent {
-  color: #FF6A6A;
+  color: #ff6a6a;
   padding: 0px;
   padding-right: 2px;
   padding-left: 2px;
@@ -68,21 +71,21 @@ window#waybar.hidden {
 }
 
 #custom-launcher {
-  color: #279AF1;
+  color: #b7410e;
   margin-left: 15px; /* El espacio entre el logo de Nix y la barra por la izquierda */
   font-size: 18px;
 }
 
 #wireplumber {
-  color: #FCFFFC;
+  color: #fcfffc;
 }
 
 #wireplumber.muted {
-  color: #FF6A6A;
+  color: #ff6a6a;
 }
 
 #clock {
-  color: #FCFFFC;
+  color: #fcfffc;
   font-family: Iosevka Nerd Font;
   margin-right: 20px; /* El espacio entre la hora y la barra por la derecha */
 }
@@ -110,7 +113,7 @@ label:focus {
 
 #tray > .needs-attention {
   -gtk-icon-effect: highlight;
-  background-color: #FF6A6A;
+  background-color: #ff6a6a;
 }
 
 #idle_inhibitor {
@@ -123,5 +126,5 @@ label:focus {
 }
 
 #mpris {
-  color: #FCFFFC;
+  color: #fcfffc;
 }
