@@ -43,7 +43,7 @@ window#waybar.hidden {
 }
 
 #workspaces button.active {
-  color: #b7410e;
+  color: #ff5c00;
   padding: 0px;
   padding-right: 2px;
   padding-left: 2px;
@@ -71,7 +71,7 @@ window#waybar.hidden {
 }
 
 #custom-launcher {
-  color: #b7410e;
+  color: #ff5c00;
   margin-left: 15px; /* El espacio entre el logo de Nix y la barra por la izquierda */
   font-size: 18px;
 }

@@ -51,7 +51,7 @@ in {
                       "months":     "<span color='#FCFFFC'>{}</span>",
                       "days":       "<span color='#FCFFFC'>{}</span>",
                       "weekdays":   "<span color='#FF6A6A'>{}</span>",
-                      "today":      "<span color='#B7410E'><b>{}</b></span>"
+                      "today":      "<span color='#FF5C00'><b>{}</b></span>"
                   }
               },
               "actions": {
@@ -115,14 +115,14 @@ in {
               "format": "{player_icon} {title} - {artist}",
               "format-paused": "{player_icon} {status_icon} {title} - {artist}",
               "player-icons": {
-                  "default": "<span foreground='#B7410E'>▶</span>",
+                  "default": "<span foreground='#FF5C00'>▶</span>",
                   "mpv": "🎵",
                   "spotify": "<span foreground='#1DB954'> </span>",
                   "firefox": "<span foreground='#E66000'> </span>",
                   "chrome": "<span foreground='#3369E8'> </span>"
               },
               "status-icons": {
-                  "paused": "<span foreground='#B7410E'>⏸</span>"
+                  "paused": "<span foreground='#FF5C00'>⏸</span>"
               },
               "tooltip": false,
               // "ignored-players": ["firefox"]
