@@ -4,9 +4,9 @@
   ...
 }: let
   lock_wallpaper = pkgs.fetchurl {
-    url = "https://data.ukiyo-e.org/mfa/images/sc211824.jpg";
+    url = "https://github.com/dharmx/walls/blob/main/abstract/a_white_swirly_circle_on_a_black_background.png?raw=true";
     # replace this with the SHA256 hash of the image file
-    sha256 = "011bnca1xap1ng74cwmr22w8zw22bb591dvv1qbk97wbxhcavd49";
+    sha256 = "1fngqgdh98lvpi3zw8a2qk4ixkqw2a9x23g7xblhk5x1zp0dihix";
   };
 in {
   home = {
@@ -19,7 +19,7 @@ in {
       background {
           monitor =
           path = ~/${config_path}/hypr/lock_wallpaper.jpg #path to background image
-          blur_passes = 1
+          blur_passes = 0
           contrast = 0.8916
           brightness = 0.8172
           vibrancy = 0.1696
@@ -45,7 +45,7 @@ in {
           inner_color = rgba(0, 0, 0, 0.5)
           font_color = rgb(200, 200, 200)
           fade_on_empty = false
-          font_family = JetBrains Mono Nerd Font Mono
+          font_family = Iosevka Nerd Font
           placeholder_text = <span foreground="##cdd6f4">Contraseña</span> #text for input password
           hide_input = false
           position = 0, -120
@@ -59,7 +59,7 @@ in {
           text = cmd[update:1000] echo "$(date +"%H:%M")" # get formatted date
           color = rgba(255, 255, 255, 0.9)
           font_size = 120
-          font_family = JetBrains Mono Nerd Font Mono ExtraBold
+          font_family = Iosevka Nerd Font ExtraBold
           position = 0, -300
           halign = center
           valign = top
@@ -71,7 +71,7 @@ in {
           text = cmd[update:100] echo "Hola $USER"
           color = rgba(255, 255, 255, 0.9)
           font_size = 25
-          font_family = JetBrains Mono Nerd Font Mono
+          font_family = Iosevka Nerd Font
           position = 0, -40
           halign = center
           valign = center
