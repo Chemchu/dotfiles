@@ -14,6 +14,9 @@
         formatter.conform-nvim = {
           enable = true;
           setupOpts.formatters_by_ft = {
+            javascript = [
+              "prettier"
+            ];
             html = [
               "prettier"
             ];
@@ -211,6 +214,7 @@
 
         git = {
           enable = true;
+          vim-fugitive.enable = true;
           gitsigns = {
             enable = true;
             codeActions.enable = false; # throws an annoying debug message
