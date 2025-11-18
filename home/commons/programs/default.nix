@@ -3,6 +3,7 @@
     ./guitar
     ./dev
     ./direnv
+    ./fastfetch
     ./lf
     ./kitty
     ./nvf

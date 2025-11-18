@@ -37,7 +37,6 @@
     #(pkgs.writeShellScriptBin "my-hello" ''
     #  echo "Hello, ${config.home.username}!"
     #'')
-    pkgs.fastfetch
     pkgs.htop
     pkgs.btop
   ];
