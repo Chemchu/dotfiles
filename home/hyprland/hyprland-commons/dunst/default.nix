@@ -1,205 +1,209 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [
-    dunst
-    libnotify
-  ];
+  home = {
+    packages = with pkgs; [
+      dunst
+      libnotify
+    ];
 
-  home.file.".config/dunst/spotify_logo.png".source = ./spotify_logo.png;
-  home.file.".config/dunst/dunstrc".text = ''
-    [global]
+    file = {
+      ".config/dunst/spotify_logo.png".source = ./spotify_logo.png;
+      ".config/dunst/dunstrc".text = ''
+        [global]
 
-    # Which monitor should the notifications be displayed on (see next one)
-    monitor = 0
+        # Which monitor should the notifications be displayed on (see next one)
+        monitor = 0
 
-    # Display notification on focused monitor.  Possible modes are:
-    #   mouse: follow mouse pointer
-    #   keyboard: follow window with keyboard focus
-    #   none: don't follow anything
-    #
-    # "keyboard" needs a window manager that exports the
-    # _NET_ACTIVE_WINDOW property.
-    # This should be the case for almost all modern window managers.
-    #
-    # If this option is set to mouse or keyboard, the monitor option
-    # will be ignored.
-    follow = keyboard
+        # Display notification on focused monitor.  Possible modes are:
+        #   mouse: follow mouse pointer
+        #   keyboard: follow window with keyboard focus
+        #   none: don't follow anything
+        #
+        # "keyboard" needs a window manager that exports the
+        # _NET_ACTIVE_WINDOW property.
+        # This should be the case for almost all modern window managers.
+        #
+        # If this option is set to mouse or keyboard, the monitor option
+        # will be ignored.
+        follow = keyboard
 
-    # Geometry
-    width = (300, 600)
-    offset = 6x5 # margin from the top (to allow for Polybar)
+        # Geometry
+        width = (300, 600)
+        offset = 6x5 # margin from the top (to allow for Polybar)
 
-    # Scale factor. It is auto-detected if value is 0.
-    scale = 1
+        # Scale factor. It is auto-detected if value is 0.
+        scale = 1
 
-    # Show how many messages are currently hidden (because of geometry).
-    indicate_hidden = yes
+        # Show how many messages are currently hidden (because of geometry).
+        indicate_hidden = yes
 
-    # Shrink window if it's smaller than the width.  Will be ignored if
-    # width is 0.
-    shrink = no
+        # Shrink window if it's smaller than the width.  Will be ignored if
+        # width is 0.
+        shrink = no
 
-    # The transparency of the window.  Range: [0; 100].
-    # This option will only work if a compositing window manager is
-    # present (e.g. xcompmgr, compiz, etc.).
-    transparency = 5
+        # The transparency of the window.  Range: [0; 100].
+        # This option will only work if a compositing window manager is
+        # present (e.g. xcompmgr, compiz, etc.).
+        transparency = 5
 
-    # Draw a line of "separator_height" pixel height between two
-    # notifications.
-    # Set to 0 to disable.
-    separator_height = 1
+        # Draw a line of "separator_height" pixel height between two
+        # notifications.
+        # Set to 0 to disable.
+        separator_height = 1
 
-    # Padding between text and separator.
-    padding = 10
+        # Padding between text and separator.
+        padding = 20
 
-    # Horizontal padding.
-    horizontal_padding = 10
+        # Horizontal padding.
+        horizontal_padding = 10
 
-    # Defines width in pixels of frame around the notification window.
-    # Set to 0 to disable.
-    frame_width = 1
+        # Defines width in pixels of frame around the notification window.
+        # Set to 0 to disable.
+        frame_width = 1
 
-    # Defines color of the frame around the notification window.
-    frame_color = "#FF5C00"
+        # Defines color of the frame around the notification window.
+        frame_color = "#FF5C00"
 
-    # Define a color for the separator.
-    # possible values are:
-    #  * auto: dunst tries to find a color fitting to the background;
-    #  * foreground: use the same color as the foreground;
-    #  * frame: use the same color as the frame;
-    #  * anything else will be interpreted as a X color.
-    separator_color = frame
+        # Define a color for the separator.
+        # possible values are:
+        #  * auto: dunst tries to find a color fitting to the background;
+        #  * foreground: use the same color as the foreground;
+        #  * frame: use the same color as the frame;
+        #  * anything else will be interpreted as a X color.
+        separator_color = frame
 
-    # Sort messages by urgency.
-    sort = yes
+        # Sort messages by urgency.
+        sort = yes
 
-    # Don't remove messages, if the user is idle (no mouse or keyboard input)
-    # for longer than idle_threshold seconds.
-    # Set to 0 to disable.
-    idle_threshold = 120
+        # Don't remove messages, if the user is idle (no mouse or keyboard input)
+        # for longer than idle_threshold seconds.
+        # Set to 0 to disable.
+        idle_threshold = 120
 
-    font = Iosevka Nerd Font 14
+        font = Iosevka Nerd Font 14
 
-    # The spacing between lines.  If the height is smaller than the
-    # font height, it will get raised to the font height.
-    line_height = 0
+        # The spacing between lines.  If the height is smaller than the
+        # font height, it will get raised to the font height.
+        line_height = 0
 
-    # Possible values are:
-    # full: Allow a small subset of html markup in notifications:
-    #        <b>bold</b>
-    #        <i>italic</i>
-    #        <s>strikethrough</s>
-    #        <u>underline</u>
-    #
-    #        For a complete reference see
-    #        <http://developer.gnome.org/pango/stable/PangoMarkupFormat.html>.
-    #
-    # It's important to note that markup inside the format option will be parsed
-    # regardless of what this is set to.
-    markup = full
+        # Possible values are:
+        # full: Allow a small subset of html markup in notifications:
+        #        <b>bold</b>
+        #        <i>italic</i>
+        #        <s>strikethrough</s>
+        #        <u>underline</u>
+        #
+        #        For a complete reference see
+        #        <http://developer.gnome.org/pango/stable/PangoMarkupFormat.html>.
+        #
+        # It's important to note that markup inside the format option will be parsed
+        # regardless of what this is set to.
+        markup = full
 
-    # The format of the message.  Possible variables are:
-    #   %a  appname
-    #   %s  summary
-    #   %b  body
-    #   %i  iconname (including its path)
-    #   %I  iconname (without its path)
-    #   %p  progress value if set ([  0%] to [100%]) or nothing
-    #   %n  progress value if set without any extra characters
-    # Markup is allowed
-    format = "<b>%s</b>\n%b"
+        # The format of the message.  Possible variables are:
+        #   %a  appname
+        #   %s  summary
+        #   %b  body
+        #   %i  iconname (including its path)
+        #   %I  iconname (without its path)
+        #   %p  progress value if set ([  0%] to [100%]) or nothing
+        #   %n  progress value if set without any extra characters
+        # Markup is allowed
+        format = "<b>%s</b>\n%b"
 
-    # Alignment of message text.
-    # Possible values are "left", "center" and "right".
-    alignment = left
+        # Alignment of message text.
+        # Possible values are "left", "center" and "right".
+        alignment = left
 
-    # Show age of message if message is older than show_age_threshold
-    # seconds.
-    # Set to -1 to disable.
-    show_age_threshold = 60
+        # Show age of message if message is older than show_age_threshold
+        # seconds.
+        # Set to -1 to disable.
+        show_age_threshold = 60
 
-    # Split notifications into multiple lines if they don't fit into
-    # geometry.
-    word_wrap = yes
+        # Split notifications into multiple lines if they don't fit into
+        # geometry.
+        word_wrap = yes
 
-    # Ignore newlines '\n' in notifications.
-    ignore_newline = no
+        # Ignore newlines '\n' in notifications.
+        ignore_newline = no
 
-    # Merge multiple notifications with the same content
-    stack_duplicates = true
+        # Merge multiple notifications with the same content
+        stack_duplicates = true
 
-    # Hide the count of merged notifications with the same content
-    hide_duplicate_count = false
+        # Hide the count of merged notifications with the same content
+        hide_duplicate_count = false
 
-    # Display indicators for URLs (U) and actions (A).
-    show_indicators = yes
+        # Display indicators for URLs (U) and actions (A).
+        show_indicators = yes
 
-    # Align icons left/right/off
-    icon_position = right
+        # Align icons left/right/off
+        icon_position = right
 
-    # Scale larger icons down to this size, set to 0 to disable
-    min_icon_size = 64
-    max_icon_size = 64
+        # Scale larger icons down to this size, set to 0 to disable
+        min_icon_size = 64
+        max_icon_size = 64
 
-    # Enable recursive icon lookup
-    enable_recursive_icon_lookup = true
+        # Enable recursive icon lookup
+        enable_recursive_icon_lookup = true
 
-    # Icon dir (looked in XDG_DATA_HOME/icons)
-    icon_theme = Papirus-Dark
+        # Icon dir (looked in XDG_DATA_HOME/icons)
+        icon_theme = Papirus-Dark
 
-    # Should a notification popped up from history be sticky or timeout
-    # as if it would normally do.
-    sticky_history = yes
+        # Should a notification popped up from history be sticky or timeout
+        # as if it would normally do.
+        sticky_history = yes
 
-    # Maximum amount of notifications kept in history
-    history_length = 20
+        # Maximum amount of notifications kept in history
+        history_length = 20
 
-    # dmenu path
-    dmenu = rofi -dmenu -p dunst
+        # dmenu path
+        dmenu = rofi -dmenu -p dunst
 
-    # Browser for opening urls in context menu.
-    browser = firefox
+        # Browser for opening urls in context menu.
+        browser = firefox
 
-    # Always run rule-defined scripts, even if the notification is suppressed
-    always_run_script = true
+        # Always run rule-defined scripts, even if the notification is suppressed
+        always_run_script = true
 
-    # Define the title of the windows spawned by dunst
-    title = Dunst
+        # Define the title of the windows spawned by dunst
+        title = Dunst
 
-    # Define the class of the windows spawned by dunst
-    class = Dunst
+        # Define the class of the windows spawned by dunst
+        class = Dunst
 
-    # Mouse
-    mouse_left_click = do_action
+        # Mouse
+        mouse_left_click = do_action
 
-    # Round corners
-    corner_radius = 20
+        # Round corners
+        corner_radius = 0
 
-    [experimental]
-    per_monitor_dpi = true
-
-
-    [urgency_low]
-    background = "#171717"
-    foreground = "#FCFFFC"
-    timeout = 7
+        [experimental]
+        per_monitor_dpi = true
 
 
-    [urgency_normal]
-    background = "#171717"
-    foreground = "#FCFFFC"
-    timeout = 15
+        [urgency_low]
+        background = "#171717"
+        foreground = "#FCFFFC"
+        timeout = 7
 
 
-    [urgency_critical]
-    background = "#171717"
-    foreground = "#FCFFFC"
-    frame_color = "#E78F8E"
-    timeout = 0
+        [urgency_normal]
+        background = "#171717"
+        foreground = "#FCFFFC"
+        timeout = 15
 
-    # Per app rules
-    [Spotify]
-    appname = Spotify
-    new_icon = ~/.config/dunst/spotify_logo.png
-    timeout = 3
-  '';
+
+        [urgency_critical]
+        background = "#171717"
+        foreground = "#FCFFFC"
+        frame_color = "#E78F8E"
+        timeout = 0
+
+        # Per app rules
+        [Spotify]
+        appname = Spotify
+        new_icon = ~/.config/dunst/spotify_logo.png
+        timeout = 3
+      '';
+    };
+  };
 }

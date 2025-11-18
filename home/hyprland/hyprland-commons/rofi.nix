@@ -76,7 +76,7 @@
           margin:                      0px;
           padding:                     10px;
           border:                      0px solid;
-          border-radius:               20px;
+          border-radius:               0px;
           border-color:                #89B4FA;
           cursor:                      "default";
           /* Backgroud Colors */
@@ -98,7 +98,7 @@
           margin:                      0px;
           padding:                     10px;
           border:                      0px solid;
-          border-radius:               20px;
+          border-radius:               0px;
           border-color:                #6f91c9;
           background-color:            transparent;
           transparency :               "real";
@@ -192,7 +192,7 @@
       scrollbar {
           handle-width:                3px ;
           handle-color:                @handle-colour;
-          border-radius:               10px;
+          border-radius:               0px;
           background-color:            @alternate-background;
       }
 
@@ -203,7 +203,7 @@
           margin:                      0px;
           padding:                     5px 10px;
           border:                      0px solid;
-          border-radius:               10px;
+          border-radius:               0px;
           border-color:                @border-colour;
           background-color:            transparent;
           text-color:                  @foreground-colour;
@@ -275,7 +275,7 @@
       button {
           padding:                     5px 10px;
           border:                      0px solid;
-          border-radius:               10px;
+          border-radius:               0px;
           border-color:                @border-colour;
           background-color:            @alternate-background;
           text-color:                  inherit;
@@ -300,7 +300,7 @@
       textbox {
           padding:                     8px 10px;
           border:                      0px solid;
-          border-radius:               10px;
+          border-radius:               0px;
           border-color:                @border-colour;
           background-color:            @alternate-background;
           text-color:                  @foreground-colour;
@@ -314,7 +314,7 @@
       error-message {
           padding:                     10px;
           border:                      2px solid;
-          border-radius:               20px;
+          border-radius:               0px;
           border-color:                @border-colour;
           background-color:            @background-colour;
           text-color:                  @foreground-colour;
