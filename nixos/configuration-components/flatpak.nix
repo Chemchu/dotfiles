@@ -4,7 +4,7 @@
     enable = true;
     packages = [
       #"io.dbeaver.DBeaverCommunity"
-      #"com.github.IsmaelMartinez.teams_for_linux"
+      "com.github.IsmaelMartinez.teams_for_linux"
       "app.zen_browser.zen"
     ];
     overrides = {
