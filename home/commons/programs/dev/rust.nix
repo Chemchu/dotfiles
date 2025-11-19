@@ -2,16 +2,10 @@
   pkgs,
   config,
   ...
-}:
-{
+}: {
   home = {
     packages = with pkgs; [
-      # Rust dependencies
-      cargo-watch
       bacon
-      gcc
-      #surrealist # Database manager
-      #surrealdb # Database engine
       cargo-tauri
     ];
 
