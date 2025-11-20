@@ -10,6 +10,7 @@
     feh
     mpv
     spotify
+    cockatrice
     flyctl
     jq
     postman
