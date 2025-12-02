@@ -186,7 +186,8 @@
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs",
         "nvf": "nvf",
-        "rust-overlay": "rust-overlay"
+        "rust-overlay": "rust-overlay",
+        "wallpaper": "wallpaper"
       }
     },
     "rust-overlay": {
@@ -220,6 +221,18 @@
         "owner": "nix-systems",
         "repo": "default",
         "type": "github"
+      }
+    },
+    "wallpaper": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-alWYcOnn4P7ZpzVisl5O83scLmqRaOMRjBass+Fy9tY=",
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/dharmx/walls/refs/heads/main/manga/a_woman_with_a_box_on_her_head.jpeg"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/dharmx/walls/refs/heads/main/manga/a_woman_with_a_box_on_her_head.jpeg"
       }
     }
   },

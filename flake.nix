@@ -22,13 +22,17 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    wallpaper = {
+      url = "https://raw.githubusercontent.com/dharmx/walls/refs/heads/main/manga/a_woman_with_a_box_on_her_head.jpeg";
+      flake = false;
+    };
   };
   outputs = inputs @ {
     home-manager,
     nixpkgs,
     rust-overlay,
     nix-flatpak,
-    nvf,
+    wallpaper,
     ...
   }: let
     createConfiguration = name:
@@ -41,6 +45,12 @@
         modules = [
           ./nixos/configuration.nix
           home-manager.nixosModules.default
+          {
+            # Pass wallpaper to home-manager modules
+            home-manager.extraSpecialArgs = {
+              inherit wallpaper;
+            };
+          }
           nix-flatpak.nixosModules.nix-flatpak
           (
             {pkgs, ...}: {
