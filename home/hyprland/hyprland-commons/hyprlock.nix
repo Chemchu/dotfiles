@@ -1,19 +1,14 @@
 {
   pkgs,
   config_path,
+  lock-wallpaper,
   ...
-}: let
-  lock_wallpaper = pkgs.fetchurl {
-    url = "https://github.com/dharmx/walls/blob/main/abstract/a_white_swirly_circle_on_a_black_background.png?raw=true";
-    # replace this with the SHA256 hash of the image file
-    sha256 = "1fngqgdh98lvpi3zw8a2qk4ixkqw2a9x23g7xblhk5x1zp0dihix";
-  };
-in {
+}: {
   home = {
     packages = with pkgs; [
       hyprlock
     ];
-    file."${config_path}/hypr/lock_wallpaper.jpg".source = lock_wallpaper;
+    file."${config_path}/hypr/lock_wallpaper.jpg".source = lock-wallpaper;
     file."${config_path}/hypr/hyprlock.conf".text = ''
       # BACKGROUND
       background {

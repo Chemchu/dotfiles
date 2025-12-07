@@ -93,6 +93,18 @@
         "type": "github"
       }
     },
+    "lock-wallpaper": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-/LDLmyUqSbJTK2IUTBvRVIQsG7y0mEEWDR/pvY/UqDk=",
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/D3Ext/aesthetic-wallpapers/main/images/australia.jpg"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/D3Ext/aesthetic-wallpapers/main/images/australia.jpg"
+      }
+    },
     "mnw": {
       "locked": {
         "lastModified": 1758834834,
@@ -183,6 +195,7 @@
         "devshell": "devshell",
         "home-manager": "home-manager",
         "lf-icons": "lf-icons",
+        "lock-wallpaper": "lock-wallpaper",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs",
         "nvf": "nvf",
@@ -226,13 +239,13 @@
     "wallpaper": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-alWYcOnn4P7ZpzVisl5O83scLmqRaOMRjBass+Fy9tY=",
+        "narHash": "sha256-/LDLmyUqSbJTK2IUTBvRVIQsG7y0mEEWDR/pvY/UqDk=",
         "type": "file",
-        "url": "https://raw.githubusercontent.com/dharmx/walls/refs/heads/main/manga/a_woman_with_a_box_on_her_head.jpeg"
+        "url": "https://raw.githubusercontent.com/D3Ext/aesthetic-wallpapers/main/images/australia.jpg"
       },
       "original": {
         "type": "file",
-        "url": "https://raw.githubusercontent.com/dharmx/walls/refs/heads/main/manga/a_woman_with_a_box_on_her_head.jpeg"
+        "url": "https://raw.githubusercontent.com/D3Ext/aesthetic-wallpapers/main/images/australia.jpg"
       }
     }
   },

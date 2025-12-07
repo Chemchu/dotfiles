@@ -23,7 +23,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     wallpaper = {
-      url = "https://raw.githubusercontent.com/dharmx/walls/refs/heads/main/manga/a_woman_with_a_box_on_her_head.jpeg";
+      url = "https://raw.githubusercontent.com/D3Ext/aesthetic-wallpapers/main/images/australia.jpg";
+      flake = false;
+    };
+    lock-wallpaper = {
+      url = "https://raw.githubusercontent.com/D3Ext/aesthetic-wallpapers/main/images/australia.jpg";
       flake = false;
     };
   };
@@ -33,6 +37,7 @@
     rust-overlay,
     nix-flatpak,
     wallpaper,
+    lock-wallpaper,
     ...
   }: let
     createConfiguration = name:
@@ -48,7 +53,7 @@
           {
             # Pass wallpaper to home-manager modules
             home-manager.extraSpecialArgs = {
-              inherit wallpaper;
+              inherit wallpaper lock-wallpaper;
             };
           }
           nix-flatpak.nixosModules.nix-flatpak
