@@ -25,6 +25,7 @@
     tcpdump
     wireshark
     mold
+    lmstudio
   ];
 
   home.file = {
