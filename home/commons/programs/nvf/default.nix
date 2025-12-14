@@ -85,6 +85,8 @@
           markdown.enable = true;
           html = {
             enable = true;
+            lsp.servers = ["emmet-ls"];
+            treesitter.enable = true;
           };
           css = {
             enable = true;
@@ -92,7 +94,7 @@
           };
           r = {
             enable = true;
-            format.type = "styler";
+            format.type = ["styler"];
           };
           sql.enable = true;
           haskell.enable = true;
@@ -111,7 +113,7 @@
           nu.enable = true;
           python = {
             enable = true;
-            lsp.server = "pyright";
+            lsp.servers = ["pyright"];
           };
           dart.enable = false;
           lua.enable = true;
@@ -121,12 +123,12 @@
           julia.enable = false;
           clang = {
             enable = true;
-            lsp.server = "clangd";
+            lsp.servers = ["clangd"];
           };
 
           rust = {
             enable = true;
-            crates.enable = true;
+            extensions.crates-nvim.enable = true;
             dap.enable = true;
           };
         };
