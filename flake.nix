@@ -30,6 +30,10 @@
       url = "https://raw.githubusercontent.com/D3Ext/aesthetic-wallpapers/main/images/australia.jpg";
       flake = false;
     };
+    yt-x = {
+      url = "github:Benexl/yt-x";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs @ {
     home-manager,
@@ -38,6 +42,7 @@
     nix-flatpak,
     wallpaper,
     lock-wallpaper,
+    yt-x,
     ...
   }: let
     createConfiguration = name:
@@ -52,8 +57,10 @@
           home-manager.nixosModules.default
           {
             # Pass wallpaper to home-manager modules
-            home-manager.extraSpecialArgs = {
-              inherit wallpaper lock-wallpaper;
+            home-manager = {
+              extraSpecialArgs = {
+                inherit wallpaper lock-wallpaper;
+              };
             };
           }
           nix-flatpak.nixosModules.nix-flatpak
@@ -64,6 +71,7 @@
               ];
               environment.systemPackages = with pkgs; [
                 rust-bin.stable.latest.default
+                inputs.yt-x.packages.${pkgs.system}.default
               ];
             }
           )

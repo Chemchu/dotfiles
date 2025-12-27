@@ -57,6 +57,24 @@
         "type": "github"
       }
     },
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems_2"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -235,7 +253,8 @@
         "nixpkgs": "nixpkgs",
         "nvf": "nvf",
         "rust-overlay": "rust-overlay",
-        "wallpaper": "wallpaper"
+        "wallpaper": "wallpaper",
+        "yt-x": "yt-x"
       }
     },
     "rust-overlay": {
@@ -271,6 +290,21 @@
         "type": "github"
       }
     },
+    "systems_2": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
     "wallpaper": {
       "flake": false,
       "locked": {
@@ -281,6 +315,27 @@
       "original": {
         "type": "file",
         "url": "https://raw.githubusercontent.com/D3Ext/aesthetic-wallpapers/main/images/australia.jpg"
+      }
+    },
+    "yt-x": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1765094150,
+        "narHash": "sha256-cQG00AGBq/M6jGdqsoG1rvBSA/N+iRQhaQWRCK2wHFo=",
+        "owner": "Benexl",
+        "repo": "yt-x",
+        "rev": "bf6eec4a18e8360836efb73e8d52e97c42769969",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Benexl",
+        "repo": "yt-x",
+        "type": "github"
       }
     }
   },
