@@ -23,11 +23,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     wallpaper = {
-      url = "https://raw.githubusercontent.com/D3Ext/aesthetic-wallpapers/main/images/australia.jpg";
+      url = "https://cdna.artstation.com/p/assets/images/images/026/931/228/large/pei-fang-asset.jpg?1590118592";
       flake = false;
     };
     lock-wallpaper = {
-      url = "https://raw.githubusercontent.com/D3Ext/aesthetic-wallpapers/main/images/australia.jpg";
+      url = "https://cdna.artstation.com/p/assets/images/images/026/931/228/large/pei-fang-asset.jpg?1590118592";
       flake = false;
     };
     yt-x = {

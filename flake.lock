@@ -114,13 +114,13 @@
     "lock-wallpaper": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-/LDLmyUqSbJTK2IUTBvRVIQsG7y0mEEWDR/pvY/UqDk=",
+        "narHash": "sha256-TcGeINen72kjIELbEDOL2uS23HVL2ofT0gGjVBZejg0=",
         "type": "file",
-        "url": "https://raw.githubusercontent.com/D3Ext/aesthetic-wallpapers/main/images/australia.jpg"
+        "url": "https://cdna.artstation.com/p/assets/images/images/026/931/228/large/pei-fang-asset.jpg"
       },
       "original": {
         "type": "file",
-        "url": "https://raw.githubusercontent.com/D3Ext/aesthetic-wallpapers/main/images/australia.jpg"
+        "url": "https://cdna.artstation.com/p/assets/images/images/026/931/228/large/pei-fang-asset.jpg"
       }
     },
     "mnw": {
@@ -308,13 +308,13 @@
     "wallpaper": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-/LDLmyUqSbJTK2IUTBvRVIQsG7y0mEEWDR/pvY/UqDk=",
+        "narHash": "sha256-TcGeINen72kjIELbEDOL2uS23HVL2ofT0gGjVBZejg0=",
         "type": "file",
-        "url": "https://raw.githubusercontent.com/D3Ext/aesthetic-wallpapers/main/images/australia.jpg"
+        "url": "https://cdna.artstation.com/p/assets/images/images/026/931/228/large/pei-fang-asset.jpg"
       },
       "original": {
         "type": "file",
-        "url": "https://raw.githubusercontent.com/D3Ext/aesthetic-wallpapers/main/images/australia.jpg"
+        "url": "https://cdna.artstation.com/p/assets/images/images/026/931/228/large/pei-fang-asset.jpg"
       }
     },
     "yt-x": {
