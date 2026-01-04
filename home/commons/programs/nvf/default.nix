@@ -238,7 +238,10 @@
         };
 
         projects = {
-          project-nvim.enable = false;
+          project-nvim = {
+            enable = true;
+            setupOpts.show_hidden = true;
+          };
         };
 
         utility = {
