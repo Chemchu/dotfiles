@@ -23,6 +23,7 @@ in {
     ./configuration-components/sound.nix
     ./configuration-components/system.nix
     ./configuration-components/bluetooth.nix
+    ./configuration-components/isolated-network.nix
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -61,6 +62,17 @@ in {
         CPU_MIN_PERF_ON_BAT = 0;
         CPU_MAX_PERF_ON_BAT = 70;
       };
+    };
+
+    isolatedNetwork = {
+      enable = false; # Set to true to enable the isolated network
+      ssid = "IsolatedNetwork";
+      password = "testingIsolatedNetwork";
+      interface = "wlp1s0"; # Change this to your WiFi interface name
+      # Optional: customize these if needed
+      # ipAddress = "192.168.4.1";
+      # dhcpRange = "192.168.4.2,192.168.4.20";
+      # channel = 7;
     };
   };
 
