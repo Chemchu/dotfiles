@@ -8,5 +8,6 @@
     ./rofi.nix
     ./waybar
     ./dunst
+    ./wlr-which-key.nix
   ];
 }
