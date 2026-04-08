@@ -26,6 +26,9 @@
     wireshark
     mold
     lmstudio
+    nmap
+    dig
+    dnslookup
   ];
 
   home.file = {
