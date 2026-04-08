@@ -12,10 +12,10 @@
     pkgs.pkg-config
     pkgs.libudev-zero
     pkgs.alsa-lib
-    pkgs.xorg.libX11
-    pkgs.xorg.libXrandr
-    pkgs.xorg.libXcursor
-    pkgs.xorg.libXi
+    pkgs.libx11
+    pkgs.libxrandr
+    pkgs.libxcursor
+    pkgs.libXi
     pkgs.libxkbcommon
     pkgs.libglvnd
     pkgs.glibc
