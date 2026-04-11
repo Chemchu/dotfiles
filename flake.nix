@@ -34,6 +34,10 @@
       url = "github:Benexl/yt-x";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs @ {
     home-manager,
@@ -43,6 +47,7 @@
     wallpaper,
     lock-wallpaper,
     yt-x,
+    zen-browser,
     ...
   }: let
     createConfiguration = name:
@@ -56,7 +61,6 @@
           ./nixos/configuration.nix
           home-manager.nixosModules.default
           {
-            # Pass wallpaper to home-manager modules
             home-manager = {
               extraSpecialArgs = {
                 inherit wallpaper lock-wallpaper;
@@ -95,6 +99,7 @@
               environment.systemPackages = with pkgs; [
                 rust-bin.stable.latest.default
                 yt-x.packages.${pkgs.system}.default
+                zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
               ];
             }
           )

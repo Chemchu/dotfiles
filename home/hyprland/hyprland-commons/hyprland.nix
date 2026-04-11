@@ -46,7 +46,7 @@ in {
       exec-once = waybar
       exec-once = dunst
       exec-once=[workspace 1 silent] kitty
-      exec-once=[workspace 2 silent] app.zen_browser.zen
+      exec-once=[workspace 2 silent] zen
       exec-once=[workspace 10 silent] spotify
 
       # Some default env vars.
@@ -154,7 +154,7 @@ in {
 
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
       bind = $mainMod, Q, exec, kitty
-      bind = $mainMod, W, exec, app.zen_browser.zen
+      bind = $mainMod, W, exec, zen
       bind = $mainMod, C, killactive,
       bind = $mainMod, M, exit,
       bind = $mainMod, V, togglefloating,

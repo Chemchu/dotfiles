@@ -36,7 +36,7 @@ in {
         {
           key = "w";
           desc = "Zen browser";
-          cmd = "app.zen_browser.zen";
+          cmd = "zen";
         }
         {
           key = "s";
