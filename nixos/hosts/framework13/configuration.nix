@@ -208,7 +208,7 @@
 
     virtualisation.docker.enable = true;
 
-    home-manager.users.gus = import ../../../home-manager/hyprland/home.nix;
+    home-manager.users.gus = self.homeModules.gus;
 
     system.stateVersion = "23.11";
   };
