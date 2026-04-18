@@ -5,10 +5,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "openclaw-2026.4.11"
-  ];
-
   home.packages = with pkgs; [
     ffmpeg
     feh
@@ -33,7 +29,7 @@
     nmap
     dig
     dnslookup
-    openclaw
+    claude-code
   ];
 
   home.file = {
