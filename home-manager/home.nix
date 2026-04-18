@@ -1,7 +1,12 @@
 {pkgs, ...}: {
   imports = [
     ./commons
+
     ./hyprland
+
+    /*
+    ./niri
+    */
   ];
 
   home.username = "gus";

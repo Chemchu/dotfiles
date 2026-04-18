@@ -24,6 +24,7 @@ in {
           zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
         ];
       })
+      self.nixosModules.niri
     ];
   };
 }
