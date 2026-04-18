@@ -1,14 +1,10 @@
-{
-  pkgs,
-  config_path,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     hypridle
     hyprlock
   ];
 
-  home.file."${config_path}/hypr/hypridle.conf".text = ''
+  home.file.".config/hypr/hypridle.conf".text = ''
     general {
         lock_cmd = pidof hyprlock || hyprlock       # avoid starting multiple hyprlock instances.
         before_sleep_cmd = playerctl pause ; loginctl lock-session    # lock before suspend.

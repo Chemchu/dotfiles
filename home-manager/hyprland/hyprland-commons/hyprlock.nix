@@ -1,6 +1,5 @@
 {
   pkgs,
-  config_path,
   lock-wallpaper,
   ...
 }: {
@@ -8,12 +7,12 @@
     packages = with pkgs; [
       hyprlock
     ];
-    file."${config_path}/hypr/lock_wallpaper.jpg".source = lock-wallpaper;
-    file."${config_path}/hypr/hyprlock.conf".text = ''
+    file.".config/hypr/lock_wallpaper.jpg".source = lock-wallpaper;
+    file.".config/hypr/hyprlock.conf".text = ''
       # BACKGROUND
       background {
           monitor =
-          path = ~/${config_path}/hypr/lock_wallpaper.jpg #path to background image
+          path = ~/.config/hypr/lock_wallpaper.jpg #path to background image
           blur_passes = 0
           contrast = 0.8916
           brightness = 0.8172

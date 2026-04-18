@@ -1,9 +1,8 @@
-{
+{}
+/*
+   {
   pkgs,
   lib,
-  config_path,
-  wallpaper,
-  wallpapers ? [],
   ...
 }: let
   wallpapersDir = pkgs.runCommand "wallpapers" {} ''
@@ -74,8 +73,8 @@ in {
         fi
       '')
     ];
-    file."${config_path}/hypr/background.jpg".source = wallpaper;
-    file."${config_path}/hypr/hyprpaper.conf".text = ''
+    file.".config/hypr/background.jpg".source = wallpaper;
+    file.".config/hypr/hyprpaper.conf".text = ''
       preload = ~/.local/share/hyprpaper/current-background.jpg
       wallpaper = , ~/.local/share/hyprpaper/current-background.jpg
       ipc = on
@@ -87,9 +86,11 @@ in {
     $DRY_RUN_CMD mkdir -p "$STATE_DIR"
     if [ ! -f "$STATE_DIR/current-background.jpg" ]; then
       $DRY_RUN_CMD cp $VERBOSE_ARG \
-        "$HOME/${config_path}/hypr/background.jpg" \
+        "$HOME/.config/hypr/background.jpg" \
         "$STATE_DIR/current-background.jpg"
       $DRY_RUN_CMD chmod 644 "$STATE_DIR/current-background.jpg"
     fi
   '';
 }
+*/
+
