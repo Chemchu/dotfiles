@@ -1,7 +1,7 @@
 {
   description = "Gus NixOs cool configuration";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs"; # --> Stable channel
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # --> Stable channel
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
