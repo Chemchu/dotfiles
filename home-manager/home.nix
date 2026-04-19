@@ -2,11 +2,11 @@
   imports = [
     ./commons
 
-    ./hyprland
-
     /*
-    ./niri
+    ./hyprland
     */
+
+    ./niri
   ];
 
   home.username = "gus";

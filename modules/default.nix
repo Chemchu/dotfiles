@@ -16,6 +16,7 @@ in {
     modules = [
       {nixpkgs.hostPlatform = "x86_64-linux";}
       self.nixosModules.framework13Configuration
+      self.nixosModules.niri
       {home-manager.extraSpecialArgs = {inherit inputs wallpaper lock-wallpaper;};}
       ({pkgs, ...}: {
         nixpkgs.overlays = [rust-overlay.overlays.default];
