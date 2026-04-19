@@ -17,13 +17,10 @@
         fastfetch
 
         if [[ -z "$WAYLAND_DISPLAY" && -z "$DISPLAY" && "$(tty)" == "/dev/tty1" ]]; then
-          echo "1) Hyprland"
-          echo "2) Niri"
-          read "choice?> "
-          case $choice in
-            1) exec start-hyprland ;;
-            2) exec niri-session ;;
-          esac
+          read "choice?Start niri? [Y/n] "
+          if [[ "$choice" != "n" && "$choice" != "N" ]]; then
+            exec niri-session
+          fi
         fi
       '';
     };

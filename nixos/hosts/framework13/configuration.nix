@@ -154,7 +154,7 @@
         package = pkgs.firefox-bin;
       };
       java.enable = false;
-      hyprland.enable = true;
+      hyprland.enable = false;
       wireshark = {
         enable = true;
         usbmon.enable = true;

@@ -44,6 +44,7 @@
       lsof
       lm_sensors
       mangohud
+      upower
     ];
   };
 }
