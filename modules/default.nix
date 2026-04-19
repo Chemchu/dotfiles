@@ -7,10 +7,10 @@
 in {
   systems = ["x86_64-linux"];
 
-  flake.nixosConfigurations.framework = nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.framework13 = nixpkgs.lib.nixosSystem {
     specialArgs = {
       inherit inputs;
-      system_name = "framework";
+      system_name = "framework13";
       config_path = ".config";
     };
     modules = [
