@@ -29,6 +29,15 @@
       "widgets": {
         "left": [
           {
+            "colorizeDistroLogo": false,
+            "colorizeSystemIcon": "none",
+            "customIconPath": "",
+            "enableColorization": false,
+            "icon": "noctalia",
+            "id": "ControlCenter",
+            "useDistroLogo": false
+          },
+          {
             "colorizeSystemIcon": "none",
             "customIconPath": "",
             "enableColorization": false,
@@ -86,6 +95,15 @@
             "textColor": "none",
             "useFixedWidth": false,
             "visualizerType": "linear"
+          },
+          {
+            "clockColor": "none",
+            "customFont": "FreeSans",
+            "formatHorizontal": "HH:mm:ss",
+            "formatVertical": "HH mm - dd MM",
+            "id": "Clock",
+            "tooltipFormat": "HH:mm ddd, MMM dd",
+            "useCustomFont": false
           }
         ],
         "right": [
@@ -112,13 +130,13 @@
             "textColor": "none"
           },
           {
-            "colorizeDistroLogo": false,
-            "colorizeSystemIcon": "none",
-            "customIconPath": "",
-            "enableColorization": false,
-            "icon": "noctalia",
-            "id": "ControlCenter",
-            "useDistroLogo": false
+            "deviceNativePath": "__default__",
+            "displayMode": "icon-always",
+            "hideIfIdle": false,
+            "hideIfNotDetected": true,
+            "id": "Battery",
+            "showNoctaliaPerformance": false,
+            "showPowerProfiles": false
           },
           {
             "hideWhenZero": false,
@@ -127,15 +145,6 @@
             "id": "NotificationHistory",
             "showUnreadBadge": true,
             "unreadBadgeColor": "primary"
-          },
-          {
-            "deviceNativePath": "__default__",
-            "displayMode": "icon-always",
-            "hideIfIdle": false,
-            "hideIfNotDetected": true,
-            "id": "Battery",
-            "showNoctaliaPerformance": false,
-            "showPowerProfiles": false
           }
         ]
       },
@@ -706,7 +715,7 @@
       }
     },
     "notificationsState": {
-      "lastSeenTs": 1776633022000
+      "lastSeenTs": 1776791043000
     },
     "changelogState": {
       "lastSeenVersion": "v4.7.5"

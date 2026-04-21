@@ -117,7 +117,6 @@
         vim
         wget
         kitty
-        upower
         libsForQt5.qt5.qtquickcontrols2
         libsForQt5.qt5.qtgraphicaleffects
         libsForQt5.qt5.qtwayland
@@ -176,6 +175,7 @@
     };
 
     services = {
+      upower.enable = true;
       blueman.enable = true;
       deluge = {
         enable = true;
