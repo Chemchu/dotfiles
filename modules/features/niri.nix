@@ -64,7 +64,7 @@
 
           # Apps
           "Mod+Q".spawn-sh = lib.getExe pkgs.kitty;
-          "Mod+W".spawn-sh = "zen";
+          "Mod+W".spawn-sh = "zen --name zen";
           "Mod+C".close-window = {};
           "Mod+V".toggle-window-floating = {};
           "Mod+S".spawn-sh = "${lib.getExe self'.packages.myNoctalia} ipc call launcher toggle";
