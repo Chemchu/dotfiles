@@ -73,7 +73,7 @@
             "colorizeIcons": false,
             "hideMode": "hidden",
             "id": "ActiveWindow",
-            "maxWidth": 145,
+            "maxWidth": 800,
             "scrollingMode": "hover",
             "showIcon": true,
             "showText": true,
@@ -600,13 +600,13 @@
       "backlightDeviceMappings": []
     },
     "colorSchemes": {
-      "useWallpaperColors": false,
-      "predefinedScheme": "Dracula",
+      "useWallpaperColors": true,
+      "predefinedScheme": "Ayu",
       "darkMode": true,
       "schedulingMode": "off",
       "manualSunrise": "06:30",
       "manualSunset": "18:30",
-      "generationMethod": "tonal-spot",
+      "generationMethod": "faithful",
       "monitorForColors": "",
       "syncGsettings": true
     },
@@ -691,7 +691,7 @@
     }
   },
   "state": {
-    "doNotDisturb": false,
+    "doNotDisturb": true,
     "noctaliaPerformanceMode": false,
     "barVisible": true,
     "openedPanel": "",
@@ -715,7 +715,7 @@
       }
     },
     "notificationsState": {
-      "lastSeenTs": 1776791043000
+      "lastSeenTs": 1776791661000
     },
     "changelogState": {
       "lastSeenVersion": "v4.7.5"

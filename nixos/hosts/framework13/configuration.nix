@@ -16,7 +16,6 @@
       openssl
       gtk3
       pkg-config
-      libudev-zero
       alsa-lib
       libx11
       libxrandr
@@ -42,7 +41,7 @@
       users.gus = {
         isNormalUser = true;
         description = "gus";
-        extraGroups = ["networkmanager" "wheel" "input" "wireshark"];
+        extraGroups = ["audio" "networkmanager" "wheel" "input" "wireshark"];
       };
     };
 
