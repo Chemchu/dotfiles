@@ -31,6 +31,8 @@
       inherit pkgs;
       v2-settings = true;
       settings = {
+        prefer-no-csd = true;
+
         spawn-at-startup = [
           (lib.getExe self'.packages.myNoctalia)
         ];
@@ -42,6 +44,9 @@
         };
 
         window-rules = [
+          {
+            geometry-corner-radius = 0;
+          }
           {
             draw-border-with-background = false;
           }

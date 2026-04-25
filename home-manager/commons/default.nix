@@ -9,7 +9,12 @@
     ffmpeg
     feh
     mpv
-    spotify
+    (spotify.overrideAttrs (old: {
+      postInstall = (old.postInstall or "") + ''
+        sed -i 's|^Exec=spotify|Exec=spotify --ozone-platform=wayland --enable-features=UseOzonePlatform|' \
+          $out/share/applications/spotify.desktop
+      '';
+    }))
     cockatrice
     flyctl
     jq
@@ -44,4 +49,5 @@
       --ozone-platform=wayland
     '';
   };
+
 }
