@@ -170,7 +170,17 @@
     fonts.packages = with pkgs.nerd-fonts; [iosevka iosevka-term];
 
     security = {
-      polkit.enable = true;
+      polkit = {
+        enable = true;
+        extraConfig = ''
+          polkit.addRule(function(action, subject) {
+            if (action.id == "net.reactivated.fprint.device.enroll" &&
+                subject.isInGroup("wheel")) {
+              return polkit.Result.YES;
+            }
+          });
+        '';
+      };
       rtkit.enable = true;
     };
 
@@ -198,6 +208,14 @@
         videoDrivers = ["amdgpu"];
         xkb.layout = "es";
       };
+      fprintd = {
+        enable = true;
+        tod = {
+          enable = true;
+          driver = pkgs.libfprint-2-tod1-goodix;
+        };
+      };
+      fwupd.enable = true;
     };
 
     console.keyMap = "es";
