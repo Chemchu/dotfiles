@@ -155,6 +155,54 @@ $ home-manager switch --flake .#gus
 
 ---
 
+## Fingerprint reader
+
+The Framework 13 has a Goodix fingerprint sensor. It's configured via `fprintd` with the TOD (Touch OD) driver (`libfprint-2-tod1-goodix`). Polkit is set up to allow wheel users to enroll without needing sudo.
+
+### Enrolling a finger
+
+```console
+$ fprintd-enroll
+```
+
+By default this enrolls the right index finger. To enroll a specific finger:
+
+```console
+$ fprintd-enroll -f <finger>
+```
+
+Valid finger names: `left-thumb`, `left-index-finger`, `left-middle-finger`, `left-ring-finger`, `left-little-finger` and the same for `right-*`.
+
+Follow the prompts — it'll ask you to lift and place the same finger several times. Once done, you should see:
+
+```
+Enroll result: enroll-completed
+```
+
+### Listing enrolled fingers
+
+```console
+$ fprintd-list $USER
+```
+
+### Deleting enrolled fingers
+
+```console
+$ fprintd-delete $USER
+```
+
+This deletes all enrolled fingers for the user. There's no per-finger delete in the CLI, so if you want to redo one finger you have to redo all of them.
+
+### Verifying it works
+
+```console
+$ fprintd-verify
+```
+
+It'll ask you to swipe — if it returns `verify-match` you're good.
+
+---
+
 ## Connecting to Bluetooth
 
 Bluez ships with `bluetoothctl`, which makes pairing straightforward.
