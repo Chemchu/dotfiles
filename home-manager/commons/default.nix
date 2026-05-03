@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./programs
+    ./wallpapers
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -10,10 +11,12 @@
     feh
     mpv
     (spotify.overrideAttrs (old: {
-      postInstall = (old.postInstall or "") + ''
-        sed -i 's|^Exec=spotify|Exec=spotify --ozone-platform=wayland --enable-features=UseOzonePlatform|' \
-          $out/share/applications/spotify.desktop
-      '';
+      postInstall =
+        (old.postInstall or "")
+        + ''
+          sed -i 's|^Exec=spotify|Exec=spotify --ozone-platform=wayland --enable-features=UseOzonePlatform|' \
+            $out/share/applications/spotify.desktop
+        '';
     }))
     cockatrice
     flyctl
@@ -49,5 +52,4 @@
       --ozone-platform=wayland
     '';
   };
-
 }
