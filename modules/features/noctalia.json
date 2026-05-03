@@ -2,7 +2,7 @@
   "settings": {
     "settingsVersion": 59,
     "bar": {
-      "barType": "framed",
+      "barType": "simple",
       "position": "top",
       "monitors": [],
       "density": "compact",
@@ -38,54 +38,22 @@
             "useDistroLogo": false
           },
           {
-            "colorizeSystemIcon": "none",
-            "customIconPath": "",
-            "enableColorization": false,
-            "icon": "rocket",
-            "iconColor": "none",
-            "id": "Launcher",
-            "useDistroLogo": false
-          },
-          {
-            "characterCount": 2,
-            "colorizeIcons": false,
-            "emptyColor": "secondary",
-            "enableScrollWheel": true,
-            "focusedColor": "primary",
-            "followFocusedScreen": false,
-            "fontWeight": "bold",
-            "groupedBorderOpacity": 1,
-            "hideUnoccupied": false,
-            "iconScale": 0.8,
-            "id": "Workspace",
-            "labelMode": "index",
-            "occupiedColor": "secondary",
-            "pillSize": 0.6,
-            "showApplications": false,
-            "showApplicationsHover": false,
-            "showBadge": true,
-            "showLabelsOnlyWhenOccupied": true,
-            "unfocusedIconsOpacity": 1
+            "clockColor": "none",
+            "customFont": "FreeSans",
+            "formatHorizontal": "HH:mm:ss",
+            "formatVertical": "HH mm - dd MM",
+            "id": "Clock",
+            "tooltipFormat": "HH:mm ddd, MMM dd",
+            "useCustomFont": false
           }
         ],
         "center": [
-          {
-            "colorizeIcons": false,
-            "hideMode": "hidden",
-            "id": "ActiveWindow",
-            "maxWidth": 800,
-            "scrollingMode": "hover",
-            "showIcon": true,
-            "showText": true,
-            "textColor": "none",
-            "useFixedWidth": false
-          },
           {
             "compactMode": false,
             "hideMode": "hidden",
             "hideWhenIdle": false,
             "id": "MediaMini",
-            "maxWidth": 145,
+            "maxWidth": 800,
             "panelShowAlbumArt": true,
             "scrollingMode": "hover",
             "showAlbumArt": true,
@@ -95,15 +63,6 @@
             "textColor": "none",
             "useFixedWidth": false,
             "visualizerType": "linear"
-          },
-          {
-            "clockColor": "none",
-            "customFont": "FreeSans",
-            "formatHorizontal": "HH:mm:ss",
-            "formatVertical": "HH mm - dd MM",
-            "id": "Clock",
-            "tooltipFormat": "HH:mm ddd, MMM dd",
-            "useCustomFont": false
           }
         ],
         "right": [
@@ -691,7 +650,7 @@
     }
   },
   "state": {
-    "doNotDisturb": true,
+    "doNotDisturb": false,
     "noctaliaPerformanceMode": false,
     "barVisible": true,
     "openedPanel": "",
@@ -715,7 +674,7 @@
       }
     },
     "notificationsState": {
-      "lastSeenTs": 1776791661000
+      "lastSeenTs": 1777213839000
     },
     "changelogState": {
       "lastSeenVersion": "v4.7.5"

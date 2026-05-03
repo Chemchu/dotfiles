@@ -34,7 +34,7 @@
         prefer-no-csd = true;
 
         cursor = {
-          xcursor-theme = "Everforest-cursors";
+          xcursor-theme = "everforest-cursors";
           xcursor-size = 26;
         };
 
