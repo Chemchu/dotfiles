@@ -1,7 +1,10 @@
 {
   home = {
     file = {
-      "./Pictures/Wallpapers".source = ./pictures;
+      "Pictures/Wallpapers" = {
+        source = ./pictures;
+        recursive = true;
+      };
     };
   };
 }

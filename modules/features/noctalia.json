@@ -10,8 +10,8 @@
       "showCapsule": false,
       "capsuleOpacity": 1,
       "capsuleColorKey": "none",
-      "widgetSpacing": 6,
-      "contentPadding": 2,
+      "widgetSpacing": 3,
+      "contentPadding": 5,
       "fontScale": 1,
       "enableExclusionZoneInset": true,
       "backgroundOpacity": 0.93,
@@ -38,13 +38,7 @@
             "useDistroLogo": false
           },
           {
-            "clockColor": "none",
-            "customFont": "FreeSans",
-            "formatHorizontal": "HH:mm:ss",
-            "formatVertical": "HH mm - dd MM",
-            "id": "Clock",
-            "tooltipFormat": "HH:mm ddd, MMM dd",
-            "useCustomFont": false
+            "id": "plugin:todo"
           }
         ],
         "center": [
@@ -66,6 +60,14 @@
           }
         ],
         "right": [
+          {
+            "hideWhenZero": false,
+            "hideWhenZeroUnread": false,
+            "iconColor": "none",
+            "id": "NotificationHistory",
+            "showUnreadBadge": true,
+            "unreadBadgeColor": "primary"
+          },
           {
             "blacklist": [],
             "chevronColor": "none",
@@ -98,12 +100,13 @@
             "showPowerProfiles": false
           },
           {
-            "hideWhenZero": false,
-            "hideWhenZeroUnread": false,
-            "iconColor": "none",
-            "id": "NotificationHistory",
-            "showUnreadBadge": true,
-            "unreadBadgeColor": "primary"
+            "clockColor": "none",
+            "customFont": "FreeSans",
+            "formatHorizontal": "HH:mm",
+            "formatVertical": "HH mm - dd MM",
+            "id": "Clock",
+            "tooltipFormat": "HH:mm ddd, MMM dd",
+            "useCustomFont": false
           }
         ]
       },
@@ -242,7 +245,7 @@
       "fillColor": "#000000",
       "useSolidColor": false,
       "solidColor": "#1a1a2e",
-      "automationEnabled": false,
+      "automationEnabled": true,
       "wallpaperChangeMode": "random",
       "randomIntervalSec": 300,
       "transitionDuration": 1500,
@@ -656,7 +659,7 @@
     "openedPanel": "",
     "lockScreenActive": false,
     "wallpapers": {
-      "eDP-1": "/home/gus/Pictures/Wallpapers/a_white_light_pole_with_a_jet_trail_in_the_sky.jpg"
+      "eDP-1": "/home/gus/Pictures/Wallpapers/a_man_standing_on_a_car.png"
     },
     "desktopWidgetsEditMode": false,
     "display": {
@@ -674,7 +677,7 @@
       }
     },
     "notificationsState": {
-      "lastSeenTs": 1777213839000
+      "lastSeenTs": 1777826070000
     },
     "changelogState": {
       "lastSeenVersion": "v4.7.5"
