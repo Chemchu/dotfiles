@@ -126,18 +126,6 @@
         "type": "github"
       }
     },
-    "lock-wallpaper": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-TcGeINen72kjIELbEDOL2uS23HVL2ofT0gGjVBZejg0=",
-        "type": "file",
-        "url": "https://cdna.artstation.com/p/assets/images/images/026/931/228/large/pei-fang-asset.jpg"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://cdna.artstation.com/p/assets/images/images/026/931/228/large/pei-fang-asset.jpg"
-      }
-    },
     "mnw": {
       "locked": {
         "lastModified": 1770419553,
@@ -270,11 +258,9 @@
         "home-manager": "home-manager",
         "import-tree": "import-tree",
         "lf-icons": "lf-icons",
-        "lock-wallpaper": "lock-wallpaper",
         "nixpkgs": "nixpkgs",
         "nvf": "nvf",
         "rust-overlay": "rust-overlay",
-        "wallpaper": "wallpaper",
         "wrapper-modules": "wrapper-modules",
         "zen-browser": "zen-browser"
       }
@@ -310,18 +296,6 @@
         "owner": "nix-systems",
         "repo": "default",
         "type": "github"
-      }
-    },
-    "wallpaper": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-TcGeINen72kjIELbEDOL2uS23HVL2ofT0gGjVBZejg0=",
-        "type": "file",
-        "url": "https://cdna.artstation.com/p/assets/images/images/026/931/228/large/pei-fang-asset.jpg"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://cdna.artstation.com/p/assets/images/images/026/931/228/large/pei-fang-asset.jpg"
       }
     },
     "wrapper-modules": {
