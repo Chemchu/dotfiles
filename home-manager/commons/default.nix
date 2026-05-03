@@ -22,8 +22,6 @@
     flyctl
     jq
     postman
-    godot_4
-    blender
     discord
     unzip
     google-chrome
@@ -31,9 +29,6 @@
     python3
     thc-hydra
     tcpdump
-    wireshark
-    mold
-    lmstudio
     nmap
     dig
     dnslookup

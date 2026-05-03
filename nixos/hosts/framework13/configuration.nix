@@ -156,7 +156,7 @@
       java.enable = false;
       hyprland.enable = false;
       wireshark = {
-        enable = true;
+        enable = false;
         usbmon.enable = true;
       };
       nh = {
