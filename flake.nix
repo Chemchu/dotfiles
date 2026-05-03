@@ -19,14 +19,6 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    wallpaper = {
-      url = "https://cdna.artstation.com/p/assets/images/images/026/931/228/large/pei-fang-asset.jpg?1590118592";
-      flake = false;
-    };
-    lock-wallpaper = {
-      url = "https://cdna.artstation.com/p/assets/images/images/026/931/228/large/pei-fang-asset.jpg?1590118592";
-      flake = false;
-    };
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";

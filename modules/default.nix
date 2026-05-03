@@ -3,7 +3,7 @@
   inputs,
   ...
 }: let
-  inherit (inputs) nixpkgs rust-overlay wallpaper lock-wallpaper zen-browser;
+  inherit (inputs) nixpkgs rust-overlay zen-browser;
 in {
   systems = ["x86_64-linux"];
 
@@ -17,7 +17,7 @@ in {
       {nixpkgs.hostPlatform = "x86_64-linux";}
       self.nixosModules.framework13Configuration
       self.nixosModules.niri
-      {home-manager.extraSpecialArgs = {inherit inputs wallpaper lock-wallpaper;};}
+      {home-manager.extraSpecialArgs = {inherit inputs;};}
       ({pkgs, ...}: {
         nixpkgs.overlays = [rust-overlay.overlays.default];
         environment.systemPackages = with pkgs; [
