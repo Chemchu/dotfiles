@@ -33,6 +33,11 @@
       settings = {
         prefer-no-csd = true;
 
+        cursor = {
+          xcursor-theme = "Everforest-cursors";
+          xcursor-size = 26;
+        };
+
         spawn-at-startup = [
           (lib.getExe self'.packages.myNoctalia)
         ];
