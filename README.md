@@ -1,129 +1,204 @@
 # My dotfiles!
 
-Welcome! If you are reading this, then you came up to my personal dotfiles repository. Here I store all the stupid stuff that I try to do to my systems.
-If you need help or anything, feel free to open an issue about it. Keep in mind that my configurations are designed to solve my problems with my specific hardware.
-I can try to help you the best I can, but that's all.
+Welcome! If you are reading this, you somehow stumbled into my personal dotfiles
+repository. Here I store all the stupid stuff I do to my systems to make them
+work the way I want.
 
-PD: This docs are a guide for future me. I know this code but I also know me. I am sure I am gonna read this constantly. Thanks past me!
+If you need help, feel free to open an issue. Just keep in mind that my
+configurations are designed to solve my problems with my specific hardware. I'll
+help as much as I can, but no promises.
 
-## Prerequisites (TODO)
-It is essential to have NixOs installed. That's it. The rest is on me.
+> PD: These docs are a guide for future me. I know I'm going to be reading this
+> constantly
 
-## Installing (TODO)
+---
 
-## My personal computers (TODO)
+## What is this?
 
-### Spaceship
-Spaceship is what I call my big monstruos desktop pc because it is basically a rocket. A small and humble rocket.
+This is a **NixOS + Home Manager + Flakes** setup. Everything is declarative and
+(ideally) reproducible. If you break it, you can always roll back. That's the
+beauty of Nix.
 
-### Framework
-Framework is actually my recently bought Framework 13 notebook. It runs a AMD Ryzen 5 7640U. So, yeah, no Intel and thank god no NVIDIA.
+The repo is structured around two layers:
+
+- **NixOS** — system-level config (bootloader, hardware, kernel, services)
+- **Home Manager** — user-level config (programs, dotfiles, dev tools, theming)
+
+---
+
+## Structure
+
+```
+dotfiles/
+├── flake.nix               # Entry point — inputs and outputs
+├── flake.lock              # Locked dependency versions
+├── nixos/
+│   └── hosts/
+│       └── framework13/    # Framework 13 system config
+├── home-manager/
+│   ├── commons/            # Shared program configs (used by all hosts)
+│   │   └── programs/       # Per-program Nix configs
+│   └── niri/               # Niri-specific home config
+└── modules/
+    ├── features/           # Optional features (Niri, Noctalia, etc.)
+    └── hosts/              # Host-specific module imports
+```
+
+---
+
+## My machines
+
+### Framework 13
+
+My daily driver. Framework 13 notebook with an AMD Ryzen 5 7640U. No Intel, no
+NVIDIA — exactly how I like it.
+
+- **WM**: Niri (Wayland compositor)
+- **Shell**: Noctalia (Niri shell for app launcher and system bar)
+- **Terminal**: Kitty
+- **Shell**: Zsh + oh-my-zsh
+
+---
+
+## Prerequisites
+
+You need **NixOS** installed with **flakes enabled**. That's it.
+
+To enable flakes, add this to your `configuration.nix`:
+
+```nix
+nix.settings.experimental-features = [ "nix-command" "flakes" ];
+```
+
+---
+
+## Installing
+
+Clone the repo:
+
+```console
+$ git clone https://github.com/Chemchu/dotfiles ~/dotfiles
+$ cd ~/dotfiles
+```
+
+Apply the NixOS system config (as root):
+
+```console
+# nixos-rebuild switch --flake .#framework13
+```
+
+Apply the Home Manager config:
+
+```console
+$ home-manager switch --flake .#gus
+```
+
+---
+
+## What's configured
+
+### Desktop
+
+- **Niri** — Wayland compositor, replaces Hyprland
+- **Noctalia** — Niri shell with custom bar config
+- **Kitty** — GPU-accelerated terminal (Wayland-native)
+- **Zellij** — Terminal multiplexer
+- **Everforest cursors** — Cursor theme
+
+### Editors
+
+- **Neovim** — Configured with [nvf](https://github.com/NotAShelf/nvf)
+  (declarative Neovim in Nix, no Lua required)
+  - Theme: One Dark
+  - LSP for: Rust, Python, JavaScript/TypeScript, Nix, Go, and more
+  - Plugins: Telescope, Oil.nvim, Undotree, DAP debugging, git integration
+  - Run it with `nvim` or `vim` (alias)
+- **Zed** — Modern editor with vim mode and Claude AI integration
+
+### Shell & CLI
+
+- **Zsh** + oh-my-zsh (git + direnv plugins)
+- **Zoxide** + **eza** — Better `cd` and `ls`
+- **lf** — Terminal file manager with custom keybindings and previewer
+- **Fastfetch** — System info display
+- **bat, ripgrep, fd, dust, bottom, dua, dysk, procs** — Rust-powered CLI tools
+
+### Development
+
+| Tool    | Details                                               |
+| ------- | ----------------------------------------------------- |
+| Rust    | Stable toolchain + cargo-tauri, bacon                 |
+| Node.js | v22                                                   |
+| Python  | With ML stack (torch, numpy, matplotlib, tensorboard) |
+| Bun     | JavaScript runtime/bundler                            |
+| C/C++   | clang toolchain                                       |
+| Nix     | nix-tree, nix-update, nixpkgs-review, and more        |
+| Git     | With LFS support                                      |
+| direnv  | Per-project dev environments                          |
+| Docker  | Containerization                                      |
+
+### Media & Gaming
+
+- **Steam** with Gamescope
+- **OBS Studio** — wlrobs, background-removal, pipewire-audio plugins
+- **Spotify** (Wayland flags applied)
+- **Guitarix** — Guitar audio processing via PipeWire
+- **Blender** — 3D modeling
+- **Godot 4** — Game engine
+- **Discord**
+
+### Browsers
+
+- Zen Browser (primary)
+- Google Chrome
+- Firefox
+
+---
 
 ## Connecting to Bluetooth
-So, bluetooth is simple. Bluez comes with a handy cli app called bluetoothctl that simplify most of stuff.
 
-#### Outbound connection (pairing from my PC to another device)
-I have a beautiful yellow Logitech POP Keys. This keyboard can be connected through a USB dongle or via bluetooth.
-To connect it using bluetooth you need to do this:
+Bluez ships with `bluetoothctl`, which makes pairing straightforward.
 
-Start bluetoothctl and turn the agent on. Running bluetoothctl with no arguments starts an interactive shell.
+Start the interactive shell:
 
 ```console
-foo@bar:~$ bluetoothctl
+$ bluetoothctl
 ```
 
-Once inside, run this.
+Set up the agent and start scanning:
 
 ```console
-# Turn the agent on.
-# The agent is the cool dude that checks if two devices can be paired by sending and checking a code or by simply asking the second device to accept the pairing
 [bluetooth]# agent on
-Agent registered
-# Set the default agent for some reason. Idk really
 [bluetooth]# default-agent
-Default agent request successful
-```
-
-After that, you can start scanning for your device. In my case, my slick bluetooth keyboard
-
-```console
-# Scan the nearby devices
 [bluetooth]# scan on
-# This will start the scanning phase. Soon your screen will be filled with text
-Discovery started
-[CHG] Controller 00:1A:7D:DA:71:08 Discovering: yes
-# Which is followed with some logs that look like this
-[NEW] Device 08:3E:8E:E6:79:47 annapurna
-[NEW] Device 00:25:56:D1:36:6B ubuntu-0 ....
-[NEW] Device <bluetooth address> <name>
 ```
 
-Once you find your device, copy its MAC address.
+Find your device in the output and copy its MAC address, then pair:
 
 ```console
-# Scan the nearby devices
-[bluetooth]# scan on
-# This will start the scanning phase. Soon your screen will be filled with text
-Discovery started
-[CHG] Controller 00:1A:7D:DA:71:08 Discovering: yes
-# Which is followed with some logs that look like this
-[NEW] Device 08:3E:8E:E6:79:47 annapurna
-[NEW] Device 00:25:56:D1:36:6B ubuntu-0 ....
-[NEW] Device <bluetooth address> <name>
-```
-
-Now, you just need to pair them together
-```console
-[bluetooth]# pair <bluetooth MAC address>
-Attempting to pair with <bluetooth MAC address>
-[CHG] Device <bluetooth MAC address> Connected: yes
-Request confirmation
+[bluetooth]# pair <MAC address>
 [agent] Confirm passkey 687331 (yes/no): yes
 ```
 
-Finally, you can stop scanning and exit.
+Stop scanning and exit:
 
 ```console
-# You can stop scanning now
 [bluetooth]# scan off
 [bluetooth]# exit
 ```
 
-That's it. Bluetooth done. It would be nice to have this in a GUI but that's for future me.
-For some reason, Hyprland (at least by now) is not able to connect to new devices and use them. I tried with USB keyboards and mouses. I need to restart Hyprland. I guess it's a bug from version 0.42.
-Anyway, if bluetooth doesn't work, try restarting Hyprland.
+---
 
-## Launching Hyprland (TODO)
-I don't start Hyprland when booting up because I don't always need a desktop to get through the day. That said, to start Hyprland simply run:
+## Setting up WiFi
 
-```console
-foo@bar:~$ Hyprland
-```
-
-That's it. Enjoy!
-
-## Setting up Wifi (TODO)
-I am a very VERY lazy dude, so I didn't actually write any scripts to handle the network connection.
-If you are using a Ethernet cable then just plug that shit in. If you are using the good old wifi, I recommend using the nmtui command to connect to your network.
-Other than that, feel free to do whatever the hell you want. You are the protagonist of your own life.
-
-## Development tools (TODO)
-
-## Nixvim (TODO)
-So, Nixvim is Neovim, but all of the config is done using Nix instead of Lua. I find nixvim pretty cool and I don't have to actually config anything, so that's a plus.
-To run nixvim, just run neovim as always
+Use `nmtui` for a simple TUI interface. Ethernet? Just plug it in.
 
 ```console
-foo@bar:~$ nvim
+$ nmtui
 ```
 
-Running vim also works ;) it's just an alias under the hood, so yeah
+---
 
-```console
-foo@bar:~$ vim
-```
+## License
 
-## NVIDIA/AMD (TODO)
-Jesus christ do I have to write shit here aswell? ffs
-
-
+MIT — see [LICENSE](LICENSE).
