@@ -110,22 +110,6 @@
         "type": "github"
       }
     },
-    "lf-icons": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1777822881,
-        "narHash": "sha256-q8/hydFoDYQ1PLLa6TFfbW6NmROFz4wNQ1B4g6g20HI=",
-        "owner": "gokcehan",
-        "repo": "lf",
-        "rev": "b41a0f839b87545ac4db6322b2aa1a3ae168bce6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "gokcehan",
-        "repo": "lf",
-        "type": "github"
-      }
-    },
     "mnw": {
       "locked": {
         "lastModified": 1777828893,
@@ -257,7 +241,6 @@
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "import-tree": "import-tree",
-        "lf-icons": "lf-icons",
         "nixpkgs": "nixpkgs",
         "nvf": "nvf",
         "rust-overlay": "rust-overlay",

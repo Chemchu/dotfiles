@@ -4,7 +4,7 @@
     ./dev
     ./direnv
     ./fastfetch
-    ./lf
+    ./yazi
     ./kitty
     ./nvf
     ./obs
