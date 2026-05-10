@@ -12,6 +12,10 @@
       enable = true;
       package = self.packages.${pkgs.stdenv.hostPlatform.system}.myNiri;
     };
+    environment.etc."niri-config.kdl".source =
+      "${self.packages.${pkgs.stdenv.hostPlatform.system}.myNiri}/niri-config.kdl";
+    environment.etc."niri-cheatsheet.kdl".source =
+      "${self.packages.${pkgs.stdenv.hostPlatform.system}.niri-cheatsheet}";
   };
 
   perSystem = {
@@ -53,6 +57,70 @@
       rm -f "$tmp"
       echo "$prev" > "$state"
       ${noctalia} ipc call wallpaper set "$prevpath" ""
+    '';
+    packages.niri-cheatsheet = pkgs.writeText "niri-cheatsheet.kdl" ''
+      binds {
+          // #"Noctalia"
+          Mod+F2 hotkey-overlay-title="Keybind Cheatsheet" { spawn-sh "noctalia"; }
+          Mod+S hotkey-overlay-title="Launcher" { spawn-sh "noctalia"; }
+          Mod+Shift+P hotkey-overlay-title="Lock & Suspend" { spawn-sh "noctalia"; }
+
+          // #"Applications"
+          Mod+Q hotkey-overlay-title="Terminal" { spawn-sh "kitty"; }
+          Mod+W hotkey-overlay-title="Browser" { spawn-sh "zen"; }
+          Mod+C { close-window; }
+          Mod+V { toggle-window-floating; }
+          Mod+M hotkey-overlay-title="Quit Compositor" { quit; }
+
+          // #"Column Navigation"
+          Mod+H { focus-column-left; }
+          Mod+L { focus-column-right; }
+          Mod+Left { focus-column-left; }
+          Mod+Right { focus-column-right; }
+          Mod+Shift+H { move-column-left; }
+          Mod+Shift+L { move-column-right; }
+
+          // #"Workspace Navigation"
+          Mod+K { focus-workspace-up; }
+          Mod+J { focus-workspace-down; }
+          Mod+Up { focus-workspace-up; }
+          Mod+Down { focus-workspace-down; }
+          Mod+Shift+K { move-window-to-workspace-up; }
+          Mod+Shift+J { move-window-to-workspace-down; }
+
+          // #"Window Management"
+          Mod+F { maximize-column; }
+          Mod+Shift+F { fullscreen-window; }
+          Mod+Minus hotkey-overlay-title="Shrink Column" { set-column-width "-10%"; }
+          Mod+Equal hotkey-overlay-title="Grow Column" { set-column-width "+10%"; }
+          Mod+Shift+Minus hotkey-overlay-title="Shrink Window" { set-window-height "-10%"; }
+          Mod+Shift+Equal hotkey-overlay-title="Grow Window" { set-window-height "+10%"; }
+
+          // #"Screenshots"
+          Mod+F5 hotkey-overlay-title="Screenshot Region" { spawn-sh "grim"; }
+          Print hotkey-overlay-title="Screenshot Region" { spawn-sh "grim"; }
+
+          // #"Wallpaper"
+          Mod+Period hotkey-overlay-title="Next Wallpaper" { spawn-sh "wallpaper-next"; }
+          Mod+Comma hotkey-overlay-title="Previous Wallpaper" { spawn-sh "wallpaper-prev"; }
+
+          // #"Media"
+          XF86AudioRaiseVolume hotkey-overlay-title="Volume Up" { spawn-sh "wpctl"; }
+          XF86AudioLowerVolume hotkey-overlay-title="Volume Down" { spawn-sh "wpctl"; }
+          XF86AudioMute hotkey-overlay-title="Mute Output" { spawn-sh "wpctl"; }
+          XF86AudioMicMute hotkey-overlay-title="Mute Mic" { spawn-sh "wpctl"; }
+          XF86AudioPlay hotkey-overlay-title="Play/Pause" { spawn-sh "playerctl"; }
+          XF86AudioStop hotkey-overlay-title="Stop" { spawn-sh "playerctl"; }
+          XF86AudioPause hotkey-overlay-title="Pause" { spawn-sh "playerctl"; }
+          XF86AudioPrev hotkey-overlay-title="Previous Track" { spawn-sh "playerctl"; }
+          XF86AudioNext hotkey-overlay-title="Next Track" { spawn-sh "playerctl"; }
+
+          // #"Brightness"
+          XF86MonBrightnessUp hotkey-overlay-title="Brightness Up" { spawn-sh "brightnessctl"; }
+          XF86MonBrightnessDown hotkey-overlay-title="Brightness Down" { spawn-sh "brightnessctl"; }
+          XF86KbdBrightnessUp hotkey-overlay-title="Keyboard Backlight Up" { spawn-sh "brightnessctl"; }
+          XF86KbdBrightnessDown hotkey-overlay-title="Keyboard Backlight Down" { spawn-sh "brightnessctl"; }
+      }
     '';
     packages.myNiri = inputs.wrapper-modules.wrappers.niri.wrap {
       inherit pkgs;
