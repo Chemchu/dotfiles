@@ -31,6 +31,7 @@
           {
             "colorizeDistroLogo": false,
             "colorizeSystemIcon": "none",
+            "colorizeSystemText": "none",
             "customIconPath": "",
             "enableColorization": false,
             "icon": "noctalia",
@@ -38,6 +39,30 @@
             "useDistroLogo": false
           },
           {
+            "defaultSettings": {
+              "completedCount": 0,
+              "count": 0,
+              "current_page_id": 0,
+              "exportEmptySections": false,
+              "exportFormat": "markdown",
+              "exportPath": "~/Documents",
+              "isExpanded": false,
+              "pages": [
+                {
+                  "id": 0,
+                  "name": "General"
+                }
+              ],
+              "priorityColors": {
+                "high": "#f44336",
+                "low": "#9e9e9e",
+                "medium": "#2196f3"
+              },
+              "showBackground": true,
+              "showCompleted": true,
+              "todos": [],
+              "useCustomColors": false
+            },
             "id": "plugin:todo"
           }
         ],
@@ -659,28 +684,31 @@
     "openedPanel": "",
     "lockScreenActive": false,
     "wallpapers": {
-      "eDP-1": "/home/gus/Pictures/Wallpapers/a_man_standing_on_a_car.png"
+      "eDP-1": "/home/gus/Pictures/Wallpapers/a_tree_with_pink_flowers.png"
     },
     "desktopWidgetsEditMode": false,
     "display": {
       "eDP-1": {
-        "active_workspace": 1,
-        "focused": true,
-        "height": 1504,
         "name": "eDP-1",
-        "refresh_rate": 59.999,
-        "scale": 1.57,
-        "vrr": false,
-        "width": 2256,
+        "connected": true,
+        "scale": 1.5,
+        "width": 1504,
+        "height": 1002,
         "x": 0,
-        "y": 0
+        "y": 0,
+        "physical_width": 280,
+        "physical_height": 190,
+        "refresh_rate": 59999,
+        "vrr_supported": false,
+        "vrr_enabled": false,
+        "transform": "Normal"
       }
     },
     "notificationsState": {
-      "lastSeenTs": 1777826070000
+      "lastSeenTs": 1777842106000
     },
     "changelogState": {
-      "lastSeenVersion": "v4.7.5"
+      "lastSeenVersion": "v4.7.6"
     },
     "colorSchemesList": {
       "schemes": [
