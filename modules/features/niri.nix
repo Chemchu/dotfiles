@@ -26,7 +26,34 @@
     slurp = lib.getExe pkgs.slurp;
     wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy";
     notify-send = "${pkgs.libnotify}/bin/notify-send";
+    noctalia = lib.getExe self'.packages.myNoctalia;
   in {
+    packages.wallpaper-next = pkgs.writeShellScriptBin "wallpaper-next" ''
+      tmp=$(mktemp)
+      find -L "$HOME/Pictures/Wallpapers" -maxdepth 1 -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" -o -name "*.webp" \) | sort > "$tmp"
+      count=$(wc -l < "$tmp")
+      [ "$count" -eq 0 ] && rm -f "$tmp" && exit 0
+      state="''${XDG_RUNTIME_DIR:-/tmp}/wallpaper-index"
+      idx=1; [ -f "$state" ] && idx=$(cat "$state")
+      next=$(( (idx % count) + 1 ))
+      nextpath=$(sed -n "''${next}p" "$tmp")
+      rm -f "$tmp"
+      echo "$next" > "$state"
+      ${noctalia} ipc call wallpaper set "$nextpath" ""
+    '';
+    packages.wallpaper-prev = pkgs.writeShellScriptBin "wallpaper-prev" ''
+      tmp=$(mktemp)
+      find -L "$HOME/Pictures/Wallpapers" -maxdepth 1 -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" -o -name "*.webp" \) | sort > "$tmp"
+      count=$(wc -l < "$tmp")
+      [ "$count" -eq 0 ] && rm -f "$tmp" && exit 0
+      state="''${XDG_RUNTIME_DIR:-/tmp}/wallpaper-index"
+      idx=1; [ -f "$state" ] && idx=$(cat "$state")
+      prev=$(( ((idx - 2 + count) % count) + 1 ))
+      prevpath=$(sed -n "''${prev}p" "$tmp")
+      rm -f "$tmp"
+      echo "$prev" > "$state"
+      ${noctalia} ipc call wallpaper set "$prevpath" ""
+    '';
     packages.myNiri = inputs.wrapper-modules.wrappers.niri.wrap {
       inherit pkgs;
       v2-settings = true;
@@ -63,7 +90,7 @@
 
         binds = {
           # Niri
-          "Mod+F2".show-hotkey-overlay = {};
+          "Mod+F2".spawn-sh = "${noctalia} ipc call plugin:keybind-cheatsheet toggle";
           "Mod+M".quit = {};
           "Mod+F".maximize-column = {};
           "Mod+Shift+F".fullscreen-window = {};
@@ -77,7 +104,7 @@
           "Mod+W".spawn-sh = "zen --name zen";
           "Mod+C".close-window = {};
           "Mod+V".toggle-window-floating = {};
-          "Mod+S".spawn-sh = "${lib.getExe self'.packages.myNoctalia} ipc call launcher toggle";
+          "Mod+S".spawn-sh = "${noctalia} ipc call launcher toggle";
 
           # Focus movement (vim-style)
           "Mod+H".focus-column-left = {};
@@ -116,8 +143,8 @@
           "XF86KbdBrightnessUp".spawn-sh = "${brightnessctl} -d asus::kbd_backlight set +1";
           "XF86KbdBrightnessDown".spawn-sh = "${brightnessctl} -d asus::kbd_backlight set 1-";
 
-          # Suspend (Mod+L is taken by vim focus-right, use Mod+Shift+P instead)
-          "Mod+Shift+P".spawn-sh = "systemctl suspend";
+          # Lock screen then suspend
+          "Mod+Shift+P".spawn-sh = "${noctalia} ipc call sessionMenu lockAndSuspend";
 
           # Mouse scroll to switch workspaces / columns
           "Mod+WheelScrollDown".focus-workspace-down = {};
@@ -132,8 +159,12 @@
           "Mod+TouchpadScrollLeft".focus-column-left = {};
 
           # Screenshot
-          "Mod+F5".spawn-sh = ''${grim} -g "$(${slurp} -d)" - | ${wl-copy} && ${notify-send} "Captura copiada ✓"'';
-          "Print".spawn-sh = ''${grim} -g "$(${slurp} -d)" - | ${wl-copy} && ${notify-send} "Captura copiada ✓"'';
+          "Mod+F5".spawn-sh = ''region=$(${slurp} -d) && ${grim} -g "$region" - | ${wl-copy} && ${notify-send} "Captura copiada ✓"'';
+          "Print".spawn-sh = ''region=$(${slurp} -d) && ${grim} -g "$region" - | ${wl-copy} && ${notify-send} "Captura copiada ✓"'';
+
+          # Wallpaper cycling
+          "Mod+Period".spawn-sh = lib.getExe self'.packages.wallpaper-next;
+          "Mod+Comma".spawn-sh = lib.getExe self'.packages.wallpaper-prev;
         };
       };
     };
