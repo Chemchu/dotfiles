@@ -108,5 +108,6 @@
     map kitty_mod+t     new_tab_with_cwd
     # }}
 
+    enable_audio_bell no
   '';
 }
