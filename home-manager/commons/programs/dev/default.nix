@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./arduino.nix
     ./bevy.nix
     ./bun.nix
     ./clang.nix
