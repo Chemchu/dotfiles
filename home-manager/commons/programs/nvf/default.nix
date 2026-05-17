@@ -80,6 +80,11 @@
           enableFormat = true;
           enableTreesitter = true;
           enableExtraDiagnostics = true;
+          arduino = {
+            enable = true;
+            lsp.enable = true;
+            treesitter.enable = true;
+          };
           nim.enable = true;
           nix.enable = true;
           markdown.enable = true;

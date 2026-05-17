@@ -33,6 +33,7 @@
     dig
     dnslookup
     claude-code
+    wl-clipboard
   ];
 
   home.file = {
