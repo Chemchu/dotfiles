@@ -11,8 +11,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     rust-overlay.url = "github:oxalica/rust-overlay";
-    nvf = {
-      url = "github:notashelf/nvf";
+    nvim = {
+      url = "path:./nvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
