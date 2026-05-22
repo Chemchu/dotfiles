@@ -5,7 +5,9 @@
       setupOpts.formatters_by_ft = {
         javascript = ["prettier"];
         html = ["prettier"];
+        java = ["google-java-format"];
       };
+      setupOpts.formatters."google-java-format".command = "${pkgs.google-java-format}/bin/google-java-format";
     };
 
     repl.conjure.enable = false;
@@ -52,6 +54,7 @@
       trouble.enable = true;
       lspSignature.enable = false; # doesn't work with blink
       nvim-docs-view.enable = false; # lags *horribly* whenever l is pressed
+      presets.tailwindcss-language-server.enable = true;
     };
 
     debugger.nvim-dap = {
@@ -87,8 +90,16 @@
       };
       sql.enable = true;
       haskell.enable = true;
-      java.enable = false;
-      ts = {
+      java = {
+        enable = true;
+        treesitter.enable = true;
+        lsp.enable = true;
+        extensions = {
+          maven-nvim.enable = true;
+          gradle-nvim.enable = true;
+        };
+      };
+      typescript = {
         enable = true;
         format.enable = true;
         extraDiagnostics.enable = false;
@@ -107,7 +118,6 @@
       dart.enable = false;
       lua.enable = true;
       bash.enable = true;
-      tailwind.enable = true;
       typst.enable = true;
       julia.enable = false;
       clang = {
@@ -460,6 +470,77 @@
         mode = "n";
         silent = true;
         desc = "Toggle Undotree";
+      }
+      # DAP keymaps
+      {
+        key = "<leader>dc";
+        action = ":lua require('dap').continue()<CR>";
+        mode = "n";
+        silent = true;
+        desc = "DAP Continue / Start";
+      }
+      {
+        key = "<leader>db";
+        action = ":lua require('dap').toggle_breakpoint()<CR>";
+        mode = "n";
+        silent = true;
+        desc = "DAP Toggle breakpoint";
+      }
+      {
+        key = "<leader>dB";
+        action = ":lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>";
+        mode = "n";
+        silent = true;
+        desc = "DAP Conditional breakpoint";
+      }
+      {
+        key = "<leader>do";
+        action = ":lua require('dap').step_over()<CR>";
+        mode = "n";
+        silent = true;
+        desc = "DAP Step over";
+      }
+      {
+        key = "<leader>di";
+        action = ":lua require('dap').step_into()<CR>";
+        mode = "n";
+        silent = true;
+        desc = "DAP Step into";
+      }
+      {
+        key = "<leader>dO";
+        action = ":lua require('dap').step_out()<CR>";
+        mode = "n";
+        silent = true;
+        desc = "DAP Step out";
+      }
+      {
+        key = "<leader>dr";
+        action = ":lua require('dap').repl.open()<CR>";
+        mode = "n";
+        silent = true;
+        desc = "DAP REPL";
+      }
+      {
+        key = "<leader>dl";
+        action = ":lua require('dap').run_last()<CR>";
+        mode = "n";
+        silent = true;
+        desc = "DAP Run last";
+      }
+      {
+        key = "<leader>dt";
+        action = ":lua require('dapui').toggle()<CR>";
+        mode = "n";
+        silent = true;
+        desc = "DAP Toggle UI";
+      }
+      {
+        key = "<leader>dx";
+        action = ":lua require('dap').terminate()<CR>";
+        mode = "n";
+        silent = true;
+        desc = "DAP Terminate";
       }
     ];
   };
