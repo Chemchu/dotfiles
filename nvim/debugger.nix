@@ -84,7 +84,7 @@
         executable = {
           command = 'node',
           args = {
-            '${pkgs.vscode-js-debug}/lib/node_modules/js-debug/src/dapDebugServer.js',
+            '${pkgs.vscode-js-debug}/lib/node_modules/js-debug/dist/src/dapDebugServer.js',
             "''${port}",
           },
         },
