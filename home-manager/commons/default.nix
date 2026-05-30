@@ -34,6 +34,7 @@
     dnslookup
     claude-code
     wl-clipboard
+    devenv
   ];
 
   home.file = {
