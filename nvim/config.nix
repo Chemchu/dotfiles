@@ -191,7 +191,26 @@
       cheatsheet.enable = true;
     };
 
-    telescope.enable = true;
+    telescope = {
+      enable = true;
+      setupOpts = {
+        pickers.find_files = {
+          hidden = true;
+          find_command = ["fd" "--type" "f" "--hidden" "--exclude" ".git"];
+        };
+        defaults.vimgrep_arguments = [
+          "rg"
+          "--color=never"
+          "--no-heading"
+          "--with-filename"
+          "--line-number"
+          "--column"
+          "--smart-case"
+          "--hidden"
+          "--glob=!.git/"
+        ];
+      };
+    };
 
     git = {
       enable = true;
@@ -221,7 +240,10 @@
 
     utility = {
       undotree.enable = true;
-      oil-nvim.enable = true;
+      oil-nvim = {
+        enable = true;
+        setupOpts.view_options.show_hidden = true;
+      };
       ccc.enable = false;
       vim-wakatime.enable = false;
       icon-picker.enable = true;
