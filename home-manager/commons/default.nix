@@ -21,7 +21,6 @@
     cockatrice
     flyctl
     jq
-    postman
     discord
     unzip
     google-chrome
@@ -35,6 +34,7 @@
     claude-code
     wl-clipboard
     devenv
+    stm32cubemx
   ];
 
   home.file = {
