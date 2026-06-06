@@ -67,6 +67,7 @@
     nix.settings.experimental-features = ["nix-command" "flakes"];
 
     boot = {
+      kernelPackages = pkgs.linuxPackages_latest;
       loader.systemd-boot.enable = true;
       loader.efi.canTouchEfiVariables = true;
       extraModulePackages = with config.boot.kernelPackages; [v4l2loopback];
@@ -85,6 +86,7 @@
     };
 
     hardware = {
+      enableRedistributableFirmware = true;
       bluetooth = {
         enable = true;
         powerOnBoot = true;
