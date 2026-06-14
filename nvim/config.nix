@@ -218,6 +218,7 @@
       gitsigns = {
         enable = true;
         codeActions.enable = false; # throws an annoying debug message
+        setupOpts.current_line_blame = true;
       };
     };
 

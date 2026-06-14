@@ -12,10 +12,8 @@
       enable = true;
       package = self.packages.${pkgs.stdenv.hostPlatform.system}.myNiri;
     };
-    environment.etc."niri-config.kdl".source =
-      "${self.packages.${pkgs.stdenv.hostPlatform.system}.myNiri}/niri-config.kdl";
-    environment.etc."niri-cheatsheet.kdl".source =
-      "${self.packages.${pkgs.stdenv.hostPlatform.system}.niri-cheatsheet}";
+    environment.etc."niri-config.kdl".source = "${self.packages.${pkgs.stdenv.hostPlatform.system}.myNiri}/niri-config.kdl";
+    environment.etc."niri-cheatsheet.kdl".source = "${self.packages.${pkgs.stdenv.hostPlatform.system}.niri-cheatsheet}";
   };
 
   perSystem = {
@@ -140,7 +138,10 @@
         xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
         input = {
-          keyboard.xkb.layout = "es";
+          keyboard.xkb = {
+            layout = "en,es";
+            options = "grp:win_space_toggle";
+          };
         };
 
         window-rules = [
