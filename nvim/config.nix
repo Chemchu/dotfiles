@@ -4,6 +4,8 @@
       enable = true;
       setupOpts.formatters_by_ft = {
         javascript = ["prettier"];
+        javascriptreact = ["prettier"];
+        typescriptreact = ["prettier"];
         html = ["prettier"];
         java = ["google-java-format"];
       };
@@ -47,6 +49,7 @@
       lspkind.enable = false;
       lightbulb.enable = false;
       lspsaga.enable = false;
+      servers."typescript-language-server".filetypes = ["typescriptreact" "javascriptreact"];
       otter-nvim = {
         enable = true;
         setupOpts.buffers.write_to_disk = true;
@@ -177,6 +180,7 @@
     treesitter = {
       context.enable = false;
       grammars = with pkgs.vimPlugins; [
+        nvim-treesitter-parsers.tsx
         nvim-treesitter-parsers.nu
         nvim-treesitter-parsers.kdl
         nvim-treesitter-parsers.rnoweb
