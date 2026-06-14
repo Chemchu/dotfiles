@@ -139,7 +139,7 @@
 
         input = {
           keyboard.xkb = {
-            layout = "en,es";
+            layout = "us,es";
             options = "grp:win_space_toggle";
           };
         };
