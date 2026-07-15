@@ -119,9 +119,9 @@
         vim
         wget
         kitty
-        libsForQt5.qt5.qtquickcontrols2
-        libsForQt5.qt5.qtgraphicaleffects
-        libsForQt5.qt5.qtwayland
+        qt5.qtquickcontrols2
+        qt5.qtgraphicaleffects
+        qt5.qtwayland
         qt6.qtwayland
         mesa-demos
       ];
@@ -172,6 +172,7 @@
     fonts.packages = with pkgs.nerd-fonts; [iosevka iosevka-term];
 
     security = {
+      pam.services.sudo.fprintAuth = false;
       polkit = {
         enable = true;
         extraConfig = ''
