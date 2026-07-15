@@ -19,10 +19,11 @@
     forAllSystems = nixpkgs.lib.genAttrs systems;
   in {
     packages = forAllSystems (system: {
-      default = (nvf.lib.neovimConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        modules = [./config.nix ./debugger.nix];
-      }).neovim;
+      default =
+        (nvf.lib.neovimConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          modules = [./config.nix ./debugger.nix];
+        }).neovim;
     });
 
     apps = forAllSystems (system: {

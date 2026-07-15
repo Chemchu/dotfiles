@@ -34,7 +34,6 @@
     claude-code
     wl-clipboard
     devenv
-    stm32cubemx
   ];
 
   home.file = {

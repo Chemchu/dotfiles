@@ -12,7 +12,6 @@
     ./steam
     ./zellij
     ./oxide
-    ./zed
     ./zsh
   ];
 

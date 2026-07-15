@@ -99,7 +99,7 @@
         lsp.enable = true;
         extensions = {
           maven-nvim.enable = true;
-          gradle-nvim.enable = true;
+          gradle-nvim.enable = false;
         };
       };
       typescript = {
@@ -124,7 +124,7 @@
       typst.enable = true;
       julia.enable = false;
       clang = {
-        enable = true;
+        enable = false;
         lsp.servers = ["clangd"];
       };
       rust = {
