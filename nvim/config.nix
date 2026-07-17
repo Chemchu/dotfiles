@@ -226,6 +226,10 @@
       };
     };
 
+    mini = {
+      sessions.enable = true;
+    };
+
     minimap = {
       minimap-vim.enable = false;
       codewindow.enable = false;
@@ -569,6 +573,47 @@
         silent = true;
         desc = "DAP Terminate";
       }
+      {
+        key = "<leader>mw";
+        action = ":lua MiniSessions.write(vim.fn.fnamemodify(vim.fn.getcwd(), ':t'))<CR>";
+        mode = "n";
+        silent = true;
+        desc = "MiniSessions write";
+      }
+      {
+        key = "<leader>mr";
+        action = ":lua MiniSessions.read(vim.fn.fnamemodify(vim.fn.getcwd(), ':t'))<CR>";
+        mode = "n";
+        silent = true;
+        desc = "MiniSessions read";
+      }
     ];
+
+    luaConfigPost = ''
+      local session_group = vim.api.nvim_create_augroup("MiniSessionsAuto", { clear = true })
+
+      vim.api.nvim_create_autocmd("VimLeavePre", {
+        group = session_group,
+        callback = function()
+          local root_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+          pcall(function()
+            MiniSessions.write(root_name)
+          end)
+        end,
+      })
+
+      vim.api.nvim_create_autocmd("VimEnter", {
+        group = session_group,
+        nested = true,
+        callback = function()
+          if vim.fn.argc() == 0 and vim.api.nvim_buf_get_name(0) == "" then
+            local root_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+            pcall(function()
+              MiniSessions.read(root_name)
+            end)
+          end
+        end,
+      })
+    '';
   };
 }
