@@ -31,9 +31,9 @@
     nmap
     dig
     dnslookup
-    claude-code
     wl-clipboard
     devenv
+    aseprite
   ];
 
   home.file = {
