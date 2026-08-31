@@ -10,7 +10,7 @@ in {
   flake.nixosConfigurations.framework_desktop = nixpkgs.lib.nixosSystem {
     specialArgs = {
       inherit inputs;
-      system_name = "framework_desktop";
+      system_name = "framework-desktop";
       config_path = ".config";
     };
     modules = [
