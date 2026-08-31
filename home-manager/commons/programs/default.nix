@@ -4,6 +4,7 @@
     ./dev
     ./direnv
     ./fastfetch
+    ./heroic_games
     ./yazi
     ./kitty
     ./nvf
