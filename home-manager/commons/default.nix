@@ -34,6 +34,7 @@
     wl-clipboard
     devenv
     aseprite
+    dua
   ];
 
   home.file = {
