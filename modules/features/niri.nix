@@ -64,7 +64,7 @@
           Mod+Shift+P hotkey-overlay-title="Lock & Suspend" { spawn-sh "noctalia"; }
 
           // #"Applications"
-          Mod+Q hotkey-overlay-title="Terminal" { spawn-sh "kitty"; }
+          Mod+Q hotkey-overlay-title="Terminal" { spawn-sh "ghostty"; }
           Mod+W hotkey-overlay-title="Browser" { spawn-sh "zen"; }
           Mod+C { close-window; }
           Mod+V { toggle-window-floating; }
@@ -152,7 +152,7 @@
             draw-border-with-background = false;
           }
           {
-            matches = [{app-id = "kitty";}];
+            matches = [{app-id = "kitty";} {app-id = "ghostty";}];
             default-column-width.proportion = 1.0;
           }
         ];
@@ -169,7 +169,7 @@
           "Mod+Shift+Equal".set-window-height = "+10%";
 
           # Apps
-          "Mod+Q".spawn-sh = lib.getExe pkgs.kitty;
+          "Mod+Q".spawn-sh = lib.getExe pkgs.ghostty;
           "Mod+W".spawn-sh = "zen --name zen";
           "Mod+C".close-window = {};
           "Mod+V".toggle-window-floating = {};

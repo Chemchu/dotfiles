@@ -684,31 +684,31 @@
     "openedPanel": "",
     "lockScreenActive": false,
     "wallpapers": {
-      "eDP-1": "/home/gus/Pictures/Wallpapers/a_tree_with_pink_flowers.png"
+      "DP-4": "/home/gus/Pictures/Wallpapers/a_group_of_bats_flying_in_the_sky.jpg"
     },
     "desktopWidgetsEditMode": false,
     "display": {
-      "eDP-1": {
-        "name": "eDP-1",
+      "DP-4": {
+        "name": "DP-4",
         "connected": true,
-        "scale": 1.5,
-        "width": 1504,
-        "height": 1002,
+        "scale": 1,
+        "width": 1920,
+        "height": 1080,
         "x": 0,
         "y": 0,
-        "physical_width": 280,
-        "physical_height": 190,
-        "refresh_rate": 59999,
-        "vrr_supported": false,
+        "physical_width": 530,
+        "physical_height": 300,
+        "refresh_rate": 143981,
+        "vrr_supported": true,
         "vrr_enabled": false,
         "transform": "Normal"
       }
     },
     "notificationsState": {
-      "lastSeenTs": 1777842106000
+      "lastSeenTs": 1788202215000
     },
     "changelogState": {
-      "lastSeenVersion": "v4.7.6"
+      "lastSeenVersion": "v4.7.7"
     },
     "colorSchemesList": {
       "schemes": [

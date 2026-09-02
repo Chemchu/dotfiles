@@ -55,7 +55,7 @@ NVIDIA — exactly how I like it.
 
 - **WM**: Niri (Wayland compositor)
 - **Shell**: Noctalia (Niri shell for app launcher and system bar)
-- **Terminal**: Kitty
+- **Terminal**: Ghostty
 - **Shell**: Zsh + oh-my-zsh
 
 ---
@@ -101,7 +101,7 @@ $ home-manager switch --flake .#gus
 
 - **Niri** — Wayland compositor, replaces Hyprland
 - **Noctalia** — Niri shell with custom bar config
-- **Kitty** — GPU-accelerated terminal (Wayland-native)
+- **Ghostty** — GPU-accelerated terminal (Wayland-native)
 - **Zellij** — Terminal multiplexer
 - **Everforest cursors** — Cursor theme
 
@@ -157,7 +157,9 @@ $ home-manager switch --flake .#gus
 
 ## Fingerprint reader
 
-The Framework 13 has a Goodix fingerprint sensor. It's configured via `fprintd` with the TOD (Touch OD) driver (`libfprint-2-tod1-goodix`). Polkit is set up to allow wheel users to enroll without needing sudo.
+The Framework 13 has a Goodix fingerprint sensor. It's configured via `fprintd`
+with the TOD (Touch OD) driver (`libfprint-2-tod1-goodix`). Polkit is set up to
+allow wheel users to enroll without needing sudo.
 
 ### Enrolling a finger
 
@@ -171,9 +173,11 @@ By default this enrolls the right index finger. To enroll a specific finger:
 $ fprintd-enroll -f <finger>
 ```
 
-Valid finger names: `left-thumb`, `left-index-finger`, `left-middle-finger`, `left-ring-finger`, `left-little-finger` and the same for `right-*`.
+Valid finger names: `left-thumb`, `left-index-finger`, `left-middle-finger`,
+`left-ring-finger`, `left-little-finger` and the same for `right-*`.
 
-Follow the prompts — it'll ask you to lift and place the same finger several times. Once done, you should see:
+Follow the prompts — it'll ask you to lift and place the same finger several
+times. Once done, you should see:
 
 ```
 Enroll result: enroll-completed
@@ -191,7 +195,8 @@ $ fprintd-list $USER
 $ fprintd-delete $USER
 ```
 
-This deletes all enrolled fingers for the user. There's no per-finger delete in the CLI, so if you want to redo one finger you have to redo all of them.
+This deletes all enrolled fingers for the user. There's no per-finger delete in
+the CLI, so if you want to redo one finger you have to redo all of them.
 
 ### Verifying it works
 
