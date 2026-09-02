@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ./ghostty
     ./guitar
     ./dev
     ./direnv
@@ -17,7 +18,6 @@
   ];
 
   programs = {
-    # Let Home Manager install and manage itself.
     home-manager.enable = true;
   };
 
