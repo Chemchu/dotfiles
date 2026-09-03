@@ -124,6 +124,7 @@
         qt5.qtwayland
         qt6.qtwayland
         mesa-demos
+        llama-cpp
       ];
     };
 
@@ -219,6 +220,15 @@
         };
       };
       fwupd.enable = true;
+      ollama = {
+        enable = true;
+        package = pkgs.ollama-rocm;
+        environmentVariables = {
+          HSA_OVERRIDE_GFX_VERSION = "11.5.1";
+          OLLAMA_IGPU_ENABLE = "1";
+          OLLAMA_KEEP_ALIVE = "60m";
+        };
+      };
     };
 
     console.keyMap = "es";

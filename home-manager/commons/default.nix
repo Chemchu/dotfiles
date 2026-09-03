@@ -35,6 +35,9 @@
     devenv
     aseprite
     dua
+    ghostty
+    opencode
+    pciutils
   ];
 
   home.file = {
@@ -47,6 +50,26 @@
       --ozone-platform-hint=auto
       --enable-features=UseOzonePlatform
       --ozone-platform=wayland
+    '';
+    ".config/opencode/opencode.json".text = ''
+            {
+        "$schema": "https://opencode.ai/config.json",
+        "provider": {
+          "ollama": {
+            "npm": "@ai-sdk/openai-compatible",
+            "name": "Ollama (local)",
+            "options": {
+              "baseURL": "http://localhost:11434/v1"
+            },
+            "models": {
+              "qwen2.5-coder:32b": {
+                "name": "qwen2.5-coder:14b"
+              }
+            }
+          }
+        },
+        "model": "ollama/qwen2.5-coder:14b"
+      }
     '';
   };
 }
