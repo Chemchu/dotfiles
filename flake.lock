@@ -207,6 +207,18 @@
       },
       "parent": []
     },
+    "opencode-local-models": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-deOzRhrT8/NlO85vg+HQnaMm9ONkA1UF8x/lASk1tII=",
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/nisrulz/opencode-local-models/v0.1.2/opencode-local-models.js"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/nisrulz/opencode-local-models/v0.1.2/opencode-local-models.js"
+      }
+    },
     "root": {
       "inputs": {
         "devshell": "devshell",
@@ -215,6 +227,7 @@
         "import-tree": "import-tree",
         "nixpkgs": "nixpkgs",
         "nvim": "nvim",
+        "opencode-local-models": "opencode-local-models",
         "rust-overlay": "rust-overlay",
         "wrapper-modules": "wrapper-modules",
         "zen-browser": "zen-browser"

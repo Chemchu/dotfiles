@@ -41,7 +41,7 @@
       users.gus = {
         isNormalUser = true;
         description = "gus";
-        extraGroups = ["audio" "networkmanager" "wheel" "input" "wireshark"];
+        extraGroups = ["audio" "networkmanager" "wheel" "input" "wireshark" "adbusers"];
       };
     };
 
@@ -62,6 +62,7 @@
     nixpkgs.config = {
       allowUnfree = true;
       nvidia.acceptLicense = true;
+      rocmSupport = true;
     };
 
     nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -125,6 +126,7 @@
         qt6.qtwayland
         mesa-demos
         llama-cpp
+        android-tools
       ];
     };
 
