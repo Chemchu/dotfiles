@@ -94,6 +94,36 @@
             "unreadBadgeColor": "primary"
           },
           {
+            "defaultSettings": {
+              "mode": "region"
+            },
+            "id": "plugin:screenshot"
+          },
+          {
+            "defaultSettings": {
+              "audioCodec": "opus",
+              "audioSource": "default_output",
+              "colorRange": "limited",
+              "copyToClipboard": false,
+              "customReplayDuration": "30",
+              "directory": "",
+              "filenamePattern": "recording_yyyyMMdd_HHmmss",
+              "frameRate": "60",
+              "hideInactive": false,
+              "iconColor": "none",
+              "quality": "very_high",
+              "replayDuration": "30",
+              "replayEnabled": false,
+              "replayStorage": "ram",
+              "resolution": "original",
+              "restorePortalSession": false,
+              "showCursor": true,
+              "videoCodec": "h264",
+              "videoSource": "portal"
+            },
+            "id": "plugin:screen-recorder"
+          },
+          {
             "blacklist": [],
             "chevronColor": "none",
             "colorizeIcons": false,
@@ -684,7 +714,7 @@
     "openedPanel": "",
     "lockScreenActive": false,
     "wallpapers": {
-      "DP-4": "/home/gus/Pictures/Wallpapers/a_group_of_bats_flying_in_the_sky.jpg"
+      "DP-4": "/home/gus/Pictures/Wallpapers/a_group_of_black_cartoon_characters.png"
     },
     "desktopWidgetsEditMode": false,
     "display": {
@@ -705,7 +735,7 @@
       }
     },
     "notificationsState": {
-      "lastSeenTs": 1788202215000
+      "lastSeenTs": 1788694139000
     },
     "changelogState": {
       "lastSeenVersion": "v4.7.7"
