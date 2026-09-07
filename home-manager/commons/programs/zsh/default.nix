@@ -15,13 +15,6 @@
       syntaxHighlighting.enable = true;
       initContent = ''
         fastfetch
-
-        if [[ -z "$WAYLAND_DISPLAY" && -z "$DISPLAY" && "$(tty)" == "/dev/tty1" ]]; then
-          read "choice?Start niri? [Y/n] "
-          if [[ "$choice" != "n" && "$choice" != "N" ]]; then
-            exec niri-session
-          fi
-        fi
       '';
     };
     fzf = {

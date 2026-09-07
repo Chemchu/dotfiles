@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.framework13Configuration = {
+  flake.nixosModules.frameworkDesktopConfiguration = {
     config,
     pkgs,
     lib,
@@ -33,7 +33,7 @@
   in {
     imports = [
       inputs.home-manager.nixosModules.default
-      self.nixosModules.framework13Hardware
+      self.nixosModules.frameworkDesktopHardware
     ];
 
     users = {
@@ -41,7 +41,7 @@
       users.gus = {
         isNormalUser = true;
         description = "gus";
-        extraGroups = ["audio" "networkmanager" "wheel" "input" "wireshark"];
+        extraGroups = ["audio" "networkmanager" "wheel" "input" "wireshark" "adbusers"];
       };
     };
 
@@ -62,6 +62,7 @@
     nixpkgs.config = {
       allowUnfree = true;
       nvidia.acceptLicense = true;
+      rocmSupport = true;
     };
 
     nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -77,7 +78,7 @@
     };
 
     networking = {
-      hostName = "framework13";
+      hostName = "framework-desktop";
       networkmanager.enable = true;
       firewall = {
         allowedTCPPorts = [57621 3000];
@@ -124,6 +125,8 @@
         qt5.qtwayland
         qt6.qtwayland
         mesa-demos
+        llama-cpp
+        android-tools
       ];
     };
 
@@ -194,7 +197,6 @@
         enable = true;
         web.enable = true;
       };
-      getty.autologinUser = "gus";
       locate.enable = true;
       pipewire = {
         enable = true;
@@ -207,9 +209,17 @@
       };
       xserver = {
         enable = true;
-        displayManager.startx.enable = true;
         videoDrivers = ["amdgpu"];
         xkb.layout = "es";
+      };
+      greetd = {
+        enable = true;
+        settings = {
+          default_session = {
+            command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd niri-session";
+            user = "greeter";
+          };
+        };
       };
       fprintd = {
         enable = true;
@@ -219,6 +229,15 @@
         };
       };
       fwupd.enable = true;
+      ollama = {
+        enable = true;
+        package = pkgs.ollama-rocm;
+        environmentVariables = {
+          HSA_OVERRIDE_GFX_VERSION = "11.5.1";
+          OLLAMA_IGPU_ENABLE = "1";
+          OLLAMA_KEEP_ALIVE = "60m";
+        };
+      };
     };
 
     console.keyMap = "es";
