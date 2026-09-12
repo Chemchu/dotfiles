@@ -64,11 +64,17 @@
           options = {
             baseURL = "http://localhost:11434/v1";
           };
-          models = {}; # left empty — the plugin fills this at runtime
+          models = {
+            "qwen2.5-coder:14b-32k" = {
+              name = "Qwen 2.5 Coder 14B 32K";
+            };
+          };
         };
       };
     };
-    ".config/opencode/plugins/opencode-local-models.js".source =
-      inputs.opencode-local-models;
+    /*
+     ".config/opencode/plugins/opencode-local-models.js".source =
+    inputs.opencode-local-models;
+    */
   };
 }

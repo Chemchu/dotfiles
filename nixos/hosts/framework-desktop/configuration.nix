@@ -79,7 +79,10 @@
 
     networking = {
       hostName = "framework-desktop";
-      networkmanager.enable = true;
+      networkmanager = {
+        enable = true;
+        wifi.powersave = false;
+      };
       firewall = {
         allowedTCPPorts = [57621 3000];
         allowedUDPPorts = [5353];

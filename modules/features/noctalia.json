@@ -64,34 +64,6 @@
               "useCustomColors": false
             },
             "id": "plugin:todo"
-          }
-        ],
-        "center": [
-          {
-            "compactMode": false,
-            "hideMode": "hidden",
-            "hideWhenIdle": false,
-            "id": "MediaMini",
-            "maxWidth": 800,
-            "panelShowAlbumArt": true,
-            "scrollingMode": "hover",
-            "showAlbumArt": true,
-            "showArtistFirst": true,
-            "showProgressRing": true,
-            "showVisualizer": false,
-            "textColor": "none",
-            "useFixedWidth": false,
-            "visualizerType": "linear"
-          }
-        ],
-        "right": [
-          {
-            "hideWhenZero": false,
-            "hideWhenZeroUnread": false,
-            "iconColor": "none",
-            "id": "NotificationHistory",
-            "showUnreadBadge": true,
-            "unreadBadgeColor": "primary"
           },
           {
             "defaultSettings": {
@@ -124,6 +96,48 @@
             "id": "plugin:screen-recorder"
           },
           {
+            "compactMode": true,
+            "diskPath": "/",
+            "iconColor": "none",
+            "id": "SystemMonitor",
+            "showCpuCores": false,
+            "showCpuFreq": false,
+            "showCpuTemp": true,
+            "showCpuUsage": true,
+            "showDiskAvailable": false,
+            "showDiskUsage": false,
+            "showDiskUsageAsPercent": false,
+            "showGpuTemp": false,
+            "showLoadAverage": false,
+            "showMemoryAsPercent": false,
+            "showMemoryUsage": true,
+            "showNetworkStats": false,
+            "showSwapUsage": false,
+            "textColor": "none",
+            "useMonospaceFont": true,
+            "usePadding": false
+          }
+        ],
+        "center": [
+          {
+            "compactMode": false,
+            "hideMode": "hidden",
+            "hideWhenIdle": false,
+            "id": "MediaMini",
+            "maxWidth": 800,
+            "panelShowAlbumArt": true,
+            "scrollingMode": "hover",
+            "showAlbumArt": true,
+            "showArtistFirst": true,
+            "showProgressRing": true,
+            "showVisualizer": false,
+            "textColor": "none",
+            "useFixedWidth": false,
+            "visualizerType": "linear"
+          }
+        ],
+        "right": [
+          {
             "blacklist": [],
             "chevronColor": "none",
             "colorizeIcons": false,
@@ -131,6 +145,12 @@
             "hidePassive": false,
             "id": "Tray",
             "pinned": []
+          },
+          {
+            "displayMode": "onhover",
+            "iconColor": "none",
+            "id": "Network",
+            "textColor": "none"
           },
           {
             "displayMode": "onhover",
@@ -162,6 +182,14 @@
             "id": "Clock",
             "tooltipFormat": "HH:mm ddd, MMM dd",
             "useCustomFont": false
+          },
+          {
+            "hideWhenZero": false,
+            "hideWhenZeroUnread": false,
+            "iconColor": "none",
+            "id": "NotificationHistory",
+            "showUnreadBadge": true,
+            "unreadBadgeColor": "primary"
           }
         ]
       },
@@ -714,7 +742,7 @@
     "openedPanel": "",
     "lockScreenActive": false,
     "wallpapers": {
-      "DP-4": "/home/gus/Pictures/Wallpapers/a_group_of_black_cartoon_characters.png"
+      "DP-4": "/home/gus/Pictures/Wallpapers/a_fish_swimming_in_water.png"
     },
     "desktopWidgetsEditMode": false,
     "display": {
@@ -735,7 +763,7 @@
       }
     },
     "notificationsState": {
-      "lastSeenTs": 1788694139000
+      "lastSeenTs": 1788785439000
     },
     "changelogState": {
       "lastSeenVersion": "v4.7.7"
