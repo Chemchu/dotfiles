@@ -16,13 +16,17 @@
         version = "git-${inputs.llama-cpp-src.shortRev or "unknown"}";
         src = inputs.llama-cpp-src;
 
-        nativeBuildInputs = with pkgs; [cmake ninja pkg-config];
+        nativeBuildInputs = with pkgs; [
+          cmake
+          ninja
+          pkg-config
+        ];
 
         buildInputs = with pkgs; [
           openblas
-          rocmPackages.clr
-          rocmPackages.hipblas
-          rocmPackages.rocblas
+          vulkan-headers
+          vulkan-loader
+          shaderc
         ];
 
         cmakeFlags = [
@@ -30,8 +34,7 @@
           "-DLLAMA_BUILD_TESTS=OFF"
           "-DGGML_BLAS=ON"
           "-DGGML_BLAS_VENDOR=OpenBLAS"
-          "-DGGML_HIPBLAS=ON"
-          "-DAMDGPU_TARGETS=gfx1151"
+          "-DGGML_VULKAN=ON"
         ];
 
         enableParallelBuilding = true;

@@ -23,7 +23,7 @@
     import-tree.url = "github:vic/import-tree";
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
     llama-cpp-src = {
-      url = "github:ggml-org/llama.cpp";
+      url = "github:PrismML-Eng/llama.cpp";
       flake = false;
     };
   };
