@@ -55,26 +55,5 @@
       --enable-features=UseOzonePlatform
       --ozone-platform=wayland
     '';
-    ".config/opencode/opencode.json".text = builtins.toJSON {
-      "$schema" = "https://opencode.ai/config.json";
-      provider = {
-        ollama = {
-          npm = "@ai-sdk/openai-compatible";
-          name = "Ollama (local)";
-          options = {
-            baseURL = "http://localhost:11434/v1";
-          };
-          models = {
-            "qwen2.5-coder:14b-32k" = {
-              name = "Qwen 2.5 Coder 14B 32K";
-            };
-          };
-        };
-      };
-    };
-    /*
-     ".config/opencode/plugins/opencode-local-models.js".source =
-    inputs.opencode-local-models;
-    */
   };
 }

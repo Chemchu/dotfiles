@@ -5,6 +5,7 @@
     ./dev
     ./direnv
     ./fastfetch
+    ./llama-cpp
     ./heroic_games
     ./yazi
     ./kitty
@@ -19,6 +20,7 @@
 
   programs = {
     home-manager.enable = true;
+    llama.enable = true;
   };
 
   home = {
