@@ -24,38 +24,129 @@ The repo is structured around two layers:
 - **NixOS** — system-level config (bootloader, hardware, kernel, services)
 - **Home Manager** — user-level config (programs, dotfiles, dev tools, theming)
 
+Both layers, plus the flake-parts/import-tree glue that wires them together,
+live under a single `modules/` tree. Directories prefixed with `_` (like
+`modules/_home/`) hold plain NixOS/home-manager modules on purpose — they're
+intentionally *not* auto-imported by `import-tree` (it skips any path
+containing `/_`), and are instead pulled in explicitly by a sibling file, so
+that a plain module never gets misinterpreted as a flake-parts module.
+
 ---
 
 ## Structure
 
+The tree below is generated — see [Keeping this file honest](#keeping-this-file-honest).
+
+<!-- readme-gen:structure:start -->
 ```
 dotfiles/
-├── flake.nix               # Entry point — inputs and outputs
-├── flake.lock              # Locked dependency versions
-├── nixos/
-│   └── hosts/
-│       └── framework13/    # Framework 13 system config
-├── home-manager/
-│   ├── commons/            # Shared program configs (used by all hosts)
-│   │   └── programs/       # Per-program Nix configs
-│   └── niri/               # Niri-specific home config
-└── modules/
-    ├── features/           # Optional features (Niri, Noctalia, etc.)
-    └── hosts/              # Host-specific module imports
+├── modules/
+│   ├── _home/
+│   │   ├── commons/
+│   │   │   ├── programs/
+│   │   │   │   ├── dev/
+│   │   │   │   │   ├── nix/
+│   │   │   │   │   │   ├── default.nix
+│   │   │   │   │   │   └── review.sh
+│   │   │   │   │   ├── arduino.nix
+│   │   │   │   │   ├── bevy.nix
+│   │   │   │   │   ├── bun.nix
+│   │   │   │   │   ├── clang.nix
+│   │   │   │   │   ├── default.nix
+│   │   │   │   │   ├── direnv.nix
+│   │   │   │   │   ├── github-token.nix
+│   │   │   │   │   ├── microcontroller.nix
+│   │   │   │   │   ├── node.nix
+│   │   │   │   │   ├── python.nix
+│   │   │   │   │   ├── rust.nix
+│   │   │   │   │   └── vulkan.nix
+│   │   │   │   ├── direnv/
+│   │   │   │   │   └── default.nix
+│   │   │   │   ├── fastfetch/
+│   │   │   │   │   ├── config.jsonc
+│   │   │   │   │   ├── default.nix
+│   │   │   │   │   └── fastfetch_logo.txt
+│   │   │   │   ├── ghostty/
+│   │   │   │   │   └── default.nix
+│   │   │   │   ├── git/
+│   │   │   │   │   └── default.nix
+│   │   │   │   ├── guitar/
+│   │   │   │   │   └── default.nix
+│   │   │   │   ├── heroic_games/
+│   │   │   │   │   └── default.nix
+│   │   │   │   ├── kitty/
+│   │   │   │   │   └── default.nix
+│   │   │   │   ├── llama-cpp/
+│   │   │   │   │   └── default.nix
+│   │   │   │   ├── mouse/
+│   │   │   │   │   └── default.nix
+│   │   │   │   ├── nvf/
+│   │   │   │   │   ├── debugger/
+│   │   │   │   │   │   ├── default.nix
+│   │   │   │   │   │   └── lldb.nix
+│   │   │   │   │   └── default.nix
+│   │   │   │   ├── obs/
+│   │   │   │   │   └── default.nix
+│   │   │   │   ├── oxide/
+│   │   │   │   │   └── default.nix
+│   │   │   │   ├── steam/
+│   │   │   │   │   └── default.nix
+│   │   │   │   ├── yazi/
+│   │   │   │   │   └── default.nix
+│   │   │   │   ├── zellij/
+│   │   │   │   │   └── default.nix
+│   │   │   │   ├── zsh/
+│   │   │   │   │   └── default.nix
+│   │   │   │   └── default.nix
+│   │   │   ├── wallpapers/
+│   │   │   │   └── default.nix
+│   │   │   └── default.nix
+│   │   ├── niri/
+│   │   │   └── default.nix
+│   │   └── default.nix
+│   ├── features/
+│   │   ├── niri/
+│   │   │   ├── nixos.nix
+│   │   │   └── packages.nix
+│   │   └── noctalia/
+│   │       ├── noctalia.json
+│   │       └── packages.nix
+│   ├── hosts/
+│   │   └── framework-desktop/
+│   │       ├── _hardware-configuration.nix
+│   │       ├── configuration.nix
+│   │       └── hardware.nix
+│   ├── default.nix
+│   └── home.nix
+├── nvim/
+│   ├── config.nix
+│   ├── debugger.nix
+│   └── flake.nix
+├── scripts/
+│   └── update-readme.py
+├── LICENSE
+├── README.md
+├── flake.lock
+└── flake.nix
 ```
+<!-- readme-gen:structure:end -->
 
 ---
 
 ## My machines
 
-### Framework 13
+<!-- readme-gen:hosts:start -->
+- **framework-desktop** (with a dedicated hardware profile)
+<!-- readme-gen:hosts:end -->
 
-My daily driver. Framework 13 notebook with an AMD Ryzen 5 7640U. No Intel, no
-NVIDIA — exactly how I like it.
+### framework-desktop
+
+My daily driver. AMD desktop, AMD GPU (amdgpu driver) — no Intel, no NVIDIA.
 
 - **WM**: Niri (Wayland compositor)
 - **Shell**: Noctalia (Niri shell for app launcher and system bar)
 - **Terminal**: Ghostty
+- **Login**: greetd, auto-logs into niri (tuigreet only shows up as a fallback)
 - **Shell**: Zsh + oh-my-zsh
 
 ---
@@ -81,83 +172,116 @@ $ git clone https://github.com/Chemchu/dotfiles ~/dotfiles
 $ cd ~/dotfiles
 ```
 
-Apply the NixOS system config (as root):
+Apply the system config (as root). Home Manager is wired in as a NixOS module
+(`home-manager.users.gus`), so this one command builds both layers — there is
+no separate standalone `home-manager switch` step:
 
 ```console
-# nixos-rebuild switch --flake .#framework13
-```
-
-Apply the Home Manager config:
-
-```console
-$ home-manager switch --flake .#gus
+# nixos-rebuild switch --flake .#framework-desktop
 ```
 
 ---
 
 ## What's configured
 
-### Desktop
+Dependency versions and the program/feature list below are generated from the
+actual flake and repo contents — see
+[Keeping this file honest](#keeping-this-file-honest).
 
-- **Niri** — Wayland compositor, replaces Hyprland
-- **Noctalia** — Niri shell with custom bar config
-- **Ghostty** — GPU-accelerated terminal (Wayland-native)
-- **Zellij** — Terminal multiplexer
-- **Everforest cursors** — Cursor theme
+### Flake inputs
 
-### Editors
+<!-- readme-gen:inputs:start -->
+| Input | Source | Pinned |
+| --- | --- | --- |
+| devshell | github:numtide/devshell | default branch @ a67c0f8 |
+| flake-parts | github:hercules-ci/flake-parts | default branch @ 31729ca |
+| home-manager | github:nix-community/home-manager | default branch @ 1790312 |
+| import-tree | github:vic/import-tree | default branch @ eb1b52e |
+| llama-cpp-src | github:PrismML-Eng/llama.cpp | default branch @ 9a9394a |
+| nixpkgs | github:nixos/nixpkgs | nixos-unstable @ e554fab |
+| nvim | local path (`./nvim`) | - |
+| rust-overlay | github:oxalica/rust-overlay | default branch @ 26a71e6 |
+| wrapper-modules | github:BirdeeHub/nix-wrapper-modules | default branch @ 1db3c11 |
+| zen-browser | github:youwen5/zen-browser-flake | default branch @ 9c1767f |
+<!-- readme-gen:inputs:end -->
 
-- **Neovim** — Configured with [nvf](https://github.com/NotAShelf/nvf)
-  (declarative Neovim in Nix, no Lua required)
-  - Theme: One Dark
-  - LSP for: Rust, Python, JavaScript/TypeScript, Nix, Go, and more
-  - Plugins: Telescope, Oil.nvim, Undotree, DAP debugging, git integration
-  - Run it with `nvim` or `vim` (alias)
-- **Zed** — Modern editor with vim mode and Claude AI integration
+### Home Manager modules
 
-### Shell & CLI
+Programs with their own dedicated Nix config (`modules/_home/commons/programs/`):
 
-- **Zsh** + oh-my-zsh (git + direnv plugins)
-- **Zoxide** + **eza** — Better `cd` and `ls`
-- **lf** — Terminal file manager with custom keybindings and previewer
-- **Fastfetch** — System info display
-- **bat, ripgrep, fd, dust, bottom, dua, dysk, procs** — Rust-powered CLI tools
+<!-- readme-gen:programs:start -->
+**Programs**
+- direnv
+- fastfetch
+- ghostty
+- git
+- guitar
+- heroic_games
+- kitty
+- llama-cpp
+- mouse
+- nvf
+- obs
+- oxide
+- steam
+- yazi
+- zellij
+- zsh
 
-### Development
+**Dev tooling**
+- arduino
+- bevy
+- bun
+- clang
+- direnv
+- github-token
+- microcontroller
+- nix
+- node
+- python
+- rust
+- vulkan
+<!-- readme-gen:programs:end -->
 
-| Tool    | Details                                               |
-| ------- | ----------------------------------------------------- |
-| Rust    | Stable toolchain + cargo-tauri, bacon                 |
-| Node.js | v22                                                   |
-| Python  | With ML stack (torch, numpy, matplotlib, tensorboard) |
-| Bun     | JavaScript runtime/bundler                            |
-| C/C++   | clang toolchain                                       |
-| Nix     | nix-tree, nix-update, nixpkgs-review, and more        |
-| Git     | With LFS support                                      |
-| direnv  | Per-project dev environments                          |
-| Docker  | Containerization                                      |
+### Installed packages
 
-### Media & Gaming
+Every package actually resolved onto `gus`'s home-manager profile, straight
+from evaluating the flake — this list can't drift out of sync with reality:
 
-- **Steam** with Gamescope
-- **OBS Studio** — wlrobs, background-removal, pipewire-audio plugins
-- **Spotify** (Wayland flags applied)
-- **Guitarix** — Guitar audio processing via PipeWire
-- **Blender** — 3D modeling
-- **Godot 4** — Game engine
-- **Discord**
+<!-- readme-gen:packages:start -->
+`alejandra`, `alsa-lib`, `arduino-cli`, `arduino-language-server`, `aseprite`, `bacon`, `bat`, `bind`, `bottom`, `btop`, `bun`, `clang-wrapper`, `claude-code`, `cmake`, `cockatrice`, `devenv`, `direnv`, `discord`, `dnslookup`, `du-dust`, `dua`, `dysk`, `everforest-cursors`, `eza`, `fastfetch`, `fd`, `feh`, `ffmpeg`, `flyctl`, `fzf`, `gamescope`, `gcc-arm-embedded`, `ghostty`, `gnumake`, `google-chrome`, `guitarix`, `heroic`, `htop`, `jq`, `libx11`, `libxcursor`, `libxi`, `libxkbcommon`, `libxrandr`, `llama-cpp-latest`, `lm-sensors`, `lsof`, `luarocks-packages-updater`, `mangohud`, `mpv-with-scripts`, `ncdu`, `nix-init`, `nix-output-monitor`, `nix-tree`, `nix-update`, `nix-zsh-completions`, `nixpkgs-review`, `nixpkgs-review-tmux`, `nmap`, `nodejs`, `nvf-reference-manpage`, `nvf-with-helpers`, `oh-my-zsh`, `opencode`, `openconnect`, `pciutils`, `pkg-config-wrapper`, `procs`, `psmisc`, `python3`, `random-mouse`, `ripgrep`, `shaderc`, `shared-mime-info`, `spotify`, `sshfs-fuse`, `statix`, `steam`, `stlink`, `systemd-minimal-libs`, `tauri`, `tcpdump`, `thc-hydra`, `tlrc`, `unzip`, `uutils-coreutils`, `vim-plugins-updater`, `vulkan-loader`, `wayland`, `wl-clipboard`, `wrapped-obs-studio-32.2.2`, `yazi`, `zellij`, `zoxide`, `zsh`
+<!-- readme-gen:packages:end -->
 
-### Browsers
+---
 
-- Zen Browser (primary)
-- Google Chrome
-- Firefox
+## Keeping this file honest
+
+The sections above marked with an HTML comment pair
+(`<!-- readme-gen:*:start/end -->`) are generated by
+[`scripts/update-readme.py`](scripts/update-readme.py) from the flake lock
+file and the `modules/` tree — not hand-maintained. Everything else on this
+page (the prose, the HOWTOs below) is regular hand-written documentation.
+
+A git hook regenerates those sections before every commit:
+
+```console
+$ git config core.hooksPath .githooks   # already done automatically via .envrc
+```
+
+If a commit touches something that changes a generated section,
+`.githooks/pre-commit` regenerates `README.md`, stages it, and aborts the
+commit once so you can review the diff before committing again. You can also
+run it by hand:
+
+```console
+$ python3 scripts/update-readme.py
+```
 
 ---
 
 ## Fingerprint reader
 
-The Framework 13 has a Goodix fingerprint sensor. It's configured via `fprintd`
+`framework-desktop` has a Goodix fingerprint sensor. It's configured via `fprintd`
 with the TOD (Touch OD) driver (`libfprint-2-tod1-goodix`). Polkit is set up to
 allow wheel users to enroll without needing sudo.
 

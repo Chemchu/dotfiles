@@ -217,6 +217,12 @@
       greetd = {
         enable = true;
         settings = {
+          # Boots straight into niri as gus, no greeter shown.
+          initial_session = {
+            command = "niri-session";
+            user = "gus";
+          };
+          # Fallback shown only if the initial session ever exits.
           default_session = {
             command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd niri-session";
             user = "greeter";
