@@ -148,7 +148,11 @@
 
     statusline.lualine = {
       enable = true;
-      theme = "onedark";
+      setupOpts.options.theme = "onedark";
+      integrations.breadcrumbs = {
+        nvim-navic.enable = false;
+        navbuddy.enable = false;
+      };
     };
 
     theme = {
@@ -318,10 +322,6 @@
       colorizer.enable = true;
       modes-nvim.enable = false;
       illuminate.enable = true;
-      breadcrumbs = {
-        enable = false;
-        navbuddy.enable = false;
-      };
       smartcolumn = {
         enable = true;
         setupOpts.custom_colorcolumn = {

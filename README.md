@@ -70,8 +70,6 @@ dotfiles/
 │   │   │   │   │   └── default.nix
 │   │   │   │   ├── git/
 │   │   │   │   │   └── default.nix
-│   │   │   │   ├── guitar/
-│   │   │   │   │   └── default.nix
 │   │   │   │   ├── heroic_games/
 │   │   │   │   │   └── default.nix
 │   │   │   │   ├── llama-cpp/
@@ -213,7 +211,6 @@ Programs with their own dedicated Nix config (`modules/_home/commons/programs/`)
 - fastfetch
 - ghostty
 - git
-- guitar
 - heroic_games
 - llama-cpp
 - mouse
@@ -246,7 +243,7 @@ Every package actually resolved onto `gus`'s home-manager profile, straight
 from evaluating the flake — this list can't drift out of sync with reality:
 
 <!-- readme-gen:packages:start -->
-`alejandra`, `alsa-lib`, `arduino-cli`, `arduino-language-server`, `aseprite`, `bacon`, `bat`, `bind`, `bottom`, `btop`, `bun`, `clang-wrapper`, `claude-code`, `cmake`, `cockatrice`, `devenv`, `direnv`, `discord`, `dnslookup`, `du-dust`, `dua`, `dysk`, `everforest-cursors`, `eza`, `fastfetch`, `fd`, `feh`, `ffmpeg`, `flyctl`, `fzf`, `gamescope`, `gcc-arm-embedded`, `ghostty`, `gnumake`, `google-chrome`, `guitarix`, `heroic`, `htop`, `jq`, `libx11`, `libxcursor`, `libxi`, `libxkbcommon`, `libxrandr`, `llama-cpp-latest`, `lm-sensors`, `lsof`, `luarocks-packages-updater`, `mangohud`, `mpv-with-scripts`, `ncdu`, `nix-init`, `nix-output-monitor`, `nix-tree`, `nix-update`, `nix-zsh-completions`, `nixpkgs-review`, `nixpkgs-review-tmux`, `nmap`, `nodejs`, `nvf-reference-manpage`, `nvf-with-helpers`, `oh-my-zsh`, `opencode`, `openconnect`, `pciutils`, `pkg-config-wrapper`, `procs`, `psmisc`, `python3`, `random-mouse`, `ripgrep`, `shaderc`, `shared-mime-info`, `spotify`, `sshfs-fuse`, `statix`, `steam`, `stlink`, `systemd-minimal-libs`, `tauri`, `tcpdump`, `thc-hydra`, `tlrc`, `unzip`, `uutils-coreutils`, `vim-plugins-updater`, `vulkan-loader`, `wayland`, `wl-clipboard`, `wrapped-obs-studio-32.2.2`, `yazi`, `zellij`, `zoxide`, `zsh`
+`alejandra`, `alsa-lib`, `arduino-cli`, `arduino-language-server`, `aseprite`, `bacon`, `bat`, `bind`, `bottom`, `btop`, `bun`, `clang-wrapper`, `claude-code`, `cmake`, `devenv`, `direnv`, `discord`, `dnslookup`, `du-dust`, `dua`, `dysk`, `everforest-cursors`, `eza`, `fastfetch`, `fd`, `feh`, `ffmpeg`, `flyctl`, `fzf`, `gamescope`, `gcc-arm-embedded`, `ghostty`, `gnumake`, `heroic`, `htop`, `jq`, `libx11`, `libxcursor`, `libxi`, `libxkbcommon`, `libxrandr`, `llama-cpp-latest`, `lm-sensors`, `lsof`, `luarocks-packages-updater`, `mangohud`, `mpv-with-scripts`, `ncdu`, `nix-init`, `nix-output-monitor`, `nix-tree`, `nix-update`, `nix-zsh-completions`, `nixpkgs-review`, `nixpkgs-review-tmux`, `nmap`, `nodejs`, `nvf-reference-manpage`, `nvf-with-helpers`, `oh-my-zsh`, `opencode`, `openconnect`, `pciutils`, `pkg-config-wrapper`, `procs`, `psmisc`, `python3`, `random-mouse`, `ripgrep`, `shaderc`, `shared-mime-info`, `spotify`, `sshfs-fuse`, `statix`, `steam`, `stlink`, `systemd-minimal-libs`, `tauri`, `tcpdump`, `thc-hydra`, `tlrc`, `unzip`, `uutils-coreutils`, `vim-plugins-updater`, `vulkan-loader`, `wayland`, `wl-clipboard`, `wrapped-obs-studio-32.2.2`, `yazi`, `zellij`, `zoxide`, `zsh`
 <!-- readme-gen:packages:end -->
 
 ---

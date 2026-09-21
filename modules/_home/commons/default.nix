@@ -1,8 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./programs
     ./wallpapers
@@ -22,12 +18,10 @@
             $out/share/applications/spotify.desktop
         '';
     }))
-    cockatrice
     flyctl
     jq
     discord
     unzip
-    google-chrome
     cmake
     python3
     thc-hydra

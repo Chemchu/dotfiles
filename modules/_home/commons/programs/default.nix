@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ./ghostty
-    ./guitar
     ./dev
     ./direnv
     ./fastfetch
