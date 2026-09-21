@@ -74,8 +74,6 @@ dotfiles/
 │   │   │   │   │   └── default.nix
 │   │   │   │   ├── heroic_games/
 │   │   │   │   │   └── default.nix
-│   │   │   │   ├── kitty/
-│   │   │   │   │   └── default.nix
 │   │   │   │   ├── llama-cpp/
 │   │   │   │   │   └── default.nix
 │   │   │   │   ├── mouse/
@@ -217,7 +215,6 @@ Programs with their own dedicated Nix config (`modules/_home/commons/programs/`)
 - git
 - guitar
 - heroic_games
-- kitty
 - llama-cpp
 - mouse
 - nvf

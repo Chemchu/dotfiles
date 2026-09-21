@@ -8,7 +8,6 @@
     ./llama-cpp
     ./heroic_games
     ./yazi
-    ./kitty
     ./nvf
     ./obs
     ./mouse

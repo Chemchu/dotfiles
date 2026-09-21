@@ -136,7 +136,7 @@
               draw-border-with-background = false;
             }
             {
-              matches = [{app-id = "kitty";} {app-id = "ghostty";}];
+              matches = [{app-id = "ghostty";}];
               default-column-width.proportion = 1.0;
             }
           ];

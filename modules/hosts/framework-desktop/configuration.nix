@@ -74,7 +74,9 @@
       extraModulePackages = with config.boot.kernelPackages; [v4l2loopback];
       extraModprobeConfig = ''
         options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+        options mt7925e disable_aspm=1
       '';
+      kernelParams = ["pcie_aspm=off"];
     };
 
     networking = {
@@ -122,7 +124,6 @@
         git
         vim
         wget
-        kitty
         qt5.qtquickcontrols2
         qt5.qtgraphicaleffects
         qt5.qtwayland
@@ -217,12 +218,10 @@
       greetd = {
         enable = true;
         settings = {
-          # Boots straight into niri as gus, no greeter shown.
           initial_session = {
             command = "niri-session";
             user = "gus";
           };
-          # Fallback shown only if the initial session ever exits.
           default_session = {
             command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd niri-session";
             user = "greeter";
