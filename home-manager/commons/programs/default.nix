@@ -46,6 +46,7 @@
       lsof
       lm_sensors
       mangohud
+      claude-code
     ];
   };
 }
