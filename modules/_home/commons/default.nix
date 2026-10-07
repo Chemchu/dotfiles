@@ -36,6 +36,7 @@
     ghostty
     opencode
     pciutils
+    lmms
   ];
 
   home.file = {

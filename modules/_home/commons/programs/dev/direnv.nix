@@ -10,6 +10,8 @@
       enable = true;
       initContent = ''
         export DIRENV_LOG_FORMAT=""
+        ZSH_AUTOSUGGEST_HISTORY_IGNORE="claude *"
+        HISTORY_IGNORE="(claude|claude *)"
       '';
     };
   };
