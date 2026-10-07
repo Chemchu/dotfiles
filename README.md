@@ -190,15 +190,15 @@ actual flake and repo contents — see
 | Input | Source | Pinned |
 | --- | --- | --- |
 | devshell | github:numtide/devshell | default branch @ a67c0f8 |
-| flake-parts | github:hercules-ci/flake-parts | default branch @ 31729ca |
-| home-manager | github:nix-community/home-manager | default branch @ f298114 |
+| flake-parts | github:hercules-ci/flake-parts | default branch @ 024633c |
+| home-manager | github:nix-community/home-manager | default branch @ fae6e9e |
 | import-tree | github:vic/import-tree | default branch @ eb1b52e |
-| llama-cpp-src | github:PrismML-Eng/llama.cpp | default branch @ 842b188 |
-| nixpkgs | github:nixos/nixpkgs | nixos-unstable @ 4975466 |
+| llama-cpp-src | github:PrismML-Eng/llama.cpp | default branch @ 4fbda12 |
+| nixpkgs | github:nixos/nixpkgs | nixos-unstable @ 151fa4e |
 | nvim | local path (`./nvim`) | - |
-| rust-overlay | github:oxalica/rust-overlay | default branch @ ed34466 |
+| rust-overlay | github:oxalica/rust-overlay | default branch @ 8afee9f |
 | wrapper-modules | github:BirdeeHub/nix-wrapper-modules | default branch @ 1db3c11 |
-| zen-browser | github:youwen5/zen-browser-flake | default branch @ 6979f28 |
+| zen-browser | github:youwen5/zen-browser-flake | default branch @ 4bbcd79 |
 <!-- readme-gen:inputs:end -->
 
 ### Home Manager modules

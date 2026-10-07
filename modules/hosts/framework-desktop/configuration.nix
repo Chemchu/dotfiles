@@ -141,7 +141,7 @@
             curl
             wget
             dbus
-            openssl_3
+            openssl
             glib
             librsvg
             cmake
