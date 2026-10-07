@@ -37,6 +37,7 @@
     opencode
     pciutils
     lmms
+    pavucontrol
   ];
 
   home.file = {

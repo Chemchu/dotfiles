@@ -29,7 +29,6 @@
       udev
       wayland
       pipewire.jack
-      pavucontrol
     ];
   in {
     imports = [
