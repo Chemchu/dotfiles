@@ -189,16 +189,16 @@ actual flake and repo contents — see
 <!-- readme-gen:inputs:start -->
 | Input | Source | Pinned |
 | --- | --- | --- |
-| devshell | github:numtide/devshell | default branch @ a67c0f8 |
+| devshell | github:numtide/devshell | default branch @ 7f66906 |
 | flake-parts | github:hercules-ci/flake-parts | default branch @ 024633c |
-| home-manager | github:nix-community/home-manager | default branch @ fae6e9e |
+| home-manager | github:nix-community/home-manager | default branch @ c58f54c |
 | import-tree | github:vic/import-tree | default branch @ eb1b52e |
-| llama-cpp-src | github:PrismML-Eng/llama.cpp | default branch @ 4fbda12 |
-| nixpkgs | github:nixos/nixpkgs | nixos-unstable @ 151fa4e |
+| llama-cpp-src | github:PrismML-Eng/llama.cpp | default branch @ e8fd209 |
+| nixpkgs | github:nixos/nixpkgs | nixos-unstable @ 6510408 |
 | nvim | local path (`./nvim`) | - |
-| rust-overlay | github:oxalica/rust-overlay | default branch @ 8afee9f |
-| wrapper-modules | github:BirdeeHub/nix-wrapper-modules | default branch @ 1db3c11 |
-| zen-browser | github:youwen5/zen-browser-flake | default branch @ 4bbcd79 |
+| rust-overlay | github:oxalica/rust-overlay | default branch @ c1cfa7a |
+| wrapper-modules | github:BirdeeHub/nix-wrapper-modules | default branch @ d82c328 |
+| zen-browser | github:youwen5/zen-browser-flake | default branch @ 458cd16 |
 <!-- readme-gen:inputs:end -->
 
 ### Home Manager modules
@@ -243,7 +243,7 @@ Every package actually resolved onto `gus`'s home-manager profile, straight
 from evaluating the flake — this list can't drift out of sync with reality:
 
 <!-- readme-gen:packages:start -->
-`alejandra`, `alsa-lib`, `arduino-cli`, `arduino-language-server`, `aseprite`, `bacon`, `bat`, `bind`, `bottom`, `btop`, `bun`, `clang-wrapper`, `claude-code`, `cmake`, `devenv`, `direnv`, `discord`, `dnslookup`, `du-dust`, `dua`, `dysk`, `everforest-cursors`, `eza`, `fastfetch`, `fd`, `feh`, `ffmpeg`, `flyctl`, `fzf`, `gamescope`, `gcc-arm-embedded`, `ghostty`, `gnumake`, `heroic`, `htop`, `jq`, `libx11`, `libxcursor`, `libxi`, `libxkbcommon`, `libxrandr`, `llama-cpp-latest`, `lm-sensors`, `lmms`, `lsof`, `luarocks-packages-updater`, `mangohud`, `mpv-with-scripts`, `ncdu`, `nix-init`, `nix-output-monitor`, `nix-tree`, `nix-update`, `nix-zsh-completions`, `nixpkgs-review`, `nixpkgs-review-tmux`, `nmap`, `nodejs`, `nvf-reference-manpage`, `nvf-with-helpers`, `oh-my-zsh`, `opencode`, `openconnect`, `pavucontrol`, `pciutils`, `pkg-config-wrapper`, `procs`, `psmisc`, `python3`, `random-mouse`, `ripgrep`, `shaderc`, `shared-mime-info`, `spotify`, `sshfs-fuse`, `statix`, `steam`, `stlink`, `systemd-minimal-libs`, `tauri`, `tcpdump`, `thc-hydra`, `tlrc`, `unzip`, `uutils-coreutils`, `vim-plugins-updater`, `vulkan-loader`, `wayland`, `wl-clipboard`, `wrapped-obs-studio-32.2.2`, `yazi`, `zellij`, `zoxide`, `zsh`
+`alejandra`, `alsa-lib`, `arduino-cli`, `arduino-language-server`, `aseprite`, `bacon`, `bat`, `bind`, `bottom`, `btop`, `bun`, `clang-wrapper`, `claude-code`, `cmake`, `devenv`, `direnv`, `discord`, `dnslookup`, `du-dust`, `dua`, `dysk`, `everforest-cursors`, `eza`, `fastfetch`, `fd`, `feh`, `ffmpeg`, `flyctl`, `fzf`, `gamescope`, `gcc-arm-embedded`, `ghostty`, `gnumake`, `heroic`, `htop`, `jq`, `libx11`, `libxcursor`, `libxi`, `libxkbcommon`, `libxrandr`, `lm-sensors`, `lmms`, `lsof`, `luarocks-packages-updater`, `mangohud`, `mpv-with-scripts`, `ncdu`, `nix-init`, `nix-output-monitor`, `nix-tree`, `nix-update`, `nix-zsh-completions`, `nixpkgs-review`, `nixpkgs-review-tmux`, `nmap`, `nodejs`, `nvf-reference-manpage`, `nvf-with-helpers`, `oh-my-zsh`, `opencode`, `openconnect`, `pavucontrol`, `pciutils`, `pkg-config-wrapper`, `procs`, `psmisc`, `python3`, `random-mouse`, `ripgrep`, `shaderc`, `shared-mime-info`, `spotify`, `sshfs-fuse`, `statix`, `steam`, `stlink`, `systemd-minimal-libs`, `tauri`, `tcpdump`, `thc-hydra`, `tlrc`, `unzip`, `uutils-coreutils`, `vim-plugins-updater`, `vulkan-loader`, `wayland`, `wl-clipboard`, `wrapped-obs-studio-32.2.2`, `yazi`, `zellij`, `zoxide`, `zsh`
 <!-- readme-gen:packages:end -->
 
 ---

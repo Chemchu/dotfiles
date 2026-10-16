@@ -18,7 +18,7 @@
 
   programs = {
     home-manager.enable = true;
-    llama.enable = true;
+    llama.enable = false;
   };
 
   home = {
