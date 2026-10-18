@@ -179,6 +179,21 @@ separate standalone `home-manager switch` step:
 
 ---
 
+## Updating Noctalia settings
+
+Noctalia's config lives in `modules/features/noctalia/noctalia.json`. After
+tweaking things in Noctalia's settings GUI, dump the running shell's settings
+back into the repo:
+
+```console
+$ nix run .#myNoctalia -- ipc call state all | jq . > modules/features/noctalia/noctalia.json
+```
+
+Then rebuild (see [Installing](#installing)). Only the `settings` key is used;
+`state` is runtime stuff (wallpaper, DND...) and is ignored.
+
+---
+
 ## What's configured
 
 Dependency versions and the program/feature list below are generated from the
