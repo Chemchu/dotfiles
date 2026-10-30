@@ -106,8 +106,8 @@ dotfiles/
 │   │   │   ├── nixos.nix
 │   │   │   └── packages.nix
 │   │   └── noctalia/
-│   │       ├── noctalia.json
-│   │       └── packages.nix
+│   │       ├── packages.nix
+│   │       └── settings.toml
 │   ├── hosts/
 │   │   └── framework-desktop/
 │   │       ├── _hardware-configuration.nix
@@ -181,16 +181,18 @@ separate standalone `home-manager switch` step:
 
 ## Updating Noctalia settings
 
-Noctalia's config lives in `modules/features/noctalia/noctalia.json`. After
-tweaking things in Noctalia's settings GUI, dump the running shell's settings
-back into the repo:
+Noctalia (v5) reads its base config from `modules/features/noctalia/settings.toml`,
+which is baked into the Nix store. Changes made in Noctalia's settings GUI are
+saved to `~/.local/state/noctalia/settings.toml`, which is layered on top. To
+make them permanent, export the merged config back into the repo and clear the
+override:
 
 ```console
-$ nix run .#myNoctalia -- ipc call state all | jq . > modules/features/noctalia/noctalia.json
+$ noctalia config export > modules/features/noctalia/settings.toml
+$ mv ~/.local/state/noctalia/settings.toml ~/.local/state/noctalia/settings.toml.bak
 ```
 
-Then rebuild (see [Installing](#installing)). Only the `settings` key is used;
-`state` is runtime stuff (wallpaper, DND...) and is ignored.
+Then rebuild (see [Installing](#installing)) and restart Noctalia (`Mod+Shift+N`).
 
 ---
 
@@ -205,16 +207,16 @@ actual flake and repo contents — see
 <!-- readme-gen:inputs:start -->
 | Input | Source | Pinned |
 | --- | --- | --- |
-| devshell | github:numtide/devshell | default branch @ 7f66906 |
+| devshell | github:numtide/devshell | default branch @ 9e29c63 |
 | flake-parts | github:hercules-ci/flake-parts | default branch @ 024633c |
-| home-manager | github:nix-community/home-manager | default branch @ c58f54c |
+| home-manager | github:nix-community/home-manager | default branch @ 095fef2 |
 | import-tree | github:vic/import-tree | default branch @ eb1b52e |
-| llama-cpp-src | github:PrismML-Eng/llama.cpp | default branch @ e8fd209 |
-| nixpkgs | github:nixos/nixpkgs | nixos-unstable @ 6510408 |
+| llama-cpp-src | github:PrismML-Eng/llama.cpp | default branch @ 9d9efea |
+| nixpkgs | github:nixos/nixpkgs | nixos-unstable @ 31ecbac |
 | nvim | local path (`./nvim`) | - |
-| rust-overlay | github:oxalica/rust-overlay | default branch @ c1cfa7a |
-| wrapper-modules | github:BirdeeHub/nix-wrapper-modules | default branch @ d82c328 |
-| zen-browser | github:youwen5/zen-browser-flake | default branch @ 458cd16 |
+| rust-overlay | github:oxalica/rust-overlay | default branch @ afcefd0 |
+| wrapper-modules | github:BirdeeHub/nix-wrapper-modules | default branch @ 4126342 |
+| zen-browser | github:youwen5/zen-browser-flake | default branch @ 7f6ce45 |
 <!-- readme-gen:inputs:end -->
 
 ### Home Manager modules

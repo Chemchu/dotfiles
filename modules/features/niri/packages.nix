@@ -14,36 +14,10 @@
     noctalia = lib.getExe self'.packages.myNoctalia;
   in {
     packages = {
-      wallpaper-next = pkgs.writeShellScriptBin "wallpaper-next" ''
-        tmp=$(mktemp)
-        find -L "$HOME/Pictures/Wallpapers" -maxdepth 1 -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" -o -name "*.webp" \) | sort > "$tmp"
-        count=$(wc -l < "$tmp")
-        [ "$count" -eq 0 ] && rm -f "$tmp" && exit 0
-        state="''${XDG_RUNTIME_DIR:-/tmp}/wallpaper-index"
-        idx=1; [ -f "$state" ] && idx=$(cat "$state")
-        next=$(( (idx % count) + 1 ))
-        nextpath=$(sed -n "''${next}p" "$tmp")
-        rm -f "$tmp"
-        echo "$next" > "$state"
-        ${noctalia} ipc call wallpaper set "$nextpath" ""
-      '';
-      wallpaper-prev = pkgs.writeShellScriptBin "wallpaper-prev" ''
-        tmp=$(mktemp)
-        find -L "$HOME/Pictures/Wallpapers" -maxdepth 1 -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" -o -name "*.webp" \) | sort > "$tmp"
-        count=$(wc -l < "$tmp")
-        [ "$count" -eq 0 ] && rm -f "$tmp" && exit 0
-        state="''${XDG_RUNTIME_DIR:-/tmp}/wallpaper-index"
-        idx=1; [ -f "$state" ] && idx=$(cat "$state")
-        prev=$(( ((idx - 2 + count) % count) + 1 ))
-        prevpath=$(sed -n "''${prev}p" "$tmp")
-        rm -f "$tmp"
-        echo "$prev" > "$state"
-        ${noctalia} ipc call wallpaper set "$prevpath" ""
-      '';
       niri-cheatsheet = pkgs.writeText "niri-cheatsheet.kdl" ''
         binds {
             // #"Noctalia"
-            Mod+F2 hotkey-overlay-title="Keybind Cheatsheet" { spawn-sh "noctalia"; }
+            Mod+F2 hotkey-overlay-title="Keybind Cheatsheet" { show-hotkey-overlay; }
             Mod+S hotkey-overlay-title="Launcher" { spawn-sh "noctalia"; }
             Mod+Shift+P hotkey-overlay-title="Lock & Suspend" { spawn-sh "noctalia"; }
             Mod+Shift+N restart-noctalia-title = "Restart Noctalia";
@@ -84,8 +58,8 @@
             Print hotkey-overlay-title="Screenshot Region" { spawn-sh "grim"; }
 
             // #"Wallpaper"
-            Mod+Period hotkey-overlay-title="Next Wallpaper" { spawn-sh "wallpaper-next"; }
-            Mod+Comma hotkey-overlay-title="Previous Wallpaper" { spawn-sh "wallpaper-prev"; }
+            Mod+Period hotkey-overlay-title="Next Wallpaper" { spawn-sh "noctalia"; }
+            Mod+Comma hotkey-overlay-title="Previous Wallpaper" { spawn-sh "noctalia"; }
 
             // #"Media"
             XF86AudioRaiseVolume hotkey-overlay-title="Volume Up" { spawn-sh "wpctl"; }
@@ -143,7 +117,7 @@
 
           binds = {
             # Niri
-            "Mod+F2".spawn-sh = "${noctalia} ipc call plugin:keybind-cheatsheet toggle";
+            "Mod+F2".show-hotkey-overlay = {};
             "Mod+M".quit = {};
             "Mod+F".maximize-column = {};
             "Mod+Shift+F".fullscreen-window = {};
@@ -151,14 +125,14 @@
             "Mod+Equal".set-column-width = "+10%";
             "Mod+Shift+Minus".set-window-height = "-10%";
             "Mod+Shift+Equal".set-window-height = "+10%";
-            "Mod+Shift+N".spawn-sh = lib.getExe self'.packages.myNoctalia;
+            "Mod+Shift+N".spawn-sh = "pkill -x .noctalia-wrapp; ${noctalia}";
 
             # Apps
             "Mod+Q".spawn-sh = lib.getExe pkgs.ghostty;
             "Mod+W".spawn-sh = "zen --name zen";
             "Mod+C".close-window = {};
             "Mod+V".toggle-window-floating = {};
-            "Mod+S".spawn-sh = "${noctalia} ipc call launcher toggle";
+            "Mod+S".spawn-sh = "${noctalia} msg panel-toggle launcher";
 
             # Focus movement (vim-style)
             "Mod+H".focus-column-left = {};
@@ -198,7 +172,7 @@
             "XF86KbdBrightnessDown".spawn-sh = "${brightnessctl} -d asus::kbd_backlight set 1-";
 
             # Lock screen then suspend
-            "Mod+Shift+P".spawn-sh = "${noctalia} ipc call sessionMenu lockAndSuspend";
+            "Mod+Shift+P".spawn-sh = "${noctalia} msg session lock-and-suspend";
 
             # Mouse scroll to switch workspaces / columns
             "Mod+WheelScrollDown".focus-workspace-down = {};
@@ -217,8 +191,8 @@
             "Print".spawn-sh = ''region=$(${slurp} -d) && ${grim} -g "$region" - | ${wl-copy} && ${notify-send} "Captura copiada ✓"'';
 
             # Wallpaper cycling
-            "Mod+Period".spawn-sh = lib.getExe self'.packages.wallpaper-next;
-            "Mod+Comma".spawn-sh = lib.getExe self'.packages.wallpaper-prev;
+            "Mod+Period".spawn-sh = "${noctalia} msg wallpaper-next";
+            "Mod+Comma".spawn-sh = "${noctalia} msg wallpaper-previous";
           };
         };
       };
