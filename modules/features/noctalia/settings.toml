@@ -1,6 +1,11 @@
 [bar.default]
+capsule = true
 center = [ "media" ]
 end = [ "clock", "network", "tray", "bluetooth", "volume", "brightness", "battery", "clipboard", "notifications" ]
+margin_ends = 0
+radius = 0
+radius_bottom_left = 12
+radius_bottom_right = 12
 start = [ "session", "control-center", "wallpaper", "launcher", "workspaces" ]
 
 [control_center.media]
@@ -72,13 +77,13 @@ wallpaper_scheme = "m3-rainbow"
 directory = "/home/gus/Pictures/Wallpapers"
 
     [wallpaper.default]
-    path = "/home/gus/Pictures/Wallpapers/a_metal_staircase_with_a_railing.jpg"
+    path = "/home/gus/Pictures/Wallpapers/a_group_of_buildings_with_blue_awnings.png"
 
     [wallpaper.last]
-    path = "/home/gus/Pictures/Wallpapers/a_metal_staircase_with_a_railing.jpg"
+    path = "/home/gus/Pictures/Wallpapers/a_group_of_buildings_with_blue_awnings.png"
 
     [wallpaper.monitors.DP-4]
-    path = "/home/gus/Pictures/Wallpapers/a_metal_staircase_with_a_railing.jpg"
+    path = "/home/gus/Pictures/Wallpapers/a_group_of_buildings_with_blue_awnings.png"
 
 [widget.battery]
 enabled = false

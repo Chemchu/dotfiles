@@ -1,7 +1,5 @@
 {...}: {
   perSystem = {pkgs, ...}: let
-    # Noctalia v5 reads every *.toml in $NOCTALIA_CONFIG_HOME/noctalia/.
-    # GUI changes go to ~/.local/state/noctalia/settings.toml, layered on top.
     configHome = pkgs.writeTextDir "noctalia/settings.toml" (builtins.readFile ./settings.toml);
   in {
     packages.myNoctalia = pkgs.symlinkJoin {
