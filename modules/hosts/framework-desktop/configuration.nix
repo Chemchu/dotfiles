@@ -76,7 +76,11 @@
         options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
         options mt7925e disable_aspm=1
       '';
-      kernelParams = ["pcie_aspm=off"];
+      kernelParams = [
+        "pcie_aspm=off"
+        "ttm.pages_limit=5242880" # 20 GiB in 4 KiB pages
+        "ttm.page_pool_size=5242880"
+      ];
     };
 
     networking = {
