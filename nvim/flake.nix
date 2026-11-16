@@ -33,8 +33,6 @@
       };
     });
 
-    # Import this in your home-manager config to embed the same configuration.
-    # The nvf home-manager module is bundled here so you don't need a separate nvf input.
     homeManagerModules.default = {
       imports = [nvf.homeManagerModules.default];
       programs.nvf = {
