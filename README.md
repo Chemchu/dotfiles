@@ -208,15 +208,15 @@ actual flake and repo contents — see
 | Input | Source | Pinned |
 | --- | --- | --- |
 | devshell | github:numtide/devshell | default branch @ 9e29c63 |
-| flake-parts | github:hercules-ci/flake-parts | default branch @ 024633c |
-| home-manager | github:nix-community/home-manager | default branch @ 095fef2 |
+| flake-parts | github:hercules-ci/flake-parts | default branch @ ea2630b |
+| home-manager | github:nix-community/home-manager | default branch @ 9d7ba6b |
 | import-tree | github:vic/import-tree | default branch @ eb1b52e |
-| llama-cpp-src | github:PrismML-Eng/llama.cpp | default branch @ 9d9efea |
-| nixpkgs | github:nixos/nixpkgs | nixos-unstable @ 31ecbac |
+| llama-cpp-src | github:PrismML-Eng/llama.cpp | default branch @ 3f035ba |
+| nixpkgs | github:nixos/nixpkgs | nixos-unstable @ d5cc683 |
 | nvim | local path (`./nvim`) | - |
-| rust-overlay | github:oxalica/rust-overlay | default branch @ afcefd0 |
-| wrapper-modules | github:BirdeeHub/nix-wrapper-modules | default branch @ 4126342 |
-| zen-browser | github:youwen5/zen-browser-flake | default branch @ 7f6ce45 |
+| rust-overlay | github:oxalica/rust-overlay | default branch @ 2ff7d39 |
+| wrapper-modules | github:BirdeeHub/nix-wrapper-modules | default branch @ 0e23367 |
+| zen-browser | github:youwen5/zen-browser-flake | default branch @ ddf9a4d |
 <!-- readme-gen:inputs:end -->
 
 ### Home Manager modules
